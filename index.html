@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html lang="pl"><head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="WL Apps">
+  <meta name="theme-color" content="#faf8f4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#09090b" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Wojciech Luszczynski - Apps Portfolio">
+  <meta property="og:description" content="Revenue Engine Builder. B2B SaaS, AI-first growth systems, product marketing.">
+  <meta property="og:url" content="https://app.wojciech.io">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="manifest" href="/manifest.json">
   <title>Wojciech Łuszczyński - Apps</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
   <style>
@@ -78,6 +89,8 @@
       -webkit-backdrop-filter:blur(20px) saturate(180%);
       border-bottom:1px solid var(--border);
       height:62px;
+      padding-left:env(safe-area-inset-left);
+      padding-right:env(safe-area-inset-right);
     }
     .hdr-inner {
       max-width:1440px; margin:0 auto;
@@ -175,6 +188,7 @@
       .lang-toggle { font-size:12px; padding:3px 8px; }
 
       /* Tabs */
+      .tab-nav { top:54px; }
       .tabs { padding:0 clamp(14px,4vw,48px); gap:0; overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:1440px; margin:0 auto; width:100%; box-sizing:border-box; }
       .tabs::-webkit-scrollbar { display:none; }
       .tab-btn { font-size:11px; padding:0 12px; white-space:nowrap; flex-shrink:0; }
@@ -636,15 +650,15 @@
     .flow-node { display:flex; flex-direction:column; align-items:center; gap:6px; flex-shrink:0; }
     .flow-icon {
       width:40px; height:40px; border-radius:10px;
-      background:var(--bg2); border:1px solid var(--border);
+      background:#1e1e1e; border:1px solid #333;
       display:flex; align-items:center; justify-content:center;
-      font-size:10px; font-weight:800; color:var(--text-2);
+      font-size:10px; font-weight:800; color:#888;
       transition:border-color .15s;
     }
-    .flow-icon.key { border-color:rgba(255,103,25,0.45); color:var(--lime); background:var(--lime-dim); }
+    .flow-icon.key { background:#1e1e1e; border-color:rgba(235,255,0,0.35); color:#EBFF00; }
     .flow-icon svg { flex-shrink:0; }
     .flow-name { font-size:10px; font-weight:600; color:var(--text-3); text-align:center; white-space:nowrap; }
-    .flow-name.key { color:var(--text-2); }
+    .flow-name.key { color:var(--text-2); font-weight:700; }
     .flow-connector {
       flex:1; min-width:24px; max-width:56px;
       display:flex; align-items:center; position:relative;
@@ -694,8 +708,8 @@
     .proj-row-cat { font-size:11px; color:var(--text-3); white-space:nowrap; margin-right:8px; }
     .proj-row-pills { display:flex; gap:4px; flex-shrink:0; }
     .proj-row-pill {
-      font-size:10px; font-weight:600; color:var(--text-3);
-      background:var(--bg2); border:1px solid var(--border);
+      font-size:10px; font-weight:600; color:#999;
+      background:#1e1e1e; border:1px solid #333;
       border-radius:4px; padding:1px 6px; font-family:monospace;
     }
     .proj-status-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
@@ -709,8 +723,8 @@
     .proj-desc { font-size:13px; color:var(--text-2); line-height:1.65; margin-bottom:12px; }
     .proj-meta { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
     .proj-meta-pill {
-      font-size:10px; font-weight:600; color:var(--text-3);
-      background:var(--bg2); border:1px solid var(--border);
+      font-size:10px; font-weight:600; color:#999;
+      background:#1e1e1e; border:1px solid #333;
       border-radius:4px; padding:2px 8px; font-family:monospace;
     }
     .proj-link {
@@ -723,6 +737,44 @@
       .proj-row-cat { display:none; }
       .proj-row-pills { display:none; }
       .proj-row-body { padding-left:46px; }
+    }
+
+    /* ===== PROJECT TILES GRID ===== */
+    .proj-tiles { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+    @media(max-width:860px) { .proj-tiles { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:480px) { .proj-tiles { grid-template-columns:1fr; } }
+    .proj-tile {
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:14px; padding:14px 14px 12px;
+      display:flex; flex-direction:column; gap:10px;
+      transition:border-color .15s, box-shadow .15s;
+    }
+    .proj-tile:hover { border-color:var(--border-hi); box-shadow:0 2px 8px rgba(0,0,0,.06); }
+    .proj-tile-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+    .proj-tile-left { display:flex; align-items:center; gap:10px; }
+    .proj-tile-icon {
+      width:36px; height:36px; border-radius:9px; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center;
+      font-size:12px; font-weight:900; color:#fff;
+    }
+    .proj-tile-name { font-size:13px; font-weight:700; color:var(--text); line-height:1.2; }
+    .proj-tile-cat { font-size:10px; color:var(--text-3); margin-top:2px; }
+    .proj-tile-sdot { width:7px; height:7px; border-radius:50%; flex-shrink:0; margin-top:4px; }
+    .proj-tile-sdot.live { background:#22c55e; }
+    .proj-tile-sdot.wip { background:#f59e0b; }
+    .proj-tile-stack { display:flex; flex-wrap:wrap; gap:4px; }
+    .pt {
+      display:inline-flex; align-items:center; gap:3px;
+      font-size:10px; font-weight:600; color:var(--text-2);
+      padding:2px 6px 2px 4px; border-radius:5px;
+      background:var(--bg2); border:1px solid var(--border);
+      white-space:nowrap; line-height:1.4;
+    }
+    .pt img { width:11px; height:11px; flex-shrink:0; vertical-align:middle; }
+    .pt-l {
+      width:11px; height:11px; border-radius:2px; flex-shrink:0;
+      display:inline-flex; align-items:center; justify-content:center;
+      font-size:6px; font-weight:900; color:#fff; line-height:1;
     }
 
         /* ===== TIMELINE TAB ===== */
@@ -775,18 +827,18 @@
     .tl-tech-name { font-size:14px; font-weight:700; color:var(--text); }
     .tl-cat-badge {
       font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
-      padding:2px 7px; border-radius:4px;
-      background:var(--bg2); color:var(--text-3); border:1px solid var(--border);
+      padding:2px 8px; border-radius:4px;
+      background:#1e1e1e; color:#888; border:none;
     }
-    .tl-cat-badge.infra { background:rgba(96,165,250,0.1); color:#60a5fa; border-color:rgba(96,165,250,0.2); }
-    .tl-cat-badge.security { background:rgba(34,197,94,0.1); color:#22c55e; border-color:rgba(34,197,94,0.2); }
-    .tl-cat-badge.ai { background:rgba(168,85,247,0.1); color:#a855f7; border-color:rgba(168,85,247,0.2); }
-    .tl-cat-badge.payments { background:rgba(255,103,25,0.1); color:var(--lime); border-color:rgba(255,103,25,0.2); }
+    .tl-cat-badge.infra    { color:#60a5fa; }
+    .tl-cat-badge.security { color:#4ade80; }
+    .tl-cat-badge.ai       { color:#c084fc; }
+    .tl-cat-badge.payments { color:#EBFF00; }
     .tl-note { font-size:12px; color:var(--text-3); line-height:1.55; }
 
     /* milestone entries */
-    .tl-entry.milestone .tl-tech-name { color:var(--lime); }
-    .tl-entry.milestone .tl-dot { box-shadow:0 0 0 1px var(--lime), 0 0 8px rgba(255,103,25,0.3); }
+    .tl-entry.milestone .tl-tech-name { color:#5a6500; font-weight:800; }
+    .tl-entry.milestone .tl-dot { box-shadow:0 0 0 2px #5a6500; }
 
     /* ===== CV TAB ===== */
 
@@ -1336,7 +1388,7 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
 .g-trusted-names a{color:var(--g-text-3,rgba(255,255,255,.28));text-decoration:none;font-weight:500;transition:color .2s}
 .g-trusted-names a:hover{color:var(--g-text-2,rgba(255,255,255,.55))}
 .g-dot{color:var(--g-text-3,rgba(255,255,255,.2));font-size:10px}
-@media(max-width:480px){.g-card{padding:36px 22px 28px;border-radius:20px}.g-avatar{width:80px;height:80px}}
+@media(max-width:480px){.g-card{padding:28px 18px 22px;border-radius:18px}.g-avatar{width:80px;height:80px}}
 </style>
 <style id="gate-v2">
 #gate{position:fixed;inset:0;z-index:9999;background-color:#0f0f0f;background-image:radial-gradient(ellipse 700px 500px at 50% -80px,rgba(235,255,0,.16) 0%,transparent 100%);display:flex;align-items:center;justify-content:flex-start;flex-direction:column;padding:56px 16px 32px;overflow-y:auto;gap:0;font-family:inherit}
@@ -1372,7 +1424,7 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
 .g-trusted-names a{color:var(--g-text-3,rgba(255,255,255,.28));text-decoration:none;font-weight:500;transition:color .2s}
 .g-trusted-names a:hover{color:var(--g-text-2,rgba(255,255,255,.55))}
 .g-dot{color:var(--g-text-3,rgba(255,255,255,.2));font-size:10px}
-@media(max-width:480px){.g-card{padding:36px 22px 28px;border-radius:20px}.g-avatar{width:80px;height:80px}.g-name{font-size:19px}.g-desc{font-size:12px}}
+@media(max-width:480px){.g-card{padding:28px 18px 22px;border-radius:18px}.g-avatar{width:80px;height:80px}.g-name{font-size:19px}.g-desc{font-size:12px}}
 </style>
 <style id="gate-light">
 /* === LIGHT MODE OVERRIDES (AI Espresso editorial) === */
@@ -1402,6 +1454,8 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
 #gate.light-mode .g-logos .g-logo-word{color:rgba(0,0,0,.35)!important}
 #gate.light-mode .g-logos img:hover{opacity:.65!important}
 #gate.light-mode .g-logos .g-logo-word:hover{color:rgba(0,0,0,.65)!important}
+#gate.light-mode .g-badge{background:rgba(235,255,0,.55)!important;color:#1a1a00!important;border-color:rgba(200,220,0,.6)!important}
+#gate.light-mode .g-lang-btn.active{color:#1a1a00!important}
 #gate.light-mode .g-badge{color:#3d4500!important;border-color:rgba(235,255,0,.55)!important}
 </style>
 <div id="gate">
@@ -1419,7 +1473,7 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
 <span class="g-avatar-init" id="gInit" style="display:none">WŁ</span>
 </div>
 <div class="g-name">Wojciech Łuszczyński</div>
-<div class="g-badge">⚡ <span id="gBadge">Revenue Engine Builder</span></div>
+<div class="g-badge"><span id="gBadge">Revenue Engine Builder</span></div>
 
 <div class="g-hl" id="gHL" style="display:none"></div>
 <div class="g-desc" id="gDesc">Buduję systemy wzrostu generujące 7-cyfrowe przychody dla firm HR Tech. AI-first podejście do demand generation, product marketingu i revenue operations.</div>
@@ -1460,13 +1514,6 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       <div class="hdr-name">Wojciech Łuszczyński</div>
       <div class="hdr-sub">Apps Portfolio</div>
     </a>
-
-    <div class="hdr-search">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path>
-      </svg>
-      <input type="text" id="searchInput" placeholder="Search…" oninput="filterApps()" autocomplete="off" data-pl="Szukaj aplikacji, tagów…" data-en="Search apps, tags…">
-    </div>
 
     <div class="hdr-right">
       <!-- Social icons -->
@@ -2971,7 +3018,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             <div class="flow-label" data-pl="Warstwa UI" data-en="UI layer">Warstwa UI</div>
             <div class="flow-row">
               <div class="flow-node">
-                <div class="flow-icon key">TS</div>
+                <div class="flow-icon key"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="TypeScript"></div>
                 <div class="flow-name key">TypeScript</div>
               </div>
               <div class="flow-connector">
@@ -2979,7 +3026,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">typuje</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon key">Re</div>
+                <div class="flow-icon key"><img src="https://cdn.simpleicons.org/react/61DAFB" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="React"></div>
                 <div class="flow-name key">React</div>
               </div>
               <div class="flow-connector">
@@ -2987,7 +3034,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">bundluje</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon">Vi</div>
+                <div class="flow-icon"><img src="https://cdn.simpleicons.org/vite/646CFF" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="Vite"></div>
                 <div class="flow-name">Vite</div>
               </div>
               <div class="flow-connector">
@@ -2995,7 +3042,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">styluje</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon">Tw</div>
+                <div class="flow-icon"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="Tailwind"></div>
                 <div class="flow-name">Tailwind</div>
               </div>
               <div class="flow-connector">
@@ -3003,7 +3050,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">komponenty</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon">Sh</div>
+                <div class="flow-icon" style="font-size:9px;font-weight:900;color:#888">Sh</div>
                 <div class="flow-name">shadcn/ui</div>
               </div>
               <div class="flow-connector">
@@ -3011,7 +3058,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">deploy</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon key">Ve</div>
+                <div class="flow-icon key"><img src="https://cdn.simpleicons.org/vercel/ffffff" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="Vercel"></div>
                 <div class="flow-name key">Vercel</div>
               </div>
             </div>
@@ -3021,7 +3068,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             <div class="flow-label" data-pl="Warstwa danych" data-en="Data layer">Warstwa danych</div>
             <div class="flow-row">
               <div class="flow-node">
-                <div class="flow-icon">Zod</div>
+                <div class="flow-icon" style="font-size:9px;font-weight:900;color:#888">Zod</div>
                 <div class="flow-name">Zod</div>
               </div>
               <div class="flow-connector">
@@ -3029,7 +3076,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">waliduje</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon key">SB</div>
+                <div class="flow-icon key"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="Supabase"></div>
                 <div class="flow-name key">Supabase auth</div>
               </div>
               <div class="flow-connector">
@@ -3037,7 +3084,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">zapisuje</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon key">DB</div>
+                <div class="flow-icon key"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="Supabase DB"></div>
                 <div class="flow-name key">Supabase DB</div>
               </div>
               <div class="flow-connector">
@@ -3045,7 +3092,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">analytics</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon">BQ</div>
+                <div class="flow-icon"><img src="https://cdn.simpleicons.org/googlebigquery/669DF6" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="BigQuery"></div>
                 <div class="flow-name">BigQuery</div>
               </div>
               <div class="flow-connector">
@@ -3053,7 +3100,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">API</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon">Py</div>
+                <div class="flow-icon"><img src="https://cdn.simpleicons.org/fastapi/009688" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="FastAPI"></div>
                 <div class="flow-name">FastAPI</div>
               </div>
             </div>
@@ -3063,7 +3110,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             <div class="flow-label">AI</div>
             <div class="flow-row">
               <div class="flow-node">
-                <div class="flow-icon">In</div>
+                <div class="flow-icon" style="font-size:9px;font-weight:900;color:#888">In</div>
                 <div class="flow-name">User input</div>
               </div>
               <div class="flow-connector">
@@ -3071,7 +3118,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">prompt</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon key">OA</div>
+                <div class="flow-icon key"><img src="https://cdn.simpleicons.org/openai/ffffff" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="OpenAI"></div>
                 <div class="flow-name key">OpenAI</div>
               </div>
               <div class="flow-connector">
@@ -3079,7 +3126,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">lub</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon key">Cl</div>
+                <div class="flow-icon key"><img src="https://cdn.simpleicons.org/anthropic/FF6719" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="Claude"></div>
                 <div class="flow-name key">Claude</div>
               </div>
               <div class="flow-connector">
@@ -3087,7 +3134,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">odpowiedz</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon">UI</div>
+                <div class="flow-icon" style="font-size:9px;font-weight:900;color:#888">UI</div>
                 <div class="flow-name">UI response</div>
               </div>
             </div>
@@ -3097,7 +3144,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             <div class="flow-label" data-pl="Platnosci i powiadomienia" data-en="Payments and notifications">Platnosci i powiadomienia</div>
             <div class="flow-row">
               <div class="flow-node">
-                <div class="flow-icon">Us</div>
+                <div class="flow-icon" style="font-size:9px;font-weight:900;color:#888">Us</div>
                 <div class="flow-name">Uzytkownik</div>
               </div>
               <div class="flow-connector">
@@ -3105,7 +3152,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">placi</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon key">St</div>
+                <div class="flow-icon key"><img src="https://cdn.simpleicons.org/stripe/635BFF" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="Stripe"></div>
                 <div class="flow-name key">Stripe</div>
               </div>
               <div class="flow-connector">
@@ -3113,7 +3160,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">webhook</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon">DB</div>
+                <div class="flow-icon"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="Supabase"></div>
                 <div class="flow-name">Supabase</div>
               </div>
               <div class="flow-connector">
@@ -3121,7 +3168,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">trigger</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon key">Rs</div>
+                <div class="flow-icon key"><img src="https://cdn.simpleicons.org/resend/ffffff" width="22" height="22" loading="lazy" onerror="this.style.display='none'" alt="Resend"></div>
                 <div class="flow-name key">Resend</div>
               </div>
               <div class="flow-connector">
@@ -3129,7 +3176,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                 <span class="flow-note">wysyla</span>
               </div>
               <div class="flow-node">
-                <div class="flow-icon">@</div>
+                <div class="flow-icon" style="font-size:14px;color:#888">@</div>
                 <div class="flow-name">Email</div>
               </div>
             </div>
@@ -3137,301 +3184,324 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         </div>
 
-        <!-- PROJECTS ACCORDION -->
+        <!-- PROJECTS GRID -->
         <div class="stack-sec-head">
-          <div class="stack-sec-label" data-pl="17 PROJEKTÓW" data-en="17 PROJECTS">17 PROJEKTÓW</div>
+          <div class="stack-sec-label" data-pl="18 PROJEKTÓW" data-en="18 PROJECTS">18 PROJEKTÓW</div>
           <div class="stack-sec-line"></div>
         </div>
 
-        <div class="proj-list">
+        <div class="proj-tiles">
 
-          <div class="proj-row" data-tech="react supabase netlify">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#1C69D4">SS</div>
-              <div class="proj-row-name">SabiSzop</div>
-              <div class="proj-row-cat" data-pl="Marketplace · B2C" data-en="Marketplace · B2C">Marketplace · B2C</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Supabase</span><span class="proj-row-pill">Netlify</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Aplikacja do zarzadzania zakupami domowymi. Inteligentne listy z AI, skaner paragonow i wykresy wydatkow. Dziala jako PWA bez App Store." data-en="Home shopping management app. Smart lists with AI, receipt scanner and spending charts. Runs as a PWA without App Store.">Aplikacja do zarzadzania zakupami domowymi. Inteligentne listy z AI, skaner paragonow i wykresy wydatkow. Dziala jako PWA bez App Store.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Supabase</span><span class="proj-meta-pill">Tailwind</span><span class="proj-meta-pill">PWA</span>
-                <a href="https://sabiszop.netlify.app/" target="_blank" class="proj-link">Live ↗</a>
+
+          <!-- SabiSzop -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#1C69D4">SS</div>
+                <div><div class="proj-tile-name">SabiSzop</div><div class="proj-tile-cat">Marketplace · B2C</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Tailwind</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/netlify/00C7B7" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Netlify</span>
+              <span class="pt"><span class="pt-l" style="background:#555">PW</span> PWA</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="base44">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#1a1a1a;border:1px solid #333">KH</div>
-              <div class="proj-row-name">Kadromierz Hub</div>
-              <div class="proj-row-cat" data-pl="B2B SaaS · Content" data-en="B2B SaaS · Content">B2B SaaS · Content</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">Base44</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Hub contentowy dla Kadromierz. Agreguje zasoby marketingowe, case studies i materialy dla zespolu sprzedazy. Zbudowany no-code w Base44." data-en="Content hub for Kadromierz. Aggregates marketing assets, case studies and materials for the sales team. Built no-code in Base44.">Hub contentowy dla Kadromierz. Agreguje zasoby marketingowe, case studies i materialy dla zespolu sprzedazy. Zbudowany no-code w Base44.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">Base44</span><span class="proj-meta-pill">No-code</span>
+          <!-- Kadromierz Hub -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#1a1a1a;border:1px solid #444">KH</div>
+                <div><div class="proj-tile-name">Kadromierz Hub</div><div class="proj-tile-cat">B2B SaaS · Content</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><span class="pt-l" style="background:#4F46E5">B4</span> Base44</span>
+              <span class="pt"><span class="pt-l" style="background:#6B7280">NC</span> No-code</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react typescript">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#10B981">GH</div>
-              <div class="proj-row-name">GrowthHub</div>
-              <div class="proj-row-cat" data-pl="B2B SaaS" data-en="B2B SaaS">B2B SaaS</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">TypeScript</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Dashboard dla growth marketerow w B2B. Konsoliduje metryki z roznych kanalow i daje widok na efektywnosc kampanii." data-en="Dashboard for B2B growth marketers. Consolidates metrics from multiple channels and gives a view on campaign effectiveness.">Dashboard dla growth marketerow w B2B. Konsoliduje metryki z roznych kanalow i daje widok na efektywnosc kampanii.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Netlify</span>
+          <!-- GrowthHub -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#10B981">GH</div>
+                <div><div class="proj-tile-name">GrowthHub</div><div class="proj-tile-cat">B2B SaaS · Growth</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/netlify/00C7B7" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Netlify</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react vite">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#6366F1">HM</div>
-              <div class="proj-row-name">HireMe</div>
-              <div class="proj-row-cat" data-pl="SaaS · HR" data-en="SaaS · HR">SaaS · HR</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Vite</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Platforma laczaca kandydatow z pracodawcami. Profil kandydata, filtry stanowisk i formularz aplikacji w jednym miejscu." data-en="Platform connecting candidates with employers. Candidate profile, job filters and application form in one place.">Platforma laczaca kandydatow z pracodawcami. Profil kandydata, filtry stanowisk i formularz aplikacji w jednym miejscu.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Vite</span><span class="proj-meta-pill">Netlify</span>
+          <!-- HireMe -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#6366F1">HM</div>
+                <div><div class="proj-tile-name">HireMe</div><div class="proj-tile-cat">SaaS · HR</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/netlify/00C7B7" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Netlify</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="vite lovable">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#8B5CF6">AN</div>
-              <div class="proj-row-name">AN Projekt</div>
-              <div class="proj-row-cat" data-pl="Strona B2B" data-en="B2B website">Strona B2B</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">Vite</span><span class="proj-row-pill">Lovable</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Strona wizytowkowa dla pracowni architektonicznej AN Projekt. Prezentacja portfolio realizacji i formularz kontaktowy." data-en="Brochure site for the AN Projekt architecture studio. Showcases completed projects and includes a contact form.">Strona wizytowkowa dla pracowni architektonicznej AN Projekt. Prezentacja portfolio realizacji i formularz kontaktowy.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">Vite</span><span class="proj-meta-pill">Lovable</span>
+          <!-- AN Projekt -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#8B5CF6">AN</div>
+                <div><div class="proj-tile-name">AN Projekt</div><div class="proj-tile-cat">Website · Interior</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Tailwind</span>
+              <span class="pt"><span class="pt-l" style="background:#FF6B6B">Lv</span> Lovable</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react vite">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#F59E0B">Ci</div>
-              <div class="proj-row-name">Ciryam</div>
-              <div class="proj-row-cat" data-pl="Strona · Prawo" data-en="Website · Legal">Strona · Prawo</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Vite</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Strona dla kancelarii prawnej. Opis uslug, zespolu i formularz zapytania ofertowego. Prosty stack, szybki czas ladowania." data-en="Website for a law firm. Service descriptions, team section and inquiry form. Simple stack, fast load time.">Strona dla kancelarii prawnej. Opis uslug, zespolu i formularz zapytania ofertowego. Prosty stack, szybki czas ladowania.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">Vite</span><span class="proj-meta-pill">Tailwind</span>
+          <!-- Ciryam -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#F59E0B">Ci</div>
+                <div><div class="proj-tile-name">Ciryam</div><div class="proj-tile-cat">Website · Music</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Tailwind</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react supabase mapbox">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#22C55E">Dz</div>
-              <div class="proj-row-name">Dzialkomierz</div>
-              <div class="proj-row-cat" data-pl="PWA · Nieruchomosci" data-en="PWA · Real estate">PWA · Nieruchomosci</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Supabase</span><span class="proj-row-pill">Mapbox</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Wyszukiwarka dzialek budowlanych z filtrowaniem po powierzchni, cenie i lokalizacji. Mapa interaktywna na Mapbox, baza w Supabase." data-en="Building plot finder with filtering by area, price and location. Interactive map on Mapbox, database in Supabase.">Wyszukiwarka dzialek budowlanych z filtrowaniem po powierzchni, cenie i lokalizacji. Mapa interaktywna na Mapbox, baza w Supabase.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">Supabase</span><span class="proj-meta-pill">Mapbox</span><span class="proj-meta-pill">PWA</span>
+          <!-- Działkometr -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#22C55E">Dz</div>
+                <div><div class="proj-tile-name">Działkometr</div><div class="proj-tile-cat">PWA · Real Estate</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/mapbox/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Mapbox</span>
+              <span class="pt"><span class="pt-l" style="background:#555">PW</span> PWA</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react vite typescript openai">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#412991">AI</div>
-              <div class="proj-row-name">Ads Assistant</div>
-              <div class="proj-row-cat" data-pl="B2B SaaS · Ads" data-en="B2B SaaS · Ads">B2B SaaS · Ads</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Vite</span><span class="proj-row-pill">OpenAI</span><span class="proj-row-pill">Ads API</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Dashboard Google Ads z AI scoring ICP i rekomendacjami kampanii. Laczy dane z konta reklamowego z modelem OpenAI i zwraca konkretne akcje." data-en="Google Ads dashboard with AI ICP scoring and campaign recommendations. Connects ad account data with OpenAI and returns specific actions.">Dashboard Google Ads z AI scoring ICP i rekomendacjami kampanii. Laczy dane z konta reklamowego z modelem OpenAI i zwraca konkretne akcje.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">OpenAI API</span><span class="proj-meta-pill">Google Ads API</span>
+          <!-- AdsAI -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#412991">AA</div>
+                <div><div class="proj-tile-name">AdsAI</div><div class="proj-tile-cat">B2B SaaS · Ads</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/openai/74aa9c" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> OpenAI</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/googleads/4285F4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Google Ads</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react openai">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#6B7280">RB</div>
-              <div class="proj-row-name">Resume Builder</div>
-              <div class="proj-row-cat" data-pl="SaaS · AI" data-en="SaaS · AI">SaaS · AI</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">OpenAI</span></div>
-              <div class="proj-status-dot wip"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Generator CV wspomagany przez AI. Uzytkownik wpisuje doswiadczenie, model dobiera jezyk i format pod konkretne stanowisko. W budowie." data-en="AI-assisted resume generator. User enters experience, the model selects language and format for a specific role. In progress.">Generator CV wspomagany przez AI. Uzytkownik wpisuje doswiadczenie, model dobiera jezyk i format pod konkretne stanowisko. W budowie.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">OpenAI API</span><span class="proj-meta-pill">Supabase</span>
+          <!-- Resume Builder -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#6B7280">RB</div>
+                <div><div class="proj-tile-name">Resume Builder</div><div class="proj-tile-cat">SaaS · AI</div></div>
               </div>
+              <div class="proj-tile-sdot wip"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/openai/74aa9c" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> OpenAI</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react supabase stripe">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#0EA5E9">CR</div>
-              <div class="proj-row-name">Camper Rental</div>
-              <div class="proj-row-cat" data-pl="Rezerwacje" data-en="Booking engine">Rezerwacje</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Supabase</span><span class="proj-row-pill">Stripe</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="System rezerwacji kamperow z kalendarzem dostepnosci, platnoscia Stripe i panelem administratora. Pelny cykl: wybor, rezerwacja, potwierdzenie." data-en="Camper booking system with availability calendar, Stripe payment and admin panel. Full cycle: selection, booking, confirmation.">System rezerwacji kamperow z kalendarzem dostepnosci, platnoscia Stripe i panelem administratora. Pelny cykl: wybor, rezerwacja, potwierdzenie.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Supabase</span><span class="proj-meta-pill">Stripe</span>
+          <!-- Camper Rental -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#0EA5E9">CR</div>
+                <div><div class="proj-tile-name">Camper Rental</div><div class="proj-tile-cat">Booking Engine</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/stripe/635BFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Stripe</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react typescript">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#EC4899">Am</div>
-              <div class="proj-row-name">Amoree</div>
-              <div class="proj-row-cat" data-pl="Wesela · B2C" data-en="Weddings · B2C">Wesela · B2C</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">TypeScript</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Platforma dla par planujacych slub. Listy zadania, budzetowanie, katalog dostawcow i mozliwosc zaproszen dla gosci." data-en="Platform for couples planning a wedding. Task lists, budgeting, vendor directory and guest invitation features.">Platforma dla par planujacych slub. Listy zadania, budzetowanie, katalog dostawcow i mozliwosc zaproszen dla gosci.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Vercel</span>
+          <!-- Amoree -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#EC4899">Am</div>
+                <div><div class="proj-tile-name">Amoree</div><div class="proj-tile-cat">Weddings · B2C</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react markdown resend">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#374151">WL</div>
-              <div class="proj-row-name">Wycinarki Laserowe</div>
-              <div class="proj-row-cat" data-pl="B2B · SEO" data-en="B2B · SEO">B2B · SEO</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Markdown</span><span class="proj-row-pill">Resend</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Strona lead gen dla producenta wycinaek laserowych. Tresc w Markdown, formularz z Resend i SEO pod frazy B2B. Zero backendu, zero CMS." data-en="Lead gen site for a laser cutter manufacturer. Content in Markdown, form via Resend, SEO for B2B phrases. No backend, no CMS.">Strona lead gen dla producenta wycinaek laserowych. Tresc w Markdown, formularz z Resend i SEO pod frazy B2B. Zero backendu, zero CMS.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Markdown</span><span class="proj-meta-pill">Resend</span>
+          <!-- Wycinarki Laserowe -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#374151">WL</div>
+                <div><div class="proj-tile-name">Wycinarki Laserowe</div><div class="proj-tile-cat">B2B · SEO</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/markdown/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Markdown</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/resend/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Resend</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react markdown">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#1E40AF">SL</div>
-              <div class="proj-row-name">Spawarki Laserowe</div>
-              <div class="proj-row-cat" data-pl="B2B · SEO" data-en="B2B · SEO">B2B · SEO</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Markdown</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Ten sam model co Wycinarki Laserowe, inna nisza. Strona lead gen dla spawarek laserowych z trescia w Markdown i formularzem kontaktowym." data-en="Same model as Wycinarki Laserowe, different niche. Lead gen site for laser welders with Markdown content and contact form.">Ten sam model co Wycinarki Laserowe, inna nisza. Strona lead gen dla spawarek laserowych z trescia w Markdown i formularzem kontaktowym.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Markdown</span>
+          <!-- Spawarki Laserowe -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#1E40AF">SL</div>
+                <div><div class="proj-tile-name">Spawarki Laserowe</div><div class="proj-tile-cat">B2B · SEO</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/markdown/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Markdown</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="vite lovable">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#D97706">WP</div>
-              <div class="proj-row-name">Willa w Parku</div>
-              <div class="proj-row-cat" data-pl="Strona · Hotelarstwo" data-en="Website · Hospitality">Strona · Hotelarstwo</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">Vite</span><span class="proj-row-pill">Lovable</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Strona dla obiektu hotelowego. Galeria, opisy pokoi, formularz rezerwacji i sekcja atrakcji okolicy. Zbudowana szybko w Lovable." data-en="Website for a hotel property. Gallery, room descriptions, booking form and local attractions section. Built quickly in Lovable.">Strona dla obiektu hotelowego. Galeria, opisy pokoi, formularz rezerwacji i sekcja atrakcji okolicy. Zbudowana szybko w Lovable.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">Vite</span><span class="proj-meta-pill">Lovable</span>
+          <!-- Willa w Parku -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#D97706">WP</div>
+                <div><div class="proj-tile-name">Willa w Parku</div><div class="proj-tile-cat">Website · Hospitality</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Tailwind</span>
+              <span class="pt"><span class="pt-l" style="background:#FF6B6B">Lv</span> Lovable</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react supabase stripe">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#7C3AED">Ak</div>
-              <div class="proj-row-name">Akademia AI</div>
-              <div class="proj-row-cat" data-pl="Edukacja SaaS" data-en="Education SaaS">Edukacja SaaS</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Supabase</span><span class="proj-row-pill">Stripe</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Platforma kursow AI z subskrypcja. Logowanie Supabase, platnosci Stripe, tresc kursow w bazie. Sprzedaje dostep do materialow o pracy z AI." data-en="AI course platform with subscription. Supabase auth, Stripe payments, course content in the database. Sells access to AI workflow materials.">Platforma kursow AI z subskrypcja. Logowanie Supabase, platnosci Stripe, tresc kursow w bazie. Sprzedaje dostep do materialow o pracy z AI.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Supabase</span><span class="proj-meta-pill">Stripe</span>
+          <!-- Akademia AI -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#7C3AED">Ak</div>
+                <div><div class="proj-tile-name">Akademia AI</div><div class="proj-tile-cat">Education SaaS</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/stripe/635BFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Stripe</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="nextjs supabase resend">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#0F766E">Rl</div>
-              <div class="proj-row-name">Relora</div>
-              <div class="proj-row-cat" data-pl="B2B SaaS · CRM" data-en="B2B SaaS · CRM">B2B SaaS · CRM</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">Next.js</span><span class="proj-row-pill">Supabase</span><span class="proj-row-pill">Resend</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="CRM dla agentow nieruchomosci. Zarzadzanie kontaktami, pipeline transakcji, automatyczne maile przez Resend i dashboard aktywnnosci." data-en="CRM for real estate agents. Contact management, deal pipeline, automated emails via Resend and activity dashboard.">CRM dla agentow nieruchomosci. Zarzadzanie kontaktami, pipeline transakcji, automatyczne maile przez Resend i dashboard aktywnnosci.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">Next.js</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Supabase</span><span class="proj-meta-pill">Resend</span>
+          <!-- Relora -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#0F766E">Rl</div>
+                <div><div class="proj-tile-name">Relora</div><div class="proj-tile-cat">B2B SaaS · CRM</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/nextdotjs/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Next.js</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/resend/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Resend</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
             </div>
           </div>
 
-          <div class="proj-row" data-tech="react openai">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#18181B;border:1px solid #333">BB</div>
-              <div class="proj-row-name">Brand Brain 24</div>
-              <div class="proj-row-cat" data-pl="B2B SaaS · AI" data-en="B2B SaaS · AI">B2B SaaS · AI</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Supabase</span><span class="proj-row-pill">OpenAI</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Narzedzie strategii marki dla marketerow B2B. Uzytkownik odpowiada na pytania o firme, AI generuje pozycjonowanie, USP, ICP i messaging framework." data-en="Brand strategy tool for B2B marketers. User answers questions about their company, AI generates positioning, USP, ICP and messaging framework.">Narzedzie strategii marki dla marketerow B2B. Uzytkownik odpowiada na pytania o firme, AI generuje pozycjonowanie, USP, ICP i messaging framework.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Supabase</span><span class="proj-meta-pill">shadcn/ui</span><span class="proj-meta-pill">OpenAI API</span>
+          <!-- Ads Assistant -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#16A34A">AS</div>
+                <div><div class="proj-tile-name">Ads Assistant</div><div class="proj-tile-cat">B2B SaaS · Performance</div></div>
               </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Tailwind</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
+            </div>
+          </div>
+
+          <!-- Brand Brain 24 -->
+          <div class="proj-tile">
+            <div class="proj-tile-top">
+              <div class="proj-tile-left">
+                <div class="proj-tile-icon" style="background:#18181B;border:1px solid #444">B2</div>
+                <div><div class="proj-tile-name">Brand Brain 24</div><div class="proj-tile-cat">B2B SaaS · AI</div></div>
+              </div>
+              <div class="proj-tile-sdot live"></div>
+            </div>
+            <div class="proj-tile-stack">
+              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
+              <span class="pt"><img src="https://cdn.simpleicons.org/openai/74aa9c" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> OpenAI</span>
+              <span class="pt"><span class="pt-l" style="background:#18181B">Sh</span> shadcn/ui</span>
             </div>
           </div>
 
@@ -4279,7 +4349,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
   
   <footer>
-    <p>© 2026 <span>Wojciech Łuszczyński</span> · <a href="mailto:hello@wojciech.io" style="color:var(--lime);text-decoration:none;">hello@wojciech.io</a></p>
+    <p>© 2026 <span>Wojciech Łuszczyński</span> · <a href="mailto:hello@wojciech.io" style="color:var(--text-2);text-decoration:none;">hello@wojciech.io</a></p>
     <div class="footer-socials">
       <a href="https://wojciech.io" target="_blank" class="fsoc" title="Website"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></a>
       <a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank" class="fsoc" title="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
