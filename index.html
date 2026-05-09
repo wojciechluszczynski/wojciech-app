@@ -1176,6 +1176,25 @@
 .hdr-search input:focus{border-color:rgba(235,255,0,.60)}
 /* footer */
 footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
+
+/* ── LIME CONTRAST FIX ──
+   Override --lime to dark-olive within #app so color:var(--lime) text is readable on #F3F2EF.
+   Re-pin bright lime for decorative backgrounds only. */
+#app { --lime:#5a6500; --lime-dim:rgba(90,101,0,0.10); --lime-glow:rgba(90,101,0,0.15); }
+/* bright lime backgrounds must stay bright */
+.btn-p, .btn-p[style*="background:var(--lime)"],
+[style*="background:var(--lime)"] { background:#EBFF00!important; color:#080808!important; }
+.chip.active  { background:#EBFF00!important; color:#080808!important; border-color:#EBFF00!important; }
+.lang-btn.active { background:#EBFF00!important; color:#080808!important; }
+.sdot  { background:#EBFF00!important; box-shadow:0 0 6px rgba(235,255,0,.70)!important; }
+.udot  { background:#EBFF00!important; }
+.cv-tl-dot { background:#EBFF00!important; }
+.cv-rec-card { border-left-color:#EBFF00!important; }
+.onepager-btn.primary { background:#EBFF00!important; color:#080808!important; }
+.svc-chip:has(input:checked) { background:rgba(90,101,0,0.10)!important; }
+.tab-btn.active { border-bottom-color:#EBFF00!important; }
+.gate-input:focus { border-color:#EBFF00!important; }
+.profile-photo { border-color:#EBFF00!important; }
 </style>
 </head>
 <body>
@@ -1368,9 +1387,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       </div>
 
       <!-- Lang toggle -->
-      <div class="lang-toggle" style="display:none">
-        <button class="lang-btn active" id="btnPL" onclick="setLang('pl')">PL</button>
-        <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+      <div class="lang-toggle" id="appLangToggle">
+        <button class="lang-btn" id="btnPL" onclick="setLang('pl')">PL</button>
+        <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="btnIT" onclick="setLang('it')">IT</button>
       </div>
     </div>
   </div></header>
@@ -3790,13 +3810,22 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   let currentLang = 'en';
   
   function setLang(lang) {
-    // EN-only: language switching disabled
-    currentLang = 'en';
-    applyLang();
+    // IT has no separate translations - fall back to EN content
+    currentLang = (['pl','en','it'].indexOf(lang) > -1) ? lang : 'en';
+    var effectiveLang = (currentLang === 'it') ? 'en' : currentLang;
+    try { localStorage.setItem('appLang', currentLang); } catch(e) {}
+    // Update active button
+    ['btnPL','btnEN','btnIT'].forEach(function(id){
+      var b = document.getElementById(id);
+      if (b) b.classList.toggle('active', b.textContent === currentLang.toUpperCase());
+    });
+    applyLang(effectiveLang);
   }
+
+  function applyLang(l) {
+    if (!l) l = (currentLang === 'it') ? 'en' : currentLang;
   
-  function applyLang() {
-    const l = currentLang;
+
     // Text nodes
     document.querySelectorAll(`[data-${l}]`).forEach(el => {
       el.textContent = el.getAttribute(`data-${l}`);
@@ -3815,6 +3844,20 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     });
   }
 
+  // Read language set in gate and apply to app
+  (function(){
+    var saved = '';
+    try { saved = localStorage.getItem('appLang') || localStorage.getItem('gLang') || 'en'; } catch(e) { saved = 'en'; }
+    if (['pl','en','it'].indexOf(saved) === -1) saved = 'en';
+    currentLang = saved;
+    var effective = (saved === 'it') ? 'en' : saved;
+    ['btnPL','btnEN','btnIT'].forEach(function(id){
+      var b = document.getElementById(id);
+      if (b) b.classList.toggle('active', b.textContent === saved.toUpperCase());
+    });
+    applyLang(effective);
+  })();
+
   // ===================== GATE =====================
   function checkPw() {
     const val = document.getElementById('pwInput').value.trim().toLowerCase();
@@ -3824,7 +3867,6 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       document.getElementById('gate').style.display = 'none';
       document.getElementById('app').style.display = 'block';
       applyLang();
-      applyHashTab();
     } else {
       err.classList.add('show');
       document.getElementById('pwInput').value = '';
@@ -3839,7 +3881,6 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     document.getElementById('gate').style.display = 'none';
     document.getElementById('app').style.display = 'block';
     applyLang();
-    applyHashTab();
   }
   setTimeout(() => document.getElementById('pwInput')?.focus(), 80);
 
@@ -3851,51 +3892,44 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     if (!isOpen) row.classList.add('open');
   }
 
+  var validTabs = ['apps','docs','stack','cv','contact'];
+
   function switchTab(id, btn) {
-    document.querySelectorAll('.tab-content').forEach(t => {
+    if (validTabs.indexOf(id) === -1) id = 'apps';
+    document.querySelectorAll('.tab-content').forEach(function(t){
       t.classList.remove('active');
       t.style.display = 'none';
     });
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
     var target = document.getElementById('tab-' + id);
-    if (target) {
-      target.classList.add('active');
-      target.style.display = 'block';
-    }
+    if (target) { target.classList.add('active'); target.style.display = 'block'; }
     if (btn) {
       btn.classList.add('active');
     } else {
-  
-  // Init from URL on page load
-  (function(){
-    var path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '') || 'apps';
-    var validTabs = ['apps','docs','stack','cv','contact'];
-    var tab = validTabs.indexOf(path) > -1 ? path : 'apps';
-    if (tab !== 'apps') {
-      var tc = document.getElementById('tab-' + tab);
-      var allTabs = document.querySelectorAll('.tab-content');
-      allTabs.forEach(function(t){ t.classList.remove('active'); });
-      if(tc) tc.classList.add('active');
-      var allBtns = document.querySelectorAll('.tab-btn');
-      allBtns.forEach(function(b){ b.classList.remove('active'); b.classList.toggle('active', b.getAttribute('data-tab')===tab); });
-    }
-    window.addEventListener('popstate', function(e){
-      if(e.state && e.state.tab) switchTab(e.state.tab, null);
-    });
-  })();
-
-    document.querySelectorAll('.tab-btn').forEach(b => {
-        if ((b.getAttribute('onclick') || '').includes("'" + id + "'")) b.classList.add('active');
+      document.querySelectorAll('.tab-btn').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-tab') === id);
       });
     }
     window.scrollTo(0, 0);
-    history.replaceState(null, '', '#' + id);
+    history.pushState({tab: id}, '', '/' + id);
     if (id === 'cv') setTimeout(animateKPIs, 120);
   }
-  function applyHashTab() {
-    var hash = location.hash.replace('#', '');
-    if (['apps', 'docs', 'cv', 'contact'].includes(hash)) switchTab(hash, null);
-  }
+
+  // Init from URL pathname on load
+  (function(){
+    var path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+    var tab = validTabs.indexOf(path) > -1 ? path : 'apps';
+    var tc = document.getElementById('tab-' + tab);
+    document.querySelectorAll('.tab-content').forEach(function(t){ t.classList.remove('active'); t.style.display='none'; });
+    if (tc) { tc.classList.add('active'); tc.style.display='block'; }
+    document.querySelectorAll('.tab-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-tab') === tab);
+    });
+    history.replaceState({tab: tab}, '', '/' + tab);
+    window.addEventListener('popstate', function(e){
+      if (e.state && e.state.tab) switchTab(e.state.tab, null);
+    });
+  })();
 
   // ===================== FILTER / SEARCH =====================
   let activeFilter = 'all';
