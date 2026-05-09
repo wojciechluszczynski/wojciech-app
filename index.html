@@ -137,6 +137,19 @@
       font-family:'Inter',sans-serif; transition:all .15s;
     }
     .lang-btn.active { background:var(--lime); color:#0f0f0f; }
+    /* Stack project filter buttons */
+    .stack-flt {
+      padding:5px 12px; font-size:11px; font-weight:700;
+      border:1px solid var(--border); border-radius:99px;
+      background:var(--bg1); color:var(--text-3);
+      cursor:pointer; font-family:'Inter',sans-serif;
+      transition:all .15s; letter-spacing:.2px;
+    }
+    .stack-flt:hover { color:var(--text-2); border-color:var(--border-hi); }
+    .stack-flt.active { background:#EBFF00; color:#080808; border-color:#EBFF00; font-weight:800; }
+    /* Flow label (eyebrow in stack flows) readable on light */
+    .flow-label { color:#5a6500; }
+    .flow-icon.key { color:#5a6500; background:rgba(90,101,0,0.10); border-color:rgba(90,101,0,.35); }
     /* ============ MOBILE / RESPONSIVE ============ */
     @media(max-width:900px) {
       .app-grid { grid-template-columns: repeat(2, 1fr); }
@@ -608,26 +621,52 @@
     .stack-page-header h2 { font-size:28px; font-weight:900; color:var(--text); letter-spacing:-.5px; margin-bottom:8px; }
     .stack-page-header p { font-size:14px; color:var(--text-2); line-height:1.6; }
 
-    /* Tech groups */
-    .stack-groups { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:48px; }
-    @media(max-width:960px) { .stack-groups { grid-template-columns:repeat(3,1fr); } }
-    @media(max-width:680px) { .stack-groups { grid-template-columns:repeat(2,1fr); } }
-    @media(max-width:400px) { .stack-groups { grid-template-columns:1fr; } }
-    .stack-group {
+    /* Flow diagrams */
+    .flow-grid { display:flex; flex-direction:column; gap:12px; margin-bottom:48px; }
+    .flow-card {
       background:var(--bg1); border:1px solid var(--border);
-      border-radius:12px; padding:14px 16px;
+      border-radius:14px; padding:20px 24px;
     }
-    .stack-group-label {
+    .flow-label {
       font-size:9px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
-      color:var(--lime); margin-bottom:10px;
+      color:var(--lime); margin-bottom:16px;
     }
-    .stack-group-pills { display:flex; flex-wrap:wrap; gap:5px; }
-    .sg-pill {
-      font-size:11px; font-weight:500; color:var(--text-2);
+    .flow-row { display:flex; align-items:center; gap:0; overflow-x:auto; scrollbar-width:none; padding-bottom:2px; }
+    .flow-row::-webkit-scrollbar { display:none; }
+    .flow-node { display:flex; flex-direction:column; align-items:center; gap:6px; flex-shrink:0; }
+    .flow-icon {
+      width:40px; height:40px; border-radius:10px;
       background:var(--bg2); border:1px solid var(--border);
-      border-radius:5px; padding:2px 8px; font-family:monospace;
+      display:flex; align-items:center; justify-content:center;
+      font-size:10px; font-weight:800; color:var(--text-2);
+      transition:border-color .15s;
     }
-    .sg-pill.dim { opacity:0.45; }
+    .flow-icon.key { border-color:rgba(255,103,25,0.45); color:var(--lime); background:var(--lime-dim); }
+    .flow-icon svg { flex-shrink:0; }
+    .flow-name { font-size:10px; font-weight:600; color:var(--text-3); text-align:center; white-space:nowrap; }
+    .flow-name.key { color:var(--text-2); }
+    .flow-connector {
+      flex:1; min-width:24px; max-width:56px;
+      display:flex; align-items:center; position:relative;
+      flex-shrink:0; padding-bottom:22px;
+    }
+    .flow-connector-line {
+      width:100%; height:1px;
+      background:linear-gradient(90deg, var(--border) 60%, transparent 100%);
+      position:relative;
+    }
+    .flow-connector-line::after {
+      content:''; position:absolute; right:-1px; top:-3px;
+      width:6px; height:6px;
+      border-right:1px solid var(--border-hi);
+      border-top:1px solid var(--border-hi);
+      transform:rotate(45deg);
+    }
+    .flow-note {
+      font-size:10px; color:var(--text-3); font-style:italic;
+      position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+      white-space:nowrap;
+    }
 
     /* Section divider */
     .stack-sec-head { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
@@ -686,7 +725,71 @@
       .proj-row-body { padding-left:46px; }
     }
 
-        /* ===== CV TAB ===== */
+        /* ===== TIMELINE TAB ===== */
+    .tl-page { max-width:860px; margin:0 auto; padding:0 0 60px; }
+    .tl-header { margin-bottom:40px; }
+    .tl-header .eyebrow { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--lime); margin-bottom:8px; }
+    .tl-header h2 { font-size:28px; font-weight:900; color:var(--text); letter-spacing:-.5px; margin-bottom:8px; }
+    .tl-header p { font-size:14px; color:var(--text-2); line-height:1.6; max-width:520px; }
+
+    .tl-legend { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:40px; }
+    .tl-legend-item { display:flex; align-items:center; gap:6px; font-size:11px; font-weight:600; color:var(--text-3); }
+    .tl-legend-dot { width:8px; height:8px; border-radius:50%; }
+
+    .tl-body { position:relative; }
+    .tl-body::before {
+      content:''; position:absolute; left:88px; top:0; bottom:0;
+      width:1px; background:var(--border);
+    }
+    @media(max-width:600px) { .tl-body::before { left:52px; } }
+
+    .tl-year-block { margin-bottom:0; }
+    .tl-year-label {
+      position:sticky; top:106px; z-index:10;
+      display:flex; align-items:flex-start; padding:24px 0 8px;
+    }
+    .tl-year-num {
+      width:76px; flex-shrink:0; text-align:right; padding-right:24px;
+      font-size:13px; font-weight:800; color:var(--text-3);
+      line-height:20px;
+    }
+    .tl-year-line { flex:1; height:1px; background:var(--border); margin-top:10px; }
+    @media(max-width:600px) { .tl-year-num { width:40px; font-size:12px; } }
+
+    .tl-entry {
+      display:flex; align-items:flex-start; gap:0;
+      padding:10px 0; position:relative;
+    }
+    .tl-entry-left {
+      width:88px; flex-shrink:0; display:flex;
+      justify-content:flex-end; padding-right:20px; padding-top:2px;
+    }
+    @media(max-width:600px) { .tl-entry-left { width:52px; padding-right:14px; } }
+    .tl-dot {
+      width:10px; height:10px; border-radius:50%; flex-shrink:0;
+      border:2px solid var(--bg); margin-top:3px;
+      box-shadow:0 0 0 1px var(--border);
+    }
+    .tl-entry-right { flex:1; padding-bottom:4px; }
+    .tl-entry-head { display:flex; align-items:center; gap:8px; margin-bottom:3px; flex-wrap:wrap; }
+    .tl-tech-name { font-size:14px; font-weight:700; color:var(--text); }
+    .tl-cat-badge {
+      font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+      padding:2px 7px; border-radius:4px;
+      background:var(--bg2); color:var(--text-3); border:1px solid var(--border);
+    }
+    .tl-cat-badge.infra { background:rgba(96,165,250,0.1); color:#60a5fa; border-color:rgba(96,165,250,0.2); }
+    .tl-cat-badge.security { background:rgba(34,197,94,0.1); color:#22c55e; border-color:rgba(34,197,94,0.2); }
+    .tl-cat-badge.ai { background:rgba(168,85,247,0.1); color:#a855f7; border-color:rgba(168,85,247,0.2); }
+    .tl-cat-badge.payments { background:rgba(255,103,25,0.1); color:var(--lime); border-color:rgba(255,103,25,0.2); }
+    .tl-note { font-size:12px; color:var(--text-3); line-height:1.55; }
+
+    /* milestone entries */
+    .tl-entry.milestone .tl-tech-name { color:var(--lime); }
+    .tl-entry.milestone .tl-dot { box-shadow:0 0 0 1px var(--lime), 0 0 8px rgba(255,103,25,0.3); }
+
+    /* ===== CV TAB ===== */
+
     .cv-wrap { max-width:860px; margin:0 auto; padding:0 0 60px; }
     .cv-section { margin-bottom:12px; }
     .cv-acc-header {
@@ -1406,6 +1509,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="12 2 2 7 12 12 22 7 12 2"></polyline><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
       <span>Stack</span>
     </button>
+    <button class="tab-btn" data-tab="timeline" onclick="switchTab('timeline',this)">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="2" x2="12" y2="22"/><polyline points="17 7 12 2 7 7"/><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/></svg>
+      <span data-pl="Historia" data-en="Timeline">Historia</span>
+    </button>
     <button class="tab-btn" data-tab="cv" onclick="switchTab('cv',this)" data-pl="CV" data-en="CV">CV</button>
         <button class="tab-btn" data-tab="contact" onclick="switchTab('contact',this)">
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -1479,13 +1586,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== SabiSzop ===== -->
         <div class="app-card" data-tags="resumebuilder productivity react typescript vercel" data-name="sabiszop sabi szop">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#1C69D4;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#1C69D4;line-height:1;font-family:'Inter',sans-serif">SS</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Marketplace · B2C</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Marketplace · B2C</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1520,13 +1627,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== VeloLodz ===== -->
         <div class="app-card" data-tags="pwa mobile react community sport rower cycling lodz velo ec1 netlify" data-name="velolodz velo lodz ec1" data-hidden="true" style="display:none">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#0ea5e9;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#0ea5e9;line-height:1;font-family:'Inter',sans-serif">VL</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Community · Sport</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Community · Sport</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1561,13 +1668,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== Kadromierz ===== -->
         <div class="app-card" data-tags="b2b saas content marketing hr kadromierz base44 workforce scheduling cms" data-name="kadromierz content hub">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#8b5cf6;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#8b5cf6;line-height:1;font-family:'Inter',sans-serif">KH</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Content · B2B SaaS</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Content · B2B SaaS</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1602,13 +1709,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== GrowthHub ===== -->
         <div class="app-card" data-tags="b2b saas growth marketing hr kadromierz netlify demand-gen lead-gen analytics" data-name="kadromierz growthhub growth hub">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#10b981;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#10b981;line-height:1;font-family:'Inter',sans-serif">GH</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Growth · B2B SaaS</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Growth · B2B SaaS</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1636,13 +1743,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== HireMe ===== -->
         <div class="app-card" data-tags="pwa mobile react recruitment hr rekrutacja tracker ats jobs netlify personal" data-name="hireme rekrutacja">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#10b981;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#10b981;line-height:1;font-family:'Inter',sans-serif">HM</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Recruitment · SaaS</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Recruitment · SaaS</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1677,13 +1784,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== AN Projekt ===== -->
         <div class="app-card" data-tags="vite react lovable web design interior architecture strona www projekt an design studio website strona-www" data-name="an projekt an-projekt strona internetowa website">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#ec4899;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#ec4899;line-height:1;font-family:'Inter',sans-serif">AN</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Interior Design</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Interior Design</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1718,13 +1825,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== Ciryam ===== -->
         <div class="app-card" data-tags="website music band rock ciryam vite react strona-www" data-name="ciryam band music website strona">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#e11d48;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#e11d48;line-height:1;font-family:'Inter',sans-serif">CI</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Music · Band</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Music · Band</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1758,13 +1865,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- ===== Działkometr ===== -->
         <div class="app-card" data-tags="pwa react vite supabase real-estate nieruchomosci dzialka kalkulator calculator mapy maps" data-name="dzialkomierz dzialka nieruchomosci kalkulator">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#EBFF00;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#EBFF00;line-height:1;font-family:'Inter',sans-serif">DZ</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Real Estate · PWA</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Real Estate · PWA</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1790,14 +1897,14 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
         </div>
         <!-- ===== AdsAI ===== -->
-        <div class="app-card" data-tags="b2b saas ai google-ads marketing automation roas campaigns analytics" data-name="adsai ads ai google ads marketing">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+        <div class="app-card" data-tags="b2b saas ai google-ads marketing automation roas campaigns analytics icp scoring performance" data-name="ads assistant google ads dashboard marketing icp performance">
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#f59e0b;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#f59e0b;line-height:1;font-family:'Inter',sans-serif">AA</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Marketing AI · B2B</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Marketing AI · B2B</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1806,8 +1913,8 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">AdsAI</div>
-            <div class="card-tagline" data-pl="AI optymalizuje kampanie Google Ads w czasie rzeczywistym - ROAS, zmęczenie kreacji i ICP scoring w jednym miejscu." data-en="AI optimizes Google Ads campaigns in real-time - ROAS, creative fatigue and ICP scoring in one place.">AI optymalizuje kampanie Google Ads w czasie rzeczywistym - ROAS, zmęczenie kreacji i ICP scoring w jednym miejscu.</div>
+            <div class="card-title">Ads Assistant</div>
+            <div class="card-tagline" data-pl="Dashboard do zarządzania Google Ads - kampanie multi-konto, ICP scoring leadów, ROAS i creative fatigue w jednym miejscu." data-en="Google Ads management dashboard - multi-account campaigns, ICP lead scoring, ROAS tracking and creative fatigue in one place.">Google Ads management dashboard - multi-account campaigns, ICP lead scoring, ROAS tracking and creative fatigue in one place.</div>
             <div class="divider"></div>
             <div class="sec-lbl">USP</div>
             <div class="usp-list">
@@ -1817,20 +1924,20 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
             <div class="tech-row"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">OpenAI</span><span class="tc">Google Ads API</span><span class="tc">Netlify</span></div>
             <div class="card-actions">
-              <a href="https://ad-assistant.netlify.app/" target="_blank" class="btn-p" style="background:var(--lime)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open">Open</span></a>
+              <a href="https://ads-assistant-three.vercel.app" target="_blank" class="btn-p" style="background:var(--lime)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open">Open</span></a>
               <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
             </div>
           </div>
         </div>
         <!-- ===== Paczka+ ===== -->
         <div class="app-card" data-tags="pwa mobile react typescript package tracking parcels courier inpost dhl dpd" data-name="paczka plus tracking paczki kurier sledzenie" data-hidden="true" style="display:none">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#0891b2;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#0891b2;line-height:1;font-family:'Inter',sans-serif">P+</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Logistics · PWA</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Logistics · PWA</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1857,13 +1964,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- ===== Resume Builder ===== -->
         <div class="app-card" data-tags="saas ai resume cv builder react typescript pdf career job" data-name="resume builder cv kreator generator">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#7c3aed;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#7c3aed;line-height:1;font-family:'Inter',sans-serif">RB</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">AI · Career Tools</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">AI · Career Tools</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1890,13 +1997,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- Camper Rental -->
         <div class="app-card" data-tags="booking consumer react typescript supabase vercel" data-name="camper rental booking engine kamper wynajem">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#EBFF00;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#EBFF00;line-height:1;font-family:'Inter',sans-serif">CR</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Booking Engine</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Booking Engine</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1928,13 +2035,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Amoree -->
         <div class="app-card" data-tags="brand consumer react typescript vercel wedding event" data-name="amoree wedding event invitation site wesele">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#be185d;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#be185d;line-height:1;font-family:'Inter',sans-serif">AM</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Wedding · Events</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Wedding · Events</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -1966,13 +2073,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Wycinarki Laserowe -->
         <div class="app-card" data-tags="brand b2b react typescript vercel seo ecommerce" data-name="wycinarki laserowe laser cutting cnc ecommerce seo">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#6b7280;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#6b7280;line-height:1;font-family:'Inter',sans-serif">WL</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">SEO · E-commerce</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">SEO · E-commerce</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2004,13 +2111,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Spawarki Laserowe -->
         <div class="app-card" data-tags="b2b seo ecommerce react typescript vercel spawarki laser welding przemysl manufacturing poland" data-name="spawarki laserowe laser welding fiber laser blink spawanie">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#f97316;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#f97316;line-height:1;font-family:'Inter',sans-serif">SL</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">SEO · B2B Industrial</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">SEO · B2B Industrial</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2038,13 +2145,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Willa w Parku -->
         <div class="app-card" data-tags="website brand consumer react lovable local venue event coffee club lodz nightlife kawiarnia klub" data-name="willa lodz willa w parku kafé klub kawiarnia park poniatowskiego">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#c8a96e;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#c8a96e;line-height:1;font-family:'Inter',sans-serif">WP</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Venue · Hospitality</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Venue · Hospitality</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2075,13 +2182,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Akademia AI -->
         <div class="app-card" data-tags="b2b saas education audio courses certification stripe react typescript vercel" data-name="akademia ai audio kurs szkolenie certyfikat">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#f59e0b;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#f59e0b;line-height:1;font-family:'Inter',sans-serif">AK</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Education · SaaS</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Education · SaaS</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2113,13 +2220,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Relora -->
         <div class="app-card" data-tags="b2b saas crm relationship intelligence personal crm outreach nextjs supabase vercel" data-name="relora crm relationship b2b outreach pipeline">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#0ea5e9;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#0ea5e9;line-height:1;font-family:'Inter',sans-serif">RL</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Relationship CRM</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Relationship CRM</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2149,53 +2256,15 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
         </div>
 
-        <!-- Ads Assistant -->
-        <div class="app-card" data-tags="b2b saas google-ads marketing dashboard icp scoring campaigns analytics react typescript vite vercel performance" data-name="ads assistant google ads dashboard kampanie marketing icp">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#22c55e;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#22c55e;line-height:1;font-family:'Inter',sans-serif">AS</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Ads · Performance</div>
-            </div>
-            <div class="screen-ov"></div>
-            <div class="screen-meta">
-              <span class="cat-badge">B2B / SaaS</span>
-              <div class="s-live"><div class="sdot"></div>Live</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-title">Ads Assistant</div>
-            <div class="card-tagline" data-en="Google Ads management dashboard - multi-account campaigns, ICP lead scoring and performance reports in one place." data-pl="Dashboard do zarządzania Google Ads - kampanie multi-konto, ICP scoring leadów i raporty performance w jednym miejscu.">Google Ads management dashboard - multi-account campaigns, ICP lead scoring and performance reports in one place.</div>
-            <div class="card-tags">
-              <span class="tag t-lime">Performance Marketing</span><span class="tag t-muted">B2B / SaaS</span>
-              <span class="tag t-green">Live ✓</span><span class="tag t-muted">React</span>
-            </div>
-            <div class="divider"></div>
-            <div class="sec-lbl">USP</div>
-            <div class="usp-list">
-              <div class="usp-item"><div class="udot"></div><span data-pl="Widok multi-konto - wszystkie kampanie klientow w jednym miejscu" data-en="Multi-account view - all client campaigns in one dashboard">Multi-account view - all client campaigns in one dashboard</span></div>
-              <div class="usp-item"><div class="udot"></div><span>ICP lead scoring - qualify traffic quality directly from campaign data</span></div>
-              <div class="usp-item"><div class="udot"></div><span>Performance reports - ROAS, CPL, CTR across accounts and periods</span></div>
-            </div>
-            <div class="tech-row"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">Vite</span><span class="tc">Tailwind</span><span class="tc">Vercel</span></div>
-            <div class="card-actions">
-              <a href="https://ads-assistant-three.vercel.app" target="_blank" class="btn-p"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-en="Open" data-pl="Otwórz">Open</span></a>
-              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
-            </div>
-          </div>
-        </div>
-
         <!-- Brain24 -->
         <div class="app-card" data-tags="b2b saas ai brand intelligence platform react typescript vite shadcn supabase vercel product-design" data-name="brain24 brand brain ai intelligence platform">
-          <div class="card-screen" style="background:#0f0f0f;overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:20px 20px"></div>
+          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
+            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
             <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#6366f1;filter:blur(70px);opacity:.22;pointer-events:none"></div>
             <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
               <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#6366f1;line-height:1;font-family:'Inter',sans-serif">B2</div>
-              <div style="width:30px;height:1px;background:rgba(255,255,255,.12)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);font-family:'Inter',sans-serif">Brand Intelligence</div>
+              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
+              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Brand Intelligence</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2461,32 +2530,6 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">Vite</span><span class="doc-stack-pill key">Supabase</span><span class="doc-stack-pill">Mapbox</span><span class="doc-stack-pill">PWA</span><span class="doc-stack-pill key">Netlify</span></div>
             </div>
             <div class="doc-links"><a href="https://dzialkometr.netlify.app/auth/login?next=%2Fapp" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
-          </div>
-
-          <div class="doc-card">
-            <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#f59e0b;color:#000">AI</div>
-              <div><div class="doc-app-name">AdsAI</div><div class="doc-app-type">B2B SaaS · Marketing Automation / AI</div></div>
-            </div>
-            <div class="doc-section">
-              <div class="doc-section-title" data-pl="Opis" data-en="Description">Opis</div>
-              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="AI optymalizuje kampanie Google Ads w czasie rzeczywistym - ROAS tracking, creative fatigue score i ICP scoring leadów w jednym miejscu." data-en="AI-powered Google Ads optimization dashboard - real-time ROAS tracking, creative fatigue scoring and ICP lead scoring in one place.">AI-powered Google Ads optimization dashboard - real-time ROAS tracking, creative fatigue scoring and ICP lead scoring in one place.</p>
-            </div>
-            <div class="doc-section">
-              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features">Funkcjonalności</div>
-              <ul class="doc-feature-list">
-                <li data-pl="Real-time ROAS tracking z alertami anomalii" data-en="Real-time ROAS tracking with anomaly alerts">Real-time ROAS tracking with anomaly alerts</li>
-                <li data-pl="Creative fatigue score - AI wykrywa zmęczenie kreacją" data-en="Creative fatigue score - AI detects ad creative burnout">Creative fatigue score - AI detects ad creative burnout</li>
-                <li data-pl="ICP scoring leadów bezpośrednio z kampanii" data-en="ICP lead scoring directly from campaign data">ICP lead scoring directly from campaign data</li>
-                <li data-pl="Dashboard KPI kampanii: CPL, CTR, ROAS" data-en="Campaign KPI dashboard: CPL, CTR, ROAS">Campaign KPI dashboard: CPL, CTR, ROAS</li>
-                <li data-pl="Integracja z Google Ads API" data-en="Google Ads API integration">Google Ads API integration</li>
-              </ul>
-            </div>
-            <div class="doc-section" style="margin-bottom:0">
-              <div class="doc-section-title">Tech Stack</div>
-              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">OpenAI</span><span class="doc-stack-pill">Google Ads API</span><span class="doc-stack-pill key">Vercel</span></div>
-            </div>
-            <div class="doc-links"><a href="https://ad-assistant.netlify.app/" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
           </div>
 
           <div class="doc-card" style="display:none">
@@ -2921,76 +2964,174 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           <p data-pl="Czego uzywam, do czego i dlaczego. Plus 18 projektow z ich dokladnym stackiem." data-en="What I use, for what and why. Plus 18 projects with their exact stack.">Czego uzywam, do czego i dlaczego. Plus 18 projektow z ich dokladnym stackiem.</p>
         </div>
 
-        <!-- TECH GROUPS -->
-        <div class="stack-groups">
+        <!-- TECH FLOWS -->
+        <div class="flow-grid">
 
-          <div class="stack-group">
-            <div class="stack-group-label" data-pl="Frontend" data-en="Frontend">Frontend</div>
-            <div class="stack-group-pills">
-              <span class="sg-pill">React</span>
-              <span class="sg-pill">TypeScript</span>
-              <span class="sg-pill">Vite</span>
-              <span class="sg-pill">Tailwind CSS</span>
-              <span class="sg-pill">shadcn/ui</span>
-              <span class="sg-pill">Next.js</span>
+          <div class="flow-card">
+            <div class="flow-label" data-pl="Warstwa UI" data-en="UI layer">Warstwa UI</div>
+            <div class="flow-row">
+              <div class="flow-node">
+                <div class="flow-icon key">TS</div>
+                <div class="flow-name key">TypeScript</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">typuje</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon key">Re</div>
+                <div class="flow-name key">React</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">bundluje</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon">Vi</div>
+                <div class="flow-name">Vite</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">styluje</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon">Tw</div>
+                <div class="flow-name">Tailwind</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">komponenty</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon">Sh</div>
+                <div class="flow-name">shadcn/ui</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">deploy</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon key">Ve</div>
+                <div class="flow-name key">Vercel</div>
+              </div>
             </div>
           </div>
 
-          <div class="stack-group">
-            <div class="stack-group-label" data-pl="Backend" data-en="Backend">Backend</div>
-            <div class="stack-group-pills">
-              <span class="sg-pill">Supabase</span>
-              <span class="sg-pill">FastAPI</span>
-              <span class="sg-pill">Zod</span>
+          <div class="flow-card">
+            <div class="flow-label" data-pl="Warstwa danych" data-en="Data layer">Warstwa danych</div>
+            <div class="flow-row">
+              <div class="flow-node">
+                <div class="flow-icon">Zod</div>
+                <div class="flow-name">Zod</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">waliduje</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon key">SB</div>
+                <div class="flow-name key">Supabase auth</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">zapisuje</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon key">DB</div>
+                <div class="flow-name key">Supabase DB</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">analytics</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon">BQ</div>
+                <div class="flow-name">BigQuery</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">API</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon">Py</div>
+                <div class="flow-name">FastAPI</div>
+              </div>
             </div>
           </div>
 
-          <div class="stack-group">
-            <div class="stack-group-label">AI</div>
-            <div class="stack-group-pills">
-              <span class="sg-pill">OpenAI API</span>
-              <span class="sg-pill">Claude API</span>
+          <div class="flow-card">
+            <div class="flow-label">AI</div>
+            <div class="flow-row">
+              <div class="flow-node">
+                <div class="flow-icon">In</div>
+                <div class="flow-name">User input</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">prompt</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon key">OA</div>
+                <div class="flow-name key">OpenAI</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">lub</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon key">Cl</div>
+                <div class="flow-name key">Claude</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">odpowiedz</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon">UI</div>
+                <div class="flow-name">UI response</div>
+              </div>
             </div>
           </div>
 
-          <div class="stack-group">
-            <div class="stack-group-label" data-pl="Infra i deploy" data-en="Infra and deploy">Infra i deploy</div>
-            <div class="stack-group-pills">
-              <span class="sg-pill">Vercel</span>
-              <span class="sg-pill">Cloud Run</span>
-              <span class="sg-pill">BigQuery</span>
-            </div>
-          </div>
-
-          <div class="stack-group">
-            <div class="stack-group-label" data-pl="Platnosci i email" data-en="Payments and email">Platnosci i email</div>
-            <div class="stack-group-pills">
-              <span class="sg-pill">Stripe</span>
-              <span class="sg-pill">Resend</span>
-            </div>
-          </div>
-
-          <div class="stack-group">
-            <div class="stack-group-label" data-pl="Geo i mapy" data-en="Geo and maps">Geo i mapy</div>
-            <div class="stack-group-pills">
-              <span class="sg-pill">Mapbox</span>
-            </div>
-          </div>
-
-          <div class="stack-group">
-            <div class="stack-group-label" data-pl="Prototypowanie" data-en="Prototyping">Prototypowanie</div>
-            <div class="stack-group-pills">
-              <span class="sg-pill">Lovable</span>
-              <span class="sg-pill">Base44</span>
-            </div>
-          </div>
-
-          <div class="stack-group">
-            <div class="stack-group-label" data-pl="Legacy" data-en="Legacy">Legacy</div>
-            <div class="stack-group-pills">
-              <span class="sg-pill dim">Vanilla JS</span>
-              <span class="sg-pill dim">WordPress</span>
-              <span class="sg-pill dim">Netlify</span>
+          <div class="flow-card">
+            <div class="flow-label" data-pl="Platnosci i powiadomienia" data-en="Payments and notifications">Platnosci i powiadomienia</div>
+            <div class="flow-row">
+              <div class="flow-node">
+                <div class="flow-icon">Us</div>
+                <div class="flow-name">Uzytkownik</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">placi</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon key">St</div>
+                <div class="flow-name key">Stripe</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">webhook</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon">DB</div>
+                <div class="flow-name">Supabase</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">trigger</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon key">Rs</div>
+                <div class="flow-name key">Resend</div>
+              </div>
+              <div class="flow-connector">
+                <div class="flow-connector-line"></div>
+                <span class="flow-note">wysyla</span>
+              </div>
+              <div class="flow-node">
+                <div class="flow-icon">@</div>
+                <div class="flow-name">Email</div>
+              </div>
             </div>
           </div>
 
@@ -2998,13 +3139,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- PROJECTS ACCORDION -->
         <div class="stack-sec-head">
-          <div class="stack-sec-label" data-pl="18 PROJEKTOW" data-en="18 PROJECTS">18 PROJEKTOW</div>
+          <div class="stack-sec-label" data-pl="17 PROJEKTÓW" data-en="17 PROJECTS">17 PROJEKTÓW</div>
           <div class="stack-sec-line"></div>
         </div>
 
         <div class="proj-list">
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react supabase netlify">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#1C69D4">SS</div>
               <div class="proj-row-name">SabiSzop</div>
@@ -3022,7 +3163,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="base44">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#1a1a1a;border:1px solid #333">KH</div>
               <div class="proj-row-name">Kadromierz Hub</div>
@@ -3039,7 +3180,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react typescript">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#10B981">GH</div>
               <div class="proj-row-name">GrowthHub</div>
@@ -3056,7 +3197,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react vite">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#6366F1">HM</div>
               <div class="proj-row-name">HireMe</div>
@@ -3073,7 +3214,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="vite lovable">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#8B5CF6">AN</div>
               <div class="proj-row-name">AN Projekt</div>
@@ -3090,7 +3231,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react vite">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#F59E0B">Ci</div>
               <div class="proj-row-name">Ciryam</div>
@@ -3107,7 +3248,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react supabase mapbox">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#22C55E">Dz</div>
               <div class="proj-row-name">Dzialkomierz</div>
@@ -3124,12 +3265,12 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react vite typescript openai">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#412991">AI</div>
-              <div class="proj-row-name">AdsAI</div>
-              <div class="proj-row-cat" data-pl="B2B SaaS · AI" data-en="B2B SaaS · AI">B2B SaaS · AI</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">OpenAI</span><span class="proj-row-pill">Ads API</span></div>
+              <div class="proj-row-name">Ads Assistant</div>
+              <div class="proj-row-cat" data-pl="B2B SaaS · Ads" data-en="B2B SaaS · Ads">B2B SaaS · Ads</div>
+              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Vite</span><span class="proj-row-pill">OpenAI</span><span class="proj-row-pill">Ads API</span></div>
               <div class="proj-status-dot live"></div>
               <div class="proj-arrow">▾</div>
             </div>
@@ -3141,7 +3282,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react openai">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#6B7280">RB</div>
               <div class="proj-row-name">Resume Builder</div>
@@ -3158,7 +3299,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react supabase stripe">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#0EA5E9">CR</div>
               <div class="proj-row-name">Camper Rental</div>
@@ -3175,7 +3316,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react typescript">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#EC4899">Am</div>
               <div class="proj-row-name">Amoree</div>
@@ -3192,7 +3333,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react markdown resend">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#374151">WL</div>
               <div class="proj-row-name">Wycinarki Laserowe</div>
@@ -3209,7 +3350,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react markdown">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#1E40AF">SL</div>
               <div class="proj-row-name">Spawarki Laserowe</div>
@@ -3226,7 +3367,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="vite lovable">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#D97706">WP</div>
               <div class="proj-row-name">Willa w Parku</div>
@@ -3243,7 +3384,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react supabase stripe">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#7C3AED">Ak</div>
               <div class="proj-row-name">Akademia AI</div>
@@ -3260,7 +3401,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
+          <div class="proj-row" data-tech="nextjs supabase resend">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#0F766E">Rl</div>
               <div class="proj-row-name">Relora</div>
@@ -3277,24 +3418,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <div class="proj-row">
-            <div class="proj-row-head" onclick="toggleProj(this)">
-              <div class="proj-icon" style="background:#FF6717">AA</div>
-              <div class="proj-row-name">Ads Assistant</div>
-              <div class="proj-row-cat" data-pl="B2B SaaS · GTM" data-en="B2B SaaS · GTM">B2B SaaS · GTM</div>
-              <div class="proj-row-pills"><span class="proj-row-pill">React</span><span class="proj-row-pill">Vite</span><span class="proj-row-pill">TS</span></div>
-              <div class="proj-status-dot live"></div>
-              <div class="proj-arrow">▾</div>
-            </div>
-            <div class="proj-row-body">
-              <div class="proj-desc" data-pl="Asystent zarzadzania kampaniami Google Ads dla marketerow. Podpowiada zmiany w budzetach, sloganach i grupach reklam na podstawie danych z konta." data-en="Google Ads campaign management assistant for marketers. Suggests changes to budgets, headlines and ad groups based on account data.">Asystent zarzadzania kampaniami Google Ads dla marketerow. Podpowiada zmiany w budzetach, sloganach i grupach reklam na podstawie danych z konta.</div>
-              <div class="proj-meta">
-                <span class="proj-meta-pill">React</span><span class="proj-meta-pill">TypeScript</span><span class="proj-meta-pill">Vite</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="proj-row">
+          <div class="proj-row" data-tech="react openai">
             <div class="proj-row-head" onclick="toggleProj(this)">
               <div class="proj-icon" style="background:#18181B;border:1px solid #333">BB</div>
               <div class="proj-row-name">Brand Brain 24</div>
@@ -3316,6 +3440,369 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       </div>
     </div><!-- /tab-stack -->
 
+
+    <!-- ===== TAB: TIMELINE ===== -->
+    <div class="tab-content" id="tab-timeline">
+      <div class="tl-page">
+
+        <div class="tl-header">
+          <div class="eyebrow" data-pl="Historia stacku" data-en="Stack history">Historia stacku</div>
+          <h2 data-pl="Jak rozwijalem sie technicznie" data-en="How I grew technically">Jak rozwijalem sie technicznie</h2>
+          <p data-pl="Od stron HTML przez WordPress do systemow SaaS z AI i infrastruktura w chmurze. Kazde narzedzie bylo odpowiedzia na konkretny problem." data-en="From HTML pages through WordPress to SaaS systems with AI and cloud infrastructure. Every tool was an answer to a specific problem.">Od stron HTML przez WordPress do systemow SaaS z AI i infrastruktura w chmurze. Kazde narzedzie bylo odpowiedzia na konkretny problem.</p>
+        </div>
+
+        <div class="tl-legend">
+          <div class="tl-legend-item"><div class="tl-legend-dot" style="background:var(--text-3)"></div><span>Frontend</span></div>
+          <div class="tl-legend-item"><div class="tl-legend-dot" style="background:#60a5fa"></div><span data-pl="Backend i infra" data-en="Backend and infra">Backend i infra</span></div>
+          <div class="tl-legend-item"><div class="tl-legend-dot" style="background:#22c55e"></div><span data-pl="Bezpieczenstwo" data-en="Security">Bezpieczenstwo</span></div>
+          <div class="tl-legend-item"><div class="tl-legend-dot" style="background:#a855f7"></div><span>AI</span></div>
+          <div class="tl-legend-item"><div class="tl-legend-dot" style="background:var(--lime)"></div><span data-pl="Platnosci" data-en="Payments">Platnosci</span></div>
+        </div>
+
+        <div class="tl-body">
+
+      <div class="tl-year-block">
+        <div class="tl-year-label">
+          <div class="tl-year-num">2018</div>
+          <div class="tl-year-line"></div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#666"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">HTML / CSS / JavaScript</span>
+              <span class="tl-cat-badge ">Frontend</span>
+            </div>
+            <div class="tl-note">Pierwsza strona bez frameworka. Czysty HTML, troche jQuery, FTP deploy na shared hosting.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#60a5fa"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">WordPress + PHP</span>
+              <span class="tl-cat-badge backend">Backend</span>
+            </div>
+            <div class="tl-note">Wdrozenia na WordPress dla klientow. Customowe motywy, ACF, pierwsze wtyczki bezpieczenstwa.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-year-block">
+        <div class="tl-year-label">
+          <div class="tl-year-num">2019</div>
+          <div class="tl-year-line"></div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">React</span>
+              <span class="tl-cat-badge frontend">Frontend</span>
+            </div>
+            <div class="tl-note">Przejscie z jQuery na komponenty. Pierwsze SPA - szybsze, latwiejsze w utrzymaniu.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#60a5fa"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Git + GitHub</span>
+              <span class="tl-cat-badge infra">Backend i infra</span>
+            </div>
+            <div class="tl-note">Koniec z recznym FTP. Kontrola wersji i historia zmian jako standard.</div>
+          </div>
+        </div>
+        <div class="tl-entry milestone">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#60a5fa"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Netlify</span>
+              <span class="tl-cat-badge infra">Infra</span>
+            </div>
+            <div class="tl-note">Pierwszy CI/CD. Push do gita = automatyczny deploy. Zero recznej konfiguracji serwera.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-year-block">
+        <div class="tl-year-label">
+          <div class="tl-year-num">2020</div>
+          <div class="tl-year-line"></div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">TypeScript</span>
+              <span class="tl-cat-badge frontend">Frontend</span>
+            </div>
+            <div class="tl-note">Typy jako dokumentacja. Mniej bledow w runtime, lepszy autocomplete, szybsze debugowanie.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Tailwind CSS</span>
+              <span class="tl-cat-badge frontend">Frontend</span>
+            </div>
+            <div class="tl-note">Koniec z pisaniem osobnych plikow CSS. Utility classes przyspieszyly prototypowanie 3x.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Next.js</span>
+              <span class="tl-cat-badge frontend">Frontend</span>
+            </div>
+            <div class="tl-note">SSR dla projektow gdzie SEO jest kluczowe. Routing oparty na plikach, API routes w jednym repo.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#22c55e"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">HTTPS everywhere</span>
+              <span class="tl-cat-badge security">Bezpieczenstwo</span>
+            </div>
+            <div class="tl-note">Netlify i Vercel daly automatyczny SSL. Koniec z reczna konfiguracja certyfikatow.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-year-block">
+        <div class="tl-year-label">
+          <div class="tl-year-num">2021</div>
+          <div class="tl-year-line"></div>
+        </div>
+        <div class="tl-entry milestone">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#60a5fa"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Supabase</span>
+              <span class="tl-cat-badge infra">Backend i infra</span>
+            </div>
+            <div class="tl-note">Zastapil Firebase. PostgreSQL zamiast NoSQL, wbudowana autentykacja, SDK z typami.</div>
+          </div>
+        </div>
+        <div class="tl-entry milestone">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#22c55e"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Row Level Security</span>
+              <span class="tl-cat-badge security">Bezpieczenstwo</span>
+            </div>
+            <div class="tl-note">Pierwszy raz zabezpieczenia na poziomie bazy danych. Polityki RLS w Supabase - uzytkownik widzi tylko swoje dane.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#22c55e"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Supabase Auth</span>
+              <span class="tl-cat-badge security">Bezpieczenstwo</span>
+            </div>
+            <div class="tl-note">JWT, refresh tokeny, OAuth providers. Koniec z recznym hashowaniem hasel i zarzadzaniem sesjami.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#60a5fa"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Vercel</span>
+              <span class="tl-cat-badge infra">Infra</span>
+            </div>
+            <div class="tl-note">Przeniesienie glownych projektow z Netlify. Edge network, preview deploys per branch, lepszy DX.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-year-block">
+        <div class="tl-year-label">
+          <div class="tl-year-num">2022</div>
+          <div class="tl-year-line"></div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Vite</span>
+              <span class="tl-cat-badge frontend">Frontend</span>
+            </div>
+            <div class="tl-note">Zastapil Create React App. HMR bez opoznien, build 10x szybszy, ESM natywnie.</div>
+          </div>
+        </div>
+        <div class="tl-entry milestone">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--lime)"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Stripe</span>
+              <span class="tl-cat-badge payments">Platnosci</span>
+            </div>
+            <div class="tl-note">Pierwsza platnosc w produktach. PCI compliance od razu, webhooks do Supabase, Stripe Customer Portal.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#60a5fa"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Resend</span>
+              <span class="tl-cat-badge infra">Backend i infra</span>
+            </div>
+            <div class="tl-note">Transakcyjne maile z React Email templates. Dostarczalnosc lepsza niz SendGrid przy ulamku konfiguracji.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#22c55e"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Zod</span>
+              <span class="tl-cat-badge security">Bezpieczenstwo</span>
+            </div>
+            <div class="tl-note">Walidacja inputow na granicy API. Parsowanie zamiast castowania - bledy szybciej, bezpieczniej.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">shadcn/ui</span>
+              <span class="tl-cat-badge frontend">Frontend</span>
+            </div>
+            <div class="tl-note">Komponenty jako kod, nie dependencja. Petna kontrola nad stylami, dostepnosc out of the box.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-year-block">
+        <div class="tl-year-label">
+          <div class="tl-year-num">2023</div>
+          <div class="tl-year-line"></div>
+        </div>
+        <div class="tl-entry milestone">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#a855f7"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">OpenAI API</span>
+              <span class="tl-cat-badge ai">AI</span>
+            </div>
+            <div class="tl-note">Pierwsze integracje GPT-4 w produktach. AI scoring ICP w AdsAI, generowanie tresci w Resume Builder.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#a855f7"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Claude API</span>
+              <span class="tl-cat-badge ai">AI</span>
+            </div>
+            <div class="tl-note">Anthropic jako alternatywa dla OpenAI. Dluzszy kontekst, bezpieczniejsze wyjscia dla B2B.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#60a5fa"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Vercel Edge Functions</span>
+              <span class="tl-cat-badge infra">Infra</span>
+            </div>
+            <div class="tl-note">Logika blizej uzytkownika. Middleware na edge, geolokalizacja, A/B testy bez cold startu.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#22c55e"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Environment secrets</span>
+              <span class="tl-cat-badge security">Bezpieczenstwo</span>
+            </div>
+            <div class="tl-note">Klucze API poza kodem. Vercel/Netlify env vars, rotacja kluczy, oddzielne srodowiska dev/prod.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-year-block">
+        <div class="tl-year-label">
+          <div class="tl-year-num">2024</div>
+          <div class="tl-year-line"></div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#60a5fa"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">FastAPI + Python</span>
+              <span class="tl-cat-badge infra">Backend i infra</span>
+            </div>
+            <div class="tl-note">Pierwszy wlasny backend poza Next.js API routes. Python dla przetwarzania danych marketingowych w AURA.</div>
+          </div>
+        </div>
+        <div class="tl-entry milestone">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#60a5fa"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Google Cloud Run</span>
+              <span class="tl-cat-badge infra">Infra</span>
+            </div>
+            <div class="tl-note">Konteneryzacja backendu bez zarzadzania serwerami. Skalowanie do zera, platnosc za uzycie.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#60a5fa"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">BigQuery</span>
+              <span class="tl-cat-badge infra">Infra</span>
+            </div>
+            <div class="tl-note">Warstwa analityczna dla danych reklamowych. Queries na milionach wierszy w sekundy.</div>
+          </div>
+        </div>
+        <div class="tl-entry milestone">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#22c55e"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">IAM + Service Accounts</span>
+              <span class="tl-cat-badge security">Bezpieczenstwo</span>
+            </div>
+            <div class="tl-note">Zarzadzanie uprawnieniami w GCP. Kazdy serwis ma tylko te uprawnienia, ktorych potrzebuje.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Mapbox</span>
+              <span class="tl-cat-badge frontend">Frontend</span>
+            </div>
+            <div class="tl-note">Interaktywne mapy dla Dzialkomierza. Custom layers, geolokalizacja, clustering punktow.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-year-block">
+        <div class="tl-year-label">
+          <div class="tl-year-num">2025</div>
+          <div class="tl-year-line"></div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Lovable / Base44</span>
+              <span class="tl-cat-badge frontend">Frontend</span>
+            </div>
+            <div class="tl-note">No-code jako narzedzie prototypowania. Szybkie MVP dla klientow bez pisania boilerplate.</div>
+          </div>
+        </div>
+        <div class="tl-entry">
+          <div class="tl-entry-left"><div class="tl-dot" style="background:#a855f7"></div></div>
+          <div class="tl-entry-right">
+            <div class="tl-entry-head">
+              <span class="tl-tech-name">Claude Code</span>
+              <span class="tl-cat-badge ai">AI</span>
+            </div>
+            <div class="tl-note">AI-assisted development jako standard workflow. Nie zastepuje myslenia - przyspiesza wykonanie.</div>
+          </div>
+        </div>
+      </div>
+
+        </div>
+      </div>
+    </div><!-- /tab-timeline -->
 
     <!-- ===== TAB: CV ===== -->
     <div class="tab-content" id="tab-cv">
@@ -3930,6 +4417,22 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       if (e.state && e.state.tab) switchTab(e.state.tab, null);
     });
   })();
+
+  // ===================== STACK FILTER =====================
+  function filterStack(tech, btn) {
+    document.querySelectorAll('.stack-flt').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.querySelectorAll('.proj-row').forEach(function(row){
+      if (tech === 'all') {
+        row.style.display = '';
+      } else {
+        var tags = (row.getAttribute('data-tech') || '').toLowerCase();
+        // lovable/base44 combined filter
+        var match = tech === 'lovable' ? (tags.includes('lovable') || tags.includes('base44')) : tags.includes(tech);
+        row.style.display = match ? '' : 'none';
+      }
+    });
+  }
 
   // ===================== FILTER / SEARCH =====================
   let activeFilter = 'all';
