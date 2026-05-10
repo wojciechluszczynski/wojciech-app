@@ -150,6 +150,17 @@
       font-family:'Inter',sans-serif; transition:all .15s;
     }
     .lang-btn.active { background:var(--lime); color:#0f0f0f; }
+    .hdr-newsletter {
+      display:flex; align-items:center; gap:5px;
+      padding:6px 13px; background:var(--lime); color:#080808;
+      font-size:11px; font-weight:800; letter-spacing:0.3px;
+      text-decoration:none; border-radius:8px; white-space:nowrap;
+      flex-shrink:0; transition:background .15s, transform .15s;
+      margin-right:8px;
+    }
+    .hdr-newsletter:hover { background:#d4e600; transform:translateY(-1px); }
+    @media(max-width:480px) { .hdr-newsletter span, .hdr-newsletter { font-size:0; padding:7px 10px; }
+      .hdr-newsletter svg { display:block; } }
     /* Stack project filter buttons */
     .stack-flt {
       padding:5px 12px; font-size:11px; font-weight:700;
@@ -1943,38 +1954,22 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
   <!-- HEADER -->
   <header><div class="hdr-inner">
-    <a href="#" class="hdr-brand">
+    <a href="#" class="hdr-brand" onclick="switchTab('apps',document.querySelector('[data-tab=apps]'));return false;">
       <div class="hdr-name">Wojciech Łuszczyński</div>
-      <div class="hdr-sub">Apps Portfolio</div>
+      <div class="hdr-sub" data-pl="Portfolio Projektów" data-en="Apps Portfolio" data-it="Portfolio App">Apps Portfolio</div>
     </a>
 
-    <div class="hdr-right">
-      <!-- Social icons -->
-      <div class="hdr-socials">
-        
-        <a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank" class="hdr-social" title="LinkedIn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        </a>
-        <a href="https://github.com/wojciechluszczynski" target="_blank" class="hdr-social" title="GitHub">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        </a>
-        <a href="https://twitter.com/w_luszczynski" target="_blank" class="hdr-social" title="Twitter / X">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-        </a>
-        <a href="https://substack.com/@luscinetti" target="_blank" class="hdr-social" title="Substack">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"></path></svg>
-        </a>
-        <a href="mailto:hello@wojciech.io" class="hdr-social" title="Email">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-        </a>
-      </div>
+    <div style="flex:1"></div>
 
-      <!-- Lang toggle -->
-      <div class="lang-toggle" id="appLangToggle">
-        <button class="lang-btn" id="btnPL" onclick="setLang('pl')">PL</button>
-        <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" id="btnIT" onclick="setLang('it')">IT</button>
-      </div>
+    <a href="https://subscribe.wojciech.io" target="_blank" class="hdr-newsletter" data-pl="Newsletter" data-en="Newsletter" data-it="Newsletter">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      Newsletter
+    </a>
+
+    <div class="lang-toggle" id="appLangToggle">
+      <button class="lang-btn" id="btnPL" onclick="setLang('pl')">PL</button>
+      <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btnIT" onclick="setLang('it')">IT</button>
     </div>
   </div></header>
 
@@ -4669,7 +4664,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
                 <div class="form-group">
                   <label class="form-label" data-pl="Imię i nazwisko" data-en="Full name" data-it="Nome e cognome">Imię i nazwisko</label>
-                  <input type="text" class="form-input" id="formName" data-pl-placeholder="Jan Kowalski" data-en-placeholder="John Smith" placeholder="Jan Kowalski" required="">
+                  <input type="text" class="form-input" id="formName" data-pl-placeholder="Jan Kowalski" data-en-placeholder="John Smith" data-it-placeholder="Mario Rossi" placeholder="Jan Kowalski" required="">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Email</label>
@@ -4679,7 +4674,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
               <div class="form-group">
                 <label class="form-label" data-pl="Wiadomość" data-en="Message" data-it="Messaggio">Wiadomość</label>
-                <textarea class="form-input" id="formMessage" rows="4" data-pl-placeholder="Opisz projekt - co budujesz, dla kogo, jaki jest cel..." data-en-placeholder="Describe your project - what you're building, for whom, what's the goal..." placeholder="Opisz projekt - co budujesz, dla kogo, jaki jest cel..." required=""></textarea>
+                <textarea class="form-input" id="formMessage" rows="4" data-pl-placeholder="Opisz projekt - co budujesz, dla kogo, jaki jest cel..." data-en-placeholder="Describe your project - what you're building, for whom, what's the goal..." data-it-placeholder="Descrivi il tuo progetto - cosa stai costruendo, per chi, qual è l'obiettivo..." placeholder="Opisz projekt - co budujesz, dla kogo, jaki jest cel..." required=""></textarea>
               </div>
               <div id="formError" style="display:none;color:#ff5f5f;font-size:12px;font-weight:600;padding:8px 12px;background:rgba(255,95,95,0.1);border:1px solid rgba(255,95,95,0.25);border-radius:8px;margin-bottom:8px"></div><button type="submit" class="form-submit" data-pl="Wyślij" data-en="Send" data-it="Invia">Send</button>
             </form></div><!-- /contactFormWrap -->
