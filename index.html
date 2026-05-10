@@ -39,7 +39,7 @@
     html { scroll-behavior:smooth; }
     body {
       background:var(--bg); color:var(--text);
-      font-family:'Inter',sans-serif; min-height:100vh; overflow-x:hidden;
+      font-family:'Inter',sans-serif; min-height:100vh; overflow-x:clip;
     }
 
     /* ===================== GATE ===================== */
@@ -1393,21 +1393,32 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
 /* ── LIME CONTRAST FIX ──
    Override --lime to dark-olive within #app so color:var(--lime) text is readable on #F3F2EF.
    Re-pin bright lime for decorative backgrounds only. */
+/* ── LIGHT APP COLOUR SYSTEM ──
+   Bright lime (#EBFF00) only as background + border indicators.
+   Lime-as-text elements get dark-olive (#5a6500) so they read on beige. */
 #app { --lime:#5a6500; --lime-dim:rgba(90,101,0,0.10); --lime-glow:rgba(90,101,0,0.15); }
-/* bright lime backgrounds must stay bright */
-.btn-p, .btn-p[style*="background:var(--lime)"],
+
+/* Bright lime backgrounds stay bright */
+.btn-p, .chip.active, .lang-btn.active,
+.stack-flt.active, .onepager-btn.primary { background:#EBFF00!important; color:#080808!important; border-color:#EBFF00!important; }
 [style*="background:var(--lime)"] { background:#EBFF00!important; color:#080808!important; }
-.chip.active  { background:#EBFF00!important; color:#080808!important; border-color:#EBFF00!important; }
-.lang-btn.active { background:#EBFF00!important; color:#080808!important; }
+
+/* Active tab: dark text, only the underline in lime */
+.tab-btn.active { color:var(--text)!important; border-bottom-color:#EBFF00!important; }
+
+/* Count badge on tab: lime pill with dark text */
+.t-count { background:#EBFF00!important; color:#080808!important; border-color:#EBFF00!important; font-weight:900!important; }
+
+/* Header sub: neutral grey, not olive */
+.hdr-sub { color:var(--text-3)!important; }
+
+/* Indicators */
 .sdot  { background:#EBFF00!important; box-shadow:0 0 6px rgba(235,255,0,.70)!important; }
 .udot  { background:#EBFF00!important; }
 .cv-tl-dot { background:#EBFF00!important; }
 .cv-rec-card { border-left-color:#EBFF00!important; }
-.onepager-btn.primary { background:#EBFF00!important; color:#080808!important; }
-.svc-chip:has(input:checked) { background:rgba(90,101,0,0.10)!important; }
-.tab-btn.active { border-bottom-color:#EBFF00!important; }
-.gate-input:focus { border-color:#EBFF00!important; }
 .profile-photo { border-color:#EBFF00!important; }
+.gate-input:focus { border-color:#EBFF00!important; }
 </style>
 </head>
 <body>
@@ -3964,8 +3975,8 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                   <span class="tl-tech-name">🚀 NotchCue</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
-                <div class="tl-note" data-pl="Pierwsza aplikacja na iOS - zaprojektowana, napisana i wysłana przez Xcode, Codex i Apple Developer Program." data-en="First iOS app - designed, coded and submitted via Xcode, Codex and Apple Developer Program." data-it="Prima app iOS - progettata, scritta e inviata tramite Xcode, Codex e Apple Developer Program.">First iOS app - designed, coded and submitted via Xcode, Codex and Apple Developer Program.</div>
-                <div class="tl-tech-row"><span class="tl-tc">Swift</span><span class="tl-tc">Xcode</span><span class="tl-tc">Codex</span><span class="tl-tc">Apple Developer</span></div>
+                <div class="tl-note" data-pl="Natywna aplikacja macOS - teleprompter umieszczający notatki pod notchem kamery MacBooka. Swift, AppKit, local-first, własny DMG pipeline." data-en="Native macOS teleprompter placing private notes under the MacBook camera notch. Swift, AppKit, local-first, custom DMG build pipeline." data-it="Teleprompter macOS nativo che posiziona note private sotto il notch della fotocamera MacBook. Swift, AppKit, local-first, pipeline DMG personalizzato.">Native macOS teleprompter placing private notes under the MacBook camera notch. Swift, AppKit, local-first, custom DMG build pipeline.</div>
+                <div class="tl-tech-row"><span class="tl-tc">Swift</span><span class="tl-tc">AppKit</span><span class="tl-tc">AVFoundation</span><span class="tl-tc">macOS 14+</span></div>
               </div>
             </div>
 
@@ -4125,10 +4136,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name" data-pl="Kadromierz - Growth Manager" data-en="Kadromierz - Growth Manager" data-it="Kadromierz - Growth Manager">Kadromierz - Growth Manager</span>
+                  <span class="tl-tech-name" data-pl="Pierwsze narzędzia wewnętrzne" data-en="First internal tools" data-it="Primi strumenti interni">First internal tools</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)">Start</span>
                 </div>
-                <div class="tl-note" data-pl="Google Ads na skali, analityka, pierwsze narzędzia wewnętrzne. Stąd potrzeba własnych dashboardów." data-en="Google Ads at scale, analytics, first internal tools. The itch to build proper dashboards started here." data-it="Google Ads in scala, analytics, primi strumenti interni. Qui nasce l'esigenza di dashboard proprie.">Google Ads at scale, analytics, first internal tools. The itch to build proper dashboards started here.</div>
+                <div class="tl-note" data-pl="Google Ads na skali, analityka, dashboardy w Kadromierz. Stąd potrzeba własnych narzędzi." data-en="Google Ads at scale, analytics and dashboards at Kadromierz. The itch to build proper tools started here." data-it="Google Ads in scala, analytics e dashboard a Kadromierz. Qui nasce l'esigenza di strumenti propri.">Google Ads at scale, analytics and dashboards at Kadromierz. The itch to build proper tools started here.</div>
               </div>
             </div>
 
@@ -4624,7 +4635,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   
   <footer>
     <p>© 2026 <span>Wojciech Łuszczyński</span> · <a href="mailto:hello@wojciech.io" style="color:var(--text-2);text-decoration:none;">hello@wojciech.io</a></p>
-    <div class="footer-links" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:10px">
+    <div class="footer-links" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
       <a href="https://notch.wojciech.io" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:color .15s" onmouseover="this.style.color='#EBFF00'" onmouseout="this.style.color='var(--text-2)'"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg> NotchCue</a>
       <a href="https://subscribe.wojciech.io" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:color .15s" onmouseover="this.style.color='#EBFF00'" onmouseout="this.style.color='var(--text-2)'"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> AI Espresso</a>
     </div>
