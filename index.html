@@ -814,6 +814,8 @@
     }
     .tl-entry.milestone {
       border-color:rgba(0,0,0,0.12);
+      border-left: 3px solid var(--lime);
+      padding-left: 13px;
     }
 
     .tl-entry-left {
@@ -3778,163 +3780,241 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       <div class="tl-page">
 
         <div class="tl-header">
-          <div class="eyebrow" data-pl="Kamienie milowe" data-en="Milestones" data-it="Tappe">Milestones</div>
-          <h2 data-pl="Projekty, launche i technologia" data-en="Projects, launches &amp; tech" data-it="Progetti, lanci e tecnologia">Projects, launches &amp; tech</h2>
-          <p data-pl="Kluczowe momenty i narzedzia z prawdziwych projektow - od pierwszych commitow po shipowane produkty." data-en="Key moments and tools from real projects - from first commits to shipped products." data-it="Momenti chiave e strumenti da progetti reali - dai primi commit ai prodotti spediti.">Key moments and tools from real projects - from first commits to shipped products.</p>
+          <div class="eyebrow" data-pl="Ścieżka rozwoju" data-en="Journey" data-it="Percorso">Journey</div>
+          <h2 data-pl="Od marketingu do produktu" data-en="From marketing to product" data-it="Dal marketing al prodotto">From marketing to product</h2>
+          <p data-pl="Aplikacje, które zbudowałem i narzędzia, które poznałem po drodze." data-en="Apps I shipped and tools I picked up along the way." data-it="App costruite e strumenti appresi lungo il percorso.">Apps I shipped and tools I picked up along the way.</p>
         </div>
 
         <div class="tl-body">
 
-      <div class="tl-year-block">
-        <div class="tl-year-label">
-          <div class="tl-year-num">2024</div>
-          <div class="tl-year-line"></div>
-        </div>
-        <div class="tl-entry">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">Stripe</span>
-              <span class="tl-cat-badge payments">Platnosci</span>
+          <!-- 2023 -->
+          <div class="tl-year-block">
+            <div class="tl-year-label">
+              <div class="tl-year-num">2023</div>
+              <div class="tl-year-line"></div>
             </div>
-            <div class="tl-note">Pierwsze platnosci w produktach. PCI compliance od razu, webhooks do Supabase, Stripe Customer Portal.</div>
-          </div>
-        </div>
-        <div class="tl-entry milestone">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">FastAPI + Python</span>
-              <span class="tl-cat-badge infra">Backend</span>
-            </div>
-            <div class="tl-note">Pierwszy wlasny backend API poza Supabase. Python dla przetwarzania danych marketingowych.</div>
-          </div>
-        </div>
-        <div class="tl-entry">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">Google Cloud Run</span>
-              <span class="tl-cat-badge infra">Infra</span>
-            </div>
-            <div class="tl-note">Konteneryzacja backendu bez zarzadzania serwerami. Skalowanie do zera, platnosc za uzycie.</div>
-          </div>
-        </div>
-        <div class="tl-entry">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">BigQuery</span>
-              <span class="tl-cat-badge infra">Data</span>
-            </div>
-            <div class="tl-note">Warstwa analityczna dla danych reklamowych. Queries na milionach wierszy w sekundy.</div>
-          </div>
-        </div>
-        <div class="tl-entry milestone">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">IAM + Service Accounts</span>
-              <span class="tl-cat-badge security">Bezpieczenstwo</span>
-            </div>
-            <div class="tl-note">Zarzadzanie uprawnieniami w GCP. Kazdy serwis ma tylko te uprawnienia, ktorych potrzebuje.</div>
-          </div>
-        </div>
-        <div class="tl-entry">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">Mapbox</span>
-              <span class="tl-cat-badge frontend">Frontend</span>
-            </div>
-            <div class="tl-note">Interaktywne mapy dla Dzialkomierza. Custom layers, geolokalizacja, clustering punktow.</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="tl-year-block">
-        <div class="tl-year-label">
-          <div class="tl-year-num">2025</div>
-          <div class="tl-year-line"></div>
-        </div>
-        <div class="tl-entry">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">shadcn/ui</span>
-              <span class="tl-cat-badge frontend">Frontend</span>
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name" data-pl="Kadromierz - Growth Manager" data-en="Kadromierz - Growth Manager" data-it="Kadromierz - Growth Manager">Kadromierz - Growth Manager</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)">Start</span>
+                </div>
+                <div class="tl-note" data-pl="Google Ads na skali, analityka, pierwsze narzędzia wewnętrzne. Stąd potrzeba własnych dashboardów." data-en="Google Ads at scale, analytics, first internal tools. The itch to build proper dashboards started here." data-it="Google Ads in scala, analytics, primi strumenti interni. Qui nasce l'esigenza di dashboard proprie.">Google Ads at scale, analytics, first internal tools. The itch to build proper dashboards started here.</div>
+              </div>
             </div>
-            <div class="tl-note">Komponenty jako kod, nie dependencja. Petna kontrola nad stylami, dostepnosc out of the box.</div>
-          </div>
-        </div>
-        <div class="tl-entry">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">Resend</span>
-              <span class="tl-cat-badge infra">Email</span>
-            </div>
-            <div class="tl-note">Transakcyjne maile z React Email templates. Dostarczalnosc lepsza niz SendGrid, konfiguracja w 10 minut.</div>
-          </div>
-        </div>
-        <div class="tl-entry milestone">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">Lovable / Base44</span>
-              <span class="tl-cat-badge frontend">No-code</span>
-            </div>
-            <div class="tl-note">No-code jako narzedzie prototypowania. Gotowe MVP dla klientow w 1 dzien bez pisania boilerplate.</div>
-          </div>
-        </div>
-        <div class="tl-entry milestone">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">Claude Code</span>
-              <span class="tl-cat-badge ai">AI</span>
-            </div>
-            <div class="tl-note">AI-assisted development jako standard workflow. Nie zastepuje myslenia - przyspiesza wykonanie.</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="tl-year-block">
-        <div class="tl-year-label">
-          <div class="tl-year-num">2026</div>
-          <div class="tl-year-line"></div>
-        </div>
-        <div class="tl-entry milestone">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">LLM APIs jako standard</span>
-              <span class="tl-cat-badge ai">AI</span>
+            <div class="tl-entry">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">React + Vite + TypeScript</span>
+                  <span class="tl-cat-badge">Frontend</span>
+                </div>
+                <div class="tl-note" data-pl="Pierwszy framework JS. Zamiast kursów - od razu projekty." data-en="First JS framework. No courses - straight to building." data-it="Primo framework JS. Niente corsi - subito a costruire.">First JS framework. No courses - straight to building.</div>
+              </div>
             </div>
-            <div class="tl-note">OpenAI i Anthropic w kazdym nowym produkcie. AI jako warstwa logiki, nie dodatek.</div>
-          </div>
-        </div>
-        <div class="tl-entry">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">Supabase + RLS jako domyslny backend</span>
-              <span class="tl-cat-badge infra">Backend</span>
+
+            <div class="tl-entry">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">Supabase</span>
+                  <span class="tl-cat-badge">Backend</span>
+                </div>
+                <div class="tl-note" data-pl="Baza danych i auth bez serwera. Postgres + RLS od pierwszego projektu." data-en="Database and auth without managing a server. Postgres + RLS from day one." data-it="Database e auth senza server. Postgres + RLS dal primo progetto.">Database and auth without managing a server. Postgres + RLS from day one.</div>
+              </div>
             </div>
-            <div class="tl-note">Kazdy nowy projekt startuje z Supabase auth, RLS policies i Edge Functions. Zero custom auth.</div>
           </div>
-        </div>
-        <div class="tl-entry">
-          <div class="tl-entry-left"><div class="tl-dot" style="background:var(--text-3)"></div></div>
-          <div class="tl-entry-right">
-            <div class="tl-entry-head">
-              <span class="tl-tech-name">Agentic workflows</span>
-              <span class="tl-cat-badge ai">AI</span>
+
+          <!-- 2024 -->
+          <div class="tl-year-block">
+            <div class="tl-year-label">
+              <div class="tl-year-num">2024</div>
+              <div class="tl-year-line"></div>
             </div>
-            <div class="tl-note">Claude Code + MCP + własne narzędzia. Kod pisany, testowany i deployowany z pomocą agentow.</div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 GrowthHub</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Pierwszy własny dashboard SaaS - demand gen, lead scoring i revenue tracking dla Kadromierz." data-en="First own SaaS dashboard - demand gen, lead scoring and revenue tracking for Kadromierz." data-it="Primo dashboard SaaS - demand gen, lead scoring e revenue tracking per Kadromierz.">First own SaaS dashboard - demand gen, lead scoring and revenue tracking for Kadromierz.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">GA4</span><span class="tl-tc">Netlify</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 Działkometr</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Kalkulator wartości działek z analizą lokalizacji, mediami i wyceną nieruchomości." data-en="Plot value calculator with location analysis, utilities and property valuation in one view." data-it="Calcolatore del valore dei terreni con analisi della posizione e valutazione immobiliare.">Plot value calculator with location analysis, utilities and property valuation in one view.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">Mapbox</span><span class="tl-tc">Vercel</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 Ads Assistant</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Google Ads multi-konto z AI ICP scoringiem, ROAS tracking i creative fatigue alertami." data-en="Multi-account Google Ads dashboard with AI ICP scoring, ROAS tracking and creative fatigue alerts." data-it="Dashboard Google Ads multi-account con AI ICP scoring, ROAS tracking e creative fatigue alerts.">Multi-account Google Ads dashboard with AI ICP scoring, ROAS tracking and creative fatigue alerts.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">FastAPI</span><span class="tl-tc">BigQuery</span><span class="tl-tc">Cloud Run</span><span class="tl-tc">OpenAI</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">FastAPI + BigQuery + Cloud Run</span>
+                  <span class="tl-cat-badge">Backend</span>
+                </div>
+                <div class="tl-note" data-pl="Własny backend poza Supabase. Konteneryzacja, analytics na milionach wierszy, zarządzanie IAM." data-en="Custom backend beyond Supabase. Containerisation, analytics at scale, IAM management." data-it="Backend personalizzato oltre Supabase. Containerizzazione, analytics su milioni di righe, IAM.">Custom backend beyond Supabase. Containerisation, analytics at scale, IAM management.</div>
+              </div>
+            </div>
+
+            <div class="tl-entry">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">Stripe</span>
+                  <span class="tl-cat-badge">Payments</span>
+                </div>
+                <div class="tl-note" data-pl="Pierwsze płatności w produkcie. Webhooks, Customer Portal, PCI compliance od razu." data-en="First payments in a product. Webhooks, Customer Portal, PCI compliance from the start." data-it="Primi pagamenti in un prodotto. Webhook, Customer Portal, conformità PCI da subito.">First payments in a product. Webhooks, Customer Portal, PCI compliance from the start.</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+
+          <!-- 2025 -->
+          <div class="tl-year-block">
+            <div class="tl-year-label">
+              <div class="tl-year-num">2025</div>
+              <div class="tl-year-line"></div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 HireMe + Akademia AI</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Tracker rekrutacyjny i platforma kursów audio z certyfikacją - pierwsze produkty consumer z Stripe." data-en="Recruitment tracker and audio course platform with certification - first consumer products with Stripe." data-it="Tracker di recruiting e piattaforma di corsi audio con certificazione - primi prodotti consumer con Stripe.">Recruitment tracker and audio course platform with certification - first consumer products with Stripe.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">Stripe</span><span class="tl-tc">Vercel</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 SabiSzop + VeloLodz</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Consumer apps z AI - smart listy zakupów i platforma kolarskiej społeczności z asystentem AREK." data-en="Consumer apps with AI - smart shopping lists and a cycling community with AI assistant AREK." data-it="App consumer con AI - liste della spesa intelligenti e comunità ciclistica con assistente AREK.">Consumer apps with AI - smart shopping lists and a cycling community with AI assistant AREK.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">OpenAI</span><span class="tl-tc">PWA</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 AN Projekt, Amoree, Ciryam, Willa w Parku</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Strony dla klientów - pracownia wnętrz, zaproszenie ślubne, zespół rockowy, klubokawiarnia." data-en="Client sites - interior design studio, wedding hub, rock band, club-café. Zero to deployed fast." data-it="Siti per clienti - studio di design, hub matrimoniale, band rock, club-café. Da zero al deploy rapidamente.">Client sites - interior design studio, wedding hub, rock band, club-café. Zero to deployed fast.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Lovable</span><span class="tl-tc">Vercel</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">Claude Code + Lovable / Base44</span>
+                  <span class="tl-cat-badge">AI Dev</span>
+                </div>
+                <div class="tl-note" data-pl="AI-assisted development jako standard. MVP dla klienta w 1 dzień, złożone features w godziny." data-en="AI-assisted development as the default. Client MVP in 1 day, complex features in hours." data-it="Sviluppo assistito da AI come standard. MVP per cliente in 1 giorno, funzionalità complesse in ore.">AI-assisted development as the default. Client MVP in 1 day, complex features in hours.</div>
+              </div>
+            </div>
+
+            <div class="tl-entry">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">shadcn/ui + Resend</span>
+                  <span class="tl-cat-badge">Frontend</span>
+                </div>
+                <div class="tl-note" data-pl="Komponenty jako kod i transakcyjne maile. Design system + email w każdym nowym projekcie." data-en="Components as code and transactional email. Design system + email in every new project." data-it="Componenti come codice e email transazionali. Design system + email in ogni nuovo progetto.">Components as code and transactional email. Design system + email in every new project.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2026 -->
+          <div class="tl-year-block">
+            <div class="tl-year-label">
+              <div class="tl-year-num">2026</div>
+              <div class="tl-year-line"></div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 Brand Brain 24 + Relora</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="AI-native SaaS - brand intelligence z automatycznymi briefami i CRM relationship graph dla B2B." data-en="AI-native SaaS - brand intelligence with automated briefs and B2B relationship graph CRM." data-it="SaaS AI-native - brand intelligence con brief automatici e CRM relationship graph per B2B.">AI-native SaaS - brand intelligence with automated briefs and B2B relationship graph CRM.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">Anthropic</span><span class="tl-tc">OpenAI</span><span class="tl-tc">Vercel</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 Wycinarki + Spawarki Laserowe</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="SEO-first strony dla B2B - structured data, LLM discoverability, każda zbudowana w 2h." data-en="SEO-first B2B product sites - structured data, LLM discoverability, each built in under 2h." data-it="Siti prodotto SEO-first per B2B - dati strutturati, LLM discoverability, ciascuno costruito in 2h.">SEO-first B2B product sites - structured data, LLM discoverability, each built in under 2h.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Vercel</span><span class="tl-tc">Claude</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 NotchCue</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Pierwsza aplikacja na iOS - zaprojektowana, napisana i wysłana przez Xcode, Codex i Apple Developer Program." data-en="First iOS app - designed, coded and submitted via Xcode, Codex and Apple Developer Program." data-it="Prima app iOS - progettata, scritta e inviata tramite Xcode, Codex e Apple Developer Program.">First iOS app - designed, coded and submitted via Xcode, Codex and Apple Developer Program.</div>
+                <div class="tl-tech-row"><span class="tl-tc">Swift</span><span class="tl-tc">Xcode</span><span class="tl-tc">Codex</span><span class="tl-tc">Apple Developer</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">Agentic workflows</span>
+                  <span class="tl-cat-badge">AI</span>
+                </div>
+                <div class="tl-note" data-pl="Claude Code + MCP + własne narzędzia. Kod pisany, testowany i deployowany z pomocą agentów." data-en="Claude Code + MCP + custom tools. Code written, tested and deployed with agent assistance." data-it="Claude Code + MCP + strumenti propri. Codice scritto, testato e deployato con agenti.">Claude Code + MCP + custom tools. Code written, tested and deployed with agent assistance.</div>
+              </div>
+            </div>
+
+          </div>
 
         </div>
       </div>
