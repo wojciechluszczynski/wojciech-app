@@ -1637,13 +1637,27 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
   transform: translateY(-2px);
 }
 
-/* Card screen: compact icon strip */
-.card-screen {
-  height: 76px !important;
-  flex-shrink: 0;
-}
+/* Card screen: hidden – icon now lives in card-header-row */
+.card-screen { display: none !important; }
 .screen-ov { display: none !important; }
 .screen-meta { display: none !important; }
+
+/* App icon badge (Skillta-style) */
+.app-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 900; color: #fff; flex-shrink: 0;
+  letter-spacing: -0.5px;
+}
+.card-header-row {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+}
+.card-header-text { flex: 1; min-width: 0; }
+.card-header-text .card-title { margin-bottom: 1px !important; }
+.card-header-cat {
+  font-size: 10px; font-weight: 600; color: var(--text-3);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
 
 /* Card body: tight layout, flex column to push footer down */
 .card-body {
@@ -2008,7 +2022,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       </div>
 
       <div class="sec-head">
-        <h2 data-pl="Aplikacje" data-en="Applications">Aplikacje</h2>
+        <h2 data-pl="Aplikacje" data-en="Applications" data-it="Applicazioni">Aplikacje</h2>
         <div class="sec-line"></div>
         <div class="sec-ct" id="visCount">9</div>
       </div>
@@ -2032,7 +2046,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">SabiSzop</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#1C69D4">SS</div>
+              <div class="card-header-text">
+                <div class="card-title">SabiSzop</div>
+                <div class="card-header-cat">Marketplace · B2C</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Smart listy zakupów, paragony i przepisy. Grocery inspired dark glassmorphism UI z AI sugestiami." data-en="Smart shopping lists, receipts &amp; recipes. Grocery inspired dark glassmorphism UI with AI suggestions.">Smart listy zakupów, paragony i przepisy. Grocery inspired dark glassmorphism UI z AI sugestiami.</div>
             <div class="card-tags">
               <span class="tag t-lime">PWA</span><span class="tag t-lime">Mobile First</span>
@@ -2073,7 +2093,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">VeloLodz</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#0ea5e9">VL</div>
+              <div class="card-header-text">
+                <div class="card-title">VeloLodz</div>
+                <div class="card-header-cat">Community · Sport</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Platforma kolarskiej społeczności Łodzi. AI asystent AREK, trasy, pogoda i ranking." data-en="Łódź cycling community platform. AI assistant AREK, routes, weather &amp; leaderboard.">Platforma kolarskiej społeczności Łodzi. AI asystent AREK, trasy, pogoda i ranking.</div>
             <div class="card-tags">
               <span class="tag t-green">Sport / Outdoor</span><span class="tag t-lime">Community</span>
@@ -2114,7 +2140,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title" data-pl="Kadromierz Hub" data-en="Kadromierz Hub">Kadromierz Hub</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#8b5cf6">KH</div>
+              <div class="card-header-text">
+                <div class="card-title" data-pl="Kadromierz Hub" data-en="Kadromierz Hub">Kadromierz Hub</div>
+                <div class="card-header-cat">Content · B2B SaaS</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Content hub dla Kadromierz - zarządzanie treściami marketingowymi, publikacjami i kampaniami w jednym miejscu." data-en="Content hub for Kadromierz - manage marketing content, publications and campaigns in one place.">Content hub for Kadromierz - manage marketing content, publications and campaigns in one place.</div>
             <div class="card-tags">
               <span class="tag t-orange">B2B / SaaS</span><span class="tag t-purple">Content Hub</span>
@@ -2155,7 +2187,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">GrowthHub</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#10b981">GH</div>
+              <div class="card-header-text">
+                <div class="card-title">GrowthHub</div>
+                <div class="card-header-cat">Growth · B2B SaaS</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Growth dashboard dla Kadromierz - demand gen, lead scoring i revenue tracking w jednym miejscu." data-en="Growth dashboard for Kadromierz - demand gen, lead scoring and revenue tracking in one place.">Growth dashboard for Kadromierz - demand gen, lead scoring and revenue tracking in one place.</div>
             <div class="divider"></div>
             <div class="sec-lbl">USP</div>
@@ -2189,7 +2227,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">HireMe</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#10b981">HM</div>
+              <div class="card-header-text">
+                <div class="card-title">HireMe</div>
+                <div class="card-header-cat">Recruitment · SaaS</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Tracker aplikacji o pracę - centrum dowodzenia poszukiwań pracy. Lejek, priorytety, aktywność." data-en="Personal recruitment tracker - job search command centre. Funnel, priorities, activity.">Personal recruitment tracker - job search command centre. Funnel, priorities, activity.</div>
             <div class="card-tags">
               <span class="tag t-teal">ATS / Tracker</span><span class="tag t-lime">Personal Tool</span>
@@ -2230,7 +2274,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">AN Projekt</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#ec4899">AN</div>
+              <div class="card-header-text">
+                <div class="card-title">AN Projekt</div>
+                <div class="card-header-cat">Website · Interior Design</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Strona internetowa pracowni projektowania wnętrz. Wnetrza dopasowane do Twojego życia." data-en="Interior design studio website. Interiors tailored to your life.">Strona internetowa pracowni projektowania wnętrz. Wnętrza dopasowane do Twojego życia.</div>
             <div class="card-tags">
               <span class="tag t-pink" data-pl="Strona WWW" data-en="Website">Strona WWW</span><span class="tag t-lime">Vite+React</span>
@@ -2271,7 +2321,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Ciryam</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#e11d48">CI</div>
+              <div class="card-header-text">
+                <div class="card-title">Ciryam</div>
+                <div class="card-header-cat">Website · Music Band</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Oficjalna strona polskiego zespołu rockowego - koncerty, muzyka, bilety i sklep z merch." data-en="Official website of a Polish rock band - concerts, music, tickets and merch store.">Oficjalna strona polskiego zespołu rockowego - koncerty, muzyka, bilety i sklep z merch.</div>
             <div class="card-tags">
               <span class="tag t-lime" data-pl="Strona WWW" data-en="Website">Strona WWW</span><span class="tag t-muted">Music / Band</span>
@@ -2311,7 +2367,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Działkometr</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#7c9e00;color:#fff">DZ</div>
+              <div class="card-header-text">
+                <div class="card-title">Działkometr</div>
+                <div class="card-header-cat">Real Estate · PWA</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Kalkulator wartości działek - analiza lokalizacji, media, MPZP i wycena nieruchomości w jednym widoku." data-en="Plot value calculator - location analysis, utilities, MPZP and property valuation in one view.">Kalkulator wartości działek - analiza lokalizacji, media, MPZP i wycena nieruchomości w jednym widoku.</div>
             <div class="divider"></div>
             <div class="sec-lbl">USP</div>
@@ -2344,7 +2406,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Ads Assistant</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#f59e0b">AA</div>
+              <div class="card-header-text">
+                <div class="card-title">Ads Assistant</div>
+                <div class="card-header-cat">Marketing AI · B2B SaaS</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Dashboard do zarządzania Google Ads - kampanie multi-konto, ICP scoring leadów, ROAS i creative fatigue w jednym miejscu." data-en="Google Ads management dashboard - multi-account campaigns, ICP lead scoring, ROAS tracking and creative fatigue in one place.">Google Ads management dashboard - multi-account campaigns, ICP lead scoring, ROAS tracking and creative fatigue in one place.</div>
             <div class="divider"></div>
             <div class="sec-lbl">USP</div>
@@ -2377,7 +2445,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Paczka+</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#0891b2">P+</div>
+              <div class="card-header-text">
+                <div class="card-title">Paczka+</div>
+                <div class="card-header-cat">Logistics · PWA</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Śledzenie paczek z wszystkich kurierów w jednym widoku - InPost, DHL, DPD, GLS, UPS z push notyfikacjami." data-en="Track all parcels from every courier in one view - InPost, DHL, DPD, GLS, UPS with push notifications.">Śledzenie paczek z wszystkich kurierów w jednym widoku - InPost, DHL, DPD, GLS, UPS z push notyfikacjami.</div>
             <div class="divider"></div>
             <div class="sec-lbl">USP</div>
@@ -2410,7 +2484,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title" style="opacity:.7">Resume Builder <span style="font-size:11px;font-weight:600;color:#EBFF00;vertical-align:middle;margin-left:6px;background:rgba(235,255,0,.12);border:1px solid rgba(235,255,0,.25);border-radius:99px;padding:2px 8px">In Progress</span></div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#7c3aed;opacity:.7">RB</div>
+              <div class="card-header-text">
+                <div class="card-title" style="opacity:.7">Resume Builder <span style="font-size:11px;font-weight:600;color:#EBFF00;vertical-align:middle;margin-left:6px;background:rgba(235,255,0,.12);border:1px solid rgba(235,255,0,.25);border-radius:99px;padding:2px 8px">In Progress</span></div>
+                <div class="card-header-cat">AI · Career Tools</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="AI-powered kreator CV z generowaniem treści, dopasowaniem do oferty i eksportem PDF z gotowymi szablonami ATS." data-en="AI-powered resume builder with content generation, job offer matching and ATS-ready PDF export with templates.">AI-powered kreator CV z generowaniem treści, dopasowaniem do oferty i eksportem PDF z gotowymi szablonami ATS.</div>
             <div class="divider"></div>
             <div class="sec-lbl">Coming soon</div>
@@ -2443,7 +2523,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Camper Rental</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#7c9e00">CR</div>
+              <div class="card-header-text">
+                <div class="card-title">Camper Rental</div>
+                <div class="card-header-cat">Booking Engine · Consumer</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Silnik rezerwacyjny do wynajmu pojazdów - dynamiczne ceny, kalendarz dostępności i rozszerzalny katalog zasobów." data-en="Booking engine for vehicle and asset rental - dynamic pricing, availability calendar and extensible product catalog.">Booking engine for vehicle and asset rental - dynamic pricing, availability calendar and extensible product catalog.</div>
             <div class="card-tags">
               <span class="tag t-lime" data-pl="Booking Engine" data-en="Booking Engine">Booking Engine</span><span class="tag t-muted">Consumer</span>
@@ -2481,7 +2567,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Amoree</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#be185d">AM</div>
+              <div class="card-header-text">
+                <div class="card-title">Amoree</div>
+                <div class="card-header-cat">Wedding · Events</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Hub zaproszenia ślubnego i eventowego - RSVP, agenda i informacje o miejscu w jednej premium, mobile-first stronie." data-en="Wedding &amp; event hub - personal invitation, RSVP, agenda and venue info in one premium mobile-first site.">Wedding &amp; event hub - personal invitation, RSVP, agenda and venue info in one premium mobile-first site.</div>
             <div class="card-tags">
               <span class="tag t-lime" data-pl="Wedding &amp; Events" data-en="Wedding &amp; Events">Wedding &amp; Events</span><span class="tag t-muted">Consumer</span>
@@ -2519,7 +2611,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Wycinarki Laserowe</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#6b7280">WL</div>
+              <div class="card-header-text">
+                <div class="card-title">Wycinarki Laserowe</div>
+                <div class="card-header-cat">SEO · B2B E-commerce</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="SEO-first strona produktowa dla dostawcy laserowych maszyn tnących - zbudowana w 2h, ze structured data dla LLM i organic growth." data-en="SEO-first product site for a laser cutting equipment supplier - built in 2h, structured for LLM discoverability and organic growth.">SEO-first product site for a laser cutting equipment supplier - built in 2h, structured for LLM discoverability and organic growth.</div>
             <div class="card-tags">
               <span class="tag t-lime" data-pl="SEO / E-commerce" data-en="SEO / E-commerce">SEO / E-commerce</span><span class="tag t-muted">B2B</span>
@@ -2557,7 +2655,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Spawarki Laserowe</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#f97316">SL</div>
+              <div class="card-header-text">
+                <div class="card-title">Spawarki Laserowe</div>
+                <div class="card-header-cat">SEO · B2B Industrial</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="SEO-first strona produktowa dla autoryzowanego dealera spawarek laserowych - katalog 3 modeli, kalkulator ROI i 16-pytaniowe FAQ dla klientów B2B." data-en="SEO-first product site for an authorised fibre laser welder dealer - 3-model catalog, ROI framing and 16-question FAQ built for B2B manufacturing buyers.">SEO-first product site for an authorised fibre laser welder dealer - 3-model catalog, ROI framing and 16-question FAQ built for B2B manufacturing buyers.</div>
             <div class="divider"></div>
             <div class="sec-lbl">USP</div>
@@ -2591,7 +2695,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Willa w Parku</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#c8a96e">WP</div>
+              <div class="card-header-text">
+                <div class="card-title">Willa w Parku</div>
+                <div class="card-header-cat">Website · Venue</div>
+              </div>
+            </div>
             <div class="card-tagline" data-pl="Strona klubokawiarni w parku Poniatowskiego - speciality coffee za dnia, techno i house nocą. Eventy, wynajem przestrzeni, bar." data-en="Website for a club-café in Łódź's Poniatowski Park - specialty coffee by day, techno &amp; house by night. Events, space rental, bar.">Website for a club-café in Łódź's Poniatowski Park - specialty coffee by day, techno &amp; house by night. Events, space rental, bar.</div>
             <div class="divider"></div>
             <div class="sec-lbl">USP</div>
@@ -2628,7 +2738,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Akademia AI</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#f59e0b">AK</div>
+              <div class="card-header-text">
+                <div class="card-title">Akademia AI</div>
+                <div class="card-header-cat">Education · B2B SaaS</div>
+              </div>
+            </div>
             <div class="card-tagline" data-en="Audio course platform with certification - AI tools, growth marketing &amp; automation workflows." data-pl="Platforma kursów audio z certyfikacją - narzędzia AI, growth marketing i automatyzacja.">Audio course platform with certification - AI tools, growth marketing &amp; automation workflows.</div>
             <div class="card-tags">
               <span class="tag t-lime">Education · SaaS</span><span class="tag t-muted">B2B</span>
@@ -2666,7 +2782,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Relora</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#0ea5e9">RL</div>
+              <div class="card-header-text">
+                <div class="card-title">Relora</div>
+                <div class="card-header-cat">Relationship CRM · B2B SaaS</div>
+              </div>
+            </div>
             <div class="card-tagline" data-en="B2B relationship intelligence - contact graph, CRM Kanban, outreach composer and deal alerts in one workspace." data-pl="Relationship intelligence B2B - graph kontaktów, CRM Kanban, composer outreachu i alerty dealowe.">B2B relationship intelligence - contact graph, CRM Kanban, outreach composer and deal alerts in one workspace.</div>
             <div class="card-tags">
               <span class="tag t-lime">Relationship CRM</span><span class="tag t-muted">B2B / SaaS</span>
@@ -2704,7 +2826,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
           <div class="card-body">
-            <div class="card-title">Brand Brain 24</div>
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#6366f1">B2</div>
+              <div class="card-header-text">
+                <div class="card-title">Brand Brain 24</div>
+                <div class="card-header-cat">Brand Intelligence · B2B SaaS</div>
+              </div>
+            </div>
             <div class="card-tagline" data-en="AI-powered brand intelligence platform - centralised brand knowledge, automated briefs and AI-assisted content workflows for marketing teams." data-pl="Platforma brand intelligence oparta na AI - centralna wiedza o marce, automatyczne briefy i workflow contentowy dla team marketingowych.">AI-powered brand intelligence platform - centralised brand knowledge, automated briefs and AI-assisted content workflows for marketing teams.</div>
             <div class="card-tags">
               <span class="tag t-lime">Brand Intelligence</span><span class="tag t-muted">B2B / SaaS</span>
@@ -3390,16 +3518,16 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       <div class="stack-page">
 
         <div class="stack-page-header">
-          <div class="eyebrow" data-pl="Mapa stacku" data-en="Stack map">Mapa stacku</div>
-          <h2 data-pl="Technologie i projekty" data-en="Technologies and projects">Technologie i projekty</h2>
-          <p data-pl="Czego uzywam, do czego i dlaczego. Plus 18 projektow z ich dokladnym stackiem." data-en="What I use, for what and why. Plus 18 projects with their exact stack.">Czego uzywam, do czego i dlaczego. Plus 18 projektow z ich dokladnym stackiem.</p>
+          <div class="eyebrow" data-pl="Mapa stacku" data-en="Stack map" data-it="Mappa dello stack">Mapa stacku</div>
+          <h2 data-pl="Technologie i projekty" data-en="Technologies and projects" data-it="Tecnologie e progetti">Technologie i projekty</h2>
+          <p data-pl="Czego uzywam, do czego i dlaczego. Plus 18 projektow z ich dokladnym stackiem." data-en="What I use, for what and why. Plus 18 projects with their exact stack." data-it="Cosa uso, per cosa e perche. Piu 18 progetti con il loro stack esatto.">Czego uzywam, do czego i dlaczego. Plus 18 projektow z ich dokladnym stackiem.</p>
         </div>
 
         <!-- TECH ICON GRID -->
         <div class="tech-cats">
 
           <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="Frontend" data-en="Frontend">Frontend</div>
+            <div class="tech-cat-label" data-pl="Frontend" data-en="Frontend" data-it="Frontend">Frontend</div>
             <div class="tech-icons">
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/react/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="React"><span>React</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/typescript/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="TypeScript"><span>TypeScript</span></div>
@@ -3411,7 +3539,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
 
           <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="Backend i dane" data-en="Backend and data">Backend i dane</div>
+            <div class="tech-cat-label" data-pl="Backend i dane" data-en="Backend and data" data-it="Backend e dati">Backend i dane</div>
             <div class="tech-icons">
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/supabase/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Supabase"><span>Supabase</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/fastapi/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="FastAPI"><span>FastAPI</span></div>
@@ -3421,15 +3549,25 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
 
           <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="AI" data-en="AI">AI</div>
+            <div class="tech-cat-label" data-pl="AI" data-en="AI" data-it="AI">AI</div>
             <div class="tech-icons">
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/openai/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="OpenAI"><span>OpenAI</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/anthropic/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Anthropic"><span>Anthropic</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/elevenlabs/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="ElevenLabs"><span>ElevenLabs</span></div>
             </div>
           </div>
 
           <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="Platnosci i email" data-en="Payments and email">Platnosci i email</div>
+            <div class="tech-cat-label" data-pl="Automatyzacja" data-en="Automation" data-it="Automazione">Automation</div>
+            <div class="tech-icons">
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/zapier/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Zapier"><span>Zapier</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/make/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Make"><span>Make</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/n8n/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="n8n"><span>n8n</span></div>
+            </div>
+          </div>
+
+          <div class="tech-cat">
+            <div class="tech-cat-label" data-pl="Platnosci i email" data-en="Payments and email" data-it="Pagamenti e email">Platnosci i email</div>
             <div class="tech-icons">
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/stripe/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Stripe"><span>Stripe</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/resend/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Resend"><span>Resend</span></div>
@@ -3437,12 +3575,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
 
           <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="Infrastruktura" data-en="Infrastructure">Infrastruktura</div>
+            <div class="tech-cat-label" data-pl="Infrastruktura" data-en="Infrastructure" data-it="Infrastruttura">Infrastruktura</div>
             <div class="tech-icons">
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/vercel/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Vercel"><span>Vercel</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/netlify/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Netlify"><span>Netlify</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/github/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="GitHub"><span>GitHub</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/cloudflare/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Cloudflare"><span>Cloudflare</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/oracle/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Oracle Cloud"><span>Oracle Cloud</span></div>
             </div>
           </div>
 
@@ -3450,7 +3589,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- PROJECTS GRID -->
         <div class="stack-sec-head">
-          <div class="stack-sec-label" data-pl="18 PROJEKTÓW" data-en="18 PROJECTS">18 PROJEKTÓW</div>
+          <div class="stack-sec-label" data-pl="18 PROJEKTÓW" data-en="18 PROJECTS" data-it="18 PROGETTI">18 PROJEKTÓW</div>
           <div class="stack-sec-line"></div>
         </div>
 
@@ -3787,10 +3926,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <div class="tl-body">
 
-          <!-- 2023 -->
+          <!-- 2026 -->
           <div class="tl-year-block">
             <div class="tl-year-label">
-              <div class="tl-year-num">2023</div>
+              <div class="tl-year-num">2026</div>
               <div class="tl-year-line"></div>
             </div>
 
@@ -3798,10 +3937,35 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name" data-pl="Kadromierz - Growth Manager" data-en="Kadromierz - Growth Manager" data-it="Kadromierz - Growth Manager">Kadromierz - Growth Manager</span>
-                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)">Start</span>
+                  <span class="tl-tech-name">🚀 Brand Brain 24 + Relora</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
-                <div class="tl-note" data-pl="Google Ads na skali, analityka, pierwsze narzędzia wewnętrzne. Stąd potrzeba własnych dashboardów." data-en="Google Ads at scale, analytics, first internal tools. The itch to build proper dashboards started here." data-it="Google Ads in scala, analytics, primi strumenti interni. Qui nasce l'esigenza di dashboard proprie.">Google Ads at scale, analytics, first internal tools. The itch to build proper dashboards started here.</div>
+                <div class="tl-note" data-pl="AI-native SaaS - brand intelligence z automatycznymi briefami i CRM relationship graph dla B2B." data-en="AI-native SaaS - brand intelligence with automated briefs and B2B relationship graph CRM." data-it="SaaS AI-native - brand intelligence con brief automatici e CRM relationship graph per B2B.">AI-native SaaS - brand intelligence with automated briefs and B2B relationship graph CRM.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">Anthropic</span><span class="tl-tc">OpenAI</span><span class="tl-tc">Vercel</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 Wycinarki + Spawarki Laserowe</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="SEO-first strony dla B2B - structured data, LLM discoverability, każda zbudowana w 2h." data-en="SEO-first B2B product sites - structured data, LLM discoverability, each built in under 2h." data-it="Siti prodotto SEO-first per B2B - dati strutturati, LLM discoverability, ciascuno costruito in 2h.">SEO-first B2B product sites - structured data, LLM discoverability, each built in under 2h.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Vercel</span><span class="tl-tc">Claude</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 NotchCue</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Pierwsza aplikacja na iOS - zaprojektowana, napisana i wysłana przez Xcode, Codex i Apple Developer Program." data-en="First iOS app - designed, coded and submitted via Xcode, Codex and Apple Developer Program." data-it="Prima app iOS - progettata, scritta e inviata tramite Xcode, Codex e Apple Developer Program.">First iOS app - designed, coded and submitted via Xcode, Codex and Apple Developer Program.</div>
+                <div class="tl-tech-row"><span class="tl-tc">Swift</span><span class="tl-tc">Xcode</span><span class="tl-tc">Codex</span><span class="tl-tc">Apple Developer</span></div>
               </div>
             </div>
 
@@ -3809,21 +3973,77 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">React + Vite + TypeScript</span>
+                  <span class="tl-tech-name">Agentic workflows</span>
+                  <span class="tl-cat-badge">AI</span>
+                </div>
+                <div class="tl-note" data-pl="Claude Code + MCP + własne narzędzia. Kod pisany, testowany i deployowany z pomocą agentów." data-en="Claude Code + MCP + custom tools. Code written, tested and deployed with agent assistance." data-it="Claude Code + MCP + strumenti propri. Codice scritto, testato e deployato con agenti.">Claude Code + MCP + custom tools. Code written, tested and deployed with agent assistance.</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 2025 -->
+          <div class="tl-year-block">
+            <div class="tl-year-label">
+              <div class="tl-year-num">2025</div>
+              <div class="tl-year-line"></div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 HireMe + Akademia AI</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Tracker rekrutacyjny i platforma kursów audio z certyfikacją - pierwsze produkty consumer z Stripe." data-en="Recruitment tracker and audio course platform with certification - first consumer products with Stripe." data-it="Tracker di recruiting e piattaforma di corsi audio con certificazione - primi prodotti consumer con Stripe.">Recruitment tracker and audio course platform with certification - first consumer products with Stripe.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">Stripe</span><span class="tl-tc">Vercel</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 SabiSzop + VeloLodz</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Consumer apps z AI - smart listy zakupów i platforma kolarskiej społeczności z asystentem AREK." data-en="Consumer apps with AI - smart shopping lists and a cycling community with AI assistant AREK." data-it="App consumer con AI - liste della spesa intelligenti e comunità ciclistica con assistente AREK.">Consumer apps with AI - smart shopping lists and a cycling community with AI assistant AREK.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">OpenAI</span><span class="tl-tc">PWA</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry milestone">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">🚀 AN Projekt, Amoree, Ciryam, Willa w Parku</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                </div>
+                <div class="tl-note" data-pl="Strony dla klientów - pracownia wnętrz, zaproszenie ślubne, zespół rockowy, klubokawiarnia." data-en="Client sites - interior design studio, wedding hub, rock band, club-café. Zero to deployed fast." data-it="Siti per clienti - studio di design, hub matrimoniale, band rock, club-café. Da zero al deploy rapidamente.">Client sites - interior design studio, wedding hub, rock band, club-café. Zero to deployed fast.</div>
+                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Lovable</span><span class="tl-tc">Vercel</span></div>
+              </div>
+            </div>
+
+            <div class="tl-entry">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">Claude Code + Lovable / Base44</span>
+                  <span class="tl-cat-badge">AI Dev</span>
+                </div>
+                <div class="tl-note" data-pl="AI-assisted development jako standard. MVP dla klienta w 1 dzień, złożone features w godziny." data-en="AI-assisted development as the default. Client MVP in 1 day, complex features in hours." data-it="Sviluppo assistito da AI come standard. MVP per cliente in 1 giorno, funzionalità complesse in ore.">AI-assisted development as the default. Client MVP in 1 day, complex features in hours.</div>
+              </div>
+            </div>
+
+            <div class="tl-entry">
+              <div class="tl-entry-left"><div class="tl-dot"></div></div>
+              <div class="tl-entry-right">
+                <div class="tl-entry-head">
+                  <span class="tl-tech-name">shadcn/ui + Resend</span>
                   <span class="tl-cat-badge">Frontend</span>
                 </div>
-                <div class="tl-note" data-pl="Pierwszy framework JS. Zamiast kursów - od razu projekty." data-en="First JS framework. No courses - straight to building." data-it="Primo framework JS. Niente corsi - subito a costruire.">First JS framework. No courses - straight to building.</div>
-              </div>
-            </div>
-
-            <div class="tl-entry">
-              <div class="tl-entry-left"><div class="tl-dot"></div></div>
-              <div class="tl-entry-right">
-                <div class="tl-entry-head">
-                  <span class="tl-tech-name">Supabase</span>
-                  <span class="tl-cat-badge">Backend</span>
-                </div>
-                <div class="tl-note" data-pl="Baza danych i auth bez serwera. Postgres + RLS od pierwszego projektu." data-en="Database and auth without managing a server. Postgres + RLS from day one." data-it="Database e auth senza server. Postgres + RLS dal primo progetto.">Database and auth without managing a server. Postgres + RLS from day one.</div>
+                <div class="tl-note" data-pl="Komponenty jako kod i transakcyjne maile. Design system + email w każdym nowym projekcie." data-en="Components as code and transactional email. Design system + email in every new project." data-it="Componenti come codice e email transazionali. Design system + email in ogni nuovo progetto.">Components as code and transactional email. Design system + email in every new project.</div>
               </div>
             </div>
           </div>
@@ -3894,10 +4114,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
 
-          <!-- 2025 -->
+          <!-- 2023 -->
           <div class="tl-year-block">
             <div class="tl-year-label">
-              <div class="tl-year-num">2025</div>
+              <div class="tl-year-num">2023</div>
               <div class="tl-year-line"></div>
             </div>
 
@@ -3905,35 +4125,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 HireMe + Akademia AI</span>
-                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
+                  <span class="tl-tech-name" data-pl="Kadromierz - Growth Manager" data-en="Kadromierz - Growth Manager" data-it="Kadromierz - Growth Manager">Kadromierz - Growth Manager</span>
+                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)">Start</span>
                 </div>
-                <div class="tl-note" data-pl="Tracker rekrutacyjny i platforma kursów audio z certyfikacją - pierwsze produkty consumer z Stripe." data-en="Recruitment tracker and audio course platform with certification - first consumer products with Stripe." data-it="Tracker di recruiting e piattaforma di corsi audio con certificazione - primi prodotti consumer con Stripe.">Recruitment tracker and audio course platform with certification - first consumer products with Stripe.</div>
-                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">Stripe</span><span class="tl-tc">Vercel</span></div>
-              </div>
-            </div>
-
-            <div class="tl-entry milestone">
-              <div class="tl-entry-left"><div class="tl-dot"></div></div>
-              <div class="tl-entry-right">
-                <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 SabiSzop + VeloLodz</span>
-                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
-                </div>
-                <div class="tl-note" data-pl="Consumer apps z AI - smart listy zakupów i platforma kolarskiej społeczności z asystentem AREK." data-en="Consumer apps with AI - smart shopping lists and a cycling community with AI assistant AREK." data-it="App consumer con AI - liste della spesa intelligenti e comunità ciclistica con assistente AREK.">Consumer apps with AI - smart shopping lists and a cycling community with AI assistant AREK.</div>
-                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">OpenAI</span><span class="tl-tc">PWA</span></div>
-              </div>
-            </div>
-
-            <div class="tl-entry milestone">
-              <div class="tl-entry-left"><div class="tl-dot"></div></div>
-              <div class="tl-entry-right">
-                <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 AN Projekt, Amoree, Ciryam, Willa w Parku</span>
-                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
-                </div>
-                <div class="tl-note" data-pl="Strony dla klientów - pracownia wnętrz, zaproszenie ślubne, zespół rockowy, klubokawiarnia." data-en="Client sites - interior design studio, wedding hub, rock band, club-café. Zero to deployed fast." data-it="Siti per clienti - studio di design, hub matrimoniale, band rock, club-café. Da zero al deploy rapidamente.">Client sites - interior design studio, wedding hub, rock band, club-café. Zero to deployed fast.</div>
-                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Lovable</span><span class="tl-tc">Vercel</span></div>
+                <div class="tl-note" data-pl="Google Ads na skali, analityka, pierwsze narzędzia wewnętrzne. Stąd potrzeba własnych dashboardów." data-en="Google Ads at scale, analytics, first internal tools. The itch to build proper dashboards started here." data-it="Google Ads in scala, analytics, primi strumenti interni. Qui nasce l'esigenza di dashboard proprie.">Google Ads at scale, analytics, first internal tools. The itch to build proper dashboards started here.</div>
               </div>
             </div>
 
@@ -3941,65 +4136,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">Claude Code + Lovable / Base44</span>
-                  <span class="tl-cat-badge">AI Dev</span>
-                </div>
-                <div class="tl-note" data-pl="AI-assisted development jako standard. MVP dla klienta w 1 dzień, złożone features w godziny." data-en="AI-assisted development as the default. Client MVP in 1 day, complex features in hours." data-it="Sviluppo assistito da AI come standard. MVP per cliente in 1 giorno, funzionalità complesse in ore.">AI-assisted development as the default. Client MVP in 1 day, complex features in hours.</div>
-              </div>
-            </div>
-
-            <div class="tl-entry">
-              <div class="tl-entry-left"><div class="tl-dot"></div></div>
-              <div class="tl-entry-right">
-                <div class="tl-entry-head">
-                  <span class="tl-tech-name">shadcn/ui + Resend</span>
+                  <span class="tl-tech-name">React + Vite + TypeScript</span>
                   <span class="tl-cat-badge">Frontend</span>
                 </div>
-                <div class="tl-note" data-pl="Komponenty jako kod i transakcyjne maile. Design system + email w każdym nowym projekcie." data-en="Components as code and transactional email. Design system + email in every new project." data-it="Componenti come codice e email transazionali. Design system + email in ogni nuovo progetto.">Components as code and transactional email. Design system + email in every new project.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2026 -->
-          <div class="tl-year-block">
-            <div class="tl-year-label">
-              <div class="tl-year-num">2026</div>
-              <div class="tl-year-line"></div>
-            </div>
-
-            <div class="tl-entry milestone">
-              <div class="tl-entry-left"><div class="tl-dot"></div></div>
-              <div class="tl-entry-right">
-                <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 Brand Brain 24 + Relora</span>
-                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
-                </div>
-                <div class="tl-note" data-pl="AI-native SaaS - brand intelligence z automatycznymi briefami i CRM relationship graph dla B2B." data-en="AI-native SaaS - brand intelligence with automated briefs and B2B relationship graph CRM." data-it="SaaS AI-native - brand intelligence con brief automatici e CRM relationship graph per B2B.">AI-native SaaS - brand intelligence with automated briefs and B2B relationship graph CRM.</div>
-                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Supabase</span><span class="tl-tc">Anthropic</span><span class="tl-tc">OpenAI</span><span class="tl-tc">Vercel</span></div>
-              </div>
-            </div>
-
-            <div class="tl-entry milestone">
-              <div class="tl-entry-left"><div class="tl-dot"></div></div>
-              <div class="tl-entry-right">
-                <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 Wycinarki + Spawarki Laserowe</span>
-                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
-                </div>
-                <div class="tl-note" data-pl="SEO-first strony dla B2B - structured data, LLM discoverability, każda zbudowana w 2h." data-en="SEO-first B2B product sites - structured data, LLM discoverability, each built in under 2h." data-it="Siti prodotto SEO-first per B2B - dati strutturati, LLM discoverability, ciascuno costruito in 2h.">SEO-first B2B product sites - structured data, LLM discoverability, each built in under 2h.</div>
-                <div class="tl-tech-row"><span class="tl-tc">React</span><span class="tl-tc">Vercel</span><span class="tl-tc">Claude</span></div>
-              </div>
-            </div>
-
-            <div class="tl-entry milestone">
-              <div class="tl-entry-left"><div class="tl-dot"></div></div>
-              <div class="tl-entry-right">
-                <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 NotchCue</span>
-                  <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
-                </div>
-                <div class="tl-note" data-pl="Pierwsza aplikacja na iOS - zaprojektowana, napisana i wysłana przez Xcode, Codex i Apple Developer Program." data-en="First iOS app - designed, coded and submitted via Xcode, Codex and Apple Developer Program." data-it="Prima app iOS - progettata, scritta e inviata tramite Xcode, Codex e Apple Developer Program.">First iOS app - designed, coded and submitted via Xcode, Codex and Apple Developer Program.</div>
-                <div class="tl-tech-row"><span class="tl-tc">Swift</span><span class="tl-tc">Xcode</span><span class="tl-tc">Codex</span><span class="tl-tc">Apple Developer</span></div>
+                <div class="tl-note" data-pl="Pierwszy framework JS. Zamiast kursów - od razu projekty." data-en="First JS framework. No courses - straight to building." data-it="Primo framework JS. Niente corsi - subito a costruire.">First JS framework. No courses - straight to building.</div>
               </div>
             </div>
 
@@ -4007,13 +4147,12 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">Agentic workflows</span>
-                  <span class="tl-cat-badge">AI</span>
+                  <span class="tl-tech-name">Supabase</span>
+                  <span class="tl-cat-badge">Backend</span>
                 </div>
-                <div class="tl-note" data-pl="Claude Code + MCP + własne narzędzia. Kod pisany, testowany i deployowany z pomocą agentów." data-en="Claude Code + MCP + custom tools. Code written, tested and deployed with agent assistance." data-it="Claude Code + MCP + strumenti propri. Codice scritto, testato e deployato con agenti.">Claude Code + MCP + custom tools. Code written, tested and deployed with agent assistance.</div>
+                <div class="tl-note" data-pl="Baza danych i auth bez serwera. Postgres + RLS od pierwszego projektu." data-en="Database and auth without managing a server. Postgres + RLS from day one." data-it="Database e auth senza server. Postgres + RLS dal primo progetto.">Database and auth without managing a server. Postgres + RLS from day one.</div>
               </div>
             </div>
-
           </div>
 
         </div>
@@ -4043,20 +4182,20 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ── 2. SUMMARY + BY THE NUMBERS ── -->
         <div class="cv-card">
-          <div class="cv-sec-title" data-pl="Summary" data-en="Summary">Summary</div>
-          <p style="font-size:14px;color:var(--text-2);line-height:1.75;margin-bottom:20px" data-pl="2 dekady. Setki eksperymentów. Miliony wygenerowanego przychodu. Skaluję firmy B2B i SaaS od czasów, kiedy &quot;Growth Marketing&quot; nie był jeszcze buzzwordem. Moje podejście: buduję systemy, nie tylko kampanie. Łączę marketing, sprzedaż i operacje w jeden zautomatyzowany engine przychodowy - używając AI, automatyzacji i produktów cyfrowych." data-en="2 decades. Hundreds of experiments. Millions in generated revenue. I've been scaling B2B and SaaS companies since before &quot;Growth Marketing&quot; was a buzzword. My approach: Build systems, not just campaigns. I bridge the gap between fragmented GTM by aligning marketing, sales, and operations into one automated revenue engine.">2 dekady. Setki eksperymentów. Miliony wygenerowanego przychodu. Skaluję firmy B2B i SaaS od czasów, kiedy „Growth Marketing" nie był jeszcze buzzwordem. Moje podejście: buduję systemy, nie tylko kampanie. Łączę marketing, sprzedaż i operacje w jeden zautomatyzowany engine przychodowy - używając AI, automatyzacji i produktów cyfrowych.</p>
+          <div class="cv-sec-title" data-pl="Summary" data-en="Summary" data-it="Sommario">Summary</div>
+          <p style="font-size:14px;color:var(--text-2);line-height:1.75;margin-bottom:20px" data-pl="Growth spotyka AI. Buduję produkty cyfrowe, systemy przychodowe i stosy automatyzacji - od zera do trakcji. SaaS, B2B i AI-first od zanim to było modne." data-en="Growth meets AI. I build digital products, revenue systems, and automation stacks - from zero to traction. SaaS, B2B, and AI-first since before the hype." data-it="Growth incontra l'AI. Creo prodotti digitali, sistemi di revenue e stack di automazione - da zero alla trazione. SaaS, B2B e AI-first prima che diventasse di moda.">Growth meets AI. I build digital products, revenue systems, and automation stacks - from zero to traction. SaaS, B2B, and AI-first since before the hype.</p>
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-top:1px solid var(--border);padding-top:18px">
             <div style="text-align:center;padding:8px 0">
               <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">20+</div>
-              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Lat w GTM / Growth" data-en="Years in GTM / Growth">Lat w GTM / Growth</div>
+              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Lat w GTM / Growth" data-en="Years in GTM / Growth" data-it="Anni in GTM / Growth">Lat w GTM / Growth</div>
             </div>
             <div style="text-align:center;padding:8px 0;border-left:1px solid var(--border)">
               <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">60%</div>
-              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Brand Lift przy SentiOne" data-en="Brand Lift at SentiOne">Brand Lift<br>przy SentiOne</div>
+              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Brand Lift przy SentiOne" data-en="Brand Lift at SentiOne" data-it="Brand Lift a SentiOne">Brand Lift<br>przy SentiOne</div>
             </div>
             <div style="text-align:center;padding:8px 0;border-left:1px solid var(--border)">
               <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">80%</div>
-              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Wzrost pozyskiwania klientów" data-en="Customer Acq. Growth">Customer<br>Acq. Growth</div>
+              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Wzrost pozyskiwania klientów" data-en="Customer Acq. Growth" data-it="Crescita acquisizione clienti">Customer<br>Acq. Growth</div>
             </div>
             <div style="text-align:center;padding:8px 0;border-left:1px solid var(--border)">
               <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">150%</div>
@@ -4485,6 +4624,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   
   <footer>
     <p>© 2026 <span>Wojciech Łuszczyński</span> · <a href="mailto:hello@wojciech.io" style="color:var(--text-2);text-decoration:none;">hello@wojciech.io</a></p>
+    <div class="footer-links" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:10px">
+      <a href="https://notch.wojciech.io" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:color .15s" onmouseover="this.style.color='#EBFF00'" onmouseout="this.style.color='var(--text-2)'"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg> NotchCue</a>
+      <a href="https://subscribe.wojciech.io" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:color .15s" onmouseover="this.style.color='#EBFF00'" onmouseout="this.style.color='var(--text-2)'"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> AI Espresso</a>
+    </div>
     <div class="footer-socials">
       <a href="https://wojciech.io" target="_blank" class="fsoc" title="Website"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></a>
       <a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank" class="fsoc" title="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
@@ -4788,9 +4931,9 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 </main><script id="gate-name-override">(function(){
 var _n={pl:'Wojciech Łuszczyński',en:'Wojciech Luszczynski',it:'Wojciech Luszczynski'};
 var _c={
-  pl:{desc:'Projektuję systemy GTM generujące przewidywalne przychody dla firm B2B SaaS. AI-first podejście do demand gen, product marketingu i revenue operations.',btn:'Wejdź →',err:'Nieprawidłowe hasło',bdg:'Revenue Engine Builder'},
-  en:{desc:'I design GTM systems that generate predictable revenue for B2B SaaS. AI-first approach to demand gen, product marketing, and revenue operations.',btn:'Enter →',err:'Wrong password',bdg:'Revenue Engine Builder'},
-  it:{desc:'Progetto sistemi GTM per generare revenue prevedibile per B2B SaaS. Approccio AI-first a demand gen, product marketing e revenue operations.',btn:'Entra →',err:'Password errata',bdg:'Revenue Engine Builder'}
+  pl:{desc:'Growth + AI. Buduję produkty cyfrowe i systemy przychodowe.',btn:'Wejdź →',err:'Nieprawidłowe hasło',bdg:'Revenue Engine Builder'},
+  en:{desc:'Growth + AI. Building digital products and revenue systems.',btn:'Enter →',err:'Wrong password',bdg:'Revenue Engine Builder'},
+  it:{desc:'Growth + AI. Creo prodotti digitali e sistemi di revenue.',btn:'Entra →',err:'Password errata',bdg:'Revenue Engine Builder'}
 };
 function detect(){return'en';}
 window.gLang=function(l){
