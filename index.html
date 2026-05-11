@@ -1748,17 +1748,41 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
   transform: translateY(-2px);
 }
 
-/* Card screen: hidden – icon now lives in card-header-row */
-.card-screen { display: none !important; }
-.screen-ov { display: none !important; }
+/* App card covers — dark monochrome */
+.card-screen {
+  background: #141414 !important;
+  height: 140px !important;
+  display: flex !important;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+/* White dot grid */
+.card-screen > div[style*="radial-gradient"] {
+  background-image: radial-gradient(circle, rgba(255,255,255,.045) 1px, transparent 1px) !important;
+}
+/* Hide per-card color glow blobs */
+.card-screen > div[style*="blur(70px)"] { display: none !important; }
+/* Initials text */
+.card-screen div[style*="font-size:46px"] { color: #ffffff !important; }
+/* Separator line */
+.card-screen div[style*="rgba(0,0,0,.10)"] { background: rgba(255,255,255,.12) !important; }
+/* Category sub-label */
+.card-screen div[style*="rgba(0,0,0,.38)"] { color: rgba(255,255,255,.38) !important; }
+/* Bottom gradient fade into card body */
+.screen-ov {
+  display: block !important;
+  background: linear-gradient(to bottom, transparent 30%, var(--bg1) 100%) !important;
+}
 .screen-meta { display: none !important; }
 
-/* App icon badge (Skillta-style) */
+/* App icon badge — uniform dark, no brand colors */
 .app-icon {
   width: 44px; height: 44px; border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 14px; font-weight: 900; color: #fff; flex-shrink: 0;
+  font-size: 14px; font-weight: 900; flex-shrink: 0;
   letter-spacing: -0.5px;
+  background: #1a1a1a !important;
+  color: #ffffff !important;
 }
 .card-header-row {
   display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
