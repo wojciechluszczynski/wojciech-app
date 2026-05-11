@@ -1462,8 +1462,8 @@
 </style>
 
 <style id="light-theme-fixes">
-/* inline lime text on light bg - attribute selector override */
-[style*="color:var(--lime)"]{color:#4a5500!important}
+/* inline lime text on light bg - neutral, not yellow-olive */
+[style*="color:var(--lime)"]{color:rgba(0,0,0,0.42)!important}
 
 /* cat-badge: keep dark overlay so white text stays visible on screenshots */
 .cat-badge{background:rgba(0,0,0,0.65)!important;color:#ffffff!important}
@@ -1515,6 +1515,10 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
 .cv-rec-card { border-left-color:#EBFF00!important; }
 .profile-photo { border-color:#EBFF00!important; }
 .gate-input:focus { border-color:#EBFF00!important; }
+/* role/type labels: neutral on light bg */
+.contact-tagline { color: var(--text-3) !important; }
+.cv-setup-name { color: var(--text-3) !important; }
+.doc-app-type { color: var(--text-3) !important; }
 </style>
 </head>
 <body>
@@ -2033,9 +2037,9 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
   margin-bottom: 10px;
 }
 .scat-enables {
-  font-size: 12px;
-  color: var(--text-3);
-  line-height: 1.55;
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
   grid-row: 2;
   grid-column: 2;
 }
@@ -2164,40 +2168,82 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
   background: var(--bg1);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 32px 36px;
+  padding: 36px 40px;
   margin-top: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.nl-band::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(235,255,0,0.07) 0%, transparent 70%);
+  pointer-events: none;
 }
 .nl-band-inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+}
+.nl-band-left { min-width: 0; }
+.nl-band-eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 10px;
+}
+.nl-band-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+}
+.nl-band-sub { font-size: 14px; color: var(--text-2); line-height: 1.6; margin-bottom: 16px; }
+.nl-band-points {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.nl-band-point {
   display: flex;
   align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-2);
 }
-.nl-band-left { flex: 1; min-width: 200px; }
-.nl-band-title {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--text);
-  margin-bottom: 4px;
-  letter-spacing: -0.2px;
+.nl-band-point::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--lime);
+  flex-shrink: 0;
 }
-.nl-band-sub { font-size: 13px; color: var(--text-2); line-height: 1.5; }
 .nl-band-right {
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 10px;
   flex-shrink: 0;
+  min-width: 240px;
+  padding-top: 6px;
 }
 .nl-input {
   background: var(--bg2);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 10px 16px;
+  padding: 11px 16px;
   font-size: 14px;
   color: var(--text);
   outline: none;
-  width: 220px;
+  width: 100%;
   font-family: inherit;
   transition: border-color .2s;
+  box-sizing: border-box;
 }
 .nl-input:focus { border-color: var(--lime); }
 .nl-input::placeholder { color: var(--text-3); }
@@ -2206,20 +2252,25 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
   color: #111;
   border: none;
   border-radius: 8px;
-  padding: 10px 20px;
+  padding: 11px 20px;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
   font-family: inherit;
   transition: opacity .15s;
+  width: 100%;
 }
 .nl-btn:hover { opacity: .88; }
-@media(max-width:640px) {
-  .nl-band { padding: 24px 20px; }
-  .nl-band-inner { flex-direction: column; align-items: stretch; }
-  .nl-band-right { flex-direction: column; }
-  .nl-input { width: 100%; }
+.nl-band-note {
+  font-size: 11px;
+  color: var(--text-3);
+  text-align: center;
+}
+@media(max-width:700px) {
+  .nl-band { padding: 28px 24px; }
+  .nl-band-inner { grid-template-columns: 1fr; gap: 24px; }
+  .nl-band-right { min-width: 0; }
 }
 </style>
 
@@ -3845,7 +3896,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/shadcnui/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="shadcn/ui"><span>shadcn/ui</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/nextdotjs/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Next.js"><span>Next.js</span></div>
             </div>
-            <div class="scat-enables" data-pl="PWA, dashboardy, design systemy, multi-page apps z routingiem i code-splittingiem" data-en="PWAs, dashboards, design systems, multi-page apps with routing and code-splitting" data-it="PWA, dashboard, design system, app multi-pagina con routing e code-splitting">PWAs, dashboards, design systems, multi-page apps with routing and code-splitting</div>
+            <div class="scat-enables" data-pl="Buduję od landing page po pełne dashboardy SaaS - z type safety, server renderingiem i gotowym systemem komponentów." data-en="From landing pages to full SaaS dashboards - with type safety, server rendering, and a complete component system ready to extend." data-it="Da landing page a dashboard SaaS completi - con type safety, server rendering e un sistema di componenti pronto da estendere.">From landing pages to full SaaS dashboards - with type safety, server rendering, and a complete component system ready to extend.</div>
           </div>
 
           <div class="scat-row">
@@ -3856,7 +3907,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/googlecloud/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Cloud Run"><span>Cloud Run</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/googlebigquery/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="BigQuery"><span>BigQuery</span></div>
             </div>
-            <div class="scat-enables" data-pl="Bazy bez serwera, własne API, RLS, analytics na milionach wierszy, konteneryzacja" data-en="Serverless databases, custom APIs, row-level security, analytics at scale, containerisation" data-it="Database serverless, API custom, sicurezza a riga, analytics su scala, containerizzazione">Serverless databases, custom APIs, row-level security, analytics at scale, containerisation</div>
+            <div class="scat-enables" data-pl="Auth, baza danych i storage w kilka minut - potem własne API w Pythonie i BigQuery dla zapytań na milionach wierszy bez zarządzania serwerami." data-en="Auth, database, and storage in minutes - then custom Python APIs and BigQuery for querying millions of rows without managing servers." data-it="Auth, database e storage in pochi minuti - poi API Python custom e BigQuery per query su milioni di righe senza gestire server.">Auth, database, and storage in minutes - then custom Python APIs and BigQuery for querying millions of rows without managing servers.</div>
           </div>
 
           <div class="scat-row">
@@ -3866,7 +3917,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/anthropic/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Anthropic"><span>Anthropic</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/elevenlabs/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="ElevenLabs"><span>ElevenLabs</span></div>
             </div>
-            <div class="scat-enables" data-pl="Generowanie treści, agenty, głos, klasyfikacja, embeddingi, RAG, streaming" data-en="Content generation, agents, voice, classification, embeddings, RAG, streaming" data-it="Generazione di contenuti, agenti, voce, classificazione, embedding, RAG, streaming">Content generation, agents, voice, classification, embeddings, RAG, streaming</div>
+            <div class="scat-enables" data-pl="Dodaję generowanie tekstu, analizę dokumentów i głos do każdej aplikacji. Buduję agenty które rozumują, przeszukują i wykonują zadania automatycznie." data-en="Add text generation, document analysis, and voice to any app. Build agents that reason, search, and complete tasks without human input." data-it="Aggiungo generazione testo, analisi documenti e voce a qualsiasi app. Costruisco agenti che ragionano, cercano e completano task autonomamente.">Add text generation, document analysis, and voice to any app. Build agents that reason, search, and complete tasks without human input.</div>
           </div>
 
           <div class="scat-row">
@@ -3876,7 +3927,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/make/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Make"><span>Make</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/n8n/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="n8n"><span>n8n</span></div>
             </div>
-            <div class="scat-enables" data-pl="Workflow multi-systemowe bez pisania kodu, integracje CRM/email/webhook w godziny" data-en="Multi-system workflows without custom code, CRM/email/webhook integrations in hours" data-it="Workflow multi-sistema senza codice, integrazioni CRM/email/webhook in ore">Multi-system workflows without custom code, CRM/email/webhook integrations in hours</div>
+            <div class="scat-enables" data-pl="Łączę systemy, które nie mają API. CRM, e-mail, webhooki, arkusze - gotowe w godziny, bez pisania kodu, bez sprintów." data-en="Connect tools that don't talk to each other. CRM, email, webhooks, spreadsheets - wired up in hours without writing a line of code." data-it="Collego strumenti che non comunicano tra loro. CRM, email, webhook, fogli - collegati in ore senza scrivere codice.">Connect tools that don't talk to each other. CRM, email, webhooks, spreadsheets - wired up in hours without writing a line of code.</div>
           </div>
 
           <div class="scat-row">
@@ -3885,7 +3936,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/stripe/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Stripe"><span>Stripe</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/resend/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Resend"><span>Resend</span></div>
             </div>
-            <div class="scat-enables" data-pl="Subskrypcje, jednorazowe płatności, Customer Portal, transakcyjne maile, webhooks" data-en="Subscriptions, one-time payments, Customer Portal, transactional email, webhooks" data-it="Abbonamenti, pagamenti singoli, Customer Portal, email transazionali, webhook">Subscriptions, one-time payments, Customer Portal, transactional email, webhooks</div>
+            <div class="scat-enables" data-pl="Subskrypcje i jednorazowe płatności z zarządzanym billingiem - plus maile transakcyjne, które trafiają do skrzynki, nie do spamu." data-en="Subscriptions and one-time payments with managed billing - plus transactional emails that land in the inbox, not spam." data-it="Abbonamenti e pagamenti singoli con billing gestito - più email transazionali che arrivano nella posta, non nello spam.">Subscriptions and one-time payments with managed billing - plus transactional emails that land in the inbox, not spam.</div>
           </div>
 
           <div class="scat-row">
@@ -3895,7 +3946,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/apple/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="AppKit"><span>AppKit</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/xcode/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Xcode"><span>Xcode</span></div>
             </div>
-            <div class="scat-enables" data-pl="Natywne aplikacje macOS przez DMG, local-first, pełny dostęp do API systemu" data-en="Native macOS apps via DMG, local-first, full system API access" data-it="App macOS native via DMG, local-first, accesso completo alle API di sistema">Native macOS apps via DMG, local-first, full system API access</div>
+            <div class="scat-enables" data-pl="Prawdziwe aplikacje macOS - nie wrappery Electron. Menu bar, system tray, local-first, pełny dostęp do API systemu, własny DMG." data-en="Real macOS apps - not Electron wrappers. Menu bar, system tray, local-first, full system API access, custom DMG distribution." data-it="Vere app macOS - non wrapper Electron. Menu bar, system tray, local-first, pieno accesso alle API di sistema, distribuzione DMG.">Real macOS apps - not Electron wrappers. Menu bar, system tray, local-first, full system API access, custom DMG distribution.</div>
           </div>
 
           <div class="scat-row">
@@ -3906,7 +3957,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/github/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="GitHub"><span>GitHub</span></div>
               <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/cloudflare/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Cloudflare"><span>Cloudflare</span></div>
             </div>
-            <div class="scat-enables" data-pl="CI/CD z push-to-deploy, edge hosting, preview deployments, DNS i CDN" data-en="CI/CD with push-to-deploy, edge hosting, preview deployments, DNS and CDN" data-it="CI/CD con push-to-deploy, edge hosting, deployment di anteprima, DNS e CDN">CI/CD with push-to-deploy, edge hosting, preview deployments, DNS and CDN</div>
+            <div class="scat-enables" data-pl="Push do gita = deploy gotowy. Preview URL per branch, edge hosting globalnie, zero konfiguracji DNS i CDN w jednym miejscu." data-en="Push to git, get a live URL. Preview per branch, globally distributed edge hosting, DNS and CDN managed in one place." data-it="Push su git, URL live pronto. Preview per branch, edge hosting distribuito globalmente, DNS e CDN gestiti in un posto.">Push to git, get a live URL. Preview per branch, globally distributed edge hosting, DNS and CDN managed in one place.</div>
           </div>
 
         </div>
@@ -4585,12 +4636,19 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <div class="nl-band">
           <div class="nl-band-inner">
             <div class="nl-band-left">
-              <div class="nl-band-title" data-pl="Bądź na bieżąco" data-en="Stay in the loop" data-it="Rimani aggiornato">Bądź na bieżąco</div>
-              <div class="nl-band-sub" data-pl="Nowe projekty, przypadki użycia AI, spostrzeżenia GTM - raz w tygodniu." data-en="New builds, AI use cases, GTM insights - once a week." data-it="Nuovi progetti, casi d'uso AI, insight GTM - una volta a settimana.">Nowe projekty, przypadki użycia AI, spostrzeżenia GTM - raz w tygodniu.</div>
+              <div class="nl-band-eyebrow" data-pl="Newsletter" data-en="Newsletter" data-it="Newsletter">Newsletter</div>
+              <div class="nl-band-title" data-pl="Buduję rzeczy. Opisuję jak." data-en="I build things. I write about how." data-it="Costruisco cose. Scrivo di come.">I build things. I write about how.</div>
+              <div class="nl-band-sub" data-pl="Co tydzień: projekt, decyzja techniczna, lekcja z wdrożenia. Bez bullshitu, bez contentu dla contentu." data-en="Every week: a build, a technical decision, a lesson from shipping. No filler, no content for content's sake." data-it="Ogni settimana: un progetto, una decisione tecnica, una lezione dal lancio. Niente riempitivo.">Every week: a build, a technical decision, a lesson from shipping. No filler, no content for content's sake.</div>
+              <div class="nl-band-points">
+                <div class="nl-band-point" data-pl="Jak buduję produkty AI od zera do deploy'u" data-en="How I build AI products from zero to deployed" data-it="Come costruisco prodotti AI da zero al deploy">How I build AI products from zero to deployed</div>
+                <div class="nl-band-point" data-pl="GTM dla produktów technicznych - co działa w 2026" data-en="GTM for technical products - what actually works in 2026" data-it="GTM per prodotti tecnici - cosa funziona davvero nel 2026">GTM for technical products - what actually works in 2026</div>
+                <div class="nl-band-point" data-pl="Stack, narzędzia, decyzje architektoniczne bez owijania w bawełnę" data-en="Stack, tools, and architecture decisions without the fluff" data-it="Stack, strumenti e decisioni architetturali senza fronzoli">Stack, tools, and architecture decisions without the fluff</div>
+              </div>
             </div>
             <div class="nl-band-right">
               <input type="email" class="nl-input" id="nlEmail" data-pl-placeholder="twoj@email.pl" data-en-placeholder="your@email.com" data-it-placeholder="tua@email.it" placeholder="twoj@email.pl">
-              <button class="nl-btn" onclick="subscribeNewsletter()"><span data-pl="Zapisz się" data-en="Subscribe" data-it="Iscriviti">Zapisz się</span></button>
+              <button class="nl-btn" onclick="subscribeNewsletter()"><span data-pl="Zapisz się - za darmo" data-en="Subscribe - it's free" data-it="Iscriviti - è gratis">Subscribe - it's free</span></button>
+              <div class="nl-band-note" data-pl="Raz w tygodniu. Wypisz się kiedy chcesz." data-en="Once a week. Unsubscribe anytime." data-it="Una volta a settimana. Cancellati quando vuoi.">Once a week. Unsubscribe anytime.</div>
             </div>
           </div>
         </div>
