@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "portfolio",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "3457", "/Users/wojciech/Portfolio/.claude/worktrees/ecstatic-vaughan-6c0dfa"],
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "3457"],
       "port": 3457
     }
   ]

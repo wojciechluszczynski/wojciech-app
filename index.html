@@ -1978,10 +1978,248 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
   font-weight: 600 !important;
 }
 
-/* ---- PROFILE HERO: cleaner ---- */
+/* ---- PROFILE HERO: no card, clean section ---- */
 .profile-hero {
-  padding: 28px 0 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 0 28px !important;
   margin-bottom: 0 !important;
+  gap: 20px !important;
+}
+@media(max-width:680px) {
+  .profile-hero {
+    padding: 0 0 20px !important;
+    gap: 14px !important;
+  }
+}
+
+/* ---- SCAT: linear stack categories ---- */
+.scat-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-top: 28px;
+}
+.scat-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.scat-row:last-child { border-bottom: none; }
+.scat-name {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding-top: 3px;
+  grid-row: 1 / 3;
+  grid-column: 1;
+  align-self: start;
+}
+.scat-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  grid-row: 1;
+  grid-column: 2;
+  margin-bottom: 10px;
+}
+.scat-enables {
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.55;
+  grid-row: 2;
+  grid-column: 2;
+}
+.tech-icon-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-2);
+}
+@media(max-width:560px) {
+  .scat-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .scat-name { grid-row: 1; grid-column: 1; }
+  .scat-icons { grid-row: 2; grid-column: 1; margin-bottom: 0; }
+  .scat-enables { grid-row: 3; grid-column: 1; }
+}
+
+/* ---- TIMELINE: changelog style ---- */
+.tl-year-num {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.5px;
+  color: var(--text) !important;
+  font-variant-numeric: tabular-nums;
+}
+.tl-entry-head { align-items: baseline !important; gap: 10px !important; }
+.tl-tech-name { font-size: 13px !important; font-weight: 700 !important; }
+.tl-note { font-size: 12px !important; color: var(--text-2) !important; line-height: 1.55 !important; }
+.tl-cat-badge {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  padding: 2px 8px !important;
+  border-radius: 4px !important;
+  flex-shrink: 0;
+}
+.tl-entry { padding: 10px 0 !important; }
+.tl-entry.milestone { border-left: 2px solid var(--lime); padding-left: 12px !important; margin-left: -13px; }
+
+/* ---- CV header: clean, consistent ---- */
+.cv-header-strip {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 0 24px !important;
+  margin-bottom: 20px !important;
+}
+.cv-name { font-size: 22px !important; font-weight: 900 !important; letter-spacing: -0.5px !important; }
+.cv-role-tags { color: var(--text-3) !important; font-size: 11px !important; letter-spacing: 0.5px !important; }
+.cv-role-tag { background: var(--bg2) !important; color: var(--text-2) !important; border: 1px solid var(--border) !important; }
+
+/* ── Typeform-style contact form ── */
+.tf-form-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 320px;
+  padding: 40px 36px !important;
+}
+.tf-step { display: flex; flex-direction: column; gap: 20px; }
+.tf-q {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+.tf-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--border);
+  border-radius: 0;
+  padding: 10px 0;
+  font-size: 17px;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.tf-input:focus { border-bottom-color: var(--lime); }
+.tf-input::placeholder { color: var(--text-3); }
+.tf-textarea {
+  resize: none;
+  min-height: 120px;
+  line-height: 1.6;
+}
+.tf-next, .tf-submit {
+  align-self: flex-start;
+  background: var(--lime);
+  color: #111;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity .15s, transform .1s;
+  font-family: inherit;
+}
+.tf-next:hover, .tf-submit:hover { opacity: .88; transform: translateY(-1px); }
+.tf-progress {
+  display: flex;
+  gap: 6px;
+  margin-top: 28px;
+}
+.tf-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background .2s;
+}
+.tf-dot.active { background: var(--lime); }
+@media(max-width:560px) {
+  .tf-form-card { padding: 28px 20px !important; }
+  .tf-q { font-size: 18px; }
+  .tf-input { font-size: 15px; }
+}
+
+/* ── Newsletter band ── */
+.nl-band {
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 36px;
+  margin-top: 32px;
+}
+.nl-band-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.nl-band-left { flex: 1; min-width: 200px; }
+.nl-band-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: -0.2px;
+}
+.nl-band-sub { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+.nl-band-right {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.nl-input {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  width: 220px;
+  font-family: inherit;
+  transition: border-color .2s;
+}
+.nl-input:focus { border-color: var(--lime); }
+.nl-input::placeholder { color: var(--text-3); }
+.nl-btn {
+  background: var(--lime);
+  color: #111;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: opacity .15s;
+}
+.nl-btn:hover { opacity: .88; }
+@media(max-width:640px) {
+  .nl-band { padding: 24px 20px; }
+  .nl-band-inner { flex-direction: column; align-items: stretch; }
+  .nl-band-right { flex-direction: column; }
+  .nl-input { width: 100%; }
 }
 </style>
 
@@ -2044,11 +2282,6 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
     <div style="flex:1"></div>
 
-    <a href="https://subscribe.wojciech.io" target="_blank" class="hdr-newsletter" data-pl="Newsletter" data-en="Newsletter" data-it="Newsletter">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-      Newsletter
-    </a>
-
     <div class="lang-toggle" id="appLangToggle">
       <button class="lang-btn" id="btnPL" onclick="setLang('pl')">PL</button>
       <button class="lang-btn active" id="btnEN" onclick="setLang('en')">EN</button>
@@ -2103,10 +2336,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
               LinkedIn
             </a>
-            <a href="https://subscribe.wojciech.io" target="_blank" class="plink plink-lime">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,12 2,6"></polyline></svg>
-              <span data-pl="Newsletter" data-en="Newsletter" data-it="Newsletter">Newsletter</span>
-            </a>
+
           </div>
 
         </div>
@@ -2338,7 +2568,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
           <div class="card-body">
             <div class="card-header-row">
-              <div class="app-icon" style="background:#10b981">HM</div>
+              <div class="app-icon" style="background:#0d9488">HM</div>
               <div class="card-header-text">
                 <div class="card-title">HireMe</div>
                 <div class="card-header-cat">Recruitment · SaaS</div>
@@ -2577,45 +2807,6 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
         </div>
-        <!-- ===== Resume Builder ===== -->
-        <div class="app-card" data-tags="saas ai resume cv builder react typescript pdf career job" data-name="resume builder cv kreator generator">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#7c3aed;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#7c3aed;line-height:1;font-family:'Inter',sans-serif">RB</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">AI · Career Tools</div>
-            </div>
-            <div class="screen-ov"></div>
-            <div class="screen-meta">
-              <span class="cat-badge">SaaS</span>
-              <div class="s-live" style="color:#EBFF00"><div class="sdot" style="background:#EBFF00;box-shadow:0 0 6px rgba(235,255,0,.7)"></div>In Progress</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-header-row">
-              <div class="app-icon" style="background:#7c3aed;opacity:.7">RB</div>
-              <div class="card-header-text">
-                <div class="card-title" style="opacity:.7">Resume Builder <span style="font-size:11px;font-weight:600;color:#EBFF00;vertical-align:middle;margin-left:6px;background:rgba(235,255,0,.12);border:1px solid rgba(235,255,0,.25);border-radius:99px;padding:2px 8px">In Progress</span></div>
-                <div class="card-header-cat">AI · Career Tools</div>
-              </div>
-            </div>
-            <div class="card-tagline" data-pl="AI-powered kreator CV z generowaniem treści, dopasowaniem do oferty i eksportem PDF z gotowymi szablonami ATS." data-en="AI-powered resume builder with content generation, job offer matching and ATS-ready PDF export with templates." data-it="Creatore di CV basato su AI con generazione di contenuti, abbinamento alle offerte di lavoro ed esportazione PDF ATS-ready con template.">AI-powered kreator CV z generowaniem treści, dopasowaniem do oferty i eksportem PDF z gotowymi szablonami ATS.</div>
-            <div class="divider"></div>
-            <div class="sec-lbl">Coming soon</div>
-            <div class="usp-list">
-              <div class="usp-item"><div class="udot" style="opacity:.4"></div><span style="opacity:.5" data-pl="AI dopasowanie CV do konkretnej oferty pracy" data-en="AI matching of CV to specific job offer" data-it="Abbinamento AI del CV a una specifica offerta di lavoro">AI dopasowanie CV do konkretnej oferty pracy</span></div>
-              <div class="usp-item"><div class="udot" style="opacity:.4"></div><span style="opacity:.5" data-pl="Szablony ATS-friendly z 1-click PDF export" data-en="ATS-friendly templates with 1-click PDF export" data-it="Template ATS-friendly con esportazione PDF in 1 clic">Szablony ATS-friendly z 1-click PDF export</span></div>
-              <div class="usp-item"><div class="udot" style="opacity:.4"></div><span style="opacity:.5" data-pl="LinkedIn import + OpenAI rewrite" data-en="LinkedIn import + OpenAI rewrite" data-it="Importazione LinkedIn + riscrittura con OpenAI">LinkedIn import + OpenAI rewrite</span></div>
-            </div>
-            <div class="tech-row" style="opacity:.4"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">OpenAI</span><span class="tc">Supabase</span></div>
-            <div class="card-actions">
-              <a href="#" class="btn-p" style="opacity:.45;cursor:not-allowed;pointer-events:none">In Progress</a>
-              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
-            </div>
-          </div>
-        </div>
         <!-- Camper Rental -->
         <div class="app-card" data-tags="booking consumer react typescript supabase vercel" data-name="camper rental booking engine kamper wynajem">
           <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
@@ -2634,7 +2825,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
           <div class="card-body">
             <div class="card-header-row">
-              <div class="app-icon" style="background:#7c9e00">CR</div>
+              <div class="app-icon" style="background:#0e7490">CR</div>
               <div class="card-header-text">
                 <div class="card-title">Camper Rental</div>
                 <div class="card-header-cat">Booking Engine · Consumer</div>
@@ -2849,7 +3040,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
           <div class="card-body">
             <div class="card-header-row">
-              <div class="app-icon" style="background:#f59e0b">AK</div>
+              <div class="app-icon" style="background:#ea580c">AK</div>
               <div class="card-header-text">
                 <div class="card-title">Akademia AI</div>
                 <div class="card-header-cat">Education · B2B SaaS</div>
@@ -2893,7 +3084,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
           <div class="card-body">
             <div class="card-header-row">
-              <div class="app-icon" style="background:#0ea5e9">RL</div>
+              <div class="app-icon" style="background:#7c3aed">RL</div>
               <div class="card-header-text">
                 <div class="card-title">Relora</div>
                 <div class="card-header-cat">Relationship CRM · B2B SaaS</div>
@@ -3121,7 +3312,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
           <div class="doc-card">
             <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#10b981;color:#fff">HM</div>
+              <div class="doc-app-icon" style="background:#0d9488;color:#fff">HM</div>
               <div><div class="doc-app-name">HireMe</div><div class="doc-app-type">B2B SaaS · HR / Recruitment</div></div>
             </div>
             <div class="doc-section">
@@ -3262,32 +3453,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
           <div class="doc-card">
             <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#7c3aed;color:#fff">RB</div>
-              <div><div class="doc-app-name">Resume Builder</div><div class="doc-app-type">SaaS · AI / Career Tools</div></div>
-            </div>
-            <div class="doc-section">
-              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
-              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="AI-powered kreator CV z dopasowaniem do oferty, szablonami ATS-friendly i eksportem PDF. Dla specjalistów szukających pracy w Polsce i zagranicą." data-en="AI-powered resume builder with job offer matching, ATS-friendly templates and PDF export. Built for professionals job-hunting in Poland and abroad." data-it="Creatore di CV basato su AI con abbinamento alle offerte, template ATS-friendly ed esportazione PDF. Per professionisti in cerca di lavoro in Polonia e all'estero.">AI-powered resume builder with job offer matching, ATS-friendly templates and PDF export. Built for professionals job-hunting in Poland and abroad.</p>
-            </div>
-            <div class="doc-section">
-              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
-              <ul class="doc-feature-list">
-                <li data-pl="AI dopasowanie CV do konkretnej oferty pracy" data-en="AI matching of resume to specific job offer" data-it="Abbinamento AI del CV a una specifica offerta di lavoro">AI matching of resume to specific job offer</li>
-                <li data-pl="Szablony ATS-friendly z 1-click PDF export" data-en="ATS-friendly templates with 1-click PDF export" data-it="Template ATS-friendly con esportazione PDF in 1 clic">ATS-friendly templates with 1-click PDF export</li>
-                <li data-pl="LinkedIn import + OpenAI rewrite" data-en="LinkedIn import + OpenAI-powered rewrite" data-it="Importazione LinkedIn + riscrittura con OpenAI">LinkedIn import + OpenAI-powered rewrite</li>
-                <li data-pl="Edytor wizualny z podglądem na żywo" data-en="Visual editor with live preview" data-it="Editor visuale con anteprima in tempo reale">Visual editor with live preview</li>
-              </ul>
-            </div>
-            <div class="doc-section" style="margin-bottom:0">
-              <div class="doc-section-title">Tech Stack</div>
-              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">OpenAI</span><span class="doc-stack-pill key">Supabase</span></div>
-            </div>
-            <div class="doc-links"><span style="font-size:11px;color:#EBFF00;font-weight:700;background:rgba(235,255,0,.12);border:1px solid rgba(235,255,0,.25);border-radius:6px;padding:3px 10px">In Progress</span></div>
-          </div>
-
-          <div class="doc-card">
-            <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#b45309;color:#fff">CR</div>
+              <div class="doc-app-icon" style="background:#0e7490;color:#fff">CR</div>
               <div><div class="doc-app-name">Camper Rental</div><div class="doc-app-type">Consumer · Booking Engine</div></div>
             </div>
             <div class="doc-section">
@@ -3414,7 +3580,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
           <div class="doc-card">
             <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#f59e0b;color:#fff">AK</div>
+              <div class="doc-app-icon" style="background:#ea580c;color:#fff">AK</div>
               <div><div class="doc-app-name">Akademia AI</div><div class="doc-app-type">Education · SaaS</div></div>
             </div>
             <div class="doc-section">
@@ -3439,7 +3605,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
           <div class="doc-card">
             <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#0ea5e9;color:#fff">RL</div>
+              <div class="doc-app-icon" style="background:#7c3aed;color:#fff">RL</div>
               <div><div class="doc-app-name">Relora</div><div class="doc-app-type">B2B SaaS · Relationship CRM</div></div>
             </div>
             <div class="doc-section">
@@ -3662,420 +3828,85 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       <div class="stack-page">
 
         <div class="stack-page-header">
-          <div class="eyebrow" data-pl="Mapa stacku" data-en="Stack map" data-it="Mappa dello stack">Mapa stacku</div>
-          <h2 data-pl="Technologie i projekty" data-en="Technologies and projects" data-it="Tecnologie e progetti">Technologie i projekty</h2>
-          <p data-pl="Czego uzywam, do czego i dlaczego. Plus 18 projektow z ich dokladnym stackiem." data-en="What I use, for what and why. Plus 18 projects with their exact stack." data-it="Cosa uso, per cosa e perche. Piu 18 progetti con il loro stack esatto.">Czego uzywam, do czego i dlaczego. Plus 18 projektow z ich dokladnym stackiem.</p>
+          <div class="eyebrow" data-pl="Mapa stacku" data-en="Stack map" data-it="Mappa dello stack">Stack map</div>
+          <h2 data-pl="Jak to buduję" data-en="How I build" data-it="Come costruisco">How I build</h2>
+          <p data-pl="Kategorie technologii i jakie możliwości każda z nich otwiera." data-en="Technology categories I work with and what each one makes possible." data-it="Categorie tecnologiche e cosa ognuna di esse rende possibile.">Technology categories I work with and what each one makes possible.</p>
         </div>
 
-        <!-- TECH ICON GRID -->
-        <div class="tech-cats">
+        <div class="scat-list">
 
-          <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="Frontend" data-en="Frontend" data-it="Frontend">Frontend</div>
-            <div class="tech-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/react/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="React"><span>React</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/typescript/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="TypeScript"><span>TypeScript</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/tailwindcss/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Tailwind"><span>Tailwind</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/vite/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Vite"><span>Vite</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/shadcnui/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="shadcn/ui"><span>shadcn/ui</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/mapbox/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Mapbox"><span>Mapbox</span></div>
+          <div class="scat-row">
+            <div class="scat-name">Frontend</div>
+            <div class="scat-icons">
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/react/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="React"><span>React</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/typescript/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="TypeScript"><span>TypeScript</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/tailwindcss/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Tailwind"><span>Tailwind</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/vite/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Vite"><span>Vite</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/shadcnui/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="shadcn/ui"><span>shadcn/ui</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/nextdotjs/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Next.js"><span>Next.js</span></div>
             </div>
+            <div class="scat-enables" data-pl="PWA, dashboardy, design systemy, multi-page apps z routingiem i code-splittingiem" data-en="PWAs, dashboards, design systems, multi-page apps with routing and code-splitting" data-it="PWA, dashboard, design system, app multi-pagina con routing e code-splitting">PWAs, dashboards, design systems, multi-page apps with routing and code-splitting</div>
           </div>
 
-          <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="Backend i dane" data-en="Backend and data" data-it="Backend e dati">Backend i dane</div>
-            <div class="tech-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/supabase/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Supabase"><span>Supabase</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/fastapi/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="FastAPI"><span>FastAPI</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/googlecloud/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Cloud Run"><span>Cloud Run</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/googlebigquery/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="BigQuery"><span>BigQuery</span></div>
+          <div class="scat-row">
+            <div class="scat-name">Backend &amp; Data</div>
+            <div class="scat-icons">
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/supabase/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Supabase"><span>Supabase</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/fastapi/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="FastAPI"><span>FastAPI</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/googlecloud/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Cloud Run"><span>Cloud Run</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/googlebigquery/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="BigQuery"><span>BigQuery</span></div>
             </div>
+            <div class="scat-enables" data-pl="Bazy bez serwera, własne API, RLS, analytics na milionach wierszy, konteneryzacja" data-en="Serverless databases, custom APIs, row-level security, analytics at scale, containerisation" data-it="Database serverless, API custom, sicurezza a riga, analytics su scala, containerizzazione">Serverless databases, custom APIs, row-level security, analytics at scale, containerisation</div>
           </div>
 
-          <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="AI" data-en="AI" data-it="AI">AI</div>
-            <div class="tech-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/openai/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="OpenAI"><span>OpenAI</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/anthropic/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Anthropic"><span>Anthropic</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/elevenlabs/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="ElevenLabs"><span>ElevenLabs</span></div>
+          <div class="scat-row">
+            <div class="scat-name">AI</div>
+            <div class="scat-icons">
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/openai/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="OpenAI"><span>OpenAI</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/anthropic/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Anthropic"><span>Anthropic</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/elevenlabs/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="ElevenLabs"><span>ElevenLabs</span></div>
             </div>
+            <div class="scat-enables" data-pl="Generowanie treści, agenty, głos, klasyfikacja, embeddingi, RAG, streaming" data-en="Content generation, agents, voice, classification, embeddings, RAG, streaming" data-it="Generazione di contenuti, agenti, voce, classificazione, embedding, RAG, streaming">Content generation, agents, voice, classification, embeddings, RAG, streaming</div>
           </div>
 
-          <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="Automatyzacja" data-en="Automation" data-it="Automazione">Automation</div>
-            <div class="tech-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/zapier/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Zapier"><span>Zapier</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/make/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Make"><span>Make</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/n8n/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="n8n"><span>n8n</span></div>
+          <div class="scat-row">
+            <div class="scat-name">Automation</div>
+            <div class="scat-icons">
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/zapier/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Zapier"><span>Zapier</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/make/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Make"><span>Make</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/n8n/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="n8n"><span>n8n</span></div>
             </div>
+            <div class="scat-enables" data-pl="Workflow multi-systemowe bez pisania kodu, integracje CRM/email/webhook w godziny" data-en="Multi-system workflows without custom code, CRM/email/webhook integrations in hours" data-it="Workflow multi-sistema senza codice, integrazioni CRM/email/webhook in ore">Multi-system workflows without custom code, CRM/email/webhook integrations in hours</div>
           </div>
 
-          <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="Platnosci i email" data-en="Payments and email" data-it="Pagamenti e email">Platnosci i email</div>
-            <div class="tech-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/stripe/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Stripe"><span>Stripe</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/resend/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Resend"><span>Resend</span></div>
+          <div class="scat-row">
+            <div class="scat-name">Payments &amp; Email</div>
+            <div class="scat-icons">
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/stripe/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Stripe"><span>Stripe</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/resend/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Resend"><span>Resend</span></div>
             </div>
+            <div class="scat-enables" data-pl="Subskrypcje, jednorazowe płatności, Customer Portal, transakcyjne maile, webhooks" data-en="Subscriptions, one-time payments, Customer Portal, transactional email, webhooks" data-it="Abbonamenti, pagamenti singoli, Customer Portal, email transazionali, webhook">Subscriptions, one-time payments, Customer Portal, transactional email, webhooks</div>
           </div>
 
-          <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="Native / Desktop" data-en="Native / Desktop" data-it="Native / Desktop">Native / Desktop</div>
-            <div class="tech-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/swift/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Swift"><span>Swift</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/apple/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="AppKit"><span>AppKit</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/xcode/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Xcode"><span>Xcode</span></div>
+          <div class="scat-row">
+            <div class="scat-name">Native / Desktop</div>
+            <div class="scat-icons">
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/swift/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Swift"><span>Swift</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/apple/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="AppKit"><span>AppKit</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/xcode/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Xcode"><span>Xcode</span></div>
             </div>
+            <div class="scat-enables" data-pl="Natywne aplikacje macOS przez DMG, local-first, pełny dostęp do API systemu" data-en="Native macOS apps via DMG, local-first, full system API access" data-it="App macOS native via DMG, local-first, accesso completo alle API di sistema">Native macOS apps via DMG, local-first, full system API access</div>
           </div>
 
-          <div class="tech-cat">
-            <div class="tech-cat-label" data-pl="Infrastruktura" data-en="Infrastructure" data-it="Infrastruttura">Infrastruktura</div>
-            <div class="tech-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/vercel/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Vercel"><span>Vercel</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/netlify/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Netlify"><span>Netlify</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/github/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="GitHub"><span>GitHub</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/cloudflare/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Cloudflare"><span>Cloudflare</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/oracle/404040" width="24" height="24" loading="lazy" onerror="this.style.display='none'" alt="Oracle Cloud"><span>Oracle Cloud</span></div>
+          <div class="scat-row">
+            <div class="scat-name">Infrastructure</div>
+            <div class="scat-icons">
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/vercel/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Vercel"><span>Vercel</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/netlify/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Netlify"><span>Netlify</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/github/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="GitHub"><span>GitHub</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/cloudflare/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Cloudflare"><span>Cloudflare</span></div>
             </div>
-          </div>
-
-        </div>
-
-        <!-- PROJECTS GRID -->
-        <div class="stack-sec-head">
-          <div class="stack-sec-label" data-pl="19 PROJEKTÓW" data-en="19 PROJECTS" data-it="19 PROGETTI">19 PROJEKTÓW</div>
-          <div class="stack-sec-line"></div>
-        </div>
-
-        <div class="proj-tiles">
-
-
-          <!-- SabiSzop -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#1C69D4">SS</div>
-                <div><div class="proj-tile-name">SabiSzop</div><div class="proj-tile-cat">Marketplace · B2C</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Tailwind</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/netlify/00C7B7" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Netlify</span>
-              <span class="pt"><span class="pt-l" style="background:#555">PW</span> PWA</span>
-            </div>
-          </div>
-
-          <!-- Kadromierz Hub -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#1a1a1a;border:1px solid #444">KH</div>
-                <div><div class="proj-tile-name">Kadromierz Hub</div><div class="proj-tile-cat">B2B SaaS · Content</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><span class="pt-l" style="background:#4F46E5">B4</span> Base44</span>
-              <span class="pt"><span class="pt-l" style="background:#6B7280">NC</span> No-code</span>
-            </div>
-          </div>
-
-          <!-- GrowthHub -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#10B981">GH</div>
-                <div><div class="proj-tile-name">GrowthHub</div><div class="proj-tile-cat">B2B SaaS · Growth</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/netlify/00C7B7" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Netlify</span>
-            </div>
-          </div>
-
-          <!-- HireMe -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#6366F1">HM</div>
-                <div><div class="proj-tile-name">HireMe</div><div class="proj-tile-cat">SaaS · HR</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/netlify/00C7B7" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Netlify</span>
-            </div>
-          </div>
-
-          <!-- AN Projekt -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#8B5CF6">AN</div>
-                <div><div class="proj-tile-name">AN Projekt</div><div class="proj-tile-cat">Website · Interior</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Tailwind</span>
-              <span class="pt"><span class="pt-l" style="background:#FF6B6B">Lv</span> Lovable</span>
-            </div>
-          </div>
-
-          <!-- Ciryam -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#F59E0B">Ci</div>
-                <div><div class="proj-tile-name">Ciryam</div><div class="proj-tile-cat">Website · Music</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Tailwind</span>
-            </div>
-          </div>
-
-          <!-- Działkometr -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#22C55E">Dz</div>
-                <div><div class="proj-tile-name">Działkometr</div><div class="proj-tile-cat">PWA · Real Estate</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/mapbox/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Mapbox</span>
-              <span class="pt"><span class="pt-l" style="background:#555">PW</span> PWA</span>
-            </div>
-          </div>
-
-          <!-- AdsAI -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#412991">AA</div>
-                <div><div class="proj-tile-name">AdsAI</div><div class="proj-tile-cat">B2B SaaS · Ads</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/openai/74aa9c" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> OpenAI</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/googleads/4285F4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Google Ads</span>
-            </div>
-          </div>
-
-          <!-- Resume Builder -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#6B7280">RB</div>
-                <div><div class="proj-tile-name">Resume Builder</div><div class="proj-tile-cat">SaaS · AI</div></div>
-              </div>
-              <div class="proj-tile-sdot wip"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/openai/74aa9c" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> OpenAI</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
-            </div>
-          </div>
-
-          <!-- Camper Rental -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#0EA5E9">CR</div>
-                <div><div class="proj-tile-name">Camper Rental</div><div class="proj-tile-cat">Booking Engine</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/stripe/635BFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Stripe</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
-            </div>
-          </div>
-
-          <!-- Amoree -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#EC4899">Am</div>
-                <div><div class="proj-tile-name">Amoree</div><div class="proj-tile-cat">Weddings · B2C</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
-            </div>
-          </div>
-
-          <!-- Wycinarki Laserowe -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#374151">WL</div>
-                <div><div class="proj-tile-name">Wycinarki Laserowe</div><div class="proj-tile-cat">B2B · SEO</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/markdown/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Markdown</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/resend/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Resend</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
-            </div>
-          </div>
-
-          <!-- Spawarki Laserowe -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#1E40AF">SL</div>
-                <div><div class="proj-tile-name">Spawarki Laserowe</div><div class="proj-tile-cat">B2B · SEO</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/markdown/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Markdown</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
-            </div>
-          </div>
-
-          <!-- Willa w Parku -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#D97706">WP</div>
-                <div><div class="proj-tile-name">Willa w Parku</div><div class="proj-tile-cat">Website · Hospitality</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Tailwind</span>
-              <span class="pt"><span class="pt-l" style="background:#FF6B6B">Lv</span> Lovable</span>
-            </div>
-          </div>
-
-          <!-- Akademia AI -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#7C3AED">Ak</div>
-                <div><div class="proj-tile-name">Akademia AI</div><div class="proj-tile-cat">Education SaaS</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/stripe/635BFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Stripe</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
-            </div>
-          </div>
-
-          <!-- Relora -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#0F766E">Rl</div>
-                <div><div class="proj-tile-name">Relora</div><div class="proj-tile-cat">B2B SaaS · CRM</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/nextdotjs/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Next.js</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/resend/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Resend</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
-            </div>
-          </div>
-
-          <!-- Ads Assistant -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#16A34A">AS</div>
-                <div><div class="proj-tile-name">Ads Assistant</div><div class="proj-tile-cat">B2B SaaS · Performance</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Tailwind</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vercel/000000" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vercel</span>
-            </div>
-          </div>
-
-          <!-- Brand Brain 24 -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#18181B;border:1px solid #444">B2</div>
-                <div><div class="proj-tile-name">Brand Brain 24</div><div class="proj-tile-cat">B2B SaaS · AI</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/vite/646CFF" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Vite</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/openai/74aa9c" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> OpenAI</span>
-              <span class="pt"><span class="pt-l" style="background:#18181B">Sh</span> shadcn/ui</span>
-            </div>
-          </div>
-
-          <!-- NotchCue -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#1C1C1E">NC</div>
-                <div><div class="proj-tile-name">NotchCue</div><div class="proj-tile-cat">Desktop Utility · macOS</div></div>
-              </div>
-              <div class="proj-tile-sdot live"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/swift/F05138" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Swift</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/apple/404040" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> AppKit</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/xcode/1575F9" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Xcode</span>
-              <span class="pt"><span class="pt-l" style="background:#1C1C1E">Av</span> AVFoundation</span>
-            </div>
+            <div class="scat-enables" data-pl="CI/CD z push-to-deploy, edge hosting, preview deployments, DNS i CDN" data-en="CI/CD with push-to-deploy, edge hosting, preview deployments, DNS and CDN" data-it="CI/CD con push-to-deploy, edge hosting, deployment di anteprima, DNS e CDN">CI/CD with push-to-deploy, edge hosting, preview deployments, DNS and CDN</div>
           </div>
 
         </div>
@@ -4107,7 +3938,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 Brand Brain 24 + Relora</span>
+                  <span class="tl-tech-name">AI-native SaaS platform shipped</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
                 <div class="tl-note" data-pl="AI-native SaaS - brand intelligence z automatycznymi briefami i CRM relationship graph dla B2B." data-en="AI-native SaaS - brand intelligence with automated briefs and B2B relationship graph CRM." data-it="SaaS AI-native - brand intelligence con brief automatici e CRM relationship graph per B2B.">AI-native SaaS - brand intelligence with automated briefs and B2B relationship graph CRM.</div>
@@ -4119,7 +3950,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 Wycinarki + Spawarki Laserowe</span>
+                  <span class="tl-tech-name">SEO-first B2B product sites</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
                 <div class="tl-note" data-pl="SEO-first strony dla B2B - structured data, LLM discoverability, każda zbudowana w 2h." data-en="SEO-first B2B product sites - structured data, LLM discoverability, each built in under 2h." data-it="Siti prodotto SEO-first per B2B - dati strutturati, LLM discoverability, ciascuno costruito in 2h.">SEO-first B2B product sites - structured data, LLM discoverability, each built in under 2h.</div>
@@ -4131,7 +3962,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 NotchCue</span>
+                  <span class="tl-tech-name">Native macOS desktop utility shipped</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
                 <div class="tl-note" data-pl="Natywna aplikacja macOS - teleprompter umieszczający notatki pod notchem kamery MacBooka. Swift, AppKit, local-first, własny DMG pipeline." data-en="Native macOS teleprompter placing private notes under the MacBook camera notch. Swift, AppKit, local-first, custom DMG build pipeline." data-it="Teleprompter macOS nativo che posiziona note private sotto il notch della fotocamera MacBook. Swift, AppKit, local-first, pipeline DMG personalizzato.">Native macOS teleprompter placing private notes under the MacBook camera notch. Swift, AppKit, local-first, custom DMG build pipeline.</div>
@@ -4163,7 +3994,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 HireMe + Akademia AI</span>
+                  <span class="tl-tech-name">Consumer SaaS with Stripe subscriptions</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
                 <div class="tl-note" data-pl="Tracker rekrutacyjny i platforma kursów audio z certyfikacją - pierwsze produkty consumer z Stripe." data-en="Recruitment tracker and audio course platform with certification - first consumer products with Stripe." data-it="Tracker di recruiting e piattaforma di corsi audio con certificazione - primi prodotti consumer con Stripe.">Recruitment tracker and audio course platform with certification - first consumer products with Stripe.</div>
@@ -4175,7 +4006,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 SabiSzop + VeloLodz</span>
+                  <span class="tl-tech-name">Consumer apps with AI features</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
                 <div class="tl-note" data-pl="Consumer apps z AI - smart listy zakupów i platforma kolarskiej społeczności z asystentem AREK." data-en="Consumer apps with AI - smart shopping lists and a cycling community with AI assistant AREK." data-it="App consumer con AI - liste della spesa intelligenti e comunità ciclistica con assistente AREK.">Consumer apps with AI - smart shopping lists and a cycling community with AI assistant AREK.</div>
@@ -4187,7 +4018,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 AN Projekt, Amoree, Ciryam, Willa w Parku</span>
+                  <span class="tl-tech-name">Client sites - rapid delivery model</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
                 <div class="tl-note" data-pl="Strony dla klientów - pracownia wnętrz, zaproszenie ślubne, zespół rockowy, klubokawiarnia." data-en="Client sites - interior design studio, wedding hub, rock band, club-café. Zero to deployed fast." data-it="Siti per clienti - studio di design, hub matrimoniale, band rock, club-café. Da zero al deploy rapidamente.">Client sites - interior design studio, wedding hub, rock band, club-café. Zero to deployed fast.</div>
@@ -4229,7 +4060,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 GrowthHub</span>
+                  <span class="tl-tech-name">First internal SaaS dashboard</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
                 <div class="tl-note" data-pl="Pierwszy własny dashboard SaaS - demand gen, lead scoring i revenue tracking dla Kadromierz." data-en="First own SaaS dashboard - demand gen, lead scoring and revenue tracking for Kadromierz." data-it="Primo dashboard SaaS - demand gen, lead scoring e revenue tracking per Kadromierz.">First own SaaS dashboard - demand gen, lead scoring and revenue tracking for Kadromierz.</div>
@@ -4241,7 +4072,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 Działkometr</span>
+                  <span class="tl-tech-name">Data-heavy PWA with geo-analysis</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
                 <div class="tl-note" data-pl="Kalkulator wartości działek z analizą lokalizacji, mediami i wyceną nieruchomości." data-en="Plot value calculator with location analysis, utilities and property valuation in one view." data-it="Calcolatore del valore dei terreni con analisi della posizione e valutazione immobiliare.">Plot value calculator with location analysis, utilities and property valuation in one view.</div>
@@ -4253,7 +4084,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="tl-entry-left"><div class="tl-dot"></div></div>
               <div class="tl-entry-right">
                 <div class="tl-entry-head">
-                  <span class="tl-tech-name">🚀 Ads Assistant</span>
+                  <span class="tl-tech-name">Multi-account performance dashboard</span>
                   <span class="tl-cat-badge" style="background:rgba(235,255,0,.12);color:#9aaa00;border-color:rgba(235,255,0,.3)" data-pl="Shipped" data-en="Shipped" data-it="Lanciato">Shipped</span>
                 </div>
                 <div class="tl-note" data-pl="Google Ads multi-konto z AI ICP scoringiem, ROAS tracking i creative fatigue alertami." data-en="Multi-account Google Ads dashboard with AI ICP scoring, ROAS tracking and creative fatigue alerts." data-it="Dashboard Google Ads multi-account con AI ICP scoring, ROAS tracking e creative fatigue alerts.">Multi-account Google Ads dashboard with AI ICP scoring, ROAS tracking and creative fatigue alerts.</div>
@@ -4361,15 +4192,15 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
             <div style="text-align:center;padding:8px 0;border-left:1px solid var(--border)">
               <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">60%</div>
-              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Brand Lift przy SentiOne" data-en="Brand Lift at SentiOne" data-it="Brand Lift a SentiOne">Brand Lift<br>przy SentiOne</div>
+              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Brand Lift przy SentiOne" data-en="Brand Lift at SentiOne" data-it="Brand Lift a SentiOne">Brand Lift przy SentiOne</div>
             </div>
             <div style="text-align:center;padding:8px 0;border-left:1px solid var(--border)">
               <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">80%</div>
-              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Wzrost pozyskiwania klientów" data-en="Customer Acq. Growth" data-it="Crescita acquisizione clienti">Customer<br>Acq. Growth</div>
+              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Wzrost pozyskiwania klientów" data-en="Customer Acq. Growth" data-it="Crescita acquisizione clienti">Customer Acq. Growth</div>
             </div>
             <div style="text-align:center;padding:8px 0;border-left:1px solid var(--border)">
               <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">150%</div>
-              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Śr. wzrost<br>przychodów" data-en="Avg. Revenue<br>Uplift" data-it="Crescita media<br>ricavi">Avg. Revenue<br>Uplift</div>
+              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Śr. wzrost<br>przychodów" data-en="Avg. Revenue Uplift" data-it="Crescita media ricavi">Avg. Revenue Uplift</div>
             </div>
           </div>
         </div>
@@ -4715,76 +4546,51 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <div class="contact-bio" data-pl="Projektuję i buduję - systemy wzrostu, produkty webowe i AI workflows dla B2B SaaS founderów i scale-upów. Praca zdalna, szybka egzekucja, zero bullshitu." data-en="I design and build - growth systems, web products and AI workflows for B2B SaaS founders and scale-ups. Remote, fast execution, no fluff." data-it="Progetto e costruisco - sistemi di crescita, prodotti web e AI workflow per founder B2B SaaS e scale-up. Lavoro da remoto, esecuzione rapida, zero inutilità.">Projektuję i buduję - systemy wzrostu, produkty webowe i AI workflows dla B2B SaaS founderów i scale-upów. Praca zdalna, szybka egzekucja, zero bullshitu.</div>
             </div>
 
-            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:14px;padding:20px 22px">
-              <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-3);margin-bottom:12px" data-pl="Znajdź mnie online" data-en="Find me online" data-it="Trovami online">Znajdź mnie online</div>
-              <div class="contact-links-grid">
-                <a href="https://wojciech.io" target="_blank" class="contact-link-card">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                  <div><span class="contact-link-label">Website</span><span class="contact-link-val">wojciech.io</span></div>
-                </a>
-                <a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank" class="contact-link-card">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                  <div><span class="contact-link-label">LinkedIn</span><span class="contact-link-val">wojciech-luszczynski</span></div>
-                </a>
-                <a href="https://substack.com/@luscinetti" target="_blank" class="contact-link-card">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"></path></svg>
-                  <div><span class="contact-link-label">Newsletter</span><span class="contact-link-val">@luscinetti</span></div>
-                </a>
-                <a href="https://github.com/wojciechluszczynski" target="_blank" class="contact-link-card">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <div><span class="contact-link-label">GitHub</span><span class="contact-link-val">wojciechluszczynski</span></div>
-                </a>
-                <a href="https://twitter.com/w_luszczynski" target="_blank" class="contact-link-card">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.727-8.83L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-                  <div><span class="contact-link-label">Twitter / X</span><span class="contact-link-val">@w_luszczynski</span></div>
-                </a>
-                <a href="mailto:hello@wojciech.io" class="contact-link-card">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,12 2,6"></polyline></svg>
-                  <div><span class="contact-link-label">Email</span><span class="contact-link-val">hello@wojciech.io</span></div>
-                </a>
-              </div>
-            </div>
           </div>
 
           <!-- Right: Form -->
-          <div class="contact-form-card">
-            <div class="contact-form-title" data-pl="Napisz do mnie" data-en="Get in touch" data-it="Contattami">Napisz do mnie</div>
-            <div class="contact-form-sub" data-pl="Masz projekt? Szukasz kogoś kto zbuduje aplikację, zaprojektuje GTM, wdroży AI do procesów? Odezwę się w 24h." data-en="Have a project? Looking for someone to build an app, design GTM, deploy AI into your processes? I respond within 24h." data-it="Hai un progetto? Cerchi qualcuno che costruisca un'app, progetti un GTM, implementi AI nei tuoi processi? Rispondo entro 24h.">Masz projekt? Szukasz kogoś kto zbuduje aplikację, zaprojektuje GTM, wdroży AI do procesów? Odezwę się w 24h.</div>
-            <div style="margin-bottom:16px">
-              <div class="contact-services-row" id="serviceChips" style="gap:7px">
-                <label class="svc-chip"><input type="checkbox" value="AI Apps &amp; Automation" onchange="updateServices()"><span data-pl="AI Apps &amp; Automation" data-en="AI Apps &amp; Automation" data-it="AI Apps &amp; Automation">AI Apps &amp; Automation</span></label>
-                <label class="svc-chip"><input type="checkbox" value="GTM Architecture" onchange="updateServices()"><span data-pl="GTM Architecture" data-en="GTM Architecture" data-it="GTM Architecture">GTM Architecture</span></label>
-                <label class="svc-chip"><input type="checkbox" value="Web Apps / PWA / SaaS" onchange="updateServices()"><span data-pl="Web Apps / PWA / SaaS" data-en="Web Apps / PWA / SaaS" data-it="Web Apps / PWA / SaaS">Web Apps / PWA / SaaS</span></label>
-                <label class="svc-chip"><input type="checkbox" value="Growth Strategy" onchange="updateServices()"><span data-pl="Growth Strategy" data-en="Growth Strategy" data-it="Growth Strategy">Growth Strategy</span></label>
-                <label class="svc-chip"><input type="checkbox" value="Lead Gen Systems" onchange="updateServices()"><span data-pl="Lead Gen Systems" data-en="Lead Gen Systems" data-it="Lead Gen Systems">Lead Gen Systems</span></label>
-                <label class="svc-chip"><input type="checkbox" value="Marketing Automation" onchange="updateServices()"><span data-pl="Marketing Automation" data-en="Marketing Automation" data-it="Marketing Automation">Marketing Automation</span></label>
-                <label class="svc-chip"><input type="checkbox" value="Strona WWW" onchange="updateServices()"><span data-pl="Strona WWW" data-en="Website" data-it="Sito web">Strona WWW</span></label>
-                <label class="svc-chip"><input type="checkbox" value="Konsultacje AI" onchange="updateServices()"><span data-pl="Konsultacje AI" data-en="AI Consulting" data-it="Consulenza AI">Konsultacje AI</span></label>
+          <div class="contact-form-card tf-form-card">
+            <div id="contactFormWrap">
+              <div class="tf-step" id="tfStep1">
+                <div class="tf-q" data-pl="Jak masz na imię?" data-en="What's your name?" data-it="Come ti chiami?">Jak masz na imię?</div>
+                <input type="text" class="tf-input" id="formName" data-pl-placeholder="Jan Kowalski" data-en-placeholder="John Smith" data-it-placeholder="Mario Rossi" placeholder="Jan Kowalski" autocomplete="name">
+                <button type="button" class="tf-next" onclick="tfNext(1)"><span data-pl="Dalej" data-en="Next" data-it="Avanti">Dalej</span> →</button>
               </div>
-              <input type="hidden" id="cServices" value="">
+              <div class="tf-step" id="tfStep2" style="display:none">
+                <div class="tf-q" data-pl="Twój email?" data-en="Your email?" data-it="La tua email?">Twój email?</div>
+                <input type="email" class="tf-input" id="formEmail" placeholder="jan@firma.pl" autocomplete="email">
+                <button type="button" class="tf-next" onclick="tfNext(2)"><span data-pl="Dalej" data-en="Next" data-it="Avanti">Dalej</span> →</button>
+              </div>
+              <div class="tf-step" id="tfStep3" style="display:none">
+                <div class="tf-q" data-pl="O co chodzi?" data-en="What's on your mind?" data-it="Di cosa si tratta?">O co chodzi?</div>
+                <textarea class="tf-input tf-textarea" id="formMessage" data-pl-placeholder="Opisz projekt - co budujesz, dla kogo, co chcesz osiągnąć..." data-en-placeholder="Describe your project - what you're building, for whom, what's the goal..." data-it-placeholder="Descrivi il progetto - cosa stai costruendo, per chi, qual è l'obiettivo..." placeholder="Opisz projekt - co budujesz, dla kogo, co chcesz osiągnąć..." rows="5"></textarea>
+                <button type="button" class="tf-submit" onclick="tfSubmit()"><span data-pl="Wyślij" data-en="Send message" data-it="Invia">Wyślij</span></button>
+              </div>
+              <div class="tf-progress" id="tfProgress">
+                <div class="tf-dot active" id="tfDot1"></div>
+                <div class="tf-dot" id="tfDot2"></div>
+                <div class="tf-dot" id="tfDot3"></div>
+              </div>
+              <div id="formError" style="display:none;color:#ff5f5f;font-size:12px;font-weight:600;padding:8px 12px;background:rgba(255,95,95,0.1);border:1px solid rgba(255,95,95,0.25);border-radius:8px;margin-top:12px"></div>
             </div>
-            <div id="contactFormWrap"><form onsubmit="submitForm(event)" style="display:flex;flex-direction:column;gap:12px">
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-                <div class="form-group">
-                  <label class="form-label" data-pl="Imię i nazwisko" data-en="Full name" data-it="Nome e cognome">Imię i nazwisko</label>
-                  <input type="text" class="form-input" id="formName" data-pl-placeholder="Jan Kowalski" data-en-placeholder="John Smith" data-it-placeholder="Mario Rossi" placeholder="Jan Kowalski" required="">
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-input" id="formEmail" placeholder="jan@firma.pl" required="">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" data-pl="Wiadomość" data-en="Message" data-it="Messaggio">Wiadomość</label>
-                <textarea class="form-input" id="formMessage" rows="4" data-pl-placeholder="Opisz projekt - co budujesz, dla kogo, jaki jest cel..." data-en-placeholder="Describe your project - what you're building, for whom, what's the goal..." data-it-placeholder="Descrivi il tuo progetto - cosa stai costruendo, per chi, qual è l'obiettivo..." placeholder="Opisz projekt - co budujesz, dla kogo, jaki jest cel..." required=""></textarea>
-              </div>
-              <div id="formError" style="display:none;color:#ff5f5f;font-size:12px;font-weight:600;padding:8px 12px;background:rgba(255,95,95,0.1);border:1px solid rgba(255,95,95,0.25);border-radius:8px;margin-bottom:8px"></div><button type="submit" class="form-submit" data-pl="Wyślij" data-en="Send" data-it="Invia">Send</button>
-            </form></div><!-- /contactFormWrap -->
-            <div id="formSuccess" style="display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;text-align:center;gap:12px">
+            <div id="formSuccess" style="display:none;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px;text-align:center;gap:12px">
               <div style="width:52px;height:52px;border-radius:50%;background:rgba(16,179,108,0.12);border:1px solid rgba(16,179,108,0.28);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b36c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
-              <div style="font-size:18px;font-weight:900;color:var(--text)">Message sent!</div>
-              <div style="font-size:13px;color:var(--text-2);max-width:280px;line-height:1.6">I'll get back to you within 24h. Check your inbox.</div>
+              <div style="font-size:18px;font-weight:900;color:var(--text)" data-pl="Wiadomość wysłana!" data-en="Message sent!" data-it="Messaggio inviato!">Wiadomość wysłana!</div>
+              <div style="font-size:13px;color:var(--text-2);max-width:280px;line-height:1.6" data-pl="Odezwę się w ciągu 24h. Sprawdź skrzynkę." data-en="I'll get back to you within 24h. Check your inbox." data-it="Ti risponderò entro 24h. Controlla la tua casella.">Odezwę się w ciągu 24h. Sprawdź skrzynkę.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter band -->
+        <div class="nl-band">
+          <div class="nl-band-inner">
+            <div class="nl-band-left">
+              <div class="nl-band-title" data-pl="Bądź na bieżąco" data-en="Stay in the loop" data-it="Rimani aggiornato">Bądź na bieżąco</div>
+              <div class="nl-band-sub" data-pl="Nowe projekty, przypadki użycia AI, spostrzeżenia GTM - raz w tygodniu." data-en="New builds, AI use cases, GTM insights - once a week." data-it="Nuovi progetti, casi d'uso AI, insight GTM - una volta a settimana.">Nowe projekty, przypadki użycia AI, spostrzeżenia GTM - raz w tygodniu.</div>
+            </div>
+            <div class="nl-band-right">
+              <input type="email" class="nl-input" id="nlEmail" data-pl-placeholder="twoj@email.pl" data-en-placeholder="your@email.com" data-it-placeholder="tua@email.it" placeholder="twoj@email.pl">
+              <button class="nl-btn" onclick="subscribeNewsletter()"><span data-pl="Zapisz się" data-en="Subscribe" data-it="Iscriviti">Zapisz się</span></button>
             </div>
           </div>
         </div>
@@ -4794,10 +4600,6 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   
   <footer>
     <p>© 2026 <span>Wojciech Łuszczyński</span> · <a href="mailto:hello@wojciech.io" style="color:var(--text-2);text-decoration:none;">hello@wojciech.io</a></p>
-    <div class="footer-links" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a href="https://notch.wojciech.io" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:color .15s" onmouseover="this.style.color='#EBFF00'" onmouseout="this.style.color='var(--text-2)'"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg> NotchCue</a>
-      <a href="https://subscribe.wojciech.io" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:color .15s" onmouseover="this.style.color='#EBFF00'" onmouseout="this.style.color='var(--text-2)'"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> AI Espresso</a>
-    </div>
     <div class="footer-socials">
       <a href="https://wojciech.io" target="_blank" class="fsoc" title="Website"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></a>
       <a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank" class="fsoc" title="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
@@ -5020,33 +4822,39 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     document.getElementById('noResults').style.display = count === 0 ? '' : 'none';
   }
 
-  // ===================== CONTACT FORM =====================
-  function submitForm(e) {
-    e.preventDefault();
-    
+  // ===================== CONTACT FORM (Typeform-style) =====================
+  function tfNext(step) {
+    const errEl = document.getElementById('formError');
+    errEl.style.display = 'none';
+    if (step === 1) {
+      const name = document.getElementById('formName').value.trim();
+      if (!name) { errEl.textContent = 'Please enter your name.'; errEl.style.display = 'block'; return; }
+      document.getElementById('tfStep1').style.display = 'none';
+      document.getElementById('tfStep2').style.display = 'flex';
+      document.getElementById('tfDot1').classList.remove('active');
+      document.getElementById('tfDot2').classList.add('active');
+      document.getElementById('formEmail').focus();
+    } else if (step === 2) {
+      const email = document.getElementById('formEmail').value.trim();
+      if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) { errEl.textContent = 'Please enter a valid email.'; errEl.style.display = 'block'; return; }
+      document.getElementById('tfStep2').style.display = 'none';
+      document.getElementById('tfStep3').style.display = 'flex';
+      document.getElementById('tfDot2').classList.remove('active');
+      document.getElementById('tfDot3').classList.add('active');
+      document.getElementById('formMessage').focus();
+    }
+  }
+
+  function tfSubmit() {
+    const errEl = document.getElementById('formError');
+    errEl.style.display = 'none';
     const name = document.getElementById('formName').value.trim();
     const email = document.getElementById('formEmail').value.trim();
     const message = document.getElementById('formMessage').value.trim();
-    
-    // Validation
-    if (!name) {
-      showFormError('Name is required');
-      return;
-    }
-    if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      showFormError('Valid email is required');
-      return;
-    }
-    if (!message || message.length < 20) {
-      showFormError('Message must be at least 20 characters');
-      return;
-    }
-    
-    const submitBtn = document.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-    
-    // Send via Formspree
+    if (!message || message.length < 10) { errEl.textContent = 'Please write a short message.'; errEl.style.display = 'block'; return; }
+    const btn = document.querySelector('.tf-submit');
+    btn.disabled = true;
+    btn.textContent = '...';
     fetch('https://formspree.io/f/xdkondap', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -5058,33 +4866,46 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         document.getElementById('contactFormWrap').style.display = 'none';
         document.getElementById('formSuccess').style.display = 'flex';
       } else {
-        showFormError('Error sending message. Please try again.');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
+        errEl.textContent = 'Error sending. Please try again.';
+        errEl.style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Send message';
       }
     })
-    .catch(err => {
-      showFormError('Network error. Please try again.');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
+    .catch(() => {
+      errEl.textContent = 'Network error. Please try again.';
+      errEl.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Send message';
     });
   }
-  
-  function showFormError(msg) {
-    const errEl = document.getElementById('formError');
-    errEl.textContent = msg;
-    errEl.style.display = 'block';
+
+  function subscribeNewsletter() {
+    const input = document.getElementById('nlEmail');
+    const email = (input ? input.value : '').trim();
+    if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      input && input.focus(); return;
+    }
+    fetch('https://formspree.io/f/xdkondap', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ newsletter: true, email })
+    }).then(() => {
+      if (input) { input.value = ''; input.placeholder = '✓ Subscribed!'; }
+    }).catch(() => {});
   }
+
+  // Typeform: allow Enter key to advance steps
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    const s1 = document.getElementById('tfStep1');
+    const s2 = document.getElementById('tfStep2');
+    const s3 = document.getElementById('tfStep3');
+    if (s1 && s1.style.display !== 'none' && document.activeElement === document.getElementById('formName')) tfNext(1);
+    else if (s2 && s2.style.display !== 'none' && document.activeElement === document.getElementById('formEmail')) { e.preventDefault(); tfNext(2); }
+  });
 
   // Init lang on load
   setLang(currentLang);
   filterApps(); // initialize count dynamically
-
-  function updateServices() {
-    const vals = [...document.querySelectorAll('#serviceChips input:checked')].map(i => i.value);
-    const el = document.getElementById('cServices');
-    if (el) el.value = vals.join(', ');
-  }
 
   function toggleAcc(header) {
     const body = header.nextElementSibling;
