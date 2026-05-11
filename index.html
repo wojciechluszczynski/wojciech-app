@@ -300,11 +300,12 @@
     .mob-nav-btn.active::before {
       content: '';
       position: absolute;
-      top: 0; left: 20%; right: 20%;
+      top: 0; left: 25%; right: 25%;
       height: 2px;
-      background: var(--lime);
+      background: #EBFF00;
       border-radius: 0 0 3px 3px;
     }
+    .mob-nav-btn.active svg { color: var(--text); }
     .mob-nav-btn svg { transition: opacity .15s; }
     .mob-nav-btn.active svg { opacity: 1; }
     .mob-nav-btn:not(.active) svg { opacity: 0.45; }
@@ -707,7 +708,7 @@
       flex-wrap:wrap; gap:10px;
     }
     footer p { font-size:11px; color:var(--text-3); font-weight:500; }
-    footer p span { color:var(--lime); font-weight:700; }
+    footer p span { color:var(--text-2); font-weight:600; }
     .footer-socials { display:flex; gap:6px; }
     .fsoc {
       width:28px; height:28px; border-radius:7px;
@@ -927,17 +928,20 @@
     }
     .tl-dot {
       display:block !important;
-      width:6px !important;
-      height:6px !important;
+      width:8px !important;
+      height:8px !important;
       border-radius:50%;
-      background:var(--text-3) !important;
+      background:var(--border-hi) !important;
+      border: 2px solid var(--bg2) !important;
       flex-shrink:0;
     }
     .tl-entry.milestone .tl-entry-left {
-      background:var(--text);
+      background: #EBFF00;
+      border-color: rgba(235,255,0,0.5);
     }
     .tl-entry.milestone .tl-dot {
-      background:var(--bg) !important;
+      background: #0f0f0f !important;
+      border-color: #EBFF00 !important;
     }
 
     .tl-entry-right {
@@ -1492,7 +1496,7 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
 /* ── LIGHT APP COLOUR SYSTEM ──
    Bright lime (#EBFF00) only as background + border indicators.
    Lime-as-text elements get dark-olive (#5a6500) so they read on beige. */
-#app { --lime:#5a6500; --lime-dim:rgba(90,101,0,0.10); --lime-glow:rgba(90,101,0,0.15); }
+body { --lime:#5a6500; --lime-dim:rgba(90,101,0,0.10); --lime-glow:rgba(90,101,0,0.15); }
 
 /* Bright lime backgrounds stay bright */
 .btn-p, .chip.active, .lang-btn.active,
@@ -1519,6 +1523,12 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
 .contact-tagline { color: var(--text-3) !important; }
 .cv-setup-name { color: var(--text-3) !important; }
 .doc-app-type { color: var(--text-3) !important; }
+/* CV header: readable on white bg */
+.cv-kpi-val { color: var(--text) !important; }
+.cv-h-title { color: var(--text-3) !important; }
+.cv-h-contact a { color: var(--text-2) !important; }
+/* Footer name: neutral */
+footer p span { color: var(--text-2) !important; font-weight: 600 !important; }
 </style>
 </head>
 <body>
@@ -1769,15 +1779,18 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
   position:absolute; inset:0; padding-bottom:28px;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
 }
-.cs-icon-wrap {
-  width:64px; height:64px; border-radius:16px;
+.cs-icon-box {
+  width:72px; height:72px; border-radius:20px;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.18);
   display:flex; align-items:center; justify-content:center;
-  font-size:20px; font-weight:900; color:#fff; letter-spacing:-.5px;
-  margin-bottom:10px;
+  margin-bottom:12px;
+  box-shadow:0 4px 20px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.10);
 }
+.cs-icon-box svg { width:34px; height:34px; stroke:rgba(255,255,255,.92); fill:none; }
 .cs-cat-txt {
   font-size:9px; font-weight:700; letter-spacing:2.5px;
-  text-transform:uppercase; color:rgba(255,255,255,.30);
+  text-transform:uppercase; color:rgba(255,255,255,.35);
 }
 /* Bottom gradient fade into card body */
 .screen-ov {
@@ -2129,72 +2142,40 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
 .cv-role-tag { background: var(--bg2) !important; color: var(--text-2) !important; border: 1px solid var(--border) !important; }
 
 /* ── Typeform-style contact form ── */
-.tf-form-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 320px;
-  padding: 40px 36px !important;
+/* ── Clean contact form ── */
+.cf-form-title {
+  font-size: 19px; font-weight: 800; color: var(--text);
+  letter-spacing: -0.3px; margin-bottom: 4px;
 }
-.tf-step { display: flex; flex-direction: column; gap: 20px; }
-.tf-q {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--text);
-  line-height: 1.3;
-  letter-spacing: -0.3px;
+.cf-form-sub {
+  font-size: 13px; color: var(--text-3); margin-bottom: 20px;
 }
-.tf-input {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid var(--border);
-  border-radius: 0;
-  padding: 10px 0;
-  font-size: 17px;
-  color: var(--text);
-  outline: none;
-  transition: border-color .2s;
-  font-family: inherit;
-  box-sizing: border-box;
+.cf-label {
+  display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; color: var(--text-3); margin-bottom: 5px;
 }
-.tf-input:focus { border-bottom-color: var(--lime); }
-.tf-input::placeholder { color: var(--text-3); }
-.tf-textarea {
-  resize: none;
-  min-height: 120px;
-  line-height: 1.6;
+.cf-field { margin-bottom: 12px; }
+.cf-input {
+  width: 100%; padding: 10px 13px;
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 8px; font-size: 14px; color: var(--text);
+  outline: none; font-family: inherit; box-sizing: border-box;
+  transition: border-color .15s, background .15s;
 }
-.tf-next, .tf-submit {
-  align-self: flex-start;
-  background: var(--lime);
-  color: #111;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 22px;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: opacity .15s, transform .1s;
-  font-family: inherit;
+.cf-input:focus { border-color: rgba(0,0,0,0.3); background: var(--bg1); }
+.cf-input::placeholder { color: var(--text-3); }
+.cf-textarea { resize: none; min-height: 96px; line-height: 1.6; }
+.cf-submit-btn {
+  width: 100%; padding: 12px 20px; margin-top: 6px;
+  background: var(--text); color: var(--bg1);
+  border: none; border-radius: 8px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: opacity .15s, transform .1s;
 }
-.tf-next:hover, .tf-submit:hover { opacity: .88; transform: translateY(-1px); }
-.tf-progress {
-  display: flex;
-  gap: 6px;
-  margin-top: 28px;
-}
-.tf-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--border);
-  transition: background .2s;
-}
-.tf-dot.active { background: var(--lime); }
+.cf-submit-btn:hover { opacity: .82; transform: translateY(-1px); }
+.cf-submit-btn:disabled { opacity: .45; cursor: not-allowed; transform: none; }
 @media(max-width:560px) {
-  .tf-form-card { padding: 28px 20px !important; }
-  .tf-q { font-size: 18px; }
-  .tf-input { font-size: 15px; }
+  .contact-form-card { padding: 20px 18px !important; }
 }
 
 /* ── Newsletter band ── */
@@ -2456,12 +2437,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== SabiSzop ===== -->
         <div class="app-card" data-tags="resumebuilder productivity react typescript vercel" data-name="sabiszop sabi szop">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#1C69D4;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#1C69D4;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030919 0%,#05122e 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(28,105,212,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#1C69D4;box-shadow:0 8px 28px rgba(28,105,212,.38)">SS</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
               <div class="cs-cat-txt">Marketplace · B2C</div>
             </div>
             <div class="screen-ov"></div>
@@ -2503,12 +2483,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== VeloLodz ===== -->
         <div class="app-card" data-tags="pwa mobile react community sport rower cycling lodz velo ec1 netlify" data-name="velolodz velo lodz ec1" data-hidden="true" style="display:none">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#0ea5e9;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#0ea5e9;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030e1a 0%,#051d31 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(14,165,233,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#0ea5e9;box-shadow:0 8px 28px rgba(14,165,233,.38)">VL</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5L9 3 6 8h10"/></svg></div>
               <div class="cs-cat-txt">Community · Sport</div>
             </div>
             <div class="screen-ov"></div>
@@ -2550,12 +2529,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== Kadromierz ===== -->
         <div class="app-card" data-tags="b2b saas content marketing hr kadromierz base44 workforce scheduling cms" data-name="kadromierz content hub">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#8b5cf6;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#8b5cf6;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#0c081c 0%,#191034 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(139,92,246,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#8b5cf6;box-shadow:0 8px 28px rgba(139,92,246,.38)">KH</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
               <div class="cs-cat-txt">Content · B2B SaaS</div>
             </div>
             <div class="screen-ov"></div>
@@ -2597,12 +2575,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== GrowthHub ===== -->
         <div class="app-card" data-tags="b2b saas growth marketing hr kadromierz netlify demand-gen lead-gen analytics" data-name="kadromierz growthhub growth hub">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#10b981;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#10b981;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#031011 0%,#05211f 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(16,185,129,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#10b981;box-shadow:0 8px 28px rgba(16,185,129,.38)">GH</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
               <div class="cs-cat-txt">Growth · B2B SaaS</div>
             </div>
             <div class="screen-ov"></div>
@@ -2637,12 +2614,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== HireMe ===== -->
         <div class="app-card" data-tags="pwa mobile react recruitment hr rekrutacja tracker ats jobs netlify personal" data-name="hireme rekrutacja">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#0d9488;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#0d9488;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030d12 0%,#051a20 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(13,148,136,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#0d9488;box-shadow:0 8px 28px rgba(13,148,136,.38)">HM</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
               <div class="cs-cat-txt">Recruitment · SaaS</div>
             </div>
             <div class="screen-ov"></div>
@@ -2684,12 +2660,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== AN Projekt ===== -->
         <div class="app-card" data-tags="vite react lovable web design interior architecture strona www projekt an design studio website strona-www" data-name="an projekt an-projekt strona internetowa website">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#ec4899;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#ec4899;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#150613 0%,#2a0c23 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(236,72,153,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#ec4899;box-shadow:0 8px 28px rgba(236,72,153,.38)">AN</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
               <div class="cs-cat-txt">Interior Design</div>
             </div>
             <div class="screen-ov"></div>
@@ -2731,12 +2706,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== Ciryam ===== -->
         <div class="app-card" data-tags="website music band rock ciryam vite react strona-www" data-name="ciryam band music website strona">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#e11d48;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#e11d48;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#14030c 0%,#280514 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(225,29,72,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#e11d48;box-shadow:0 8px 28px rgba(225,29,72,.38)">CI</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
               <div class="cs-cat-txt">Music · Band</div>
             </div>
             <div class="screen-ov"></div>
@@ -2777,12 +2751,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- ===== Działkometr ===== -->
         <div class="app-card" data-tags="pwa react vite supabase real-estate nieruchomosci dzialka kalkulator calculator mapy maps" data-name="dzialkomierz dzialka nieruchomosci kalkulator">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#7c9e00;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#7c9e00;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#0b0e08 0%,#161c0c 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(124,158,0,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#7c9e00;box-shadow:0 8px 28px rgba(124,158,0,.38)">DZ</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
               <div class="cs-cat-txt">Real Estate · PWA</div>
             </div>
             <div class="screen-ov"></div>
@@ -2816,12 +2789,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- ===== AdsAI ===== -->
         <div class="app-card" data-tags="b2b saas ai google-ads marketing automation roas campaigns analytics icp scoring performance" data-name="ads assistant google ads dashboard marketing icp performance">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#f59e0b;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#f59e0b;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#160e08 0%,#2c1c0c 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(245,158,11,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#f59e0b;box-shadow:0 8px 28px rgba(245,158,11,.38)">AA</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
               <div class="cs-cat-txt">Marketing AI · B2B</div>
             </div>
             <div class="screen-ov"></div>
@@ -2855,12 +2827,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- ===== Paczka+ ===== -->
         <div class="app-card" data-tags="pwa mobile react typescript package tracking parcels courier inpost dhl dpd" data-name="paczka plus tracking paczki kurier sledzenie" data-hidden="true" style="display:none">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#0891b2;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#0891b2;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030d16 0%,#051a28 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(8,145,178,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#0891b2;box-shadow:0 8px 28px rgba(8,145,178,.38)">P+</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
               <div class="cs-cat-txt">Logistics · PWA</div>
             </div>
             <div class="screen-ov"></div>
@@ -2894,12 +2865,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- Camper Rental -->
         <div class="app-card" data-tags="booking consumer react typescript supabase vercel" data-name="camper rental booking engine kamper wynajem">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#0e7490;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#0e7490;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030a12 0%,#051421 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(14,116,144,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#0e7490;box-shadow:0 8px 28px rgba(14,116,144,.38)">CR</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
               <div class="cs-cat-txt">Booking Engine</div>
             </div>
             <div class="screen-ov"></div>
@@ -2938,12 +2908,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Amoree -->
         <div class="app-card" data-tags="brand consumer react typescript vercel wedding event" data-name="amoree wedding event invitation site wesele">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#be185d;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#be185d;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#11030e 0%,#220518 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(190,24,93,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#be185d;box-shadow:0 8px 28px rgba(190,24,93,.38)">AM</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
               <div class="cs-cat-txt">Wedding · Events</div>
             </div>
             <div class="screen-ov"></div>
@@ -2982,12 +2951,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Wycinarki Laserowe -->
         <div class="app-card" data-tags="brand b2b react typescript vercel seo ecommerce" data-name="wycinarki laserowe laser cutting cnc ecommerce seo">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#475569;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#475569;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#06070f 0%,#0c0f1a 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(71,85,105,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#475569;box-shadow:0 8px 28px rgba(71,85,105,.38)">WL</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
               <div class="cs-cat-txt">SEO · E-commerce</div>
             </div>
             <div class="screen-ov"></div>
@@ -3026,12 +2994,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Spawarki Laserowe -->
         <div class="app-card" data-tags="b2b seo ecommerce react typescript vercel spawarki laser welding przemysl manufacturing poland" data-name="spawarki laserowe laser welding fiber laser blink spawanie">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#f97316;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#f97316;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#160a08 0%,#2c140c 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(249,115,22,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#f97316;box-shadow:0 8px 28px rgba(249,115,22,.38)">SL</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
               <div class="cs-cat-txt">SEO · B2B Industrial</div>
             </div>
             <div class="screen-ov"></div>
@@ -3066,12 +3033,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Willa w Parku -->
         <div class="app-card" data-tags="website brand consumer react lovable local venue event coffee club lodz nightlife kawiarnia klub" data-name="willa lodz willa w parku kafé klub kawiarnia park poniatowskiego">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#c8a96e;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#c8a96e;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#120f0f 0%,#241e1b 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(200,169,110,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#c8a96e;box-shadow:0 8px 28px rgba(200,169,110,.38)">WP</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
               <div class="cs-cat-txt">Venue · Hospitality</div>
             </div>
             <div class="screen-ov"></div>
@@ -3109,12 +3075,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Akademia AI -->
         <div class="app-card" data-tags="b2b saas education audio courses certification stripe react typescript vercel" data-name="akademia ai audio kurs szkolenie certyfikat">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#ea580c;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#ea580c;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#150708 0%,#2a0f0c 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(234,88,12,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#ea580c;box-shadow:0 8px 28px rgba(234,88,12,.38)">AK</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
               <div class="cs-cat-txt">Education · SaaS</div>
             </div>
             <div class="screen-ov"></div>
@@ -3153,12 +3118,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Relora -->
         <div class="app-card" data-tags="b2b saas crm relationship intelligence personal crm outreach nextjs supabase vercel" data-name="relora crm relationship b2b outreach pipeline">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#7c3aed;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#7c3aed;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#0b051b 0%,#160a32 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(124,58,237,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#7c3aed;box-shadow:0 8px 28px rgba(124,58,237,.38)">RL</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
               <div class="cs-cat-txt">Relationship CRM</div>
             </div>
             <div class="screen-ov"></div>
@@ -3197,12 +3161,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Brain24 -->
         <div class="app-card" data-tags="b2b saas ai brand intelligence platform react typescript vite shadcn supabase vercel product-design" data-name="brain24 brand brain ai intelligence platform">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#6366f1;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#6366f1;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#08091b 0%,#111233 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(99,102,241,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#6366f1;box-shadow:0 8px 28px rgba(99,102,241,.38)">B2</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
               <div class="cs-cat-txt">Brand Intelligence</div>
             </div>
             <div class="screen-ov"></div>
@@ -3241,12 +3204,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== NotchCue ===== -->
         <div class="app-card" data-tags="macos native swift desktop utility teleprompter privacy local-first appkit avfoundation notchcue apple mac" data-name="notchcue notch cue macos teleprompter prompter">
-          <div class="card-screen" style="overflow:hidden;position:relative">
-            <div class="cs-blob" style="width:210px;height:210px;background:#5e5ce6;top:-55px;right:-35px;opacity:.24"></div>
-            <div class="cs-blob" style="width:130px;height:130px;background:#5e5ce6;bottom:35px;left:-25px;opacity:.11"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#08081a 0%,#101031 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(94,92,230,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-wrap" style="background:#5e5ce6;box-shadow:0 8px 28px rgba(94,92,230,.38)">NC</div>
+              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="13" rx="2"/><path d="M2 19h20"/><path d="M8 23h8"/><rect x="10" y="5" width="4" height="2" rx="1" fill="currentColor" stroke="none" opacity="0.6"/></svg></div>
               <div class="cs-cat-txt">Desktop Utility · macOS</div>
             </div>
             <div class="screen-ov"></div>
@@ -4647,29 +4609,26 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
 
           <!-- Right: Form -->
-          <div class="contact-form-card tf-form-card">
+          <div class="contact-form-card">
             <div id="contactFormWrap">
-              <div class="tf-step" id="tfStep1">
-                <div class="tf-q" data-pl="Jak masz na imię?" data-en="What's your name?" data-it="Come ti chiami?">Jak masz na imię?</div>
-                <input type="text" class="tf-input" id="formName" data-pl-placeholder="Jan Kowalski" data-en-placeholder="John Smith" data-it-placeholder="Mario Rossi" placeholder="Jan Kowalski" autocomplete="name">
-                <button type="button" class="tf-next" onclick="tfNext(1)"><span data-pl="Dalej" data-en="Next" data-it="Avanti">Dalej</span> →</button>
+              <div class="cf-form-title" data-pl="Napisz do mnie" data-en="Get in touch" data-it="Scrivimi">Get in touch</div>
+              <div class="cf-form-sub" data-pl="Odpowiadam w ciągu 24h." data-en="I reply within 24h." data-it="Rispondo entro 24h.">I reply within 24h.</div>
+              <div class="cf-field">
+                <label class="cf-label" data-pl="Imię" data-en="Name" data-it="Nome">Name</label>
+                <input type="text" class="cf-input" id="formName" data-pl-placeholder="Jan Kowalski" data-en-placeholder="John Smith" data-it-placeholder="Mario Rossi" placeholder="John Smith" autocomplete="name">
               </div>
-              <div class="tf-step" id="tfStep2" style="display:none">
-                <div class="tf-q" data-pl="Twój email?" data-en="Your email?" data-it="La tua email?">Twój email?</div>
-                <input type="email" class="tf-input" id="formEmail" placeholder="jan@firma.pl" autocomplete="email">
-                <button type="button" class="tf-next" onclick="tfNext(2)"><span data-pl="Dalej" data-en="Next" data-it="Avanti">Dalej</span> →</button>
+              <div class="cf-field">
+                <label class="cf-label" data-pl="Email" data-en="Email" data-it="Email">Email</label>
+                <input type="email" class="cf-input" id="formEmail" data-pl-placeholder="jan@firma.pl" data-en-placeholder="you@company.com" data-it-placeholder="tu@azienda.it" placeholder="you@company.com" autocomplete="email">
               </div>
-              <div class="tf-step" id="tfStep3" style="display:none">
-                <div class="tf-q" data-pl="O co chodzi?" data-en="What's on your mind?" data-it="Di cosa si tratta?">O co chodzi?</div>
-                <textarea class="tf-input tf-textarea" id="formMessage" data-pl-placeholder="Opisz projekt - co budujesz, dla kogo, co chcesz osiągnąć..." data-en-placeholder="Describe your project - what you're building, for whom, what's the goal..." data-it-placeholder="Descrivi il progetto - cosa stai costruendo, per chi, qual è l'obiettivo..." placeholder="Opisz projekt - co budujesz, dla kogo, co chcesz osiągnąć..." rows="5"></textarea>
-                <button type="button" class="tf-submit" onclick="tfSubmit()"><span data-pl="Wyślij" data-en="Send message" data-it="Invia">Wyślij</span></button>
+              <div class="cf-field">
+                <label class="cf-label" data-pl="Wiadomość" data-en="Message" data-it="Messaggio">Message</label>
+                <textarea class="cf-input cf-textarea" id="formMessage" data-pl-placeholder="Opisz projekt - co budujesz, dla kogo, co chcesz osiągnąć..." data-en-placeholder="What are you working on? What's the goal..." data-it-placeholder="Di cosa si tratta? Qual è l'obiettivo..." placeholder="What are you working on? What's the goal..." rows="4"></textarea>
               </div>
-              <div class="tf-progress" id="tfProgress">
-                <div class="tf-dot active" id="tfDot1"></div>
-                <div class="tf-dot" id="tfDot2"></div>
-                <div class="tf-dot" id="tfDot3"></div>
-              </div>
-              <div id="formError" style="display:none;color:#ff5f5f;font-size:12px;font-weight:600;padding:8px 12px;background:rgba(255,95,95,0.1);border:1px solid rgba(255,95,95,0.25);border-radius:8px;margin-top:12px"></div>
+              <button type="button" class="cf-submit-btn" id="cfSubmitBtn" onclick="cfSubmit()">
+                <span data-pl="Wyślij wiadomość" data-en="Send message" data-it="Invia messaggio">Send message</span>
+              </button>
+              <div id="formError" style="display:none;color:#e53e3e;font-size:12px;font-weight:600;padding:8px 12px;background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.2);border-radius:7px;margin-top:10px"></div>
             </div>
             <div id="formSuccess" style="display:none;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px;text-align:center;gap:12px">
               <div style="width:52px;height:52px;border-radius:50%;background:rgba(16,179,108,0.12);border:1px solid rgba(16,179,108,0.28);display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b36c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
@@ -4928,38 +4887,18 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   }
 
   // ===================== CONTACT FORM (Typeform-style) =====================
-  function tfNext(step) {
+  function cfSubmit() {
     const errEl = document.getElementById('formError');
-    errEl.style.display = 'none';
-    if (step === 1) {
-      const name = document.getElementById('formName').value.trim();
-      if (!name) { errEl.textContent = 'Please enter your name.'; errEl.style.display = 'block'; return; }
-      document.getElementById('tfStep1').style.display = 'none';
-      document.getElementById('tfStep2').style.display = 'flex';
-      document.getElementById('tfDot1').classList.remove('active');
-      document.getElementById('tfDot2').classList.add('active');
-      document.getElementById('formEmail').focus();
-    } else if (step === 2) {
-      const email = document.getElementById('formEmail').value.trim();
-      if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) { errEl.textContent = 'Please enter a valid email.'; errEl.style.display = 'block'; return; }
-      document.getElementById('tfStep2').style.display = 'none';
-      document.getElementById('tfStep3').style.display = 'flex';
-      document.getElementById('tfDot2').classList.remove('active');
-      document.getElementById('tfDot3').classList.add('active');
-      document.getElementById('formMessage').focus();
-    }
-  }
-
-  function tfSubmit() {
-    const errEl = document.getElementById('formError');
+    const btn = document.getElementById('cfSubmitBtn');
     errEl.style.display = 'none';
     const name = document.getElementById('formName').value.trim();
     const email = document.getElementById('formEmail').value.trim();
     const message = document.getElementById('formMessage').value.trim();
-    if (!message || message.length < 10) { errEl.textContent = 'Please write a short message.'; errEl.style.display = 'block'; return; }
-    const btn = document.querySelector('.tf-submit');
+    if (!name) { errEl.textContent = 'Please enter your name.'; errEl.style.display = 'block'; return; }
+    if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) { errEl.textContent = 'Please enter a valid email.'; errEl.style.display = 'block'; return; }
+    if (!message || message.length < 5) { errEl.textContent = 'Please write a short message.'; errEl.style.display = 'block'; return; }
     btn.disabled = true;
-    btn.textContent = '...';
+    btn.querySelector('span').textContent = '...';
     fetch('https://formspree.io/f/xdkondap', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -4973,13 +4912,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       } else {
         errEl.textContent = 'Error sending. Please try again.';
         errEl.style.display = 'block';
-        btn.disabled = false; btn.textContent = 'Send message';
+        btn.disabled = false; btn.querySelector('span').textContent = 'Send message';
       }
     })
     .catch(() => {
       errEl.textContent = 'Network error. Please try again.';
       errEl.style.display = 'block';
-      btn.disabled = false; btn.textContent = 'Send message';
+      btn.disabled = false; btn.querySelector('span').textContent = 'Send message';
     });
   }
 
