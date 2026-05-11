@@ -1978,10 +1978,21 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
   font-weight: 600 !important;
 }
 
-/* ---- PROFILE HERO: cleaner ---- */
+/* ---- PROFILE HERO: no card, clean section ---- */
 .profile-hero {
-  padding: 28px 0 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 0 28px !important;
   margin-bottom: 0 !important;
+  gap: 20px !important;
+}
+@media(max-width:680px) {
+  .profile-hero {
+    padding: 0 0 20px !important;
+    gap: 14px !important;
+  }
 }
 </style>
 
@@ -2338,7 +2349,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
           <div class="card-body">
             <div class="card-header-row">
-              <div class="app-icon" style="background:#10b981">HM</div>
+              <div class="app-icon" style="background:#0d9488">HM</div>
               <div class="card-header-text">
                 <div class="card-title">HireMe</div>
                 <div class="card-header-cat">Recruitment · SaaS</div>
@@ -2577,45 +2588,6 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             </div>
           </div>
         </div>
-        <!-- ===== Resume Builder ===== -->
-        <div class="app-card" data-tags="saas ai resume cv builder react typescript pdf career job" data-name="resume builder cv kreator generator">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#7c3aed;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#7c3aed;line-height:1;font-family:'Inter',sans-serif">RB</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">AI · Career Tools</div>
-            </div>
-            <div class="screen-ov"></div>
-            <div class="screen-meta">
-              <span class="cat-badge">SaaS</span>
-              <div class="s-live" style="color:#EBFF00"><div class="sdot" style="background:#EBFF00;box-shadow:0 0 6px rgba(235,255,0,.7)"></div>In Progress</div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-header-row">
-              <div class="app-icon" style="background:#7c3aed;opacity:.7">RB</div>
-              <div class="card-header-text">
-                <div class="card-title" style="opacity:.7">Resume Builder <span style="font-size:11px;font-weight:600;color:#EBFF00;vertical-align:middle;margin-left:6px;background:rgba(235,255,0,.12);border:1px solid rgba(235,255,0,.25);border-radius:99px;padding:2px 8px">In Progress</span></div>
-                <div class="card-header-cat">AI · Career Tools</div>
-              </div>
-            </div>
-            <div class="card-tagline" data-pl="AI-powered kreator CV z generowaniem treści, dopasowaniem do oferty i eksportem PDF z gotowymi szablonami ATS." data-en="AI-powered resume builder with content generation, job offer matching and ATS-ready PDF export with templates." data-it="Creatore di CV basato su AI con generazione di contenuti, abbinamento alle offerte di lavoro ed esportazione PDF ATS-ready con template.">AI-powered kreator CV z generowaniem treści, dopasowaniem do oferty i eksportem PDF z gotowymi szablonami ATS.</div>
-            <div class="divider"></div>
-            <div class="sec-lbl">Coming soon</div>
-            <div class="usp-list">
-              <div class="usp-item"><div class="udot" style="opacity:.4"></div><span style="opacity:.5" data-pl="AI dopasowanie CV do konkretnej oferty pracy" data-en="AI matching of CV to specific job offer" data-it="Abbinamento AI del CV a una specifica offerta di lavoro">AI dopasowanie CV do konkretnej oferty pracy</span></div>
-              <div class="usp-item"><div class="udot" style="opacity:.4"></div><span style="opacity:.5" data-pl="Szablony ATS-friendly z 1-click PDF export" data-en="ATS-friendly templates with 1-click PDF export" data-it="Template ATS-friendly con esportazione PDF in 1 clic">Szablony ATS-friendly z 1-click PDF export</span></div>
-              <div class="usp-item"><div class="udot" style="opacity:.4"></div><span style="opacity:.5" data-pl="LinkedIn import + OpenAI rewrite" data-en="LinkedIn import + OpenAI rewrite" data-it="Importazione LinkedIn + riscrittura con OpenAI">LinkedIn import + OpenAI rewrite</span></div>
-            </div>
-            <div class="tech-row" style="opacity:.4"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">OpenAI</span><span class="tc">Supabase</span></div>
-            <div class="card-actions">
-              <a href="#" class="btn-p" style="opacity:.45;cursor:not-allowed;pointer-events:none">In Progress</a>
-              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
-            </div>
-          </div>
-        </div>
         <!-- Camper Rental -->
         <div class="app-card" data-tags="booking consumer react typescript supabase vercel" data-name="camper rental booking engine kamper wynajem">
           <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
@@ -2634,7 +2606,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
           <div class="card-body">
             <div class="card-header-row">
-              <div class="app-icon" style="background:#7c9e00">CR</div>
+              <div class="app-icon" style="background:#0e7490">CR</div>
               <div class="card-header-text">
                 <div class="card-title">Camper Rental</div>
                 <div class="card-header-cat">Booking Engine · Consumer</div>
@@ -2849,7 +2821,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
           <div class="card-body">
             <div class="card-header-row">
-              <div class="app-icon" style="background:#f59e0b">AK</div>
+              <div class="app-icon" style="background:#ea580c">AK</div>
               <div class="card-header-text">
                 <div class="card-title">Akademia AI</div>
                 <div class="card-header-cat">Education · B2B SaaS</div>
@@ -2893,7 +2865,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           </div>
           <div class="card-body">
             <div class="card-header-row">
-              <div class="app-icon" style="background:#0ea5e9">RL</div>
+              <div class="app-icon" style="background:#7c3aed">RL</div>
               <div class="card-header-text">
                 <div class="card-title">Relora</div>
                 <div class="card-header-cat">Relationship CRM · B2B SaaS</div>
@@ -3121,7 +3093,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
           <div class="doc-card">
             <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#10b981;color:#fff">HM</div>
+              <div class="doc-app-icon" style="background:#0d9488;color:#fff">HM</div>
               <div><div class="doc-app-name">HireMe</div><div class="doc-app-type">B2B SaaS · HR / Recruitment</div></div>
             </div>
             <div class="doc-section">
@@ -3262,32 +3234,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
           <div class="doc-card">
             <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#7c3aed;color:#fff">RB</div>
-              <div><div class="doc-app-name">Resume Builder</div><div class="doc-app-type">SaaS · AI / Career Tools</div></div>
-            </div>
-            <div class="doc-section">
-              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
-              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="AI-powered kreator CV z dopasowaniem do oferty, szablonami ATS-friendly i eksportem PDF. Dla specjalistów szukających pracy w Polsce i zagranicą." data-en="AI-powered resume builder with job offer matching, ATS-friendly templates and PDF export. Built for professionals job-hunting in Poland and abroad." data-it="Creatore di CV basato su AI con abbinamento alle offerte, template ATS-friendly ed esportazione PDF. Per professionisti in cerca di lavoro in Polonia e all'estero.">AI-powered resume builder with job offer matching, ATS-friendly templates and PDF export. Built for professionals job-hunting in Poland and abroad.</p>
-            </div>
-            <div class="doc-section">
-              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
-              <ul class="doc-feature-list">
-                <li data-pl="AI dopasowanie CV do konkretnej oferty pracy" data-en="AI matching of resume to specific job offer" data-it="Abbinamento AI del CV a una specifica offerta di lavoro">AI matching of resume to specific job offer</li>
-                <li data-pl="Szablony ATS-friendly z 1-click PDF export" data-en="ATS-friendly templates with 1-click PDF export" data-it="Template ATS-friendly con esportazione PDF in 1 clic">ATS-friendly templates with 1-click PDF export</li>
-                <li data-pl="LinkedIn import + OpenAI rewrite" data-en="LinkedIn import + OpenAI-powered rewrite" data-it="Importazione LinkedIn + riscrittura con OpenAI">LinkedIn import + OpenAI-powered rewrite</li>
-                <li data-pl="Edytor wizualny z podglądem na żywo" data-en="Visual editor with live preview" data-it="Editor visuale con anteprima in tempo reale">Visual editor with live preview</li>
-              </ul>
-            </div>
-            <div class="doc-section" style="margin-bottom:0">
-              <div class="doc-section-title">Tech Stack</div>
-              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">OpenAI</span><span class="doc-stack-pill key">Supabase</span></div>
-            </div>
-            <div class="doc-links"><span style="font-size:11px;color:#EBFF00;font-weight:700;background:rgba(235,255,0,.12);border:1px solid rgba(235,255,0,.25);border-radius:6px;padding:3px 10px">In Progress</span></div>
-          </div>
-
-          <div class="doc-card">
-            <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#b45309;color:#fff">CR</div>
+              <div class="doc-app-icon" style="background:#0e7490;color:#fff">CR</div>
               <div><div class="doc-app-name">Camper Rental</div><div class="doc-app-type">Consumer · Booking Engine</div></div>
             </div>
             <div class="doc-section">
@@ -3414,7 +3361,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
           <div class="doc-card">
             <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#f59e0b;color:#fff">AK</div>
+              <div class="doc-app-icon" style="background:#ea580c;color:#fff">AK</div>
               <div><div class="doc-app-name">Akademia AI</div><div class="doc-app-type">Education · SaaS</div></div>
             </div>
             <div class="doc-section">
@@ -3439,7 +3386,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
           <div class="doc-card">
             <div class="doc-app-head">
-              <div class="doc-app-icon" style="background:#0ea5e9;color:#fff">RL</div>
+              <div class="doc-app-icon" style="background:#7c3aed;color:#fff">RL</div>
               <div><div class="doc-app-name">Relora</div><div class="doc-app-type">B2B SaaS · Relationship CRM</div></div>
             </div>
             <div class="doc-section">
@@ -3881,23 +3828,6 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
               <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
               <span class="pt"><img src="https://cdn.simpleicons.org/openai/74aa9c" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> OpenAI</span>
               <span class="pt"><img src="https://cdn.simpleicons.org/googleads/4285F4" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Google Ads</span>
-            </div>
-          </div>
-
-          <!-- Resume Builder -->
-          <div class="proj-tile">
-            <div class="proj-tile-top">
-              <div class="proj-tile-left">
-                <div class="proj-tile-icon" style="background:#6B7280">RB</div>
-                <div><div class="proj-tile-name">Resume Builder</div><div class="proj-tile-cat">SaaS · AI</div></div>
-              </div>
-              <div class="proj-tile-sdot wip"></div>
-            </div>
-            <div class="proj-tile-stack">
-              <span class="pt"><img src="https://cdn.simpleicons.org/react/61DAFB" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> React</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> TypeScript</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/openai/74aa9c" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> OpenAI</span>
-              <span class="pt"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="11" height="11" loading="lazy" onerror="this.style.display='none'"> Supabase</span>
             </div>
           </div>
 
@@ -4794,10 +4724,6 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   
   <footer>
     <p>© 2026 <span>Wojciech Łuszczyński</span> · <a href="mailto:hello@wojciech.io" style="color:var(--text-2);text-decoration:none;">hello@wojciech.io</a></p>
-    <div class="footer-links" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a href="https://notch.wojciech.io" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:color .15s" onmouseover="this.style.color='#EBFF00'" onmouseout="this.style.color='var(--text-2)'"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg> NotchCue</a>
-      <a href="https://subscribe.wojciech.io" target="_blank" style="color:var(--text-2);text-decoration:none;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;transition:color .15s" onmouseover="this.style.color='#EBFF00'" onmouseout="this.style.color='var(--text-2)'"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> AI Espresso</a>
-    </div>
     <div class="footer-socials">
       <a href="https://wojciech.io" target="_blank" class="fsoc" title="Website"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></a>
       <a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank" class="fsoc" title="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
