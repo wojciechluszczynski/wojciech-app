@@ -1748,40 +1748,50 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
   transform: translateY(-2px);
 }
 
-/* App card covers — dark monochrome */
+/* App card covers — premium branded */
 .card-screen {
-  background: #141414 !important;
-  height: 140px !important;
+  background: #07070e !important;
+  height: 200px !important;
   display: flex !important;
   align-items: center; justify-content: center;
   position: relative; overflow: hidden;
 }
-/* White dot grid */
-.card-screen > div[style*="radial-gradient"] {
-  background-image: radial-gradient(circle, rgba(255,255,255,.045) 1px, transparent 1px) !important;
+/* New cover design system */
+.cs-blob { position:absolute; border-radius:50%; filter:blur(72px); pointer-events:none; }
+.cs-grid {
+  position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:32px 32px;
 }
-/* Hide per-card color glow blobs */
-.card-screen > div[style*="blur(70px)"] { display: none !important; }
-/* Initials text */
-.card-screen div[style*="font-size:46px"] { color: #ffffff !important; }
-/* Separator line */
-.card-screen div[style*="rgba(0,0,0,.10)"] { background: rgba(255,255,255,.12) !important; }
-/* Category sub-label */
-.card-screen div[style*="rgba(0,0,0,.38)"] { color: rgba(255,255,255,.38) !important; }
+.cs-body {
+  position:absolute; inset:0; padding-bottom:28px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+.cs-icon-wrap {
+  width:64px; height:64px; border-radius:16px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; font-weight:900; color:#fff; letter-spacing:-.5px;
+  margin-bottom:10px;
+}
+.cs-cat-txt {
+  font-size:9px; font-weight:700; letter-spacing:2.5px;
+  text-transform:uppercase; color:rgba(255,255,255,.30);
+}
 /* Bottom gradient fade into card body */
 .screen-ov {
   display: block !important;
   background: linear-gradient(to bottom, transparent 30%, var(--bg1) 100%) !important;
 }
-.screen-meta { display: none !important; }
+.screen-meta { display: flex !important; }
 
-/* App icon badge — uniform dark, no brand colors */
+/* App icon badge — brand colors restored */
 .app-icon {
   width: 44px; height: 44px; border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
   font-size: 14px; font-weight: 900; flex-shrink: 0;
   letter-spacing: -0.5px;
-  background: #1a1a1a !important;
   color: #ffffff !important;
 }
 .card-header-row {
@@ -2446,13 +2456,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== SabiSzop ===== -->
         <div class="app-card" data-tags="resumebuilder productivity react typescript vercel" data-name="sabiszop sabi szop">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#1C69D4;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#1C69D4;line-height:1;font-family:'Inter',sans-serif">SS</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Marketplace · B2C</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#1C69D4;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#1C69D4;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#1C69D4;box-shadow:0 8px 28px rgba(28,105,212,.38)">SS</div>
+              <div class="cs-cat-txt">Marketplace · B2C</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2493,13 +2503,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== VeloLodz ===== -->
         <div class="app-card" data-tags="pwa mobile react community sport rower cycling lodz velo ec1 netlify" data-name="velolodz velo lodz ec1" data-hidden="true" style="display:none">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#0ea5e9;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#0ea5e9;line-height:1;font-family:'Inter',sans-serif">VL</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Community · Sport</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#0ea5e9;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#0ea5e9;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#0ea5e9;box-shadow:0 8px 28px rgba(14,165,233,.38)">VL</div>
+              <div class="cs-cat-txt">Community · Sport</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2540,13 +2550,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== Kadromierz ===== -->
         <div class="app-card" data-tags="b2b saas content marketing hr kadromierz base44 workforce scheduling cms" data-name="kadromierz content hub">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#8b5cf6;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#8b5cf6;line-height:1;font-family:'Inter',sans-serif">KH</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Content · B2B SaaS</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#8b5cf6;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#8b5cf6;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#8b5cf6;box-shadow:0 8px 28px rgba(139,92,246,.38)">KH</div>
+              <div class="cs-cat-txt">Content · B2B SaaS</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2587,13 +2597,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== GrowthHub ===== -->
         <div class="app-card" data-tags="b2b saas growth marketing hr kadromierz netlify demand-gen lead-gen analytics" data-name="kadromierz growthhub growth hub">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#10b981;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#10b981;line-height:1;font-family:'Inter',sans-serif">GH</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Growth · B2B SaaS</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#10b981;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#10b981;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#10b981;box-shadow:0 8px 28px rgba(16,185,129,.38)">GH</div>
+              <div class="cs-cat-txt">Growth · B2B SaaS</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2627,13 +2637,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== HireMe ===== -->
         <div class="app-card" data-tags="pwa mobile react recruitment hr rekrutacja tracker ats jobs netlify personal" data-name="hireme rekrutacja">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#10b981;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#10b981;line-height:1;font-family:'Inter',sans-serif">HM</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Recruitment · SaaS</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#0d9488;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#0d9488;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#0d9488;box-shadow:0 8px 28px rgba(13,148,136,.38)">HM</div>
+              <div class="cs-cat-txt">Recruitment · SaaS</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2674,13 +2684,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== AN Projekt ===== -->
         <div class="app-card" data-tags="vite react lovable web design interior architecture strona www projekt an design studio website strona-www" data-name="an projekt an-projekt strona internetowa website">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#ec4899;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#ec4899;line-height:1;font-family:'Inter',sans-serif">AN</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Interior Design</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#ec4899;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#ec4899;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#ec4899;box-shadow:0 8px 28px rgba(236,72,153,.38)">AN</div>
+              <div class="cs-cat-txt">Interior Design</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2721,13 +2731,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== Ciryam ===== -->
         <div class="app-card" data-tags="website music band rock ciryam vite react strona-www" data-name="ciryam band music website strona">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#e11d48;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#e11d48;line-height:1;font-family:'Inter',sans-serif">CI</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Music · Band</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#e11d48;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#e11d48;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#e11d48;box-shadow:0 8px 28px rgba(225,29,72,.38)">CI</div>
+              <div class="cs-cat-txt">Music · Band</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2767,13 +2777,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- ===== Działkometr ===== -->
         <div class="app-card" data-tags="pwa react vite supabase real-estate nieruchomosci dzialka kalkulator calculator mapy maps" data-name="dzialkomierz dzialka nieruchomosci kalkulator">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#EBFF00;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#EBFF00;line-height:1;font-family:'Inter',sans-serif">DZ</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Real Estate · PWA</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#7c9e00;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#7c9e00;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#7c9e00;box-shadow:0 8px 28px rgba(124,158,0,.38)">DZ</div>
+              <div class="cs-cat-txt">Real Estate · PWA</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2806,13 +2816,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- ===== AdsAI ===== -->
         <div class="app-card" data-tags="b2b saas ai google-ads marketing automation roas campaigns analytics icp scoring performance" data-name="ads assistant google ads dashboard marketing icp performance">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#f59e0b;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#f59e0b;line-height:1;font-family:'Inter',sans-serif">AA</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Marketing AI · B2B</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#f59e0b;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#f59e0b;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#f59e0b;box-shadow:0 8px 28px rgba(245,158,11,.38)">AA</div>
+              <div class="cs-cat-txt">Marketing AI · B2B</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2845,13 +2855,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- ===== Paczka+ ===== -->
         <div class="app-card" data-tags="pwa mobile react typescript package tracking parcels courier inpost dhl dpd" data-name="paczka plus tracking paczki kurier sledzenie" data-hidden="true" style="display:none">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#0891b2;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#0891b2;line-height:1;font-family:'Inter',sans-serif">P+</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Logistics · PWA</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#0891b2;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#0891b2;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#0891b2;box-shadow:0 8px 28px rgba(8,145,178,.38)">P+</div>
+              <div class="cs-cat-txt">Logistics · PWA</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2884,13 +2894,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         </div>
         <!-- Camper Rental -->
         <div class="app-card" data-tags="booking consumer react typescript supabase vercel" data-name="camper rental booking engine kamper wynajem">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#EBFF00;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#EBFF00;line-height:1;font-family:'Inter',sans-serif">CR</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Booking Engine</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#0e7490;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#0e7490;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#0e7490;box-shadow:0 8px 28px rgba(14,116,144,.38)">CR</div>
+              <div class="cs-cat-txt">Booking Engine</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2928,13 +2938,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Amoree -->
         <div class="app-card" data-tags="brand consumer react typescript vercel wedding event" data-name="amoree wedding event invitation site wesele">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#be185d;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#be185d;line-height:1;font-family:'Inter',sans-serif">AM</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Wedding · Events</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#be185d;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#be185d;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#be185d;box-shadow:0 8px 28px rgba(190,24,93,.38)">AM</div>
+              <div class="cs-cat-txt">Wedding · Events</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -2972,13 +2982,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Wycinarki Laserowe -->
         <div class="app-card" data-tags="brand b2b react typescript vercel seo ecommerce" data-name="wycinarki laserowe laser cutting cnc ecommerce seo">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#6b7280;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#6b7280;line-height:1;font-family:'Inter',sans-serif">WL</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">SEO · E-commerce</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#475569;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#475569;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#475569;box-shadow:0 8px 28px rgba(71,85,105,.38)">WL</div>
+              <div class="cs-cat-txt">SEO · E-commerce</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -3016,13 +3026,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Spawarki Laserowe -->
         <div class="app-card" data-tags="b2b seo ecommerce react typescript vercel spawarki laser welding przemysl manufacturing poland" data-name="spawarki laserowe laser welding fiber laser blink spawanie">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#f97316;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#f97316;line-height:1;font-family:'Inter',sans-serif">SL</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">SEO · B2B Industrial</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#f97316;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#f97316;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#f97316;box-shadow:0 8px 28px rgba(249,115,22,.38)">SL</div>
+              <div class="cs-cat-txt">SEO · B2B Industrial</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -3056,13 +3066,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Willa w Parku -->
         <div class="app-card" data-tags="website brand consumer react lovable local venue event coffee club lodz nightlife kawiarnia klub" data-name="willa lodz willa w parku kafé klub kawiarnia park poniatowskiego">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#c8a96e;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#c8a96e;line-height:1;font-family:'Inter',sans-serif">WP</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Venue · Hospitality</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#c8a96e;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#c8a96e;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#c8a96e;box-shadow:0 8px 28px rgba(200,169,110,.38)">WP</div>
+              <div class="cs-cat-txt">Venue · Hospitality</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -3099,13 +3109,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Akademia AI -->
         <div class="app-card" data-tags="b2b saas education audio courses certification stripe react typescript vercel" data-name="akademia ai audio kurs szkolenie certyfikat">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#f59e0b;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#f59e0b;line-height:1;font-family:'Inter',sans-serif">AK</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Education · SaaS</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#ea580c;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#ea580c;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#ea580c;box-shadow:0 8px 28px rgba(234,88,12,.38)">AK</div>
+              <div class="cs-cat-txt">Education · SaaS</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -3143,13 +3153,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Relora -->
         <div class="app-card" data-tags="b2b saas crm relationship intelligence personal crm outreach nextjs supabase vercel" data-name="relora crm relationship b2b outreach pipeline">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#0ea5e9;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#0ea5e9;line-height:1;font-family:'Inter',sans-serif">RL</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Relationship CRM</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#7c3aed;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#7c3aed;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#7c3aed;box-shadow:0 8px 28px rgba(124,58,237,.38)">RL</div>
+              <div class="cs-cat-txt">Relationship CRM</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -3187,13 +3197,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- Brain24 -->
         <div class="app-card" data-tags="b2b saas ai brand intelligence platform react typescript vite shadcn supabase vercel product-design" data-name="brain24 brand brain ai intelligence platform">
-          <div class="card-screen" style="background:var(--bg1);overflow:hidden;position:relative">
-            <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.065) 1px,transparent 1px);background-size:20px 20px"></div>
-            <div style="position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:#6366f1;filter:blur(70px);opacity:.22;pointer-events:none"></div>
-            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px">
-              <div style="font-size:46px;font-weight:900;letter-spacing:-2px;color:#6366f1;line-height:1;font-family:'Inter',sans-serif">B2</div>
-              <div style="width:30px;height:1px;background:rgba(0,0,0,.10)"></div>
-              <div style="font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(0,0,0,.38);font-family:'Inter',sans-serif">Brand Intelligence</div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#6366f1;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#6366f1;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#6366f1;box-shadow:0 8px 28px rgba(99,102,241,.38)">B2</div>
+              <div class="cs-cat-txt">Brand Intelligence</div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -3231,7 +3241,20 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
         <!-- ===== NotchCue ===== -->
         <div class="app-card" data-tags="macos native swift desktop utility teleprompter privacy local-first appkit avfoundation notchcue apple mac" data-name="notchcue notch cue macos teleprompter prompter">
-          <div class="card-screen" style="display:none"></div>
+          <div class="card-screen" style="overflow:hidden;position:relative">
+            <div class="cs-blob" style="width:210px;height:210px;background:#5e5ce6;top:-55px;right:-35px;opacity:.24"></div>
+            <div class="cs-blob" style="width:130px;height:130px;background:#5e5ce6;bottom:35px;left:-25px;opacity:.11"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-wrap" style="background:#5e5ce6;box-shadow:0 8px 28px rgba(94,92,230,.38)">NC</div>
+              <div class="cs-cat-txt">Desktop Utility · macOS</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">macOS</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
           <div class="card-body">
             <div class="card-header-row">
               <div class="app-icon" style="background:#1C1C1E;">NC</div>
