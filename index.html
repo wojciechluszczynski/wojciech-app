@@ -1746,6 +1746,730 @@ footer p span { color: var(--text-3) !important; font-weight: 500 !important; }
   background: var(--text-2);
 }
 </style>
+
+<style id="dark-app-theme">
+/* ================================================================
+   DARK THEME - wojciech.io palette
+   Active when body.dark-app (post-login)
+   ================================================================ */
+
+body.dark-app {
+  /* Base palette matching wojciech.io dark olive */
+  --bg:        #131510;
+  --bg1:       #1c1f18;
+  --bg2:       #22251d;
+  --bg3:       #292d22;
+  --border:    rgba(255,255,255,0.07);
+  --border-hi: rgba(255,255,255,0.14);
+  --text:      #e8e8da;
+  --text-2:    #88897e;
+  --text-3:    #3e4038;
+  /* Restore bright lime for dark bg */
+  --lime:      #EBFF00;
+  --lime-dim:  rgba(235,255,0,0.12);
+  --lime-glow: rgba(235,255,0,0.20);
+  --green:     #4ade80;
+  --green-dim: rgba(74,222,128,0.10);
+
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ── Header ── */
+body.dark-app header {
+  background: rgba(19,21,16,0.92) !important;
+  border-bottom-color: rgba(255,255,255,0.07) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+}
+body.dark-app .hdr-name { color: var(--text) !important; }
+body.dark-app .hdr-sub  { color: var(--lime) !important; }
+body.dark-app .hdr-search input {
+  background: var(--bg2) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+body.dark-app .hdr-search input::placeholder { color: var(--text-3) !important; }
+body.dark-app .hdr-search input:focus { border-color: rgba(235,255,0,0.40) !important; }
+body.dark-app .hdr-social { color: var(--text-3) !important; }
+body.dark-app .hdr-social:hover { color: var(--lime) !important; background: var(--bg2) !important; }
+body.dark-app .lang-toggle { background: var(--bg2) !important; border-color: var(--border) !important; }
+body.dark-app .lang-btn { color: var(--text-3) !important; font-family: inherit !important; }
+body.dark-app .lang-btn.active { background: var(--lime) !important; color: #0f0f0f !important; }
+
+/* ── Tabs ── */
+body.dark-app .tab-nav { border-bottom-color: var(--border) !important; background: transparent !important; }
+body.dark-app .tab-btn { color: var(--text-3) !important; }
+body.dark-app .tab-btn:hover { color: var(--text-2) !important; }
+body.dark-app .tab-btn.active {
+  color: var(--text) !important;
+  border-bottom-color: var(--lime) !important;
+}
+body.dark-app .tab-btn:focus {
+  outline: none !important;
+}
+body.dark-app .t-count {
+  background: var(--lime) !important;
+  color: #0f0f0f !important;
+  border-color: var(--lime) !important;
+}
+
+/* ── Profile hero ── */
+body.dark-app .profile-hero { background: transparent !important; }
+body.dark-app .profile-photo { border-color: var(--lime) !important; }
+body.dark-app .profile-name { color: var(--text) !important; }
+body.dark-app .profile-title { color: var(--text-2) !important; }
+body.dark-app .pstat {
+  background: var(--bg2) !important;
+  border-color: var(--border) !important;
+  color: var(--text-3) !important;
+}
+body.dark-app .plink {
+  background: var(--bg2) !important;
+  border-color: var(--border) !important;
+  color: var(--text-3) !important;
+}
+body.dark-app .plink:hover { color: var(--lime) !important; border-color: rgba(235,255,0,0.3) !important; }
+
+/* ── Search + filter ── */
+body.dark-app .apps-search-wrap input,
+body.dark-app #searchInput {
+  background: var(--bg2) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+body.dark-app .chip {
+  background: var(--bg2) !important;
+  border-color: var(--border) !important;
+  color: var(--text-3) !important;
+}
+body.dark-app .chip.active {
+  background: var(--lime) !important;
+  border-color: var(--lime) !important;
+  color: #0f0f0f !important;
+}
+body.dark-app .f-lbl { color: var(--text-3) !important; }
+body.dark-app .apps-count { color: var(--text-3) !important; }
+
+/* ── Section labels ── */
+body.dark-app .eyebrow,
+body.dark-app .section-eyebrow { color: var(--lime) !important; }
+body.dark-app h2 { color: var(--text) !important; }
+
+/* ── App cards ── */
+body.dark-app .app-card {
+  background: var(--bg1) !important;
+  border-color: var(--border) !important;
+}
+body.dark-app .app-card:hover {
+  border-color: rgba(255,255,255,0.12) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5) !important;
+}
+body.dark-app .card-title { color: var(--text) !important; }
+body.dark-app .card-tagline { color: var(--text-2) !important; }
+body.dark-app .card-header-cat { color: var(--text-3) !important; }
+body.dark-app .screen-ov {
+  background: linear-gradient(to bottom, transparent 30%, var(--bg1) 100%) !important;
+}
+body.dark-app .cat-badge {
+  background: rgba(0,0,0,0.6) !important;
+  color: #fff !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+body.dark-app .s-live { color: #4ade80 !important; }
+body.dark-app .sdot { background: var(--lime) !important; box-shadow: 0 0 6px rgba(235,255,0,0.5) !important; }
+
+/* Tags */
+body.dark-app .t-lime   { background: rgba(235,255,0,0.12) !important; color: var(--lime) !important; border-color: rgba(235,255,0,0.25) !important; }
+body.dark-app .t-green,
+body.dark-app .t-muted,
+body.dark-app .t-orange,
+body.dark-app .t-teal,
+body.dark-app .t-purple,
+body.dark-app .t-pink   { background: var(--bg2) !important; color: var(--text-3) !important; border-color: var(--border) !important; }
+
+/* Tech row */
+body.dark-app .tc {
+  background: var(--bg2) !important;
+  border-color: var(--border) !important;
+  color: var(--text-3) !important;
+}
+
+/* Card action - "OPEN →" text */
+body.dark-app .app-card .btn-p {
+  background: none !important;
+  color: var(--text-2) !important;
+  border: none !important;
+}
+body.dark-app .app-card .btn-p:hover { color: var(--text) !important; }
+
+/* ── hstat (hero stats) ── */
+body.dark-app .hstat {
+  background: var(--bg1) !important;
+  border-color: var(--border) !important;
+}
+body.dark-app .hstat .n { color: var(--lime) !important; }
+body.dark-app .hstat .l { color: var(--text-3) !important; }
+
+/* ── Stack ── */
+body.dark-app .stack-page-header h2 { color: var(--text) !important; }
+body.dark-app .stack-page-header p  { color: var(--text-2) !important; }
+body.dark-app .scat-name  { color: var(--text-3) !important; }
+body.dark-app .scat-enables { color: var(--text-3) !important; border-top-color: var(--border) !important; }
+body.dark-app .scat-row   { border-color: var(--border) !important; }
+body.dark-app .tech-icon-item {
+  background: var(--bg1) !important;
+  border-color: var(--border) !important;
+}
+body.dark-app .tech-icon-item:hover { background: var(--bg2) !important; border-color: var(--border-hi) !important; }
+body.dark-app .tech-icon-item span { color: var(--text-3) !important; }
+body.dark-app .stack-flt {
+  background: var(--bg2) !important;
+  border-color: var(--border) !important;
+  color: var(--text-3) !important;
+}
+body.dark-app .stack-flt.active {
+  background: var(--lime) !important;
+  color: #0f0f0f !important;
+  border-color: var(--lime) !important;
+}
+
+/* ── Timeline ── */
+body.dark-app .tl-page { color: var(--text) !important; }
+body.dark-app .tl-header h2 { color: var(--text) !important; }
+body.dark-app .tl-header p  { color: var(--text-2) !important; }
+body.dark-app .tl-year-block { border-top-color: var(--border) !important; }
+body.dark-app .tl-entry { border-bottom-color: var(--border) !important; }
+body.dark-app .tl-tech-name { color: var(--text) !important; }
+body.dark-app .tl-note { color: var(--text-2) !important; }
+body.dark-app .tl-cat-badge { background: var(--bg2) !important; color: var(--text-3) !important; border-color: var(--border) !important; }
+body.dark-app .tl-tc { background: var(--bg2) !important; color: var(--text-3) !important; }
+body.dark-app .tl-year-num { color: var(--text-3) !important; }
+
+/* ── CV ── */
+body.dark-app .cv-card {
+  background: var(--bg1) !important;
+  border-color: var(--border) !important;
+}
+body.dark-app .cv-h-name { color: var(--text) !important; }
+body.dark-app .cv-h-title { color: var(--text-3) !important; }
+body.dark-app .cv-h-contact a { color: var(--text-2) !important; }
+body.dark-app .cv-sec-title { color: var(--text-3) !important; }
+body.dark-app .cv-role-title { color: var(--text) !important; }
+body.dark-app .cv-role-title:hover { color: var(--lime) !important; }
+body.dark-app .cv-role-company { color: var(--text-2) !important; }
+body.dark-app .cv-role-date  { color: var(--text-3) !important; }
+body.dark-app .cv-role-desc  { color: var(--text-2) !important; }
+body.dark-app .cv-badge-type { background: var(--bg2) !important; color: var(--text-3) !important; border-color: var(--border) !important; }
+body.dark-app .cv-tool-pill  { background: var(--bg2) !important; color: var(--text-3) !important; border-color: var(--border) !important; }
+body.dark-app .cv-tl-dot { background: var(--lime) !important; border-color: var(--bg) !important; }
+body.dark-app .cv-kpi-val { color: var(--text) !important; }
+body.dark-app .cv-kpi-lab { color: var(--text-3) !important; }
+body.dark-app .cv-rec-card { border-left-color: var(--lime) !important; background: var(--bg2) !important; }
+body.dark-app .cv-cert-item { background: var(--bg2) !important; border-color: var(--border) !important; }
+body.dark-app .cv-cert-item:hover { border-color: rgba(235,255,0,0.25) !important; }
+body.dark-app .cv-setup-item { background: var(--bg2) !important; border-color: var(--border) !important; }
+body.dark-app .cv-setup-name { color: var(--text-3) !important; }
+body.dark-app .cv-setup-pill { background: var(--bg3) !important; color: var(--text-2) !important; border-color: var(--border) !important; }
+
+/* ── Contact ── */
+body.dark-app .contact-profile-card { background: var(--bg1) !important; border-color: var(--border) !important; }
+body.dark-app .contact-form-card    { background: var(--bg1) !important; border-color: var(--border) !important; }
+body.dark-app .contact-name   { color: var(--text) !important; }
+body.dark-app .contact-tagline { color: var(--lime) !important; }
+body.dark-app .contact-bio    { color: var(--text-2) !important; }
+body.dark-app .contact-avatar { border-color: rgba(235,255,0,0.45) !important; }
+body.dark-app .cf-input {
+  background: var(--bg2) !important;
+  border-bottom-color: var(--border) !important;
+  color: var(--text) !important;
+}
+body.dark-app .cf-input:focus { border-bottom-color: rgba(235,255,0,0.6) !important; }
+body.dark-app .cf-input::placeholder { color: var(--text-3) !important; }
+body.dark-app .tf-q     { color: var(--text) !important; }
+body.dark-app .tf-dot   { background: var(--bg3) !important; }
+body.dark-app .tf-dot.active { background: var(--text-2) !important; }
+body.dark-app .svc-chip { background: var(--bg2) !important; border-color: var(--border) !important; color: var(--text-2) !important; }
+body.dark-app .contact-link-row { background: var(--bg2) !important; border-color: var(--border) !important; color: var(--text-2) !important; }
+
+/* ── Newsletter band ── */
+body.dark-app .nl-band { background: var(--bg1) !important; border-color: var(--border) !important; }
+body.dark-app .nl-band h3 { color: var(--text) !important; }
+body.dark-app .nl-band p  { color: var(--text-2) !important; }
+body.dark-app .nl-input {
+  background: var(--bg2) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+body.dark-app .nl-btn { background: var(--lime) !important; color: #0f0f0f !important; }
+
+/* ── Footer ── */
+body.dark-app footer {
+  background: var(--bg) !important;
+  border-top-color: rgba(255,255,255,0.06) !important;
+}
+body.dark-app footer p { color: var(--text-3) !important; }
+body.dark-app footer p span { color: var(--text-3) !important; }
+body.dark-app footer a { color: var(--text-3) !important; }
+body.dark-app .footer-social { color: var(--text-3) !important; }
+body.dark-app .footer-social:hover { color: var(--lime) !important; }
+
+/* ── Global overrides for light-theme-fixes when dark ── */
+body.dark-app [style*="color:var(--lime)"] { color: var(--lime) !important; }
+body.dark-app .btn-p { background: var(--lime) !important; color: #0f0f0f !important; }
+body.dark-app .app-card .btn-p { background: none !important; color: var(--text-2) !important; }
+body.dark-app .onepager-btn.primary { background: var(--lime) !important; color: #0f0f0f !important; }
+body.dark-app .stack-flt.active,
+body.dark-app .chip.active,
+body.dark-app .lang-btn.active { background: var(--lime) !important; color: #0f0f0f !important; }
+body.dark-app .profile-photo { border-color: var(--lime) !important; }
+body.dark-app .udot  { background: var(--lime) !important; }
+body.dark-app .icp-box { background: var(--bg2) !important; border-color: var(--border) !important; }
+body.dark-app .icp-txt { color: var(--text-2) !important; }
+body.dark-app .icp-txt strong { color: var(--text) !important; }
+body.dark-app .divider { background: var(--border) !important; }
+
+/* Scrollbar dark */
+body.dark-app ::-webkit-scrollbar { width: 6px; height: 6px; }
+body.dark-app ::-webkit-scrollbar-track { background: var(--bg); }
+body.dark-app ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
+body.dark-app ::-webkit-scrollbar-thumb:hover { background: var(--text-3); }
+
+/* Mobile bottom nav dark */
+body.dark-app .bottom-nav {
+  background: rgba(19,21,16,0.95) !important;
+  border-top-color: var(--border) !important;
+}
+body.dark-app .bnav-btn { color: var(--text-3) !important; }
+body.dark-app .bnav-btn.active { color: var(--lime) !important; }
+
+</style>
+<style id="wojciech-io-alignment-final">
+/* Final post-login alignment with wojciech.io. Keep this last. */
+body.dark-app {
+  --bg: #0c0c0c;
+  --bg1: #171717;
+  --bg2: #222222;
+  --bg3: #2a2a2a;
+  --border: #2a2a2a;
+  --border-hi: #3a3a3a;
+  --text: #f2f2f2;
+  --text-2: #888888;
+  --text-3: #555555;
+  --lime: #ebff00;
+  --lime-dim: rgba(235,255,0,.10);
+  --lime-glow: rgba(235,255,0,.18);
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+body.dark-app header {
+  background: rgba(12,12,12,.92) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+body.dark-app main,
+body.dark-app .main-content,
+body.dark-app .tab-content {
+  background: var(--bg) !important;
+}
+body.dark-app .hdr-name,
+body.dark-app .profile-name,
+body.dark-app .card-title,
+body.dark-app .stack-page-header h2,
+body.dark-app .tl-header h2,
+body.dark-app .cv-h-name,
+body.dark-app .contact-name,
+body.dark-app h2 {
+  color: var(--text) !important;
+  letter-spacing: -0.02em !important;
+}
+body.dark-app .hdr-sub,
+body.dark-app .profile-title,
+body.dark-app .card-header-cat,
+body.dark-app .card-tagline,
+body.dark-app .stack-page-header p,
+body.dark-app .tl-header p,
+body.dark-app .cv-h-summary,
+body.dark-app .contact-bio {
+  color: var(--text-2) !important;
+}
+body.dark-app .eyebrow,
+body.dark-app .section-eyebrow,
+body.dark-app .contact-tagline,
+body.dark-app .nl-band-eyebrow {
+  color: var(--lime) !important;
+}
+body.dark-app .tab-nav {
+  background: rgba(12,12,12,.88) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+body.dark-app .tab-btn {
+  color: var(--text-3) !important;
+  font-weight: 600 !important;
+}
+body.dark-app .tab-btn.active {
+  color: var(--text) !important;
+  border-bottom-color: var(--lime) !important;
+}
+body.dark-app .chip,
+body.dark-app .stack-flt,
+body.dark-app .hdr-search input,
+body.dark-app .apps-search-inner,
+body.dark-app .lang-toggle {
+  background: var(--bg1) !important;
+  border-color: var(--border) !important;
+  color: var(--text-2) !important;
+  border-radius: 999px !important;
+}
+body.dark-app .chip.active,
+body.dark-app .stack-flt.active,
+body.dark-app .lang-btn.active,
+body.dark-app .t-count {
+  background: var(--lime) !important;
+  color: #0c0c0c !important;
+  border-color: var(--lime) !important;
+}
+
+/* Apps grid: quieter cards, covers carry the identity. */
+body.dark-app .app-grid {
+  gap: 18px !important;
+}
+body.dark-app .app-card {
+  background: var(--bg1) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+body.dark-app .app-card:hover {
+  border-color: var(--border-hi) !important;
+  box-shadow: 0 4px 24px rgba(235,255,0,.05) !important;
+  transform: translateY(-2px) !important;
+}
+body.dark-app .card-screen {
+  height: 214px !important;
+  background:
+    radial-gradient(circle at 50% 120%, var(--cover-glow, rgba(235,255,0,.18)) 0%, transparent 58%),
+    linear-gradient(180deg, #111111 0%, #080808 100%) !important;
+}
+body.dark-app .card-screen .cs-grid {
+  opacity: .75 !important;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px) !important;
+}
+body.dark-app .card-screen .cs-body {
+  opacity: .28 !important;
+  transform: scale(.92) translateY(-8px);
+}
+body.dark-app .screen-meta {
+  z-index: 5 !important;
+}
+body.dark-app .cover-brand {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px 22px 34px;
+  pointer-events: none;
+}
+body.dark-app .cover-brand-mark {
+  width: 78px;
+  height: 78px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: var(--cover-color, #3a3a3a);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 18px 50px var(--cover-shadow, rgba(0,0,0,.35)), inset 0 1px 0 rgba(255,255,255,.18);
+}
+body.dark-app .cover-brand-mark svg {
+  width: 34px;
+  height: 34px;
+  stroke: currentColor;
+}
+body.dark-app .cover-brand-initials {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -.04em;
+  line-height: 1;
+}
+body.dark-app .cover-brand-title {
+  max-width: 92%;
+  text-align: center;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.15;
+}
+body.dark-app .cover-brand-type {
+  color: var(--text-3);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+body.dark-app .app-icon {
+  border-radius: 10px !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.18);
+}
+body.dark-app .tech-row {
+  border-top-color: var(--border) !important;
+}
+body.dark-app .tc,
+body.dark-app .tag,
+body.dark-app .tl-tc,
+body.dark-app .cv-tool-pill,
+body.dark-app .cv-badge-type,
+body.dark-app .cv-badge-ind {
+  background: var(--bg2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-3) !important;
+}
+body.dark-app .app-card .btn-p {
+  color: var(--text) !important;
+}
+
+/* Stack: grouped, scannable, with text actually attached to each group. */
+body.dark-app .stack-page {
+  max-width: 1040px !important;
+}
+body.dark-app .scat-list {
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  background: var(--bg1) !important;
+  overflow: hidden !important;
+}
+body.dark-app .scat-row {
+  grid-template-columns: 180px 1fr !important;
+  padding: 22px 24px !important;
+  background: transparent !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+body.dark-app .scat-row:last-child {
+  border-bottom: none !important;
+}
+body.dark-app .scat-name {
+  color: var(--text) !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+body.dark-app .scat-icons {
+  gap: 8px 18px !important;
+}
+body.dark-app .tech-icon-item {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+}
+body.dark-app .tech-icon-item img {
+  width: 20px !important;
+  height: 20px !important;
+  opacity: 1 !important;
+}
+body.dark-app .tech-icon-item span {
+  color: var(--text-2) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+body.dark-app .scat-enables {
+  color: var(--text-2) !important;
+  border-top: 1px solid var(--border) !important;
+  padding-top: 12px !important;
+  margin-top: 12px !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+}
+
+/* Timeline: changelog, not icon timeline. */
+body.dark-app .tl-page {
+  max-width: 900px !important;
+}
+body.dark-app .tl-body {
+  border-top: 1px solid var(--border);
+}
+body.dark-app .tl-year-block {
+  display: block !important;
+  margin: 0 !important;
+  padding: 22px 0 !important;
+  border-bottom: 1px solid var(--border) !important;
+  border-top: none !important;
+}
+body.dark-app .tl-year-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 0 0 16px !important;
+}
+body.dark-app .tl-year-num {
+  color: var(--text-3) !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  letter-spacing: .08em !important;
+  min-width: 56px !important;
+  padding: 4px 0 !important;
+}
+body.dark-app .tl-year-line {
+  display: block !important;
+  flex: 1 !important;
+  height: 1px !important;
+  background: var(--border) !important;
+}
+body.dark-app .tl-entry {
+  padding: 0 0 18px !important;
+  margin: 0 0 18px !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  background: transparent !important;
+}
+body.dark-app .tl-entry:last-child {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  border-bottom: none !important;
+}
+body.dark-app .tl-entry.milestone {
+  border-left: none !important;
+  padding-left: 0 !important;
+}
+body.dark-app .tl-entry.milestone .tl-tech-name::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 8px 2px 0;
+  border-radius: 99px;
+  background: var(--lime);
+}
+body.dark-app .tl-entry-head {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+body.dark-app .tl-tech-name {
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: var(--text) !important;
+}
+body.dark-app .tl-note {
+  max-width: 680px;
+  margin-top: 6px !important;
+  color: var(--text-2) !important;
+  font-size: 13px !important;
+}
+body.dark-app .tl-cat-badge {
+  border-radius: 999px !important;
+  padding: 3px 9px !important;
+  color: var(--text-3) !important;
+}
+
+/* Contact: visual clone of wojciech.io/contact structure. */
+body.dark-app .contact-page {
+  max-width: 1120px !important;
+  padding-top: 32px !important;
+}
+body.dark-app .contact-hero {
+  grid-template-columns: 340px minmax(0, 1fr) !important;
+  gap: 36px !important;
+  align-items: start !important;
+}
+body.dark-app .contact-profile-card,
+body.dark-app .contact-form-card,
+body.dark-app .nl-band {
+  background: var(--bg1) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+}
+body.dark-app .contact-profile-card {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+body.dark-app .contact-avatar {
+  width: 68px !important;
+  height: 68px !important;
+  border-color: var(--border-hi) !important;
+}
+body.dark-app .contact-form-card {
+  overflow: hidden;
+  padding: 30px 32px !important;
+}
+body.dark-app .tf-q {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  letter-spacing: -.03em !important;
+}
+body.dark-app .cf-input {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border-hi) !important;
+  color: var(--text) !important;
+  border-radius: 0 !important;
+  padding: 14px 0 !important;
+  font-size: 17px !important;
+}
+body.dark-app .cf-input:focus {
+  border-bottom-color: var(--lime) !important;
+}
+body.dark-app .cf-submit-btn,
+body.dark-app .nl-btn {
+  background: var(--lime) !important;
+  color: #0c0c0c !important;
+  border-radius: 999px !important;
+  font-weight: 800 !important;
+}
+body.dark-app .tf-dot.active {
+  background: var(--lime) !important;
+}
+body.dark-app .contact-link-card,
+body.dark-app .contact-avail {
+  background: var(--bg1) !important;
+  border-color: var(--border) !important;
+  color: var(--text-2) !important;
+}
+body.dark-app .contact-link-card:hover {
+  border-color: rgba(235,255,0,.4) !important;
+  color: var(--text) !important;
+  background: var(--bg2) !important;
+}
+body.dark-app .contact-link-val {
+  color: var(--text) !important;
+}
+body.dark-app .nl-band {
+  margin-top: 36px !important;
+  padding: 32px 36px !important;
+}
+body.dark-app footer {
+  background: var(--bg) !important;
+  border-top: 1px solid var(--border) !important;
+}
+body.dark-app footer p,
+body.dark-app footer p span,
+body.dark-app footer a,
+body.dark-app .fsoc {
+  color: var(--text-3) !important;
+}
+@media(max-width: 720px) {
+  body.dark-app .scat-row,
+  body.dark-app .tl-year-block,
+  body.dark-app .contact-hero {
+    grid-template-columns: 1fr !important;
+  }
+  body.dark-app .tl-year-block {
+    gap: 12px !important;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -4103,9 +4827,9 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       <div class="stack-page">
 
         <div class="stack-page-header">
-          <div class="eyebrow" data-pl="Mapa stacku" data-en="Stack map" data-it="Mappa dello stack">Stack map</div>
-          <h2 data-pl="Jak to buduję" data-en="How I build" data-it="Come costruisco">How I build</h2>
-          <p data-pl="Kategorie technologii i jakie możliwości każda z nich otwiera." data-en="Technology categories I work with and what each one makes possible." data-it="Categorie tecnologiche e cosa ognuna di esse rende possibile.">Technology categories I work with and what each one makes possible.</p>
+          <div class="eyebrow" data-pl="Stack operacyjny" data-en="Operating stack" data-it="Stack operativo">Operating stack</div>
+          <h2 data-pl="Z czego składam systemy" data-en="What the systems run on" data-it="Su cosa girano i sistemi">What the systems run on</h2>
+          <p data-pl="Pogrupowane warstwy: frontend, backend, AI, automatyzacja, płatności i infrastruktura. Każda sekcja pokazuje narzędzia oraz po co są w praktyce." data-en="Grouped layers: frontend, backend, AI, automation, payments and infrastructure. Each row shows the tools and the practical job they do." data-it="Livelli raggruppati: frontend, backend, AI, automazione, pagamenti e infrastruttura. Ogni riga mostra strumenti e ruolo pratico.">Grouped layers: frontend, backend, AI, automation, payments and infrastructure. Each row shows the tools and the practical job they do.</p>
         </div>
 
         <div class="scat-list">
@@ -4195,9 +4919,9 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       <div class="tl-page">
 
         <div class="tl-header">
-          <div class="eyebrow" data-pl="Ścieżka rozwoju" data-en="Journey" data-it="Percorso">Journey</div>
-          <h2 data-pl="Od marketingu do produktu" data-en="From marketing to product" data-it="Dal marketing al prodotto">From marketing to product</h2>
-          <p data-pl="Aplikacje, które zbudowałem i narzędzia, które poznałem po drodze." data-en="Apps I shipped and tools I picked up along the way." data-it="App costruite e strumenti appresi lungo il percorso.">Apps I shipped and tools I picked up along the way.</p>
+          <div class="eyebrow" data-pl="Changelog" data-en="Changelog" data-it="Changelog">Changelog</div>
+          <h2 data-pl="Co zostało dowiezione" data-en="What shipped" data-it="Cosa è stato lanciato">What shipped</h2>
+          <p data-pl="Chronologiczny zapis produktów, systemów i warstw technicznych. Bez ozdobnej osi czasu." data-en="A chronological log of products, systems and technical layers. No decorative timeline." data-it="Registro cronologico di prodotti, sistemi e layer tecnici. Niente timeline decorativa.">A chronological log of products, systems and technical layers. No decorative timeline.</p>
         </div>
 
         <div class="tl-body">
@@ -4997,6 +5721,122 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       const txt = opt.getAttribute(`data-${l}`) || opt.getAttribute('data-en');
       if (txt) opt.textContent = txt;
     });
+    syncCoverBranding();
+    syncContactLayout();
+  }
+
+  function hexToRgb(hex) {
+    if (!hex) return null;
+    const clean = hex.trim().replace('#', '');
+    if (clean.length !== 6) return null;
+    const n = parseInt(clean, 16);
+    return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+  }
+
+  function syncCoverBranding() {
+    document.querySelectorAll('#appGrid .app-card').forEach(card => {
+      const screen = card.querySelector('.card-screen');
+      const title = card.querySelector('.card-title')?.textContent?.trim() || 'App';
+      const type = card.querySelector('.card-header-cat')?.textContent?.trim() || card.querySelector('.cat-badge')?.textContent?.trim() || '';
+      const icon = card.querySelector('.card-body .app-icon');
+      const iconBox = screen?.querySelector('.cs-icon-box');
+      if (!screen || !icon) return;
+
+      const bg = icon.style.background || icon.style.backgroundColor || '#3a3a3a';
+      const hex = (bg.match(/#[0-9a-fA-F]{6}/) || [])[0];
+      const rgb = hexToRgb(hex);
+      if (rgb) {
+        screen.style.setProperty('--cover-color', hex);
+        screen.style.setProperty('--cover-glow', `rgba(${rgb.r},${rgb.g},${rgb.b},.28)`);
+        screen.style.setProperty('--cover-shadow', `rgba(${rgb.r},${rgb.g},${rgb.b},.26)`);
+      }
+
+      let brand = screen.querySelector('.cover-brand');
+      if (!brand) {
+        brand = document.createElement('div');
+        brand.className = 'cover-brand';
+        screen.appendChild(brand);
+      }
+
+      const svg = iconBox?.querySelector('svg')?.cloneNode(true);
+      const initials = icon.textContent.trim().slice(0, 3);
+      brand.innerHTML = `
+        <div class="cover-brand-mark">${svg ? svg.outerHTML : `<span class="cover-brand-initials">${initials}</span>`}</div>
+        <div class="cover-brand-title"></div>
+        <div class="cover-brand-type"></div>
+      `;
+      brand.querySelector('.cover-brand-title').textContent = title;
+      brand.querySelector('.cover-brand-type').textContent = type;
+    });
+  }
+
+  function syncContactLayout() {
+    const card = document.querySelector('#tab-contact .contact-profile-card');
+    if (!card) return;
+    const avatarSrc = card.querySelector('img')?.getAttribute('src') || '';
+    const copy = {
+      pl: {
+        eyebrow: 'Kontakt',
+        title: 'Porozmawiajmy o luce.',
+        body: 'Masz działający produkt, ale system wzrostu nie dowozi? Napisz. Odpowiadam konkretnie i zwykle w 24h.',
+        call: 'Umów rozmowę',
+        callSub: '30 min · zdalnie',
+        link: 'LinkedIn',
+        linkSub: 'linkedin.com/in/wojciechluszczynski',
+        available: 'Dostępny na projekty GTM, AI workflows i aplikacje B2B.'
+      },
+      en: {
+        eyebrow: 'Contact',
+        title: "Let's talk about the gap.",
+        body: "Working product, broken pipeline, missing GTM layer, or a tool that needs to exist? Reach out. I respond directly, usually within 24h.",
+        call: 'Book a call',
+        callSub: '30 min · remote',
+        link: 'LinkedIn',
+        linkSub: 'linkedin.com/in/wojciechluszczynski',
+        available: 'Available for GTM systems, AI workflows and B2B app builds.'
+      },
+      it: {
+        eyebrow: 'Contatto',
+        title: 'Parliamo del gap.',
+        body: 'Prodotto funzionante, pipeline rotta, livello GTM mancante o uno strumento da costruire? Scrivimi. Rispondo in modo diretto, di solito entro 24h.',
+        call: 'Prenota una call',
+        callSub: '30 min · remoto',
+        link: 'LinkedIn',
+        linkSub: 'linkedin.com/in/wojciechluszczynski',
+        available: 'Disponibile per sistemi GTM, workflow AI e app B2B.'
+      }
+    }[currentLang || 'en'];
+
+    card.innerHTML = `
+      <p class="eyebrow">${copy.eyebrow}</p>
+      <h2 style="font-size:40px;font-weight:700;letter-spacing:-0.04em;line-height:1.04;margin:10px 0 14px;color:var(--text)">${copy.title}</h2>
+      <p class="contact-bio" style="margin:0 0 26px">${copy.body}</p>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">
+        ${avatarSrc ? `<img class="contact-avatar" src="${avatarSrc}" alt="Wojciech Łuszczyński">` : ''}
+        <div>
+          <div class="contact-name">Wojciech Łuszczyński</div>
+          <div class="contact-tagline">GTM Architect · Builder</div>
+        </div>
+      </div>
+      <div class="contact-links-grid">
+        <a class="contact-link-card" href="mailto:hello@wojciech.io">
+          <span>
+            <span class="contact-link-label">${copy.call}</span>
+            <span class="contact-link-val">${copy.callSub}</span>
+          </span>
+        </a>
+        <a class="contact-link-card" href="https://linkedin.com/in/wojciechluszczynski" target="_blank" rel="noopener noreferrer">
+          <span>
+            <span class="contact-link-label">${copy.link}</span>
+            <span class="contact-link-val">${copy.linkSub}</span>
+          </span>
+        </a>
+      </div>
+      <div class="contact-avail" style="margin-top:14px">
+        <span class="contact-avail-dot"></span>
+        <span>${copy.available}</span>
+      </div>
+    `;
   }
 
   // Read language set in gate and apply to app
@@ -5020,6 +5860,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       sessionStorage.setItem('pw_ok', '1');
       document.getElementById('gate').style.display = 'none';
       document.getElementById('app').style.display = 'block';
+      document.body.classList.add('dark-app');
       applyLang();
     } else {
       err.classList.add('show');
@@ -5034,6 +5875,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   if (sessionStorage.getItem('pw_ok') === '1') {
     document.getElementById('gate').style.display = 'none';
     document.getElementById('app').style.display = 'block';
+    document.body.classList.add('dark-app');
     applyLang();
   }
   setTimeout(() => document.getElementById('pwInput')?.focus(), 80);
