@@ -1530,6 +1530,222 @@ body { --lime:#5a6500; --lime-dim:rgba(90,101,0,0.10); --lime-glow:rgba(90,101,0
 /* Footer name: neutral */
 footer p span { color: var(--text-2) !important; font-weight: 600 !important; }
 </style>
+
+<style id="design-fixes-v1">
+/* ── 1. Profile hero chips - hidden, add nothing ── */
+.profile-stats { display: none !important; }
+
+/* ── 2. CV header title - clean neutral, not lime ── */
+.cv-h-title {
+  color: var(--text-3) !important;
+  font-size: 10px !important;
+  letter-spacing: 1.5px !important;
+  font-weight: 700 !important;
+}
+/* CV education / setup labels - ditto */
+.cv-setup-name { color: var(--text-3) !important; font-weight: 700 !important; }
+
+/* ── 3. Footer - neutral name, no lime ── */
+footer p span { color: var(--text-3) !important; font-weight: 500 !important; }
+
+/* ── 4. Timeline - remove bomb circles, clean list ── */
+.tl-entry-left { display: none !important; }
+.tl-entry {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--border) !important;
+  border-radius: 0 !important;
+  padding: 14px 0 !important;
+  box-shadow: none !important;
+}
+.tl-entry:last-child { border-bottom: none !important; }
+.tl-entry:hover { box-shadow: none !important; }
+.tl-entry.milestone {
+  border-left: none !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+.tl-entry-right { padding-left: 0 !important; width: 100%; }
+/* Year label: clean, small caps */
+.tl-year-num {
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 2.5px !important;
+  text-transform: uppercase !important;
+  color: var(--text-3) !important;
+}
+.tl-year-label { margin-bottom: 4px !important; }
+.tl-year-line { display: none !important; }
+.tl-year-block { margin-bottom: 8px !important; }
+/* Milestone entries: lime dot in title instead */
+.tl-entry.milestone .tl-tech-name::before {
+  content: '·';
+  color: #EBFF00;
+  margin-right: 6px;
+  font-size: 18px;
+  line-height: 0;
+  vertical-align: -2px;
+}
+
+/* ── 5. Stack - brand colored icons, cleaner layout ── */
+.tech-icon-item img { opacity: 0.9 !important; filter: none !important; }
+.tech-icon-item:hover img { opacity: 1 !important; }
+.scat-row {
+  background: transparent !important;
+  border-color: var(--border) !important;
+}
+.scat-name {
+  font-size: 11px !important;
+  color: var(--text-3) !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.2px !important;
+}
+.scat-enables {
+  font-size: 12px !important;
+  color: var(--text-3) !important;
+  line-height: 1.55 !important;
+  border-top: 1px solid var(--border);
+  margin-top: 10px !important;
+  padding-top: 10px !important;
+}
+
+/* ── 6. Contact profile card - subscribe.wojciech.io style ── */
+.contact-profile-card {
+  border-radius: 16px !important;
+  padding: 24px !important;
+}
+.contact-name {
+  font-size: 20px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.4px !important;
+  line-height: 1.1 !important;
+  margin-bottom: 3px !important;
+}
+.contact-tagline {
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.8px !important;
+  color: var(--lime) !important;
+  margin-bottom: 0 !important;
+}
+.contact-bio {
+  font-size: 13.5px !important;
+  line-height: 1.62 !important;
+  color: var(--text-2) !important;
+  margin-top: 14px !important;
+}
+.contact-avatar {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 2px solid rgba(235,255,0,0.5) !important;
+  flex-shrink: 0 !important;
+}
+/* Typeform-style form */
+.contact-form-card {
+  border-radius: 16px !important;
+  padding: 28px 24px !important;
+}
+/* Hide original labels for typeform feel */
+.cf-label { display: none !important; }
+/* Input: underline style */
+.cf-input {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1.5px solid var(--border) !important;
+  border-radius: 0 !important;
+  padding: 10px 0 !important;
+  font-size: 15px !important;
+  transition: border-color 0.2s !important;
+}
+.cf-input:focus {
+  background: transparent !important;
+  border-bottom-color: var(--text) !important;
+  box-shadow: none !important;
+}
+.cf-input::placeholder { font-size: 15px !important; }
+.cf-textarea {
+  min-height: 80px !important;
+  resize: none !important;
+}
+.cf-form-title {
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.5px !important;
+  margin-bottom: 2px !important;
+}
+.cf-form-sub { font-size: 12px !important; color: var(--text-3) !important; margin-bottom: 24px !important; }
+.cf-field { margin-bottom: 18px !important; }
+/* Submit button: lime pill like subscribe site */
+.cf-submit-btn {
+  background: #EBFF00 !important;
+  color: #0f0f0f !important;
+  border-radius: 99px !important;
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  padding: 14px 32px !important;
+  width: auto !important;
+  display: inline-flex !important;
+  letter-spacing: 0.3px !important;
+  transition: all 0.15s !important;
+}
+.cf-submit-btn:hover { background: #D4E600 !important; transform: translateY(-1px) !important; opacity: 1 !important; }
+.cf-submit-btn:disabled { background: var(--bg3) !important; color: var(--text-3) !important; }
+.contact-hero {
+  display: grid !important;
+  grid-template-columns: 1fr 1.3fr !important;
+  gap: 20px !important;
+  align-items: start !important;
+}
+@media(max-width:640px) {
+  .contact-hero { grid-template-columns: 1fr !important; }
+}
+
+/* ── 7. cv-h-title in CV card also ── */
+.cv-profile-card .cv-h-title,
+.cv-header-strip .cv-h-title { color: var(--text-3) !important; }
+
+/* ── 7b. Cover cat text - hide ── */
+.cs-cat-txt { display: none !important; }
+
+/* ── 7c. Cover icon size boost ── */
+.cs-icon-box {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 22px !important;
+}
+.cs-icon-box svg { width: 36px !important; height: 36px !important; }
+
+/* ── 8. Typeform contact steps ── */
+.tf-step { animation: tfFadeIn 0.25s ease; }
+@keyframes tfFadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+.tf-q {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.4px;
+  color: var(--text);
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+.tf-field { margin-bottom: 20px; }
+.tf-progress {
+  display: flex;
+  gap: 6px;
+  margin-top: 20px;
+}
+.tf-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-hi);
+  transition: background 0.2s;
+}
+.tf-dot.active {
+  background: var(--text-2);
+}
+</style>
 </head>
 <body>
 
@@ -2438,10 +2654,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== SabiSzop ===== -->
         <div class="app-card" data-tags="resumebuilder productivity react typescript vercel" data-name="sabiszop sabi szop">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030919 0%,#05122e 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(28,105,212,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(28,105,212,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#2e7de8,#1C69D4);border:none;box-shadow:0 8px 28px rgba(28,105,212,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
               <div class="cs-cat-txt">Marketplace · B2C</div>
             </div>
             <div class="screen-ov"></div>
@@ -2484,10 +2700,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== VeloLodz ===== -->
         <div class="app-card" data-tags="pwa mobile react community sport rower cycling lodz velo ec1 netlify" data-name="velolodz velo lodz ec1" data-hidden="true" style="display:none">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030e1a 0%,#051d31 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(14,165,233,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(14,165,233,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5L9 3 6 8h10"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#26b8f8,#0ea5e9);border:none;box-shadow:0 8px 28px rgba(14,165,233,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5L9 3 6 8h10"/></svg></div>
               <div class="cs-cat-txt">Community · Sport</div>
             </div>
             <div class="screen-ov"></div>
@@ -2530,10 +2746,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== Kadromierz ===== -->
         <div class="app-card" data-tags="b2b saas content marketing hr kadromierz base44 workforce scheduling cms" data-name="kadromierz content hub">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#0c081c 0%,#191034 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(139,92,246,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(139,92,246,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#9e6fff,#8b5cf6);border:none;box-shadow:0 8px 28px rgba(139,92,246,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
               <div class="cs-cat-txt">Content · B2B SaaS</div>
             </div>
             <div class="screen-ov"></div>
@@ -2576,10 +2792,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== GrowthHub ===== -->
         <div class="app-card" data-tags="b2b saas growth marketing hr kadromierz netlify demand-gen lead-gen analytics" data-name="kadromierz growthhub growth hub">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#031011 0%,#05211f 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(16,185,129,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(16,185,129,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#14d498,#10b981);border:none;box-shadow:0 8px 28px rgba(16,185,129,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
               <div class="cs-cat-txt">Growth · B2B SaaS</div>
             </div>
             <div class="screen-ov"></div>
@@ -2615,10 +2831,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== HireMe ===== -->
         <div class="app-card" data-tags="pwa mobile react recruitment hr rekrutacja tracker ats jobs netlify personal" data-name="hireme rekrutacja">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030d12 0%,#051a20 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(13,148,136,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(13,148,136,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#11aba0,#0d9488);border:none;box-shadow:0 8px 28px rgba(13,148,136,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
               <div class="cs-cat-txt">Recruitment · SaaS</div>
             </div>
             <div class="screen-ov"></div>
@@ -2661,10 +2877,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== AN Projekt ===== -->
         <div class="app-card" data-tags="vite react lovable web design interior architecture strona www projekt an design studio website strona-www" data-name="an projekt an-projekt strona internetowa website">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#150613 0%,#2a0c23 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(236,72,153,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(236,72,153,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#f660a8,#ec4899);border:none;box-shadow:0 8px 28px rgba(236,72,153,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
               <div class="cs-cat-txt">Interior Design</div>
             </div>
             <div class="screen-ov"></div>
@@ -2707,10 +2923,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== Ciryam ===== -->
         <div class="app-card" data-tags="website music band rock ciryam vite react strona-www" data-name="ciryam band music website strona">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#14030c 0%,#280514 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(225,29,72,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(225,29,72,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#f52e57,#e11d48);border:none;box-shadow:0 8px 28px rgba(225,29,72,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
               <div class="cs-cat-txt">Music · Band</div>
             </div>
             <div class="screen-ov"></div>
@@ -2752,10 +2968,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== Działkometr ===== -->
         <div class="app-card" data-tags="pwa react vite supabase real-estate nieruchomosci dzialka kalkulator calculator mapy maps" data-name="dzialkomierz dzialka nieruchomosci kalkulator">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#0b0e08 0%,#161c0c 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(124,158,0,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(124,158,0,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#92bb00,#7c9e00);border:none;box-shadow:0 8px 28px rgba(124,158,0,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
               <div class="cs-cat-txt">Real Estate · PWA</div>
             </div>
             <div class="screen-ov"></div>
@@ -2790,10 +3006,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== AdsAI ===== -->
         <div class="app-card" data-tags="b2b saas ai google-ads marketing automation roas campaigns analytics icp scoring performance" data-name="ads assistant google ads dashboard marketing icp performance">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#160e08 0%,#2c1c0c 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(245,158,11,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(245,158,11,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#ffb420,#f59e0b);border:none;box-shadow:0 8px 28px rgba(245,158,11,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
               <div class="cs-cat-txt">Marketing AI · B2B</div>
             </div>
             <div class="screen-ov"></div>
@@ -2828,10 +3044,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== Paczka+ ===== -->
         <div class="app-card" data-tags="pwa mobile react typescript package tracking parcels courier inpost dhl dpd" data-name="paczka plus tracking paczki kurier sledzenie" data-hidden="true" style="display:none">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030d16 0%,#051a28 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(8,145,178,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(8,145,178,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#0aadd4,#0891b2);border:none;box-shadow:0 8px 28px rgba(8,145,178,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
               <div class="cs-cat-txt">Logistics · PWA</div>
             </div>
             <div class="screen-ov"></div>
@@ -2866,10 +3082,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- Camper Rental -->
         <div class="app-card" data-tags="booking consumer react typescript supabase vercel" data-name="camper rental booking engine kamper wynajem">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030a12 0%,#051421 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(14,116,144,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(14,116,144,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#1290ae,#0e7490);border:none;box-shadow:0 8px 28px rgba(14,116,144,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
               <div class="cs-cat-txt">Booking Engine</div>
             </div>
             <div class="screen-ov"></div>
@@ -2909,10 +3125,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- Amoree -->
         <div class="app-card" data-tags="brand consumer react typescript vercel wedding event" data-name="amoree wedding event invitation site wesele">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#11030e 0%,#220518 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(190,24,93,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(190,24,93,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#d42275,#be185d);border:none;box-shadow:0 8px 28px rgba(190,24,93,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
               <div class="cs-cat-txt">Wedding · Events</div>
             </div>
             <div class="screen-ov"></div>
@@ -2955,7 +3171,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
             <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(71,85,105,0.38) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#808b9c,#6b7280);border:none;box-shadow:0 8px 28px rgba(107,114,128,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
               <div class="cs-cat-txt">SEO · E-commerce</div>
             </div>
             <div class="screen-ov"></div>
@@ -2995,10 +3211,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- Spawarki Laserowe -->
         <div class="app-card" data-tags="b2b seo ecommerce react typescript vercel spawarki laser welding przemysl manufacturing poland" data-name="spawarki laserowe laser welding fiber laser blink spawanie">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#160a08 0%,#2c140c 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(249,115,22,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(249,115,22,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#ff8c30,#f97316);border:none;box-shadow:0 8px 28px rgba(249,115,22,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
               <div class="cs-cat-txt">SEO · B2B Industrial</div>
             </div>
             <div class="screen-ov"></div>
@@ -3034,10 +3250,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- Willa w Parku -->
         <div class="app-card" data-tags="website brand consumer react lovable local venue event coffee club lodz nightlife kawiarnia klub" data-name="willa lodz willa w parku kafé klub kawiarnia park poniatowskiego">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#120f0f 0%,#241e1b 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(200,169,110,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(200,169,110,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#dfc18a,#c8a96e);border:none;box-shadow:0 8px 28px rgba(200,169,110,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
               <div class="cs-cat-txt">Venue · Hospitality</div>
             </div>
             <div class="screen-ov"></div>
@@ -3076,10 +3292,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- Akademia AI -->
         <div class="app-card" data-tags="b2b saas education audio courses certification stripe react typescript vercel" data-name="akademia ai audio kurs szkolenie certyfikat">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#150708 0%,#2a0f0c 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(234,88,12,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(234,88,12,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#ff6e20,#ea580c);border:none;box-shadow:0 8px 28px rgba(234,88,12,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
               <div class="cs-cat-txt">Education · SaaS</div>
             </div>
             <div class="screen-ov"></div>
@@ -3119,10 +3335,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- Relora -->
         <div class="app-card" data-tags="b2b saas crm relationship intelligence personal crm outreach nextjs supabase vercel" data-name="relora crm relationship b2b outreach pipeline">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#0b051b 0%,#160a32 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(124,58,237,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(124,58,237,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#9050ff,#7c3aed);border:none;box-shadow:0 8px 28px rgba(124,58,237,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
               <div class="cs-cat-txt">Relationship CRM</div>
             </div>
             <div class="screen-ov"></div>
@@ -3162,10 +3378,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- Brain24 -->
         <div class="app-card" data-tags="b2b saas ai brand intelligence platform react typescript vite shadcn supabase vercel product-design" data-name="brain24 brand brain ai intelligence platform">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#08091b 0%,#111233 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(99,102,241,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(99,102,241,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#7b7fff,#6366f1);border:none;box-shadow:0 8px 28px rgba(99,102,241,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
               <div class="cs-cat-txt">Brand Intelligence</div>
             </div>
             <div class="screen-ov"></div>
@@ -3205,11 +3421,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <!-- ===== NotchCue ===== -->
         <div class="app-card" data-tags="macos native swift desktop utility teleprompter privacy local-first appkit avfoundation notchcue apple mac" data-name="notchcue notch cue macos teleprompter prompter">
           <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#08081a 0%,#101031 100%)">
-            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(94,92,230,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(94,92,230,0.45) 0%,transparent 68%);pointer-events:none"></div>
             <div class="cs-grid"></div>
             <div class="cs-body">
-              <div class="cs-icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="13" rx="2"/><path d="M2 19h20"/><path d="M8 23h8"/><rect x="10" y="5" width="4" height="2" rx="1" fill="currentColor" stroke="none" opacity="0.6"/></svg></div>
-              <div class="cs-cat-txt">Desktop Utility · macOS</div>
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#4a4a4c,#1C1C1E);border:none;box-shadow:0 8px 28px rgba(94,92,230,0.35),inset 0 1px 0 rgba(255,255,255,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="13" rx="2"/><path d="M2 19h20"/><path d="M8 23h8"/><rect x="10" y="5" width="4" height="2" rx="1" fill="currentColor" stroke="none" opacity="0.6"/></svg></div>
             </div>
             <div class="screen-ov"></div>
             <div class="screen-meta">
@@ -3898,12 +4113,12 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           <div class="scat-row">
             <div class="scat-name">Frontend</div>
             <div class="scat-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/react/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="React"><span>React</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/typescript/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="TypeScript"><span>TypeScript</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/tailwindcss/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Tailwind"><span>Tailwind</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/vite/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Vite"><span>Vite</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/shadcnui/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="shadcn/ui"><span>shadcn/ui</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/nextdotjs/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Next.js"><span>Next.js</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/react/61DAFB" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="React"><span>React</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/typescript/3178C6" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="TypeScript"><span>TypeScript</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Tailwind"><span>Tailwind</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/vite/646CFF" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Vite"><span>Vite</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/shadcnui/000000" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="shadcn/ui"><span>shadcn/ui</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/nextdotjs/000000" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Next.js"><span>Next.js</span></div>
             </div>
             <div class="scat-enables" data-pl="Buduję od landing page po pełne dashboardy SaaS - z type safety, server renderingiem i gotowym systemem komponentów." data-en="From landing pages to full SaaS dashboards - with type safety, server rendering, and a complete component system ready to extend." data-it="Da landing page a dashboard SaaS completi - con type safety, server rendering e un sistema di componenti pronto da estendere.">From landing pages to full SaaS dashboards - with type safety, server rendering, and a complete component system ready to extend.</div>
           </div>
@@ -3911,10 +4126,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           <div class="scat-row">
             <div class="scat-name">Backend &amp; Data</div>
             <div class="scat-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/supabase/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Supabase"><span>Supabase</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/fastapi/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="FastAPI"><span>FastAPI</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/googlecloud/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Cloud Run"><span>Cloud Run</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/googlebigquery/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="BigQuery"><span>BigQuery</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Supabase"><span>Supabase</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/fastapi/009688" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="FastAPI"><span>FastAPI</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/googlecloud/4285F4" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Cloud Run"><span>Cloud Run</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/googlebigquery/669DF6" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="BigQuery"><span>BigQuery</span></div>
             </div>
             <div class="scat-enables" data-pl="Auth, baza danych i storage w kilka minut - potem własne API w Pythonie i BigQuery dla zapytań na milionach wierszy bez zarządzania serwerami." data-en="Auth, database, and storage in minutes - then custom Python APIs and BigQuery for querying millions of rows without managing servers." data-it="Auth, database e storage in pochi minuti - poi API Python custom e BigQuery per query su milioni di righe senza gestire server.">Auth, database, and storage in minutes - then custom Python APIs and BigQuery for querying millions of rows without managing servers.</div>
           </div>
@@ -3922,9 +4137,9 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           <div class="scat-row">
             <div class="scat-name">AI</div>
             <div class="scat-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/openai/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="OpenAI"><span>OpenAI</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/anthropic/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Anthropic"><span>Anthropic</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/elevenlabs/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="ElevenLabs"><span>ElevenLabs</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/openai/412991" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="OpenAI"><span>OpenAI</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/anthropic/D4A96A" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Anthropic"><span>Anthropic</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/elevenlabs/F5A623" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="ElevenLabs"><span>ElevenLabs</span></div>
             </div>
             <div class="scat-enables" data-pl="Dodaję generowanie tekstu, analizę dokumentów i głos do każdej aplikacji. Buduję agenty które rozumują, przeszukują i wykonują zadania automatycznie." data-en="Add text generation, document analysis, and voice to any app. Build agents that reason, search, and complete tasks without human input." data-it="Aggiungo generazione testo, analisi documenti e voce a qualsiasi app. Costruisco agenti che ragionano, cercano e completano task autonomamente.">Add text generation, document analysis, and voice to any app. Build agents that reason, search, and complete tasks without human input.</div>
           </div>
@@ -3932,9 +4147,9 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           <div class="scat-row">
             <div class="scat-name">Automation</div>
             <div class="scat-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/zapier/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Zapier"><span>Zapier</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/make/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Make"><span>Make</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/n8n/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="n8n"><span>n8n</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/zapier/FF4A00" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Zapier"><span>Zapier</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/make/6D00CC" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Make"><span>Make</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/n8n/EA4B71" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="n8n"><span>n8n</span></div>
             </div>
             <div class="scat-enables" data-pl="Łączę systemy, które nie mają API. CRM, e-mail, webhooki, arkusze - gotowe w godziny, bez pisania kodu, bez sprintów." data-en="Connect tools that don't talk to each other. CRM, email, webhooks, spreadsheets - wired up in hours without writing a line of code." data-it="Collego strumenti che non comunicano tra loro. CRM, email, webhook, fogli - collegati in ore senza scrivere codice.">Connect tools that don't talk to each other. CRM, email, webhooks, spreadsheets - wired up in hours without writing a line of code.</div>
           </div>
@@ -3942,8 +4157,8 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           <div class="scat-row">
             <div class="scat-name">Payments &amp; Email</div>
             <div class="scat-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/stripe/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Stripe"><span>Stripe</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/resend/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Resend"><span>Resend</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/stripe/635BFF" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Stripe"><span>Stripe</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/resend/000000" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Resend"><span>Resend</span></div>
             </div>
             <div class="scat-enables" data-pl="Subskrypcje i jednorazowe płatności z zarządzanym billingiem - plus maile transakcyjne, które trafiają do skrzynki, nie do spamu." data-en="Subscriptions and one-time payments with managed billing - plus transactional emails that land in the inbox, not spam." data-it="Abbonamenti e pagamenti singoli con billing gestito - più email transazionali che arrivano nella posta, non nello spam.">Subscriptions and one-time payments with managed billing - plus transactional emails that land in the inbox, not spam.</div>
           </div>
@@ -3951,9 +4166,9 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           <div class="scat-row">
             <div class="scat-name">Native / Desktop</div>
             <div class="scat-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/swift/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Swift"><span>Swift</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/apple/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="AppKit"><span>AppKit</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/xcode/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Xcode"><span>Xcode</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/swift/F05138" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Swift"><span>Swift</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/apple/000000" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="AppKit"><span>AppKit</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/xcode/147EFB" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Xcode"><span>Xcode</span></div>
             </div>
             <div class="scat-enables" data-pl="Prawdziwe aplikacje macOS - nie wrappery Electron. Menu bar, system tray, local-first, pełny dostęp do API systemu, własny DMG." data-en="Real macOS apps - not Electron wrappers. Menu bar, system tray, local-first, full system API access, custom DMG distribution." data-it="Vere app macOS - non wrapper Electron. Menu bar, system tray, local-first, pieno accesso alle API di sistema, distribuzione DMG.">Real macOS apps - not Electron wrappers. Menu bar, system tray, local-first, full system API access, custom DMG distribution.</div>
           </div>
@@ -3961,10 +4176,10 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           <div class="scat-row">
             <div class="scat-name">Infrastructure</div>
             <div class="scat-icons">
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/vercel/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Vercel"><span>Vercel</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/netlify/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Netlify"><span>Netlify</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/github/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="GitHub"><span>GitHub</span></div>
-              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/cloudflare/404040" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Cloudflare"><span>Cloudflare</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/vercel/000000" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Vercel"><span>Vercel</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/netlify/00C7B7" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Netlify"><span>Netlify</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/github/181717" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="GitHub"><span>GitHub</span></div>
+              <div class="tech-icon-item"><img src="https://cdn.simpleicons.org/cloudflare/F38020" width="20" height="20" loading="lazy" onerror="this.style.display='none'" alt="Cloudflare"><span>Cloudflare</span></div>
             </div>
             <div class="scat-enables" data-pl="Push do gita = deploy gotowy. Preview URL per branch, edge hosting globalnie, zero konfiguracji DNS i CDN w jednym miejscu." data-en="Push to git, get a live URL. Preview per branch, globally distributed edge hosting, DNS and CDN managed in one place." data-it="Push su git, URL live pronto. Preview per branch, edge hosting distribuito globalmente, DNS e CDN gestiti in un posto.">Push to git, get a live URL. Preview per branch, globally distributed edge hosting, DNS and CDN managed in one place.</div>
           </div>
@@ -4611,23 +4826,56 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
           <!-- Right: Form -->
           <div class="contact-form-card">
             <div id="contactFormWrap">
-              <div class="cf-form-title" data-pl="Napisz do mnie" data-en="Get in touch" data-it="Scrivimi">Get in touch</div>
-              <div class="cf-form-sub" data-pl="Odpowiadam w ciągu 24h." data-en="I reply within 24h." data-it="Rispondo entro 24h.">I reply within 24h.</div>
-              <div class="cf-field">
-                <label class="cf-label" data-pl="Imię" data-en="Name" data-it="Nome">Name</label>
-                <input type="text" class="cf-input" id="formName" data-pl-placeholder="Jan Kowalski" data-en-placeholder="John Smith" data-it-placeholder="Mario Rossi" placeholder="John Smith" autocomplete="name">
+              <!-- Step 1: Name -->
+              <div class="tf-step" id="tfStep1">
+                <div class="tf-q" data-pl="Jak masz na imię?" data-en="What's your name?" data-it="Come ti chiami?">What's your name?</div>
+                <div class="tf-field">
+                  <input type="text" class="cf-input" id="formName"
+                    data-pl-placeholder="Jan Kowalski"
+                    data-en-placeholder="John Smith"
+                    data-it-placeholder="Mario Rossi"
+                    placeholder="John Smith" autocomplete="name"
+                    onkeydown="if(event.key==='Enter')tfNext(2)">
+                </div>
+                <button class="cf-submit-btn" onclick="tfNext(2)">
+                  <span data-pl="Dalej →" data-en="Next →" data-it="Avanti →">Next →</span>
+                </button>
               </div>
-              <div class="cf-field">
-                <label class="cf-label" data-pl="Email" data-en="Email" data-it="Email">Email</label>
-                <input type="email" class="cf-input" id="formEmail" data-pl-placeholder="jan@firma.pl" data-en-placeholder="you@company.com" data-it-placeholder="tu@azienda.it" placeholder="you@company.com" autocomplete="email">
+              <!-- Step 2: Email -->
+              <div class="tf-step" id="tfStep2" style="display:none">
+                <div class="tf-q" data-pl="Jaki jest Twój email?" data-en="What's your email?" data-it="Qual è la tua email?">What's your email?</div>
+                <div class="tf-field">
+                  <input type="email" class="cf-input" id="formEmail"
+                    data-pl-placeholder="jan@firma.pl"
+                    data-en-placeholder="you@company.com"
+                    data-it-placeholder="tu@azienda.it"
+                    placeholder="you@company.com" autocomplete="email"
+                    onkeydown="if(event.key==='Enter')tfNext(3)">
+                </div>
+                <button class="cf-submit-btn" onclick="tfNext(3)">
+                  <span data-pl="Dalej →" data-en="Next →" data-it="Avanti →">Next →</span>
+                </button>
               </div>
-              <div class="cf-field">
-                <label class="cf-label" data-pl="Wiadomość" data-en="Message" data-it="Messaggio">Message</label>
-                <textarea class="cf-input cf-textarea" id="formMessage" data-pl-placeholder="Opisz projekt - co budujesz, dla kogo, co chcesz osiągnąć..." data-en-placeholder="What are you working on? What's the goal..." data-it-placeholder="Di cosa si tratta? Qual è l'obiettivo..." placeholder="What are you working on? What's the goal..." rows="4"></textarea>
+              <!-- Step 3: Message -->
+              <div class="tf-step" id="tfStep3" style="display:none">
+                <div class="tf-q" data-pl="Czym mogę pomóc?" data-en="What are you working on?" data-it="Di cosa hai bisogno?">What are you working on?</div>
+                <div class="tf-field">
+                  <textarea class="cf-input cf-textarea" id="formMessage"
+                    data-pl-placeholder="Opisz projekt krótko..."
+                    data-en-placeholder="Describe it briefly..."
+                    data-it-placeholder="Descrivilo brevemente..."
+                    placeholder="Describe it briefly..." rows="3"></textarea>
+                </div>
+                <button class="cf-submit-btn" id="cfSubmitBtn" onclick="cfSubmit()">
+                  <span data-pl="Wyślij →" data-en="Send →" data-it="Invia →">Send →</span>
+                </button>
               </div>
-              <button type="button" class="cf-submit-btn" id="cfSubmitBtn" onclick="cfSubmit()">
-                <span data-pl="Wyślij wiadomość" data-en="Send message" data-it="Invia messaggio">Send message</span>
-              </button>
+              <!-- Progress dots -->
+              <div class="tf-progress" id="tfProgress">
+                <span class="tf-dot active" id="tfDot1"></span>
+                <span class="tf-dot" id="tfDot2"></span>
+                <span class="tf-dot" id="tfDot3"></span>
+              </div>
               <div id="formError" style="display:none;color:#e53e3e;font-size:12px;font-weight:600;padding:8px 12px;background:rgba(229,62,62,0.08);border:1px solid rgba(229,62,62,0.2);border-radius:7px;margin-top:10px"></div>
             </div>
             <div id="formSuccess" style="display:none;flex-direction:column;align-items:center;justify-content:center;padding:48px 20px;text-align:center;gap:12px">
@@ -4887,6 +5135,20 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   }
 
   // ===================== CONTACT FORM (Typeform-style) =====================
+  function tfNext(step) {
+    for (var i = 1; i <= 3; i++) {
+      var el = document.getElementById('tfStep' + i);
+      if (el) el.style.display = (i === step) ? 'block' : 'none';
+    }
+    document.querySelectorAll('.tf-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i < step);
+    });
+    setTimeout(function() {
+      var s = document.getElementById('tfStep' + step);
+      if (s) { var inp = s.querySelector('input,textarea'); if (inp) inp.focus(); }
+    }, 50);
+    applyLang();
+  }
   function cfSubmit() {
     const errEl = document.getElementById('formError');
     const btn = document.getElementById('cfSubmitBtn');
