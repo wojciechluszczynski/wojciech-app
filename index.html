@@ -36,10 +36,10 @@
       --r-chip:    8px;
     }
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
+    html { scroll-behavior:smooth; overflow-x:hidden; }
     body {
       background:var(--bg); color:var(--text);
-      font-family:'Inter',sans-serif; min-height:100vh; overflow-x:clip;
+      font-family:'Inter',sans-serif; min-height:100vh; overflow-x:hidden;
     }
 
     /* ===================== GATE ===================== */
@@ -2929,7 +2929,7 @@ main {
 }
 
 @media(max-width: 640px) {
-  .profile-hero { grid-template-columns: 1fr !important; justify-items: start !important; text-align: left !important; }
+  .profile-hero { grid-template-columns: 1fr !important; justify-items: center !important; text-align: center !important; }
   .profile-stats,
   .profile-links { justify-content: flex-start !important; }
   .app-grid { grid-template-columns: 1fr !important; }
@@ -3238,28 +3238,38 @@ main {
 }
 
 .tl-year-block {
-  display: grid;
-  grid-template-columns: 96px minmax(0, 1fr);
-  gap: 26px;
+  display: block;
   margin: 0 !important;
   border-bottom: 1px solid var(--border);
   padding: 24px 0;
 }
 
 .tl-year-label {
-  display: block !important;
-  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 0 0 18px !important;
 }
 
 .tl-year-num {
   background: transparent !important;
   border: 0 !important;
   padding: 0 !important;
-  color: var(--text) !important;
-  font-size: 20px !important;
+  color: var(--text-2) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 2.5px !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
 }
 
-.tl-year-line,
+.tl-year-line {
+  display: block !important;
+  flex: 1 !important;
+  height: 1px !important;
+  background: var(--border) !important;
+}
+
 .tl-entry-left {
   display: none !important;
 }
