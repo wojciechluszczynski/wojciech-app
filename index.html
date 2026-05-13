@@ -3296,20 +3296,26 @@ main {
 }
 
 .tl-entry-head {
-  gap: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-bottom: 5px !important;
 }
 
 .tl-entry.milestone .tl-entry-head::before {
-  content: '';
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: var(--lime);
-  box-shadow: 0 0 12px var(--lime-glow);
+  content: none !important;
+}
+
+.tl-cat-badge {
+  margin-left: auto !important;
+  flex-shrink: 0 !important;
 }
 
 .tl-tech-name {
-  font-size: 15px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
 }
 
 .tl-note {
