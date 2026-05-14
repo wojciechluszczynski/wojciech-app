@@ -5501,9 +5501,25 @@ html[data-app-theme="dark"] body {
   overflow: hidden !important;
 }
 
-#tab-stack .scat-row::before,
+#tab-stack .scat-row::before {
+  display: block !important;
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, rgba(var(--stack-accent),0.78), rgba(var(--stack-accent),0.16), transparent) !important;
+}
+
 #tab-stack .scat-row::after {
-  display: none !important;
+  display: block !important;
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(var(--stack-accent),0.12), transparent 36%),
+    linear-gradient(135deg, rgba(var(--stack-accent),0.045), transparent 42%) !important;
+  opacity: .78 !important;
 }
 
 #tab-stack .scat-name {
@@ -5516,17 +5532,23 @@ html[data-app-theme="dark"] body {
 }
 
 #tab-stack .scat-name::before {
-  display: none !important;
+  display: block !important;
+  content: "" !important;
+  width: 8px !important;
+  height: 8px !important;
+  flex: 0 0 auto !important;
+  border-radius: 999px !important;
+  background: rgb(var(--stack-accent)) !important;
+  box-shadow: 0 0 18px rgba(var(--stack-accent),0.32) !important;
 }
 
 #tab-stack .scat-icons {
   display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)) !important;
-  gap: 7px !important;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+  gap: 8px !important;
   align-content: start !important;
 }
 
-#tab-stack .tech-icon-item,
 #tab-cv .cv-tool-list > span,
 #tab-cv .cv-setup-tool,
 #tab-cv .cv-role-tag {
@@ -5544,6 +5566,54 @@ html[data-app-theme="dark"] body {
   min-width: 0 !important;
 }
 
+#tab-stack .tech-icon-item {
+  min-height: 38px !important;
+  padding: 8px 10px !important;
+  border-radius: 10px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.46)),
+    rgba(var(--stack-accent),0.045) !important;
+  border: 1px solid rgba(13,13,13,0.10) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.88),
+    0 10px 24px rgba(13,13,13,0.045) !important;
+  color: var(--text) !important;
+  font-size: 12px !important;
+  font-weight: 760 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+html[data-app-theme="dark"] #tab-stack .tech-icon-item {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035)),
+    rgba(var(--stack-accent),0.075) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.09),
+    0 10px 24px rgba(0,0,0,0.16) !important;
+}
+
+#tab-stack .tech-icon-item:hover {
+  transform: translateY(-1px) !important;
+  border-color: rgba(var(--stack-accent),0.34) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.54)),
+    rgba(var(--stack-accent),0.10) !important;
+}
+
+html[data-app-theme="dark"] #tab-stack .tech-icon-item:hover {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.045)),
+    rgba(var(--stack-accent),0.12) !important;
+}
+
 #tab-stack .tech-icon-item span:last-child {
   min-width: 0 !important;
   overflow: hidden !important;
@@ -5552,13 +5622,23 @@ html[data-app-theme="dark"] body {
 
 #tab-stack .tech-icon-item img,
 #tab-cv .cv-tool-list img {
-  width: 16px !important;
-  height: 16px !important;
   opacity: .9 !important;
   filter: saturate(.9) contrast(.98) !important;
 }
 
-#tab-stack .tech-letter-mark,
+#tab-stack .tech-icon-item img {
+  width: 20px !important;
+  height: 20px !important;
+  flex: 0 0 20px !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+#tab-cv .cv-tool-list img {
+  width: 16px !important;
+  height: 16px !important;
+}
+
 #tab-cv .cv-tool-list span span[style*="width:14px"] {
   width: 16px !important;
   height: 16px !important;
@@ -5566,6 +5646,22 @@ html[data-app-theme="dark"] body {
   background: rgba(235,255,0,0.18) !important;
   color: var(--text) !important;
   font-size: 8px !important;
+  box-shadow: none !important;
+}
+
+#tab-stack .tech-letter-mark {
+  width: 20px !important;
+  height: 20px !important;
+  flex: 0 0 20px !important;
+  border-radius: 7px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(var(--stack-accent),0.16) !important;
+  color: var(--text) !important;
+  border: 1px solid rgba(var(--stack-accent),0.18) !important;
+  font-size: 9px !important;
+  font-weight: 900 !important;
   box-shadow: none !important;
 }
 
