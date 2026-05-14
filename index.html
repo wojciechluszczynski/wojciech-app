@@ -7042,6 +7042,552 @@ html[data-app-theme="dark"] #tab-timeline .tl-entry.milestone {
     padding: 4px 0 0 !important;
   }
 }
+
+/* Contact rebuild: app-like intake workspace and quieter newsletter dock. */
+#tab-contact .contact-page {
+  max-width: 1120px !important;
+  padding: 24px 0 calc(80px + env(safe-area-inset-bottom)) !important;
+}
+
+#tab-contact .contact-hero {
+  display: grid !important;
+  grid-template-columns: minmax(250px, 0.48fr) minmax(0, 1fr) !important;
+  gap: 14px !important;
+  align-items: stretch !important;
+  margin-bottom: 14px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid var(--border) !important;
+}
+
+#tab-contact .contact-hero > div:first-child {
+  display: grid !important;
+  grid-template-rows: auto auto 1fr !important;
+  gap: 10px !important;
+}
+
+#tab-contact .contact-lead-copy,
+#tab-contact .contact-quick-card,
+#tab-contact .contact-booking-card,
+#tab-contact .contact-form-card,
+#tab-contact .nl-band {
+  border-radius: 8px !important;
+  border: 1px solid rgba(255,255,255,0.105) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.044), rgba(255,255,255,0.017)),
+    rgba(15,15,15,0.74) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.055) !important;
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+}
+
+#tab-contact .contact-lead-copy {
+  position: relative;
+  gap: 10px !important;
+  padding: 18px !important;
+  overflow: hidden;
+}
+
+#tab-contact .contact-lead-copy::before,
+#tab-contact .contact-form-card::before,
+#tab-contact .nl-band::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  width: auto !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, rgba(235,255,0,.86), rgba(235,255,0,.12), transparent) !important;
+  pointer-events: none !important;
+}
+
+#tab-contact .contact-kicker,
+#tab-contact .contact-intake-kicker,
+#tab-contact .nl-band-eyebrow {
+  margin: 0 !important;
+  color: var(--text-3) !important;
+  font-size: 10px !important;
+  font-weight: 780 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+#tab-contact .contact-lead-title {
+  max-width: 420px !important;
+  margin: 0 !important;
+  color: var(--text) !important;
+  font-size: clamp(25px, 2.5vw, 34px) !important;
+  line-height: 1.02 !important;
+  font-weight: 840 !important;
+  letter-spacing: 0 !important;
+}
+
+#tab-contact .contact-lead-body {
+  max-width: 430px !important;
+  margin: 0 !important;
+  color: var(--text-2) !important;
+  font-size: 13px !important;
+  line-height: 1.62 !important;
+}
+
+#tab-contact .contact-quick-links {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+  margin: 0 !important;
+}
+
+#tab-contact .contact-quick-card {
+  min-height: 60px !important;
+  gap: 11px !important;
+  padding: 12px !important;
+  color: var(--text) !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  transition: border-color .18s ease, background .18s ease, transform .18s ease;
+}
+
+#tab-contact .contact-quick-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(235,255,0,0.32) !important;
+  background: rgba(235,255,0,0.055) !important;
+}
+
+#tab-contact .contact-quick-icon {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 7px !important;
+  background: rgba(235,255,0,0.13) !important;
+  border: 1px solid rgba(235,255,0,0.22) !important;
+  color: var(--lime) !important;
+}
+
+#tab-contact .contact-quick-main {
+  display: block !important;
+  margin-bottom: 2px !important;
+  color: var(--text) !important;
+  font-size: 13px !important;
+  font-weight: 780 !important;
+}
+
+#tab-contact .contact-quick-sub {
+  display: block !important;
+  max-width: 230px !important;
+  overflow: hidden !important;
+  color: var(--text-3) !important;
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#tab-contact .contact-booking-card {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  padding: 14px !important;
+}
+
+#tab-contact .contact-avail {
+  width: fit-content !important;
+  margin-bottom: 14px !important;
+  padding: 6px 9px !important;
+  border-radius: 999px !important;
+  background: rgba(34,197,94,0.09) !important;
+  border: 1px solid rgba(34,197,94,0.20) !important;
+  color: var(--text-2) !important;
+  font-size: 11px !important;
+}
+
+#tab-contact .contact-book-btn,
+#tab-contact .contact-link-inline,
+#tab-contact .cf-secondary-link {
+  border-radius: 7px !important;
+}
+
+#tab-contact .contact-book-btn {
+  min-height: 40px !important;
+  margin-top: auto !important;
+  background: var(--lime) !important;
+  border: 1px solid var(--lime) !important;
+  color: #080808 !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  box-shadow: none !important;
+}
+
+#tab-contact .contact-links-row {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 8px !important;
+}
+
+#tab-contact .contact-link-inline {
+  min-width: 0 !important;
+  justify-content: center !important;
+  padding: 8px 9px !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.095) !important;
+  color: var(--text-2) !important;
+  font-size: 11px !important;
+}
+
+#tab-contact .contact-link-inline span {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#tab-contact .contact-form-card {
+  position: relative !important;
+  overflow: hidden !important;
+  padding: 18px !important;
+}
+
+#tab-contact .contact-intake-head {
+  display: grid !important;
+  grid-template-columns: minmax(340px, 0.88fr) minmax(240px, 1fr) !important;
+  gap: 8px 18px !important;
+  max-width: none !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 14px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.085) !important;
+}
+
+#tab-contact .contact-intake-kicker {
+  grid-column: 1 / -1 !important;
+}
+
+#tab-contact .contact-intake-head h3 {
+  margin: 0 !important;
+  color: var(--text) !important;
+  font-size: clamp(22px, 2.1vw, 27px) !important;
+  line-height: 1.08 !important;
+  font-weight: 820 !important;
+  letter-spacing: 0 !important;
+}
+
+#tab-contact .contact-intake-head p {
+  max-width: 360px !important;
+  margin: 2px 0 0 !important;
+  color: var(--text-3) !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+
+#tab-contact .cf-choice-row {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 7px !important;
+  margin-bottom: 14px !important;
+}
+
+#tab-contact .cf-choice {
+  min-height: 36px !important;
+  padding: 0 9px !important;
+  border-radius: 7px !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.105) !important;
+  color: var(--text-2) !important;
+  font-size: 11px !important;
+  font-weight: 760 !important;
+}
+
+#tab-contact .cf-choice:has(input:checked) {
+  background: rgba(235,255,0,0.14) !important;
+  border-color: rgba(235,255,0,0.56) !important;
+  color: var(--text) !important;
+}
+
+#tab-contact .cf-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: 12px !important;
+}
+
+#tab-contact .cf-label {
+  color: var(--text-2) !important;
+  font-size: 11px !important;
+  font-weight: 720 !important;
+}
+
+#tab-contact .cf-input,
+#tab-contact .nl-input {
+  width: 100% !important;
+  min-height: 42px !important;
+  border-radius: 7px !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.11) !important;
+  color: var(--text) !important;
+  font-size: 13px !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.045) !important;
+}
+
+#tab-contact .cf-input:focus,
+#tab-contact .nl-input:focus {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(235,255,0,0.44) !important;
+  box-shadow:
+    0 0 0 3px rgba(235,255,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.05) !important;
+}
+
+#tab-contact .cf-textarea {
+  min-height: 126px !important;
+}
+
+#tab-contact .cf-actions {
+  margin-top: 14px !important;
+}
+
+#tab-contact .cf-submit-btn,
+#tab-contact .nl-btn {
+  min-height: 42px !important;
+  border-radius: 7px !important;
+  background: var(--lime) !important;
+  border: 1px solid var(--lime) !important;
+  color: #080808 !important;
+  font-size: 13px !important;
+  font-weight: 820 !important;
+  box-shadow: none !important;
+}
+
+#tab-contact .cf-secondary-link {
+  min-height: 42px !important;
+  background: rgba(255,255,255,0.035) !important;
+  border: 1px solid rgba(255,255,255,0.11) !important;
+  color: var(--text-2) !important;
+}
+
+#tab-contact .cf-meta-row {
+  gap: 7px !important;
+  margin-top: 12px !important;
+  padding-top: 12px !important;
+  border-top: 1px solid rgba(255,255,255,0.075) !important;
+  color: var(--text-3) !important;
+  font-size: 11px !important;
+}
+
+#tab-contact .nl-band {
+  position: relative !important;
+  margin-top: 14px !important;
+  padding: 16px 18px !important;
+  overflow: hidden !important;
+}
+
+#tab-contact .nl-band-inner {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px) !important;
+  gap: 18px !important;
+  align-items: end !important;
+}
+
+#tab-contact .nl-band-left {
+  display: grid !important;
+  gap: 8px !important;
+}
+
+#tab-contact .nl-band-title {
+  margin: 0 !important;
+  color: var(--text) !important;
+  font-size: clamp(18px, 2vw, 24px) !important;
+  line-height: 1.15 !important;
+  font-weight: 820 !important;
+  letter-spacing: 0 !important;
+}
+
+#tab-contact .nl-band-sub {
+  max-width: 650px !important;
+  margin: 0 !important;
+  color: var(--text-2) !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+#tab-contact .nl-band-points {
+  display: none !important;
+}
+
+#tab-contact .nl-band-point {
+  flex: 0 1 auto !important;
+  width: fit-content !important;
+  max-width: min(100%, 300px) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 6px 9px !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.09) !important;
+  color: var(--text-2) !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+#tab-contact .nl-band-point::before {
+  width: 5px !important;
+  height: 5px !important;
+  background: rgba(235,255,0,0.78) !important;
+}
+
+#tab-contact .nl-band-right {
+  min-width: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 8px !important;
+  padding: 0 !important;
+}
+
+#tab-contact .nl-btn {
+  width: auto !important;
+  white-space: nowrap !important;
+  padding: 0 14px !important;
+}
+
+#tab-contact .nl-band-note {
+  grid-column: 1 / -1 !important;
+  color: var(--text-3) !important;
+  font-size: 11px !important;
+  text-align: left !important;
+}
+
+body[data-app-theme="light"] #tab-contact .contact-lead-copy,
+body[data-app-theme="light"] #tab-contact .contact-quick-card,
+body[data-app-theme="light"] #tab-contact .contact-booking-card,
+body[data-app-theme="light"] #tab-contact .contact-form-card,
+body[data-app-theme="light"] #tab-contact .nl-band {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.50)),
+    rgba(255,255,255,0.62) !important;
+  border-color: rgba(13,13,13,0.10) !important;
+  box-shadow:
+    0 18px 46px rgba(30,24,16,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.72) !important;
+}
+
+body[data-app-theme="light"] #tab-contact .contact-kicker,
+body[data-app-theme="light"] #tab-contact .contact-intake-kicker,
+body[data-app-theme="light"] #tab-contact .nl-band-eyebrow {
+  color: #596400 !important;
+}
+
+body[data-app-theme="light"] #tab-contact .contact-quick-card:hover {
+  background: rgba(235,255,0,0.18) !important;
+  border-color: rgba(90,100,0,0.22) !important;
+}
+
+body[data-app-theme="light"] #tab-contact .contact-quick-icon {
+  background: rgba(235,255,0,0.42) !important;
+  border-color: rgba(90,100,0,0.20) !important;
+  color: #354000 !important;
+}
+
+body[data-app-theme="light"] #tab-contact .contact-link-inline,
+body[data-app-theme="light"] #tab-contact .cf-secondary-link,
+body[data-app-theme="light"] #tab-contact .cf-choice,
+body[data-app-theme="light"] #tab-contact .nl-band-point {
+  background: rgba(13,13,13,0.045) !important;
+  border-color: rgba(13,13,13,0.085) !important;
+  color: var(--text-2) !important;
+}
+
+body[data-app-theme="light"] #tab-contact .cf-choice:has(input:checked),
+body[data-app-theme="light"] #tab-contact .contact-avail {
+  background: rgba(235,255,0,0.34) !important;
+  border-color: rgba(90,100,0,0.20) !important;
+  color: #354000 !important;
+}
+
+body[data-app-theme="light"] #tab-contact .cf-input,
+body[data-app-theme="light"] #tab-contact .nl-input {
+  background: rgba(13,13,13,0.042) !important;
+  border-color: rgba(13,13,13,0.11) !important;
+  color: var(--text) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.66) !important;
+}
+
+body[data-app-theme="light"] #tab-contact .cf-input:focus,
+body[data-app-theme="light"] #tab-contact .nl-input:focus {
+  background: rgba(255,255,255,0.84) !important;
+  border-color: rgba(90,100,0,0.34) !important;
+  box-shadow:
+    0 0 0 4px rgba(235,255,0,0.20),
+    inset 0 1px 0 rgba(255,255,255,0.82) !important;
+}
+
+body[data-app-theme="light"] #tab-contact .contact-book-btn,
+body[data-app-theme="light"] #tab-contact .cf-submit-btn,
+body[data-app-theme="light"] #tab-contact .nl-btn {
+  background: #EBFF00 !important;
+  border-color: #D6E800 !important;
+  color: #080808 !important;
+}
+
+@media(max-width: 980px) {
+  #tab-contact .contact-hero,
+  #tab-contact .nl-band-inner {
+    grid-template-columns: 1fr !important;
+  }
+
+  #tab-contact .contact-hero > div:first-child {
+    grid-template-rows: auto !important;
+  }
+
+  #tab-contact .contact-quick-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media(max-width: 680px) {
+  #tab-contact .contact-page {
+    padding-top: 18px !important;
+  }
+
+  #tab-contact .contact-hero {
+    gap: 10px !important;
+  }
+
+  #tab-contact .contact-lead-copy,
+  #tab-contact .contact-form-card,
+  #tab-contact .nl-band {
+    padding: 14px !important;
+  }
+
+  #tab-contact .contact-lead-title {
+    font-size: 28px !important;
+  }
+
+  #tab-contact .contact-quick-links,
+  #tab-contact .cf-choice-row,
+  #tab-contact .cf-grid,
+  #tab-contact .nl-band-right {
+    grid-template-columns: 1fr !important;
+  }
+
+  #tab-contact .contact-intake-head {
+    grid-template-columns: 1fr !important;
+  }
+
+  #tab-contact .cf-actions {
+    align-items: stretch !important;
+  }
+
+  #tab-contact .cf-submit-btn,
+  #tab-contact .cf-secondary-link,
+  #tab-contact .nl-btn {
+    width: 100% !important;
+  }
+
+  #tab-contact .nl-band-points {
+    display: grid !important;
+  }
+
+  #tab-contact .nl-band-point {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
 </style>
 
 <div id="gate">
