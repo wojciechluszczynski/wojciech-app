@@ -1558,7 +1558,7 @@ footer{background:var(--bg);border-top:1px solid rgba(0,0,0,0.08)}
 /* ── LIGHT APP COLOUR SYSTEM ──
    Bright lime (#EBFF00) only as background + border indicators.
    Lime-as-text elements get dark-olive (#5a6500) so they read on beige. */
-body { --lime:#5a6500; --lime-dim:rgba(90,101,0,0.10); --lime-glow:rgba(90,101,0,0.15); }
+body[data-app-theme="light"] { --lime:#5a6500; --lime-dim:rgba(90,101,0,0.10); --lime-glow:rgba(90,101,0,0.15); }
 
 /* Bright lime backgrounds stay bright */
 .btn-p, .chip.active, .lang-btn.active,
@@ -2767,24 +2767,6 @@ body.dark-app .app-card .btn-p:hover {
 }
 
 /* ===== wojciech.io alignment pass ===== */
-:root {
-  --bg: #0c0c0c;
-  --bg1: #171717;
-  --bg2: #222222;
-  --bg3: #2a2a2a;
-  --lime: #ebff00;
-  --lime-dim: rgba(235,255,0,0.10);
-  --lime-glow: rgba(235,255,0,0.22);
-  --green: #22c55e;
-  --green-dim: rgba(34,197,94,0.10);
-  --border: #2a2a2a;
-  --border-hi: #3a3a3a;
-  --text: #f2f2f2;
-  --text-2: #888888;
-  --text-3: #555555;
-  --r-card: 20px;
-  --r-chip: 999px;
-}
 
 html,
 body,
@@ -2797,11 +2779,7 @@ select {
 }
 
 body {
-  background:
-    linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px),
-    var(--bg);
-  background-size: 48px 48px;
+  background: var(--bg);
   color: var(--text);
 }
 
@@ -2812,10 +2790,14 @@ body {
 
 header,
 .tab-nav {
-  background: rgba(12,12,12,0.88) !important;
   border-color: var(--border) !important;
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+body[data-app-theme="dark"] header,
+body[data-app-theme="dark"] .tab-nav {
+  background: rgba(10,10,10,0.88) !important;
 }
 
 .hdr-name,
@@ -2963,7 +2945,7 @@ main {
 .card-screen {
   height: 220px !important;
   isolation: isolate;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid var(--border);
 }
 
 .card-screen::before {
@@ -2971,11 +2953,20 @@ main {
   position: absolute;
   inset: 0;
   z-index: 0;
+  background-size: 34px 34px;
+  opacity: 0.34;
+}
+
+body[data-app-theme="dark"] .card-screen::before {
   background:
     linear-gradient(to right, rgba(255,255,255,0.055) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,0.055) 1px, transparent 1px);
-  background-size: 34px 34px;
-  opacity: 0.34;
+}
+
+body[data-app-theme="light"] .card-screen::before {
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
 }
 
 .card-screen::after {
@@ -2984,7 +2975,14 @@ main {
   inset: auto 0 0 0;
   height: 72px;
   z-index: 1;
+}
+
+body[data-app-theme="dark"] .card-screen::after {
   background: linear-gradient(to bottom, transparent, rgba(23,23,23,0.92));
+}
+
+body[data-app-theme="light"] .card-screen::after {
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.96));
 }
 
 .cs-grid,
@@ -3071,18 +3069,36 @@ main {
 }
 
 .cat-badge {
-  background: rgba(12,12,12,0.62) !important;
-  border: 1px solid rgba(255,255,255,0.14) !important;
-  color: rgba(255,255,255,0.86) !important;
   backdrop-filter: blur(10px);
 }
 
+body[data-app-theme="dark"] .cat-badge {
+  background: rgba(12,12,12,0.62) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  color: rgba(255,255,255,0.86) !important;
+}
+
+body[data-app-theme="light"] .cat-badge {
+  background: rgba(0,0,0,0.60) !important;
+  border: 1px solid rgba(0,0,0,0.12) !important;
+  color: rgba(255,255,255,0.92) !important;
+}
+
 .s-live {
-  background: rgba(12,12,12,0.62);
-  border: 1px solid rgba(255,255,255,0.12);
   border-radius: 999px;
   padding: 4px 9px;
+}
+
+body[data-app-theme="dark"] .s-live {
+  background: rgba(12,12,12,0.62);
+  border: 1px solid rgba(255,255,255,0.12);
   color: #8fffb8 !important;
+}
+
+body[data-app-theme="light"] .s-live {
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(0,0,0,0.10);
+  color: #0a7a45 !important;
 }
 
 .card-body {
@@ -7491,6 +7507,9 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         <span data-pl="Kontakt" data-en="Contact" data-it="Contatto">Contact</span>
       </button>
+      <button class="mob-nav-btn" onclick="toggleAppTheme()" aria-label="Toggle theme" style="flex:0 0 48px">
+        <svg id="appThemeIconMob" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/></svg>
+      </button>
     </div>
   </nav>
 
@@ -7599,10 +7618,21 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     document.querySelectorAll('meta[name="theme-color"]').forEach(function(meta){
       meta.setAttribute('content', mode === 'light' ? '#faf8f4' : '#09090b');
     });
+    // sync mobile nav icon
+    var mobIcon = document.getElementById('appThemeIconMob');
+    if (mobIcon) {
+      mobIcon.innerHTML = mode === 'dark'
+        ? '<circle cx="12" cy="12" r="4.5"></circle><path d="M12 2.5v3M12 18.5v3M4.25 4.25l2.1 2.1M17.65 17.65l2.1 2.1M2.5 12h3M18.5 12h3M4.25 19.75l2.1-2.1M17.65 6.35l2.1-2.1"></path>'
+        : '<path d="M20.2 14.8a8.3 8.3 0 0 1-10.9-11 8.7 8.7 0 1 0 10.9 11Z"></path>';
+    }
   }
 
   function initAppTheme() {
     setAppTheme(readPreferredAppTheme());
+  }
+
+  function toggleAppTheme() {
+    setAppTheme(readPreferredAppTheme() === 'dark' ? 'light' : 'dark');
   }
 
   initAppTheme();
