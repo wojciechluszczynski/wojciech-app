@@ -1989,7 +1989,17 @@ body.dark-app .tl-tc { background: var(--bg2) !important; border-color: var(--bo
 }
 </style>
 </head>
-<body>
+<body data-app-theme="light">
+<script>
+  (function(){
+    try {
+      var t = localStorage.getItem('appTheme') || localStorage.getItem('gTheme') || 'light';
+      t = t === 'dark' ? 'dark' : 'light';
+      document.body.setAttribute('data-app-theme', t);
+      document.documentElement.style.colorScheme = t;
+    } catch(e) {}
+  })();
+</script>
 
 <!-- ==================== GATE ==================== -->
 <style id="gate-v2">
@@ -4704,6 +4714,413 @@ main {
 .doc-card:has(.doc-app-name) .doc-feature-list li::before {
   color: var(--text-3) !important;
 }
+
+/* App theme system: one switch, synced with the login screen. */
+body[data-app-theme="dark"] {
+  --bg: #0c0c0c;
+  --bg1: #171717;
+  --bg2: #222222;
+  --bg3: #2a2a2a;
+  --lime: #ebff00;
+  --lime-dim: rgba(235,255,0,0.10);
+  --lime-glow: rgba(235,255,0,0.22);
+  --green: #22c55e;
+  --green-dim: rgba(34,197,94,0.10);
+  --border: rgba(255,255,255,0.105);
+  --border-hi: rgba(255,255,255,0.20);
+  --text: #f2f2f2;
+  --text-2: rgba(245,245,245,0.62);
+  --text-3: rgba(245,245,245,0.38);
+  color-scheme: dark;
+  background:
+    radial-gradient(ellipse 820px 420px at 50% -180px, rgba(235,255,0,0.075), transparent 70%),
+    linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px),
+    var(--bg) !important;
+  background-size: auto, 48px 48px, 48px 48px !important;
+  color: var(--text) !important;
+}
+
+body[data-app-theme="light"] {
+  --bg: #faf8f4;
+  --bg1: rgba(255,255,255,0.82);
+  --bg2: #f2efe9;
+  --bg3: #e7e1d7;
+  --lime: #596400;
+  --lime-dim: rgba(235,255,0,0.34);
+  --lime-glow: rgba(235,255,0,0.26);
+  --green: #0f9f63;
+  --green-dim: rgba(15,159,99,0.11);
+  --border: rgba(15,15,15,0.095);
+  --border-hi: rgba(15,15,15,0.19);
+  --text: #0d0d0d;
+  --text-2: rgba(13,13,13,0.64);
+  --text-3: rgba(13,13,13,0.40);
+  color-scheme: light;
+  background:
+    radial-gradient(ellipse 760px 360px at 50% -140px, rgba(235,255,0,0.18), transparent 70%),
+    radial-gradient(circle at 88% 12%, rgba(0,0,0,0.045), transparent 28%),
+    linear-gradient(to right, rgba(0,0,0,0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.047) 1px, transparent 1px),
+    #faf8f4 !important;
+  background-size: auto, auto, 48px 48px, 48px 48px !important;
+  color: var(--text) !important;
+}
+
+.app-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 34px;
+  margin-right: 10px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.045);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.055);
+}
+
+.app-theme-btn {
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-3);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 760;
+  line-height: 1;
+  transition: background .16s ease, color .16s ease, box-shadow .16s ease;
+}
+
+.app-theme-btn svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+}
+
+.app-theme-btn:hover {
+  color: var(--text);
+}
+
+.app-theme-btn.active {
+  background: #EBFF00 !important;
+  color: #080808 !important;
+  box-shadow: 0 8px 22px rgba(235,255,0,0.18);
+}
+
+body[data-app-theme="light"] header,
+body[data-app-theme="light"] .tab-nav {
+  background: rgba(250,248,244,0.86) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.52) inset;
+}
+
+body[data-app-theme="light"] .mob-nav {
+  background: rgba(255,255,255,0.96) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 -14px 42px rgba(30,24,16,0.08) !important;
+}
+
+body[data-app-theme="dark"] .mob-nav {
+  background: rgba(10,10,10,0.94) !important;
+  border-color: rgba(255,255,255,0.10) !important;
+}
+
+body[data-app-theme="light"] .lang-toggle,
+body[data-app-theme="light"] .app-theme-toggle {
+  background: rgba(13,13,13,0.045) !important;
+  border-color: rgba(13,13,13,0.08) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7) !important;
+}
+
+body[data-app-theme="light"] .lang-btn,
+body[data-app-theme="light"] .app-theme-btn,
+body[data-app-theme="light"] .tab-btn,
+body[data-app-theme="light"] .mob-nav-btn {
+  color: var(--text-3) !important;
+}
+
+body[data-app-theme="light"] .lang-btn.active,
+body[data-app-theme="light"] .app-theme-btn.active,
+body[data-app-theme="light"] .chip.active {
+  background: #EBFF00 !important;
+  border-color: #d6e800 !important;
+  color: #080808 !important;
+}
+
+body[data-app-theme="light"] .tab-btn.active,
+body[data-app-theme="light"] .mob-nav-btn.active {
+  color: var(--text) !important;
+}
+
+body[data-app-theme="light"] .hdr-sub,
+body[data-app-theme="light"] .contact-kicker,
+body[data-app-theme="light"] .contact-intake-kicker,
+body[data-app-theme="light"] .stack-page-header .eyebrow,
+body[data-app-theme="light"] .tl-header .eyebrow {
+  color: #596400 !important;
+}
+
+body[data-app-theme="light"] .app-card,
+body[data-app-theme="light"] .doc-card,
+body[data-app-theme="light"] .onepager-card,
+body[data-app-theme="light"] .cv-card,
+body[data-app-theme="light"] .contact-profile-card,
+body[data-app-theme="light"] .contact-booking-card,
+body[data-app-theme="light"] .contact-quick-card,
+body[data-app-theme="light"] .contact-form-card,
+body[data-app-theme="light"] .nl-band,
+body[data-app-theme="light"] .hstat {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.48)),
+    rgba(255,255,255,0.68) !important;
+  border-color: rgba(15,15,15,0.10) !important;
+  box-shadow:
+    0 20px 54px rgba(30,24,16,0.075),
+    inset 0 1px 0 rgba(255,255,255,0.72) !important;
+}
+
+body[data-app-theme="light"] .app-card:hover,
+body[data-app-theme="light"] .doc-card:hover,
+body[data-app-theme="light"] .contact-quick-card:hover {
+  border-color: rgba(15,15,15,0.18) !important;
+  box-shadow:
+    0 26px 68px rgba(30,24,16,0.11),
+    inset 0 1px 0 rgba(255,255,255,0.78) !important;
+}
+
+body[data-app-theme="light"] .chip,
+body[data-app-theme="light"] .tag,
+body[data-app-theme="light"] .tc,
+body[data-app-theme="light"] .tl-tc,
+body[data-app-theme="light"] .t-count,
+body[data-app-theme="light"] .sec-ct,
+body[data-app-theme="light"] .tl-cat-badge,
+body[data-app-theme="light"] .cf-choice,
+body[data-app-theme="light"] .cf-secondary-link,
+body[data-app-theme="light"] .contact-link-inline,
+body[data-app-theme="light"] .fsoc {
+  background: rgba(13,13,13,0.045) !important;
+  border-color: rgba(13,13,13,0.085) !important;
+  color: var(--text-2) !important;
+}
+
+body[data-app-theme="light"] .cf-choice:has(input:checked),
+body[data-app-theme="light"] .tl-entry.milestone .tl-cat-badge,
+body[data-app-theme="light"] .contact-avail {
+  background: rgba(235,255,0,0.38) !important;
+  border-color: rgba(90,100,0,0.22) !important;
+  color: #354000 !important;
+}
+
+body[data-app-theme="light"] .cf-input,
+body[data-app-theme="light"] .hdr-search input,
+body[data-app-theme="light"] select,
+body[data-app-theme="light"] textarea {
+  background: rgba(13,13,13,0.042) !important;
+  border-color: rgba(13,13,13,0.11) !important;
+  color: var(--text) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.66) !important;
+}
+
+body[data-app-theme="light"] .cf-input::placeholder,
+body[data-app-theme="light"] .hdr-search input::placeholder {
+  color: rgba(13,13,13,0.36) !important;
+}
+
+body[data-app-theme="light"] .cf-input:focus,
+body[data-app-theme="light"] .hdr-search input:focus {
+  background: rgba(255,255,255,0.84) !important;
+  border-color: rgba(90,100,0,0.34) !important;
+  box-shadow:
+    0 0 0 4px rgba(235,255,0,0.22),
+    inset 0 1px 0 rgba(255,255,255,0.82) !important;
+}
+
+body[data-app-theme="light"] .cf-submit-btn,
+body[data-app-theme="light"] .nl-btn,
+body[data-app-theme="light"] .contact-book-btn,
+body[data-app-theme="light"] .app-card .btn-p:hover {
+  background: #EBFF00 !important;
+  border-color: #d6e800 !important;
+  color: #080808 !important;
+}
+
+body[data-app-theme="light"] .app-card .btn-p,
+body[data-app-theme="light"] .app-card .btn-p:link,
+body[data-app-theme="light"] .app-card .btn-p:visited {
+  background: rgba(13,13,13,0.045) !important;
+  border-color: rgba(13,13,13,0.09) !important;
+  color: var(--text-2) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.66) !important;
+}
+
+body[data-app-theme="light"] .profile-hero,
+body[data-app-theme="light"] .stack-page-header,
+body[data-app-theme="light"] .tl-header,
+body[data-app-theme="light"] #tab-stack .stack-page-header,
+body[data-app-theme="light"] .tech-row,
+body[data-app-theme="light"] .scat-name,
+body[data-app-theme="light"] .scat-enables,
+body[data-app-theme="light"] .tl-body,
+body[data-app-theme="light"] .tl-year-block,
+body[data-app-theme="light"] .tl-entry,
+body[data-app-theme="light"] .tl-year-line,
+body[data-app-theme="light"] footer {
+  border-color: rgba(13,13,13,0.10) !important;
+}
+
+body[data-app-theme="light"] .tl-year-line {
+  background: rgba(13,13,13,0.10) !important;
+}
+
+body[data-app-theme="light"] .tl-entry,
+body[data-app-theme="light"] .tl-entry.milestone {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-app-theme="light"] #tab-stack .scat-row {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.44)),
+    radial-gradient(circle at 12% 0%, rgba(var(--stack-accent),0.12), transparent 40%),
+    rgba(255,255,255,0.66) !important;
+  border-color: rgba(13,13,13,0.10) !important;
+  box-shadow:
+    0 18px 48px rgba(30,24,16,0.07),
+    inset 0 1px 0 rgba(255,255,255,0.78) !important;
+}
+
+body[data-app-theme="light"] #tab-stack .scat-row::after {
+  background: linear-gradient(135deg, rgba(var(--stack-accent),0.12), transparent 34%) !important;
+}
+
+body[data-app-theme="light"] #tab-stack .tech-icon-item {
+  background: rgba(13,13,13,0.038) !important;
+  border-color: rgba(13,13,13,0.082) !important;
+  color: var(--text) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.62) !important;
+}
+
+body[data-app-theme="light"] #tab-stack .tech-icon-item:hover {
+  background: rgba(var(--stack-accent),0.11) !important;
+  border-color: rgba(var(--stack-accent),0.30) !important;
+}
+
+body[data-app-theme="light"] #tab-stack .tech-icon-item span:last-child,
+body[data-app-theme="light"] #tab-stack .scat-enables,
+body[data-app-theme="light"] .card-tagline,
+body[data-app-theme="light"] .contact-bio,
+body[data-app-theme="light"] .contact-lead-body,
+body[data-app-theme="light"] .contact-intake-head p,
+body[data-app-theme="light"] .cf-meta-row,
+body[data-app-theme="light"] .nl-band-sub,
+body[data-app-theme="light"] .tl-note,
+body[data-app-theme="light"] footer p span {
+  color: var(--text-2) !important;
+}
+
+body[data-app-theme="light"] footer,
+body[data-app-theme="light"] footer p {
+  background: transparent !important;
+  color: var(--text-3) !important;
+}
+
+/* Cover polish: app-specific liquid glass without grey tilted blocks. */
+.app-card[data-name] .card-screen {
+  background:
+    radial-gradient(circle at 24% 18%, rgba(var(--cover-a),0.40), transparent 31%),
+    radial-gradient(circle at 76% 70%, rgba(var(--cover-b),0.26), transparent 42%),
+    radial-gradient(ellipse at 50% 118%, rgba(255,255,255,0.10), transparent 58%),
+    linear-gradient(145deg, rgba(var(--cover-a),0.16), rgba(10,10,10,0.92) 42%, rgba(var(--cover-b),0.12)),
+    #080808 !important;
+  border-bottom-color: rgba(var(--cover-a),0.20) !important;
+}
+
+.app-card[data-name] .card-screen::before {
+  background:
+    linear-gradient(118deg, rgba(255,255,255,0.22), transparent 24%, transparent 62%, rgba(var(--cover-b),0.12)),
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,0.10), transparent 48%) !important;
+  opacity: 0.55 !important;
+  mask-image: radial-gradient(circle at 50% 50%, black 0%, transparent 78%) !important;
+}
+
+.app-card[data-name] .card-screen::after {
+  left: 50% !important;
+  top: 48% !important;
+  transform: translate(-50%, -50%) !important;
+  color: rgba(var(--cover-a),0.085) !important;
+  font-size: 142px !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.08em !important;
+  text-shadow: 0 0 72px rgba(var(--cover-a),0.20) !important;
+}
+
+.app-card[data-name] .cs-icon-box {
+  width: 112px !important;
+  height: 112px !important;
+  border-radius: 30px !important;
+  background:
+    radial-gradient(circle at 28% 20%, rgba(255,255,255,0.34), transparent 34%),
+    linear-gradient(145deg, rgba(var(--cover-a),0.70), rgba(var(--cover-b),0.44) 52%, rgba(255,255,255,0.13)),
+    rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.25) !important;
+  box-shadow:
+    0 32px 90px rgba(var(--cover-a),0.27),
+    0 18px 62px rgba(0,0,0,0.34),
+    inset 0 1px 0 rgba(255,255,255,0.34),
+    inset 0 -1px 0 rgba(0,0,0,0.14) !important;
+}
+
+.app-card[data-name] .cs-icon-box::before {
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255,255,255,0.30), transparent 40%),
+    rgba(255,255,255,0.070) !important;
+  border-color: rgba(255,255,255,0.16) !important;
+}
+
+.app-card[data-name] .cs-icon-box svg {
+  color: rgba(255,255,255,0.98) !important;
+  filter:
+    drop-shadow(0 9px 20px rgba(0,0,0,0.30))
+    drop-shadow(0 0 20px rgba(var(--cover-a),0.22)) !important;
+}
+
+body[data-app-theme="light"] .app-card[data-name] .cat-badge,
+body[data-app-theme="light"] .app-card[data-name] .s-live {
+  background: rgba(255,255,255,0.50) !important;
+  border-color: rgba(255,255,255,0.24) !important;
+  color: rgba(255,255,255,0.92) !important;
+}
+
+@media(max-width: 720px) {
+  .app-theme-toggle {
+    height: 32px;
+    margin-right: 6px;
+    padding: 2px;
+  }
+
+  .app-theme-btn {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+  }
+
+  .theme-label {
+    display: none;
+  }
+
+  header .hdr-inner {
+    gap: 8px !important;
+  }
+}
 </style>
 
 <div id="gate">
@@ -4745,7 +5162,7 @@ var _gL='en';
 var _gC={pl:{hl:'Head of Growth · HR Tech & B2B SaaS',desc:'Buduję systemy wzrostu generujące 7-cyfrowe przychody dla firm HR Tech. AI-first podejście do demand generation, product marketingu i revenue operations.',acc:'Dostęp prywatny',btn:'Wejdź →',err:'Nieprawidłowe hasło',ph:'Hasło',bdg:'Revenue Engine Builder'},en:{hl:'Head of Growth · HR Tech & B2B SaaS',desc:'I build revenue-generating growth systems for HR Tech companies. AI-first approach to demand generation, product marketing, and revenue operations.',acc:'Private access',btn:'Enter →',err:'Wrong password',ph:'Password',bdg:'Revenue Engine Builder'},it:{hl:'Head of Growth · HR Tech & B2B SaaS',desc:'Costruisco sistemi di crescita che generano ricavi a sette cifre per aziende HR Tech. Approccio AI-first alla demand generation, product marketing e revenue operations.',acc:'Accesso privato',btn:'Entra →',err:'Password errata',ph:'Password',bdg:'Revenue Engine Builder'}};
 function gLang(l){_gL=l;try{localStorage.setItem('gLang',l);}catch(e){}document.querySelectorAll('.g-lang-btn').forEach(function(b){b.classList.toggle('active',b.textContent===l.toUpperCase());});var c=_gC[l];function setText(id,val){var el=document.getElementById(id);if(el)el.textContent=val;}setText('gHL',c.hl);setText('gDesc',c.desc);setText('gALabel',c.acc);setText('gBtn',c.btn);setText('gateErr',c.err);setText('gBadge',c.bdg);var pw=document.getElementById('pwInput');if(pw)pw.placeholder=c.ph;}
 (function(){var img=document.getElementById('gPhoto');if(img&&img.complete&&img.naturalWidth===0){img.style.display='none';var i=document.getElementById('gInit');if(i)i.style.display='flex';}})();
-function toggleTheme(){var g=document.getElementById('gate');var icon=document.getElementById('gThemeIcon');var isLight=g.classList.toggle('light-mode');localStorage.setItem('gTheme',isLight?'light':'dark');icon.innerHTML=isLight?'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>':'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';}
+function toggleTheme(){var g=document.getElementById('gate');var icon=document.getElementById('gThemeIcon');var isLight=g.classList.toggle('light-mode');var mode=isLight?'light':'dark';localStorage.setItem('gTheme',mode);if(typeof setAppTheme==='function')setAppTheme(mode);icon.innerHTML=isLight?'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>':'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';}
 (function(){var sl=localStorage.getItem('gLang');if(sl&&['pl','en','it'].indexOf(sl)>-1&&typeof gLang==='function'){gLang(sl);}else{if(typeof gLang==='function')gLang('en');}})();
 (function(){var saved=localStorage.getItem('gTheme');if(saved!=='dark'){document.getElementById('gate').classList.add('light-mode');var icon=document.getElementById('gThemeIcon');if(icon)icon.innerHTML='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>';}})();
 </script>
@@ -4764,6 +5181,17 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     </a>
 
     <div style="flex:1"></div>
+
+    <div class="app-theme-toggle" id="appThemeToggle" role="group" aria-label="Theme">
+      <button class="app-theme-btn" type="button" data-theme-choice="light" onclick="setAppTheme('light')" aria-pressed="false" title="Light">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2.5v3M12 18.5v3M4.25 4.25l2.1 2.1M17.65 17.65l2.1 2.1M2.5 12h3M18.5 12h3M4.25 19.75l2.1-2.1M17.65 6.35l2.1-2.1"></path></svg>
+        <span class="theme-label" data-pl="Jasny" data-en="Light" data-it="Chiaro">Light</span>
+      </button>
+      <button class="app-theme-btn" type="button" data-theme-choice="dark" onclick="setAppTheme('dark')" aria-pressed="false" title="Dark">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.2 14.8a8.3 8.3 0 0 1-10.9-11 8.7 8.7 0 1 0 10.9 11Z"></path></svg>
+        <span class="theme-label" data-pl="Ciemny" data-en="Dark" data-it="Scuro">Dark</span>
+      </button>
+    </div>
 
     <div class="lang-toggle" id="appLangToggle">
       <button class="lang-btn" id="btnPL" onclick="setLang('pl')">PL</button>
@@ -7114,6 +7542,55 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     applyLang(saved);
   })();
 
+  // ===================== APP THEME =====================
+  function readPreferredAppTheme() {
+    var saved = '';
+    var gate = '';
+    try {
+      saved = localStorage.getItem('appTheme') || '';
+      gate = localStorage.getItem('gTheme') || '';
+    } catch(e) {}
+    var picked = saved || gate || 'light';
+    return picked === 'dark' ? 'dark' : 'light';
+  }
+
+  function updateGateThemeIcon(mode) {
+    var icon = document.getElementById('gThemeIcon');
+    if (!icon) return;
+    icon.innerHTML = mode === 'light'
+      ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>'
+      : '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  }
+
+  function setAppTheme(mode) {
+    mode = mode === 'dark' ? 'dark' : 'light';
+    document.body.setAttribute('data-app-theme', mode);
+    document.documentElement.style.colorScheme = mode;
+    try {
+      localStorage.setItem('appTheme', mode);
+      localStorage.setItem('gTheme', mode);
+    } catch(e) {}
+
+    document.querySelectorAll('.app-theme-btn').forEach(function(btn){
+      var active = btn.getAttribute('data-theme-choice') === mode;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    var gate = document.getElementById('gate');
+    if (gate) gate.classList.toggle('light-mode', mode === 'light');
+    updateGateThemeIcon(mode);
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function(meta){
+      meta.setAttribute('content', mode === 'light' ? '#faf8f4' : '#09090b');
+    });
+  }
+
+  function initAppTheme() {
+    setAppTheme(readPreferredAppTheme());
+  }
+
+  initAppTheme();
+
   // ===================== GATE =====================
   function checkPw() {
     const val = document.getElementById('pwInput').value.trim().toLowerCase();
@@ -7122,6 +7599,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       sessionStorage.setItem('pw_ok', '1');
       document.getElementById('gate').style.display = 'none';
       document.getElementById('app').style.display = 'block';
+      initAppTheme();
       applyLang();
     } else {
       err.classList.add('show');
@@ -7136,6 +7614,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   if (sessionStorage.getItem('pw_ok') === '1') {
     document.getElementById('gate').style.display = 'none';
     document.getElementById('app').style.display = 'block';
+    initAppTheme();
     applyLang();
   }
   setTimeout(() => document.getElementById('pwInput')?.focus(), 80);
