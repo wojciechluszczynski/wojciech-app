@@ -5121,6 +5121,431 @@ body[data-app-theme="light"] .app-card[data-name] .s-live {
     gap: 8px !important;
   }
 }
+
+/* Final polish: quieter covers, clearer stack, proper contact intake. */
+.app-card[data-name] .card-screen {
+  height: 196px !important;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(var(--cover-a),0.16), transparent 28%),
+    radial-gradient(circle at 78% 74%, rgba(255,255,255,0.075), transparent 42%),
+    linear-gradient(145deg, rgba(255,255,255,0.050), rgba(8,8,8,0.96) 48%, rgba(255,255,255,0.035)),
+    #080808 !important;
+  border-bottom-color: rgba(255,255,255,0.09) !important;
+}
+
+.app-card[data-name] .card-screen::before {
+  background:
+    linear-gradient(120deg, rgba(255,255,255,0.14), transparent 20%, transparent 72%, rgba(var(--cover-a),0.055)),
+    linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.026) 1px, transparent 1px) !important;
+  background-size: auto, 44px 44px, 44px 44px !important;
+  opacity: 0.50 !important;
+}
+
+.app-card[data-name] .card-screen::after {
+  color: rgba(255,255,255,0.045) !important;
+  font-size: 132px !important;
+  text-shadow: 0 0 64px rgba(var(--cover-a),0.10) !important;
+}
+
+.app-card[data-name] .cs-icon-box {
+  width: 106px !important;
+  height: 106px !important;
+  border-radius: 27px !important;
+  background:
+    radial-gradient(circle at 26% 18%, rgba(255,255,255,0.28), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.045)),
+    rgba(var(--cover-a),0.085) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+  box-shadow:
+    0 28px 86px rgba(0,0,0,0.42),
+    0 0 54px rgba(var(--cover-a),0.12),
+    inset 0 1px 0 rgba(255,255,255,0.28),
+    inset 0 -1px 0 rgba(0,0,0,0.20) !important;
+}
+
+.app-card[data-name] .cs-icon-box svg {
+  width: 48px !important;
+  height: 48px !important;
+  color: rgba(255,255,255,0.96) !important;
+  filter:
+    drop-shadow(0 9px 20px rgba(0,0,0,0.34))
+    drop-shadow(0 0 16px rgba(var(--cover-a),0.16)) !important;
+}
+
+.app-card[data-name]:hover .cs-icon-box {
+  transform: translateY(-1px) scale(1.01) !important;
+  box-shadow:
+    0 30px 88px rgba(0,0,0,0.44),
+    0 0 58px rgba(var(--cover-a),0.16),
+    inset 0 1px 0 rgba(255,255,255,0.30),
+    inset 0 -1px 0 rgba(0,0,0,0.20) !important;
+}
+
+#tab-stack .stack-page {
+  max-width: 1240px !important;
+}
+
+#tab-stack .stack-page-header {
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.68fr) !important;
+  padding-top: 8px !important;
+}
+
+#tab-stack .scat-list {
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+
+#tab-stack .scat-row {
+  grid-column: span 6;
+  min-height: 218px !important;
+  padding: 17px !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.046), rgba(255,255,255,0.015)),
+    rgba(14,14,14,0.76) !important;
+}
+
+#tab-stack .scat-row:nth-child(1),
+#tab-stack .scat-row:nth-child(8) {
+  grid-column: span 6;
+}
+
+#tab-stack .scat-row:nth-child(2),
+#tab-stack .scat-row:nth-child(7) {
+  grid-column: span 6;
+}
+
+#tab-stack .scat-row:nth-child(n+3):nth-child(-n+6) {
+  grid-column: span 3;
+  min-height: 188px !important;
+}
+
+#tab-stack .scat-row:nth-child(5) .scat-icons,
+#tab-stack .scat-row:nth-child(6) .scat-icons {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+#tab-stack .scat-row:nth-child(n+3):nth-child(-n+6) .scat-icons {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+#tab-stack .scat-name::after {
+  margin-left: auto;
+  padding: 3px 7px;
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.045);
+  color: var(--text-3);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+#tab-stack .scat-row:nth-child(1) .scat-name::after,
+#tab-stack .scat-row:nth-child(8) .scat-name::after,
+#tab-stack .scat-row:nth-child(2) .scat-name::after,
+#tab-stack .scat-row:nth-child(7) .scat-name::after {
+  content: 'Core';
+}
+
+#tab-stack .scat-row:nth-child(n+3):nth-child(-n+6) .scat-name::after {
+  content: 'Layer';
+}
+
+#tab-stack .tech-icon-item {
+  min-height: 40px !important;
+  border-radius: 7px !important;
+}
+
+#tab-stack .scat-row:nth-child(n+3):nth-child(-n+6) .tech-icon-item {
+  min-height: 38px !important;
+}
+
+#tab-stack .scat-enables {
+  font-size: 12.5px !important;
+  color: rgba(245,245,245,0.58) !important;
+}
+
+.contact-page {
+  max-width: 1180px !important;
+}
+
+.contact-hero {
+  grid-template-columns: minmax(260px, 0.76fr) minmax(0, 1.38fr) !important;
+  gap: 48px !important;
+  border-top-color: rgba(255,255,255,0.09) !important;
+}
+
+.contact-lead-copy {
+  gap: 12px !important;
+}
+
+.contact-kicker {
+  color: var(--lime) !important;
+  letter-spacing: 0.12em !important;
+}
+
+.contact-lead-title {
+  max-width: 360px;
+  font-size: clamp(38px, 5vw, 58px) !important;
+  font-weight: 790 !important;
+  letter-spacing: 0 !important;
+}
+
+.contact-lead-body {
+  max-width: 380px;
+  font-size: 14.5px !important;
+  color: var(--text-2) !important;
+}
+
+.contact-quick-links {
+  margin-top: 12px !important;
+}
+
+.contact-quick-card,
+.contact-booking-card {
+  border-radius: 8px !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.046), rgba(255,255,255,0.014)),
+    rgba(14,14,14,0.72) !important;
+  border-color: rgba(255,255,255,0.10) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.055) !important;
+}
+
+.contact-quick-card {
+  padding: 13px !important;
+}
+
+.contact-quick-icon {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 8px !important;
+  background: rgba(235,255,0,0.085) !important;
+}
+
+.contact-booking-card {
+  margin-top: 0 !important;
+  padding: 16px !important;
+}
+
+.contact-booking-card .contact-links-row {
+  display: none !important;
+}
+
+.contact-avail {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+.contact-book-btn {
+  min-height: 42px !important;
+  border-radius: 7px !important;
+}
+
+.contact-form-card {
+  padding: clamp(18px, 2.3vw, 30px) !important;
+}
+
+.contact-intake-head {
+  margin-bottom: 20px !important;
+}
+
+.contact-intake-head h3 {
+  font-size: clamp(28px, 3.3vw, 42px) !important;
+}
+
+.cf-choice-row {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+}
+
+.cf-choice {
+  min-height: 42px !important;
+}
+
+.cf-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 13px !important;
+}
+
+.cf-input {
+  min-height: 48px !important;
+}
+
+.cf-textarea {
+  min-height: 156px !important;
+}
+
+.cf-actions {
+  margin-top: 18px !important;
+}
+
+.nl-band {
+  margin-top: 28px !important;
+  border-radius: 8px !important;
+}
+
+body[data-app-theme="light"] .app-card[data-name] .card-screen {
+  background:
+    radial-gradient(circle at 22% 18%, rgba(var(--cover-a),0.18), transparent 29%),
+    radial-gradient(circle at 78% 74%, rgba(255,255,255,0.40), transparent 42%),
+    linear-gradient(145deg, rgba(255,255,255,0.76), rgba(250,248,244,0.92) 52%, rgba(var(--cover-a),0.08)),
+    #faf8f4 !important;
+}
+
+body[data-app-theme="light"] .app-card[data-name] .card-screen::after {
+  color: rgba(13,13,13,0.045) !important;
+}
+
+body[data-app-theme="light"] .app-card[data-name] .cs-icon-box {
+  background:
+    radial-gradient(circle at 26% 18%, rgba(255,255,255,0.55), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,0.58), rgba(255,255,255,0.23)),
+    rgba(var(--cover-a),0.14) !important;
+  border-color: rgba(13,13,13,0.10) !important;
+  box-shadow:
+    0 24px 70px rgba(30,24,16,0.11),
+    0 0 42px rgba(var(--cover-a),0.12),
+    inset 0 1px 0 rgba(255,255,255,0.78) !important;
+}
+
+@media(max-width: 1080px) {
+  #tab-stack .scat-row,
+  #tab-stack .scat-row:nth-child(1),
+  #tab-stack .scat-row:nth-child(8),
+  #tab-stack .scat-row:nth-child(2),
+  #tab-stack .scat-row:nth-child(7),
+  #tab-stack .scat-row:nth-child(n+3):nth-child(-n+6) {
+    grid-column: span 6;
+    min-height: 0 !important;
+  }
+
+  #tab-stack .scat-row:nth-child(n+3):nth-child(-n+6) .scat-icons {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media(max-width: 820px) {
+  #tab-stack .stack-page-header,
+  .contact-hero {
+    grid-template-columns: 1fr !important;
+  }
+
+  #tab-stack .scat-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  #tab-stack .scat-row,
+  #tab-stack .scat-row:nth-child(n) {
+    grid-column: 1 / -1 !important;
+  }
+
+  .contact-lead-title,
+  .contact-lead-body {
+    max-width: none;
+  }
+
+  .contact-quick-links {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media(max-width: 640px) {
+  html,
+  body {
+    overflow-x: clip !important;
+  }
+
+  header .hdr-inner {
+    padding: 0 10px !important;
+    gap: 6px !important;
+  }
+
+  .hdr-brand {
+    min-width: 0 !important;
+    max-width: 154px !important;
+  }
+
+  .hdr-name {
+    max-width: 154px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 11px !important;
+  }
+
+  .hdr-sub {
+    display: none !important;
+  }
+
+  .lang-toggle {
+    max-width: 100px !important;
+  }
+
+  .lang-btn {
+    padding: 5px 7px !important;
+    font-size: 10px !important;
+  }
+
+  .filters-row {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    flex-wrap: nowrap !important;
+    scrollbar-width: none;
+  }
+
+  .filters-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filters-row .chip {
+    flex: 0 0 auto !important;
+  }
+
+  #tab-stack .scat-icons,
+  #tab-stack .scat-row:nth-child(n) .scat-icons {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  #tab-stack .scat-name::after {
+    display: none;
+  }
+
+  .contact-page {
+    padding-top: 12px !important;
+  }
+
+  .contact-hero {
+    gap: 18px !important;
+    padding-top: 18px !important;
+  }
+
+  .contact-lead-title {
+    font-size: clamp(34px, 12vw, 46px) !important;
+  }
+
+  .contact-quick-links {
+    grid-template-columns: 1fr;
+  }
+
+  .cf-choice-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .cf-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .nl-band {
+    display: none !important;
+  }
+}
 </style>
 
 <div id="gate">
@@ -7348,20 +7773,24 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
               <div class="cf-choice-row" aria-label="Project type">
                 <label class="cf-choice">
-                  <input type="checkbox" name="projectNeed" value="App / SaaS">
-                  <span data-pl="App / SaaS" data-en="App / SaaS" data-it="App / SaaS">App / SaaS</span>
+                  <input type="checkbox" name="projectNeed" value="Build">
+                  <span data-pl="Build" data-en="Build" data-it="Build">Build</span>
+                </label>
+                <label class="cf-choice">
+                  <input type="checkbox" name="projectNeed" value="GTM">
+                  <span data-pl="GTM" data-en="GTM" data-it="GTM">GTM</span>
                 </label>
                 <label class="cf-choice">
                   <input type="checkbox" name="projectNeed" value="Automation">
                   <span data-pl="Automatyzacja" data-en="Automation" data-it="Automazione">Automation</span>
                 </label>
                 <label class="cf-choice">
-                  <input type="checkbox" name="projectNeed" value="Website">
-                  <span data-pl="Strona" data-en="Website" data-it="Sito">Website</span>
+                  <input type="checkbox" name="projectNeed" value="Audit">
+                  <span data-pl="Audit" data-en="Audit" data-it="Audit">Audit</span>
                 </label>
                 <label class="cf-choice">
-                  <input type="checkbox" name="projectNeed" value="Audit / rescue">
-                  <span data-pl="Audit / rescue" data-en="Audit / rescue" data-it="Audit / rescue">Audit / rescue</span>
+                  <input type="checkbox" name="projectNeed" value="Partnership">
+                  <span data-pl="Partnerstwo" data-en="Partnership" data-it="Partnership">Partnership</span>
                 </label>
               </div>
 
@@ -7389,6 +7818,16 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
                   </select>
                 </label>
                 <label class="cf-field">
+                  <span class="cf-label" data-pl="Budżet" data-en="Budget" data-it="Budget">Budget</span>
+                  <select class="cf-input cf-select" id="formBudget">
+                    <option value="" data-pl="Opcjonalnie" data-en="Optional" data-it="Opzionale">Optional</option>
+                    <option value="< 10k PLN" data-pl="&lt; 10k PLN" data-en="&lt; 10k PLN" data-it="&lt; 10k PLN">&lt; 10k PLN</option>
+                    <option value="10-30k PLN" data-pl="10-30k PLN" data-en="10-30k PLN" data-it="10-30k PLN">10-30k PLN</option>
+                    <option value="30k+ PLN" data-pl="30k+ PLN" data-en="30k+ PLN" data-it="30k+ PLN">30k+ PLN</option>
+                    <option value="Retainer" data-pl="Retainer" data-en="Retainer" data-it="Retainer">Retainer</option>
+                  </select>
+                </label>
+                <label class="cf-field cf-wide">
                   <span class="cf-label" data-pl="Link / kontekst" data-en="Link / context" data-it="Link / contesto">Link / context</span>
                   <input type="text" class="cf-input" id="formSource" placeholder="Current site, repo, deck, brief..." data-pl-placeholder="Obecna strona, repo, deck, brief..." data-en-placeholder="Current site, repo, deck, brief..." data-it-placeholder="Sito attuale, repo, deck, brief...">
                 </label>
@@ -7745,6 +8184,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     const message = (messageEl ? messageEl.value : '').trim();
     const type = Array.from(document.querySelectorAll('input[name="projectNeed"]:checked')).map(function(el) { return el.value; }).join(', ');
     const timeline = ((document.getElementById('formTimeline') || {}).value || '').trim();
+    const budget = ((document.getElementById('formBudget') || {}).value || '').trim();
     const source = ((document.getElementById('formSource') || {}).value || '').trim();
     if (!name) { if (errEl) { errEl.textContent = 'Please enter your name.'; errEl.style.display = 'block'; } if (nameEl) nameEl.focus(); return; }
     if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) { if (errEl) { errEl.textContent = 'Please enter a valid email.'; errEl.style.display = 'block'; } if (emailEl) emailEl.focus(); return; }
@@ -7752,6 +8192,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     const fullMessage = [
       type ? 'Need: ' + type : '',
       timeline ? 'Timeline: ' + timeline : '',
+      budget ? 'Budget: ' + budget : '',
       source ? 'Context: ' + source : '',
       '',
       message
@@ -7764,7 +8205,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     fetch('https://formspree.io/f/xdkondap', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ name: name, email: email, type: type, timeline: timeline, source: source, message: fullMessage })
+      body: JSON.stringify({ name: name, email: email, type: type, timeline: timeline, budget: budget, source: source, message: fullMessage })
     })
     .then(function(r) { return r.json(); })
     .then(function(data) {
