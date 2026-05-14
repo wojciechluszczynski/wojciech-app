@@ -4061,6 +4061,224 @@ main {
   }
 }
 
+/* Final timeline fix: real changelog rows, not a two-column auto grid. */
+.tl-page {
+  max-width: 1120px !important;
+}
+
+.tl-body {
+  border-top: 1px solid rgba(255,255,255,0.10) !important;
+}
+
+.tl-year-block {
+  display: block !important;
+  grid-template-columns: none !important;
+  gap: 0 !important;
+  padding: 30px 0 !important;
+  margin: 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.10) !important;
+}
+
+.tl-year-block:last-child {
+  border-bottom: 0 !important;
+}
+
+.tl-year-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 18px !important;
+  margin: 0 0 18px !important;
+  width: 100% !important;
+}
+
+.tl-year-num {
+  min-width: 112px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--text) !important;
+  font-size: clamp(28px, 4vw, 42px) !important;
+  line-height: 1 !important;
+  font-weight: 820 !important;
+  letter-spacing: 0.12em !important;
+}
+
+.tl-year-line {
+  display: block !important;
+  flex: 1 1 auto !important;
+  height: 1px !important;
+  background: rgba(255,255,255,0.10) !important;
+}
+
+.tl-entry,
+.tl-entry.milestone {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 18px 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.085) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tl-entry:last-child,
+.tl-year-block .tl-entry:last-child {
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.tl-entry-right {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.tl-entry-head {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  flex-wrap: wrap !important;
+  gap: 8px 12px !important;
+  margin: 0 0 7px !important;
+}
+
+.tl-entry.milestone .tl-entry-head::before {
+  display: none !important;
+  content: none !important;
+}
+
+.tl-tech-name {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  min-width: 0 !important;
+  max-width: min(100%, 760px) !important;
+  color: var(--text) !important;
+  font-size: clamp(18px, 2vw, 22px) !important;
+  line-height: 1.22 !important;
+  font-weight: 790 !important;
+  letter-spacing: 0 !important;
+}
+
+.tl-entry.milestone .tl-tech-name::before {
+  content: '' !important;
+  width: 7px !important;
+  height: 7px !important;
+  margin: 0 12px 3px 0 !important;
+  border-radius: 999px !important;
+  background: #EBFF00 !important;
+  box-shadow: 0 0 14px rgba(235,255,0,0.28) !important;
+  flex: 0 0 auto !important;
+}
+
+.tl-cat-badge {
+  position: static !important;
+  align-self: center !important;
+  flex: 0 0 auto !important;
+  margin: 1px 0 0 !important;
+  padding: 4px 9px !important;
+  border-radius: 7px !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  color: var(--text-2) !important;
+  font-size: 12px !important;
+  font-weight: 720 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+}
+
+.tl-entry.milestone .tl-cat-badge {
+  background: rgba(235,255,0,0.11) !important;
+  border-color: rgba(235,255,0,0.22) !important;
+  color: var(--text-2) !important;
+}
+
+.tl-note {
+  max-width: 840px !important;
+  margin: 0 !important;
+  padding-left: 19px !important;
+  color: var(--text-2) !important;
+  font-size: 15px !important;
+  line-height: 1.58 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+.tl-tech-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin: 11px 0 0 !important;
+  padding-left: 19px !important;
+}
+
+.tl-tc {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 25px !important;
+  padding: 3px 9px !important;
+  border-radius: 6px !important;
+  background: rgba(255,255,255,0.065) !important;
+  border: 1px solid rgba(255,255,255,0.09) !important;
+  color: var(--text-2) !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+}
+
+@media(max-width: 720px) {
+  .tl-page {
+    padding-bottom: 44px !important;
+  }
+
+  .tl-header h2 {
+    font-size: clamp(34px, 11vw, 46px) !important;
+  }
+
+  .tl-year-block {
+    padding: 24px 0 !important;
+  }
+
+  .tl-year-label {
+    gap: 12px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .tl-year-num {
+    min-width: 82px !important;
+    font-size: 26px !important;
+    letter-spacing: 0.09em !important;
+  }
+
+  .tl-entry,
+  .tl-entry.milestone {
+    padding: 16px 0 !important;
+  }
+
+  .tl-entry-head {
+    gap: 7px 9px !important;
+  }
+
+  .tl-tech-name {
+    max-width: 100% !important;
+    font-size: 18px !important;
+  }
+
+  .tl-cat-badge {
+    font-size: 11px !important;
+  }
+
+  .tl-note,
+  .tl-tech-row {
+    padding-left: 18px !important;
+  }
+}
+
 .doc-card:has(.doc-app-name) {
   border-color: var(--border) !important;
 }
