@@ -5159,6 +5159,32 @@ body[data-app-theme="light"] .app-card[data-name] .s-live {
     gap: 8px !important;
   }
 }
+
+/* ===== CV tab: mobile redesign ===== */
+@media(max-width:640px) {
+  .cv-body { grid-template-columns: 1fr !important; }
+  .cv-page { padding: 16px 12px 60px !important; }
+  .cv-role {
+    background: var(--bg2) !important;
+    border: 1px solid var(--border) !important;
+    border-bottom: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    padding: 14px 16px !important;
+    margin-bottom: 8px !important;
+  }
+  .cv-role:last-child { margin-bottom: 0 !important; }
+  .cv-role:hover {
+    background: var(--bg2) !important;
+    padding: 14px 16px !important;
+    margin: 0 0 8px 0 !important;
+    border-radius: 10px !important;
+  }
+  .cv-role:last-child:hover { margin-bottom: 0 !important; }
+  .cv-role-head { cursor: pointer !important; }
+  .cv-role-bullets { display: none !important; }
+  .cv-role.mob-open .cv-role-bullets { display: flex !important; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+  .cv-kpis { grid-template-columns: repeat(2, 1fr) !important; }
+}
 </style>
 
 <div id="gate">
@@ -7886,6 +7912,14 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     const open = extra.classList.toggle('open');
     if (btn) btn.textContent = open ? '− mniej' : '+ więcej';
   }
+
+  // Mobile accordion: tap role-head to show/hide bullets
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth > 640) return;
+    var head = e.target.closest('.cv-role-head');
+    if (!head) return;
+    head.closest('.cv-role').classList.toggle('mob-open');
+  });
 
   
   // CV KPI counter animation
