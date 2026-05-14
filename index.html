@@ -3645,6 +3645,157 @@ body.dark-app .lang-btn {
   max-width: 1180px !important;
   padding: 0 24px !important;
 }
+
+/* ── Codex cover redesign ── */
+.card-screen {
+  height: 220px !important;
+  isolation: isolate;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.card-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(to right, rgba(255,255,255,0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.055) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.34;
+}
+.card-screen::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 72px;
+  z-index: 1;
+  background: linear-gradient(to bottom, transparent, rgba(23,23,23,0.92));
+}
+.cs-grid, .screen-ov { display: none !important; }
+.cs-body {
+  z-index: 2;
+  align-items: flex-start !important;
+  justify-content: flex-end !important;
+  padding: 22px !important;
+}
+.cs-icon-box {
+  position: absolute !important;
+  right: -14px;
+  bottom: -24px;
+  width: 178px !important;
+  height: 178px !important;
+  border-radius: 44px !important;
+  transform: rotate(-7deg);
+  overflow: hidden;
+  color: rgba(255,255,255,0.90);
+  background:
+    radial-gradient(circle at 72% 74%, rgba(255,255,255,0.20), rgba(255,255,255,0.06) 42%, transparent 72%) !important;
+  border: 0 !important;
+  box-shadow:
+    0 34px 90px rgba(0,0,0,0.26),
+    inset 0 1px 0 rgba(255,255,255,0.10) !important;
+}
+.cs-icon-box svg {
+  display: block !important;
+  position: relative;
+  z-index: 2;
+  width: 68px !important;
+  height: 68px !important;
+  color: rgba(255,255,255,0.92);
+  stroke: currentColor;
+  opacity: 0.92;
+  transform: rotate(7deg);
+}
+.cs-icon-box::after {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: -26px;
+  z-index: 1;
+  color: rgba(255,255,255,0.16);
+  font-size: 76px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.08em;
+  transform: rotate(7deg);
+}
+.cs-icon-box::before {
+  content: '';
+  position: absolute;
+  inset: 28px;
+  z-index: 0;
+  border-radius: 34px;
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.11);
+  backdrop-filter: blur(3px);
+}
+.cs-cat-txt {
+  position: relative;
+  z-index: 2;
+  max-width: 190px;
+  color: rgba(255,255,255,0.70) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+.screen-meta { z-index: 3; padding: 14px !important; }
+.cat-badge {
+  background: rgba(12,12,12,0.62) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  color: rgba(255,255,255,0.86) !important;
+  backdrop-filter: blur(10px);
+}
+.s-live {
+  background: rgba(12,12,12,0.62);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  padding: 4px 9px;
+  color: #8fffb8 !important;
+}
+.app-icon { display: none !important; }
+.card-header-cat { color: var(--text-3) !important; font-size: 11px !important; text-transform: none !important; }
+.card-tagline { color: var(--text-2) !important; }
+.app-card .btn-p, .app-card .btn-p:link, .app-card .btn-p:visited { color: var(--text) !important; }
+.app-card .btn-p:hover { color: var(--lime) !important; }
+/* Per-app backgrounds + initials */
+.app-card[data-name*="sabiszop"] .card-screen { background: linear-gradient(145deg, #061633, #0a2f68) !important; }
+.app-card[data-name*="sabiszop"] .cs-icon-box::after { content: 'SS'; }
+.app-card[data-name*="velolodz"] .card-screen { background: linear-gradient(145deg, #041622, #063d61) !important; }
+.app-card[data-name*="velolodz"] .cs-icon-box::after { content: 'VL'; }
+.app-card[data-name*="kadromierz content"] .card-screen { background: linear-gradient(145deg, #130b25, #30175f) !important; }
+.app-card[data-name*="kadromierz content"] .cs-icon-box::after { content: 'KH'; }
+.app-card[data-name*="growthhub"] .card-screen { background: linear-gradient(145deg, #041715, #063c34) !important; }
+.app-card[data-name*="growthhub"] .cs-icon-box::after { content: 'GH'; }
+.app-card[data-name*="hireme"] .card-screen { background: linear-gradient(145deg, #041617, #063b3a) !important; }
+.app-card[data-name*="hireme"] .cs-icon-box::after { content: 'HM'; }
+.app-card[data-name*="an projekt"] .card-screen { background: linear-gradient(145deg, #210813, #571634) !important; }
+.app-card[data-name*="an projekt"] .cs-icon-box::after { content: 'AN'; }
+.app-card[data-name*="ciryam"] .card-screen { background: linear-gradient(145deg, #24050c, #5f0d20) !important; }
+.app-card[data-name*="ciryam"] .cs-icon-box::after { content: 'CI'; }
+.app-card[data-name*="dzialk"] .card-screen { background: linear-gradient(145deg, #111707, #334600) !important; }
+.app-card[data-name*="dzialk"] .cs-icon-box::after { content: 'DZ'; }
+.app-card[data-name*="ads assistant"] .card-screen { background: linear-gradient(145deg, #211107, #663c07) !important; }
+.app-card[data-name*="ads assistant"] .cs-icon-box::after { content: 'AA'; }
+.app-card[data-name*="paczka"] .card-screen { background: linear-gradient(145deg, #06161b, #064251) !important; }
+.app-card[data-name*="paczka"] .cs-icon-box::after { content: 'P+'; }
+.app-card[data-name*="camper"] .card-screen { background: linear-gradient(145deg, #07171f, #0a4b5f) !important; }
+.app-card[data-name*="camper"] .cs-icon-box::after { content: 'CR'; }
+.app-card[data-name*="amoree"] .card-screen { background: linear-gradient(145deg, #24080f, #5f1630) !important; }
+.app-card[data-name*="amoree"] .cs-icon-box::after { content: 'AM'; }
+.app-card[data-name*="wycinarki"] .card-screen { background: linear-gradient(145deg, #06122c, #123f88) !important; }
+.app-card[data-name*="wycinarki"] .cs-icon-box::after { content: 'WL'; }
+.app-card[data-name*="spawarki"] .card-screen { background: linear-gradient(145deg, #241007, #67300b) !important; }
+.app-card[data-name*="spawarki"] .cs-icon-box::after { content: 'SL'; }
+.app-card[data-name*="willa"] .card-screen { background: linear-gradient(145deg, #17110c, #4b3920) !important; }
+.app-card[data-name*="willa"] .cs-icon-box::after { content: 'WP'; }
+.app-card[data-name*="akademia"] .card-screen { background: linear-gradient(145deg, #240d07, #67300b) !important; }
+.app-card[data-name*="akademia"] .cs-icon-box::after { content: 'AK'; }
+.app-card[data-name*="relora"] .card-screen { background: linear-gradient(145deg, #130a2a, #35177a) !important; }
+.app-card[data-name*="relora"] .cs-icon-box::after { content: 'RL'; }
+.app-card[data-name*="notchcue"] .card-screen { background: linear-gradient(145deg, #0a0a24, #24246d) !important; }
+.app-card[data-name*="notchcue"] .cs-icon-box::after { content: 'NC'; }
+
 </style>
 
 <div id="gate">
