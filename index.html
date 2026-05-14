@@ -5358,14 +5358,14 @@ html[data-app-theme="dark"] body {
 
 .profile-hero,
 #tab-cv .cv-header-strip {
-  width: min(1180px, calc(100vw - 32px)) !important;
-  max-width: 1180px !important;
-  margin: 14px auto 24px !important;
-  padding: 18px 0 22px !important;
+  width: min(920px, 100%) !important;
+  max-width: 920px !important;
+  margin: 8px 0 24px !important;
+  padding: 12px 0 16px !important;
   display: grid !important;
-  grid-template-columns: 116px minmax(0, 1fr) !important;
+  grid-template-columns: 86px minmax(0, 1fr) !important;
   align-items: center !important;
-  gap: 22px !important;
+  gap: 16px !important;
   background: transparent !important;
   border: 0 !important;
   border-bottom: 1px solid var(--border) !important;
@@ -5379,43 +5379,57 @@ html[data-app-theme="dark"] body {
 
 .profile-photo,
 #tab-cv .cv-header-strip img {
-  width: 108px !important;
-  height: 108px !important;
+  width: 80px !important;
+  height: 80px !important;
   border-radius: 999px !important;
   border: 2px solid rgba(235,255,0,0.74) !important;
-  box-shadow: 0 0 0 7px rgba(235,255,0,0.08) !important;
+  box-shadow: 0 0 0 4px rgba(235,255,0,0.08) !important;
   object-fit: cover !important;
 }
 
 .profile-name,
 #tab-cv .cv-h-name {
-  font-size: clamp(28px, 3.2vw, 42px) !important;
-  line-height: 1.04 !important;
-  letter-spacing: -0.028em !important;
+  font-size: clamp(24px, 2.6vw, 32px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.024em !important;
   color: var(--text) !important;
 }
 
-.profile-title,
-#tab-cv .cv-h-summary {
-  max-width: 980px !important;
-  margin-top: 10px !important;
-  font-size: clamp(15px, 1.45vw, 19px) !important;
+.profile-title {
+  max-width: 760px !important;
+  margin-top: 8px !important;
+  font-size: clamp(13px, 1.1vw, 15px) !important;
   line-height: 1.55 !important;
-  font-weight: 620 !important;
+  font-weight: 560 !important;
   color: var(--text-2) !important;
 }
 
 #tab-cv .cv-h-title {
-  margin-top: 8px !important;
+  margin-top: 6px !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  font-weight: 760 !important;
   color: var(--text-3) !important;
 }
 
 #tab-cv .cv-h-contacts,
-.profile-links {
-  margin-top: 16px !important;
+.profile-links,
+.profile-socials {
+  margin-top: 10px !important;
   display: flex !important;
   flex-wrap: wrap !important;
-  gap: 10px !important;
+  gap: 7px !important;
+}
+
+.social-link,
+#tab-cv .cv-h-contact {
+  min-height: 28px !important;
+  padding: 5px 9px !important;
+  border-radius: 8px !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
 }
 
 #tab-cv .cv-kpis {
@@ -5924,25 +5938,25 @@ html[data-app-theme="dark"] #tab-stack .tech-icon-item:hover {
 @media(max-width: 900px) {
   .profile-hero,
   #tab-cv .cv-header-strip {
-    grid-template-columns: 78px minmax(0, 1fr) !important;
-    gap: 14px !important;
+    width: 100% !important;
+    grid-template-columns: 62px minmax(0, 1fr) !important;
+    gap: 12px !important;
     align-items: center !important;
   }
 
   .profile-photo,
   #tab-cv .cv-header-strip img {
-    width: 72px !important;
-    height: 72px !important;
+    width: 58px !important;
+    height: 58px !important;
   }
 
   .profile-name,
   #tab-cv .cv-h-name {
-    font-size: clamp(24px, 7vw, 32px) !important;
+    font-size: clamp(21px, 6vw, 26px) !important;
   }
 
-  .profile-title,
-  #tab-cv .cv-h-summary {
-    font-size: 14px !important;
+  .profile-title {
+    font-size: 13px !important;
     line-height: 1.55 !important;
   }
 
