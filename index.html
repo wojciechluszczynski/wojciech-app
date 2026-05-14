@@ -4785,8 +4785,8 @@ body[data-app-theme="light"] {
   --bg2: #f2efe9;
   --bg3: #e7e1d7;
   --lime: #596400;
-  --lime-dim: rgba(235,255,0,0.34);
-  --lime-glow: rgba(235,255,0,0.26);
+  --lime-dim: rgba(89,100,0,0.09);
+  --lime-glow: rgba(89,100,0,0.10);
   --green: #0f9f63;
   --green-dim: rgba(15,159,99,0.11);
   --border: rgba(15,15,15,0.095);
@@ -4808,49 +4808,24 @@ body[data-app-theme="light"] {
 .app-theme-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  height: 34px;
-  margin-right: 10px;
-  padding: 3px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: rgba(255,255,255,0.045);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.055);
-}
-
-.app-theme-btn {
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 0 10px;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--text-3);
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.04);
+  color: var(--text-2);
   cursor: pointer;
-  font: inherit;
-  font-size: 11px;
-  font-weight: 760;
-  line-height: 1;
-  transition: background .16s ease, color .16s ease, box-shadow .16s ease;
+  transition: background .15s, color .15s, border-color .15s;
+  flex-shrink: 0;
+  padding: 0;
 }
 
-.app-theme-btn svg {
-  width: 14px;
-  height: 14px;
-  flex: 0 0 14px;
-}
-
-.app-theme-btn:hover {
+.app-theme-toggle:hover {
+  background: var(--bg2);
+  border-color: var(--border-hi);
   color: var(--text);
-}
-
-.app-theme-btn.active {
-  background: #EBFF00 !important;
-  color: #080808 !important;
-  box-shadow: 0 8px 22px rgba(235,255,0,0.18);
 }
 
 body[data-app-theme="light"] header,
@@ -4871,11 +4846,20 @@ body[data-app-theme="dark"] .mob-nav {
   border-color: rgba(255,255,255,0.10) !important;
 }
 
-body[data-app-theme="light"] .lang-toggle,
-body[data-app-theme="light"] .app-theme-toggle {
+body[data-app-theme="light"] .lang-toggle {
   background: rgba(13,13,13,0.045) !important;
   border-color: rgba(13,13,13,0.08) !important;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.7) !important;
+}
+
+body[data-app-theme="light"] .app-theme-toggle {
+  background: rgba(13,13,13,0.04) !important;
+  border-color: rgba(13,13,13,0.09) !important;
+}
+
+body[data-app-theme="light"] .app-theme-toggle:hover {
+  background: rgba(13,13,13,0.08) !important;
+  border-color: rgba(13,13,13,0.16) !important;
 }
 
 body[data-app-theme="light"] .lang-btn,
@@ -4885,12 +4869,16 @@ body[data-app-theme="light"] .mob-nav-btn {
   color: var(--text-3) !important;
 }
 
-body[data-app-theme="light"] .lang-btn.active,
-body[data-app-theme="light"] .app-theme-btn.active,
+body[data-app-theme="light"] .lang-btn.active {
+  background: var(--text) !important;
+  border-color: var(--text) !important;
+  color: var(--bg) !important;
+}
+
 body[data-app-theme="light"] .chip.active {
-  background: #EBFF00 !important;
-  border-color: #d6e800 !important;
-  color: #080808 !important;
+  background: var(--text) !important;
+  border-color: var(--text) !important;
+  color: var(--bg) !important;
 }
 
 body[data-app-theme="light"] .tab-btn.active,
@@ -5140,23 +5128,19 @@ body[data-app-theme="light"] .app-card[data-name] .s-live {
 
 @media(max-width: 720px) {
   .app-theme-toggle {
-    height: 32px;
+    width: 34px;
+    height: 34px;
     margin-right: 6px;
-    padding: 2px;
-  }
-
-  .app-theme-btn {
-    width: 28px;
-    height: 28px;
-    padding: 0;
-  }
-
-  .theme-label {
-    display: none;
   }
 
   header .hdr-inner {
     gap: 8px !important;
+  }
+}
+
+@media(max-width: 480px) {
+  .app-theme-toggle {
+    display: none;
   }
 }
 
@@ -5184,6 +5168,21 @@ body[data-app-theme="light"] .app-card[data-name] .s-live {
   .cv-role-bullets { display: none !important; }
   .cv-role.mob-open .cv-role-bullets { display: flex !important; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
   .cv-kpis { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ===== Light mode: card-screen softening ===== */
+body[data-app-theme="light"] .card-screen::after {
+  inset: 0 !important;
+  height: auto !important;
+  background: linear-gradient(
+    180deg,
+    rgba(250,248,244,0.42) 0%,
+    rgba(250,248,244,0.78) 55%,
+    rgba(250,248,244,0.98) 92%
+  ) !important;
+}
+body[data-app-theme="light"] .cs-cat-txt {
+  color: rgba(13,13,13,0.45) !important;
 }
 </style>
 
@@ -5246,16 +5245,11 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
     <div style="flex:1"></div>
 
-    <div class="app-theme-toggle" id="appThemeToggle" role="group" aria-label="Theme">
-      <button class="app-theme-btn" type="button" data-theme-choice="light" onclick="setAppTheme('light')" aria-pressed="false" title="Light">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"></circle><path d="M12 2.5v3M12 18.5v3M4.25 4.25l2.1 2.1M17.65 17.65l2.1 2.1M2.5 12h3M18.5 12h3M4.25 19.75l2.1-2.1M17.65 6.35l2.1-2.1"></path></svg>
-        <span class="theme-label" data-pl="Jasny" data-en="Light" data-it="Chiaro">Light</span>
-      </button>
-      <button class="app-theme-btn" type="button" data-theme-choice="dark" onclick="setAppTheme('dark')" aria-pressed="false" title="Dark">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.2 14.8a8.3 8.3 0 0 1-10.9-11 8.7 8.7 0 1 0 10.9 11Z"></path></svg>
-        <span class="theme-label" data-pl="Ciemny" data-en="Dark" data-it="Scuro">Dark</span>
-      </button>
-    </div>
+    <button class="app-theme-toggle" id="appThemeToggle" onclick="toggleAppTheme()" aria-label="Toggle theme" title="Toggle light/dark">
+      <svg id="appThemeIcon" width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20.2 14.8a8.3 8.3 0 0 1-10.9-11 8.7 8.7 0 1 0 10.9 11Z"/>
+      </svg>
+    </button>
 
     <div class="lang-toggle" id="appLangToggle">
       <button class="lang-btn" id="btnPL" onclick="setLang('pl')">PL</button>
@@ -7656,6 +7650,13 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
       mobIcon.innerHTML = mode === 'dark'
         ? '<circle cx="12" cy="12" r="4.5"></circle><path d="M12 2.5v3M12 18.5v3M4.25 4.25l2.1 2.1M17.65 17.65l2.1 2.1M2.5 12h3M18.5 12h3M4.25 19.75l2.1-2.1M17.65 6.35l2.1-2.1"></path>'
         : '<path d="M20.2 14.8a8.3 8.3 0 0 1-10.9-11 8.7 8.7 0 1 0 10.9 11Z"></path>';
+    }
+    // sync desktop header icon
+    var deskIcon = document.getElementById('appThemeIcon');
+    if (deskIcon) {
+      deskIcon.innerHTML = mode === 'dark'
+        ? '<circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v3M12 18.5v3M4.25 4.25l2.1 2.1M17.65 17.65l2.1 2.1M2.5 12h3M18.5 12h3M4.25 19.75l2.1-2.1M17.65 6.35l2.1-2.1"/>'
+        : '<path d="M20.2 14.8a8.3 8.3 0 0 1-10.9-11 8.7 8.7 0 1 0 10.9 11Z"/>';
     }
   }
 
