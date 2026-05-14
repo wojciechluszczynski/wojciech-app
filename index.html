@@ -6586,6 +6586,338 @@ html[data-app-theme="dark"] #tab-cv .cv-setup-entry {
     padding: 16px !important;
   }
 }
+
+/* CV rebuild: roles first, accordion details, stack-like support modules. */
+#tab-cv .cv-page {
+  gap: 14px !important;
+}
+
+#tab-cv .cv-card {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#tab-cv .cv-page > .cv-card:first-of-type {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, .72fr) !important;
+  gap: 18px 26px !important;
+  align-items: start !important;
+}
+
+#tab-cv .cv-page > .cv-card:first-of-type .cv-sec-title {
+  grid-column: 1 / -1 !important;
+}
+
+#tab-cv .cv-page > .cv-card:first-of-type p {
+  margin: 0 !important;
+  max-width: 680px !important;
+}
+
+#tab-cv .cv-page > .cv-card:first-of-type > div[style*="grid-template-columns:repeat(4"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+  border-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#tab-cv .cv-page > .cv-card:first-of-type > div[style*="grid-template-columns:repeat(4"] > div {
+  min-height: 76px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  border-left: 0 !important;
+}
+
+#tab-cv .cv-body {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 14px !important;
+}
+
+#tab-cv .cv-body > .cv-card:first-child {
+  display: block !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+#tab-cv .cv-body > .cv-card:first-child > .cv-sec-title {
+  margin: 0 0 10px !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+#tab-cv .cv-role {
+  position: relative !important;
+  margin: 0 0 8px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  background: var(--bg1) !important;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.035), inset 0 1px 0 rgba(255,255,255,0.60) !important;
+}
+
+#tab-cv .cv-role::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #EBFF00, rgba(235,255,0,0.12), transparent) !important;
+  opacity: .65 !important;
+}
+
+#tab-cv .cv-role-head,
+#tab-cv .cv-role-head[style] {
+  cursor: pointer !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  padding: 16px 18px 8px !important;
+}
+
+#tab-cv .cv-role-head::after {
+  content: "+" !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 7px !important;
+  background: rgba(13,13,13,0.04) !important;
+  color: var(--text-2) !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+}
+
+#tab-cv .cv-role.open .cv-role-head::after {
+  content: "-" !important;
+  background: #EBFF00 !important;
+  border-color: #EBFF00 !important;
+  color: #090909 !important;
+}
+
+#tab-cv .cv-role-title {
+  font-size: clamp(15px, 1.4vw, 18px) !important;
+  font-weight: 850 !important;
+}
+
+#tab-cv .cv-role-date {
+  align-self: center !important;
+  color: var(--text-3) !important;
+  font-size: 11px !important;
+  font-weight: 750 !important;
+}
+
+#tab-cv .cv-role-company {
+  margin: 0 !important;
+  padding: 0 18px 8px !important;
+  color: var(--text-2) !important;
+}
+
+#tab-cv .cv-role-badges {
+  margin: 0 !important;
+  padding: 0 18px 14px !important;
+}
+
+#tab-cv .cv-role-bullets {
+  display: none !important;
+  margin: 0 !important;
+  padding: 14px 18px 16px !important;
+  border-top: 1px solid var(--border) !important;
+  background: rgba(13,13,13,0.025) !important;
+  gap: 7px !important;
+}
+
+#tab-cv .cv-role.open .cv-role-bullets {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+#tab-cv .cv-role-bullets li {
+  min-width: 0 !important;
+  padding: 9px 10px 9px 26px !important;
+  border: 1px solid rgba(13,13,13,0.075) !important;
+  border-radius: 7px !important;
+  background: rgba(255,255,255,0.45) !important;
+  color: var(--text-2) !important;
+  font-size: 12.5px !important;
+  line-height: 1.45 !important;
+}
+
+#tab-cv .cv-role-bullets li::before {
+  left: 12px !important;
+  top: 17px !important;
+  width: 5px !important;
+  height: 5px !important;
+  background: #EBFF00 !important;
+  box-shadow: 0 0 10px rgba(235,255,0,.34) !important;
+}
+
+#tab-cv .cv-role-toggle {
+  display: none !important;
+}
+
+#tab-cv .cv-body > div:not(.cv-card) {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  align-items: start !important;
+}
+
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card {
+  height: 100% !important;
+}
+
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child {
+  grid-column: 1 / -1 !important;
+}
+
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child .cv-tool-group {
+  --stack-accent: 235, 255, 0;
+  position: relative !important;
+  padding: 13px !important;
+  margin: 0 !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  background: var(--bg1) !important;
+  overflow: hidden !important;
+}
+
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child .cv-tool-group::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 0 auto 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, rgba(var(--stack-accent),.78), rgba(var(--stack-accent),.16), transparent) !important;
+}
+
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child .cv-tool-group:nth-child(2) { --stack-accent: 97, 218, 251; }
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child .cv-tool-group:nth-child(3) { --stack-accent: 212, 169, 106; }
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child .cv-tool-group:nth-child(4) { --stack-accent: 234, 75, 113; }
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child .cv-tool-group:nth-child(5) { --stack-accent: 243, 128, 32; }
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child .cv-tool-group:nth-child(6) { --stack-accent: 62, 207, 142; }
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child .cv-tool-group:nth-child(7) { --stack-accent: 99, 91, 255; }
+
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child .cv-tool-list {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr)) !important;
+  gap: 7px !important;
+}
+
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+
+#tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child > .cv-sec-title {
+  grid-column: 1 / -1 !important;
+}
+
+#tab-cv .cv-setup-list {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+}
+
+#tab-cv .cv-setup-entry {
+  padding: 11px !important;
+}
+
+#tab-cv .cv-setup-name {
+  margin-bottom: 8px !important;
+  color: var(--text) !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+}
+
+#tab-cv .cv-setup-tools {
+  gap: 6px !important;
+}
+
+#tab-cv .cv-setup-tool {
+  white-space: nowrap !important;
+}
+
+html[data-app-theme="dark"] #tab-cv .cv-role {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)),
+    rgba(14,14,14,0.78) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+  box-shadow: 0 22px 64px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.08) !important;
+}
+
+html[data-app-theme="dark"] #tab-cv .cv-role-bullets {
+  background: rgba(255,255,255,0.025) !important;
+}
+
+html[data-app-theme="dark"] #tab-cv .cv-role-bullets li {
+  background: rgba(255,255,255,0.045) !important;
+  border-color: rgba(255,255,255,0.10) !important;
+}
+
+html[data-app-theme="dark"] #tab-cv .cv-role-head::after {
+  background: rgba(255,255,255,0.045) !important;
+  border-color: rgba(255,255,255,0.10) !important;
+}
+
+html[data-app-theme="dark"] #tab-cv .cv-role.open .cv-role-head::after {
+  background: #EBFF00 !important;
+  border-color: #EBFF00 !important;
+  color: #090909 !important;
+}
+
+@media(max-width: 980px) {
+  #tab-cv .cv-page > .cv-card:first-of-type,
+  #tab-cv .cv-body > div:not(.cv-card),
+  #tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  #tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child,
+  #tab-cv .cv-body > div:not(.cv-card) > .cv-card:first-child > .cv-sec-title {
+    grid-column: auto !important;
+  }
+}
+
+@media(max-width: 680px) {
+  #tab-cv .cv-role-head,
+  #tab-cv .cv-role-head[style] {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    padding: 14px 14px 7px !important;
+  }
+
+  #tab-cv .cv-role-date {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  #tab-cv .cv-role-head::after {
+    grid-column: 2 !important;
+    grid-row: 1 / span 2 !important;
+  }
+
+  #tab-cv .cv-role-company,
+  #tab-cv .cv-role-badges {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  #tab-cv .cv-role.open .cv-role-bullets {
+    grid-template-columns: 1fr !important;
+  }
+
+  #tab-cv .cv-role-bullets {
+    padding: 12px 14px 14px !important;
+  }
+}
 </style>
 
 <div id="gate">
@@ -9294,12 +9626,36 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     });
   }
   function toggleRole(header) {
-    const extra = header.parentElement.querySelector('.cv-role-extra');
-    const btn   = header.querySelector('.cv-role-toggle');
-    if (!extra) return;
-    const open = extra.classList.toggle('open');
-    if (btn) btn.textContent = open ? '− mniej' : '+ więcej';
+    const role = header && header.closest ? header.closest('.cv-role') : null;
+    if (!role) return;
+    const open = !role.classList.contains('open');
+    role.classList.toggle('open', open);
+    header.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
+
+  function initCvRoles() {
+    document.querySelectorAll('#tab-cv .cv-role').forEach((role, index) => {
+      const header = role.querySelector('.cv-role-head');
+      const bullets = role.querySelector('.cv-role-bullets');
+      if (!header || !bullets) return;
+      if (!header.dataset.cvAccordionReady) {
+        header.dataset.cvAccordionReady = '1';
+        header.setAttribute('role', 'button');
+        header.setAttribute('tabindex', '0');
+        header.addEventListener('click', () => toggleRole(header));
+        header.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleRole(header);
+          }
+        });
+      }
+      const open = index < 3;
+      role.classList.toggle('open', open);
+      header.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  initCvRoles();
 
   
   // CV KPI counter animation
