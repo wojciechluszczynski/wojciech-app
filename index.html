@@ -6113,6 +6113,11 @@ html[data-app-theme="dark"] #tab-stack .tech-icon-item:hover {
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
 
+/* Summary stats row stays 4-col at desktop */
+#tab-cv #cv-summary-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+
 #tab-cv .cv-card > div[style*="display:grid"] > div {
   background: var(--bg2) !important;
   border-color: var(--border) !important;
@@ -6185,6 +6190,11 @@ html[data-app-theme="dark"] #tab-stack .tech-icon-item:hover {
   #tab-cv .cv-card > div[style*="grid-template-columns:repeat(3"],
   #tab-cv .cv-card > div[style*="grid-template-columns:repeat(4"] {
     grid-template-columns: 1fr !important;
+  }
+
+  /* Summary stats stays 2-col on mobile */
+  #tab-cv #cv-summary-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 
   #tab-timeline.tab-content.active .tl-year-block {
@@ -6614,10 +6624,8 @@ html[data-app-theme="dark"] #tab-cv .cv-setup-entry {
 }
 
 #tab-cv .cv-page > .cv-card:first-of-type > div[style*="grid-template-columns:repeat(4"] {
-  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  gap: 8px !important;
-  border-top: 0 !important;
-  padding-top: 0 !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 12px !important;
 }
 
 #tab-cv .cv-page > .cv-card:first-of-type > div[style*="grid-template-columns:repeat(4"] > div {
@@ -6625,7 +6633,6 @@ html[data-app-theme="dark"] #tab-cv .cv-setup-entry {
   display: flex !important;
   flex-direction: column !important;
   justify-content: center !important;
-  border-left: 0 !important;
 }
 
 #tab-cv .cv-body {
@@ -9740,7 +9747,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
         <div class="cv-card">
           <div class="cv-sec-title" data-pl="Summary" data-en="Summary" data-it="Sommario">Summary</div>
           <p style="font-size:14px;color:var(--text-2);line-height:1.75;margin-bottom:20px" data-pl="Growth spotyka AI. Buduję produkty cyfrowe, systemy przychodowe i stosy automatyzacji - od zera do trakcji. SaaS, B2B i AI-first od zanim to było modne." data-en="Growth meets AI. I build digital products, revenue systems, and automation stacks - from zero to traction. SaaS, B2B, and AI-first since before the hype." data-it="Growth incontra l'AI. Creo prodotti digitali, sistemi di revenue e stack di automazione - da zero alla trazione. SaaS, B2B e AI-first prima che diventasse di moda.">Growth meets AI. I build digital products, revenue systems, and automation stacks - from zero to traction. SaaS, B2B, and AI-first since before the hype.</p>
-          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-top:1px solid var(--border);padding-top:18px">
+          <div id="cv-summary-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-top:1px solid var(--border);padding-top:18px">
             <div style="text-align:center;padding:8px 0">
               <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">20+</div>
               <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Lat w GTM / Growth" data-en="Years in GTM / Growth" data-it="Anni in GTM / Growth">Lat w GTM / Growth</div>
