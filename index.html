@@ -26,13 +26,28 @@
   <script>
     (function() {
       try {
-        var mode = localStorage.getItem('appTheme') || localStorage.getItem('gTheme') || 'light';
-        mode = mode === 'dark' ? 'dark' : 'light';
+        var saved = localStorage.getItem('appTheme') || localStorage.getItem('gTheme');
+        var mode;
+        if (saved) {
+          mode = saved === 'dark' ? 'dark' : 'light';
+        } else {
+          mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
         document.documentElement.setAttribute('data-app-theme', mode);
         document.documentElement.style.colorScheme = mode;
       } catch(e) {
         document.documentElement.setAttribute('data-app-theme', 'light');
       }
+      // React to system preference changes when no manual choice is saved
+      try {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+          if (!localStorage.getItem('appTheme') && !localStorage.getItem('gTheme')) {
+            var m = e.matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-app-theme', m);
+            document.documentElement.style.colorScheme = m;
+          }
+        });
+      } catch(e) {}
     })();
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -2014,8 +2029,13 @@ body.dark-app .tl-tc { background: var(--bg2) !important; border-color: var(--bo
 <script>
   (function(){
     try {
-      var t = localStorage.getItem('appTheme') || localStorage.getItem('gTheme') || 'light';
-      t = t === 'dark' ? 'dark' : 'light';
+      var saved = localStorage.getItem('appTheme') || localStorage.getItem('gTheme');
+      var t;
+      if (saved) {
+        t = saved === 'dark' ? 'dark' : 'light';
+      } else {
+        t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
       document.body.setAttribute('data-app-theme', t);
       document.documentElement.style.colorScheme = t;
     } catch(e) {}
@@ -4275,6 +4295,9 @@ main {
   color: rgba(245,245,245,0.62) !important;
   font-size: 13px !important;
   line-height: 1.55 !important;
+  text-align: left !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 @media(max-width: 980px) {
@@ -7990,8 +8013,23 @@ var _gC={pl:{hl:'Head of Growth · HR Tech & B2B SaaS',desc:'Buduję systemy wzr
 function gLang(l){_gL=l;try{localStorage.setItem('gLang',l);}catch(e){}document.querySelectorAll('.g-lang-btn').forEach(function(b){b.classList.toggle('active',b.textContent===l.toUpperCase());});var c=_gC[l];function setText(id,val){var el=document.getElementById(id);if(el)el.textContent=val;}setText('gHL',c.hl);setText('gDesc',c.desc);setText('gALabel',c.acc);setText('gBtn',c.btn);setText('gateErr',c.err);setText('gBadge',c.bdg);var pw=document.getElementById('pwInput');if(pw)pw.placeholder=c.ph;}
 (function(){var img=document.getElementById('gPhoto');if(img&&img.complete&&img.naturalWidth===0){img.style.display='none';var i=document.getElementById('gInit');if(i)i.style.display='flex';}})();
 function toggleTheme(){var g=document.getElementById('gate');var icon=document.getElementById('gThemeIcon');var isLight=g.classList.toggle('light-mode');var mode=isLight?'light':'dark';localStorage.setItem('gTheme',mode);if(typeof setAppTheme==='function')setAppTheme(mode);icon.innerHTML=isLight?'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>':'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';}
-(function(){var sl=localStorage.getItem('gLang');if(sl&&['pl','en','it'].indexOf(sl)>-1&&typeof gLang==='function'){gLang(sl);}else{if(typeof gLang==='function')gLang('en');}})();
-(function(){var saved=localStorage.getItem('gTheme');if(saved!=='dark'){document.getElementById('gate').classList.add('light-mode');var icon=document.getElementById('gThemeIcon');if(icon)icon.innerHTML='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>';}})();
+(function(){
+  var sl=localStorage.getItem('gLang');
+  var detected;
+  if(sl&&['pl','en','it'].indexOf(sl)>-1){detected=sl;}
+  else{var bl=(navigator.language||navigator.userLanguage||'en').toLowerCase();if(bl.startsWith('pl')){detected='pl';}else if(bl.startsWith('it')){detected='it';}else{detected='en';}}
+  if(typeof gLang==='function')gLang(detected);
+})();
+(function(){
+  var saved=localStorage.getItem('gTheme')||localStorage.getItem('appTheme');
+  var mode;
+  if(saved){mode=saved==='dark'?'dark':'light';}
+  else{mode=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+  var g=document.getElementById('gate');
+  var icon=document.getElementById('gThemeIcon');
+  if(mode==='light'){if(g)g.classList.add('light-mode');if(icon)icon.innerHTML='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>';}
+  else{if(g)g.classList.remove('light-mode');if(icon)icon.innerHTML='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';}
+})();
 </script>
 </div>
 
@@ -10355,14 +10393,24 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   // Read language set in gate and apply to app
   (function(){
     var saved = '';
-    try { saved = localStorage.getItem('appLang') || localStorage.getItem('gLang') || 'en'; } catch(e) { saved = 'en'; }
-    if (['pl','en','it'].indexOf(saved) === -1) saved = 'en';
-    currentLang = saved;
+    try { saved = localStorage.getItem('appLang') || localStorage.getItem('gLang') || ''; } catch(e) { saved = ''; }
+    var detected;
+    if (saved && ['pl','en','it'].indexOf(saved) !== -1) {
+      detected = saved;
+    } else {
+      // Browser language detection fallback
+      var bl = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+      if (bl.startsWith('pl')) { detected = 'pl'; }
+      else if (bl.startsWith('it')) { detected = 'it'; }
+      else { detected = 'en'; }
+    }
+    currentLang = detected;
+    document.documentElement.setAttribute('lang', detected);
     ['btnPL','btnEN','btnIT'].forEach(function(id){
       var b = document.getElementById(id);
-      if (b) b.classList.toggle('active', b.textContent === saved.toUpperCase());
+      if (b) b.classList.toggle('active', b.textContent === detected.toUpperCase());
     });
-    applyLang(saved);
+    applyLang(detected);
   })();
 
   // ===================== APP THEME =====================
