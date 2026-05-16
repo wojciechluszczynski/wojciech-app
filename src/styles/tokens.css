@@ -1,0 +1,66 @@
+/* App-specific CSS custom properties for app.wojciech.io
+   Theme switching is done via [data-app-theme="light"|"dark"] on <html> */
+
+html[data-app-theme="light"] {
+  --bg: #F7F6F2;
+  --bg1: rgba(255,255,255,0.72);
+  --bg2: rgba(13,13,13,0.045);
+  --bg3: rgba(13,13,13,0.075);
+  --border: rgba(13,13,13,0.10);
+  --border-hi: rgba(13,13,13,0.16);
+  --text: #080808;
+  --text-2: rgba(8,8,8,0.66);
+  --text-3: rgba(8,8,8,0.43);
+  --lime: #EBFF00;
+  --lime-dim: rgba(235,255,0,0.16);
+  --lime-glow: rgba(235,255,0,0.22);
+  --green: #0f9f63;
+  --green-dim: rgba(15,159,99,0.11);
+  --r-card: 18px;
+  --r-btn: 99px;
+  --r-chip: 8px;
+}
+
+html[data-app-theme="dark"] {
+  --bg: #09090B;
+  --bg1: rgba(255,255,255,0.055);
+  --bg2: rgba(255,255,255,0.075);
+  --bg3: rgba(255,255,255,0.105);
+  --border: rgba(255,255,255,0.10);
+  --border-hi: rgba(255,255,255,0.16);
+  --text: #F4F4F1;
+  --text-2: rgba(244,244,241,0.68);
+  --text-3: rgba(244,244,241,0.44);
+  --lime: #EBFF00;
+  --lime-dim: rgba(235,255,0,0.12);
+  --lime-glow: rgba(235,255,0,0.18);
+  --green: #22c55e;
+  --green-dim: rgba(34,197,94,0.10);
+  --r-card: 18px;
+  --r-btn: 99px;
+  --r-chip: 8px;
+}
+
+/* Gate-specific dark/light */
+#gate {
+  --g-bg: #09090b;
+  --g-card: #111;
+  --g-text: #fff;
+  --g-text-2: rgba(255,255,255,.55);
+  --g-text-3: rgba(255,255,255,.28);
+  --g-border: rgba(255,255,255,.09);
+  --g-input-bg: rgba(255,255,255,.05);
+  --g-input-border: rgba(255,255,255,.12);
+  --g-divider: rgba(255,255,255,.08);
+}
+#gate.light-mode {
+  --g-bg: #faf8f4;
+  --g-card: #fff;
+  --g-text: #0d0d0d;
+  --g-text-2: rgba(0,0,0,.62);
+  --g-text-3: rgba(0,0,0,.38);
+  --g-border: rgba(0,0,0,.09);
+  --g-input-bg: #f2efe9;
+  --g-input-border: rgba(0,0,0,.13);
+  --g-divider: rgba(0,0,0,.09);
+}

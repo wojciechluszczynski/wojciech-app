@@ -1,0 +1,1342 @@
+---
+// AppsTab.astro
+---
+
+<div class="tab-content active" id="tab-apps">
+
+      <!-- Profile Hero -->
+      <div class="profile-hero">
+        <img class="profile-photo" src="/wojciech-photo.png" alt="Wojciech Łuszczyński">
+        <div class="profile-info">
+          <div class="profile-name">Wojciech Łuszczyński</div>
+          <div class="cv-h-title" data-pl="Architekt GTM · AI / Automatyzacja / CRM / Growth / SaaS" data-en="GTM Architect · AI / Automation / CRM / Growth / SaaS" data-it="Architetto GTM · AI / Automazione / CRM / Crescita / SaaS">GTM Architect · AI / Automation / CRM / Growth / SaaS</div>
+          <div class="cv-h-contacts" style="margin-top:10px">
+            <span class="cv-h-contact"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,12 2,6"></polyline></svg><a href="mailto:hello@wojciech.io">hello@wojciech.io</a></span>
+            <span class="cv-h-contact"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg><a href="https://wojciech.io" target="_blank">wojciech.io</a></span>
+            <span class="cv-h-contact"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg><a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank">LinkedIn</a></span>
+            <span class="cv-h-contact"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><a href="https://github.com/wojciechluszczynski" target="_blank">GitHub</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search bar -->
+      <div class="apps-search-wrap">
+        <div class="apps-search-inner">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="searchInput" placeholder="Search apps, tags..." oninput="filterApps()" autocomplete="off">
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters-row" style="margin-top:14px">
+        <span class="f-lbl" data-pl="Filtruj:" data-en="Filter:" data-it="Filtra:">Filtruj:</span>
+        <button class="chip active" onclick="setFilter('all',this)" data-pl="Wszystkie" data-en="All" data-it="Tutti">All</button>
+        <button class="chip" onclick="setFilter('b2b',this)" data-pl="B2B / SaaS" data-en="B2B / SaaS" data-it="B2B / SaaS">B2B / SaaS</button>
+        <button class="chip" onclick="setFilter('consumer',this)" data-pl="Consumer Apps" data-en="Consumer Apps" data-it="App Consumer">Consumer Apps</button>
+        <button class="chip" onclick="setFilter('booking',this)" data-pl="Booking / E-commerce" data-en="Booking / E-commerce" data-it="Booking / E-commerce">Booking / E-commerce</button>
+        <button class="chip" onclick="setFilter('brand',this)" data-pl="Brand Sites" data-en="Brand Sites" data-it="Siti Brand">Brand Sites</button>
+        <button class="chip" onclick="setFilter('productivity',this)" data-pl="Productivity" data-en="Productivity" data-it="Produttivita">Productivity</button>
+      </div>
+
+      <div class="sec-head">
+        <h2 data-pl="Aplikacje" data-en="Applications" data-it="Applicazioni">Aplikacje</h2>
+        <div class="sec-line"></div>
+        <div class="sec-ct" id="visCount">9</div>
+      </div>
+
+      <div class="app-grid" id="appGrid">
+
+        <!-- ===== SabiSzop ===== -->
+        <div class="app-card" data-tags="resumebuilder productivity react typescript vercel" data-name="sabiszop sabi szop">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030919 0%,#05122e 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(28,105,212,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#2e7de8,#1C69D4);border:none;box-shadow:0 8px 28px rgba(28,105,212,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+              <div class="cs-cat-txt">Marketplace · B2C</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">Marketplace</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#1C69D4">SS</div>
+              <div class="card-header-text">
+                <div class="card-title">SabiSzop</div>
+                <div class="card-header-cat">Marketplace · B2C</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Smart listy zakupów, paragony i przepisy. Grocery inspired dark glassmorphism UI z AI sugestiami." data-en="Smart shopping lists, receipts &amp; recipes. Grocery inspired dark glassmorphism UI with AI suggestions." data-it="Liste della spesa intelligenti, scontrini e ricette. UI dark glassmorphism ispirata ai supermercati con suggerimenti AI.">Smart listy zakupów, paragony i przepisy. Grocery inspired dark glassmorphism UI z AI sugestiami.</div>
+            <div class="card-tags">
+              <span class="tag t-lime">PWA</span><span class="tag t-lime">Mobile First</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-muted">Consumer</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Swipe gestures iOS-style - zero lag (useRef + direct DOM)" data-en="iOS-style swipe gestures - zero lag (useRef + direct DOM)" data-it="Swipe gestures stile iOS - zero lag (useRef + direct DOM)">Swipe gestures iOS-style - zero lag (useRef + direct DOM)</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="AI-powered sugestie zakupów i inteligentne kategorie" data-en="AI-powered shopping suggestions &amp; smart categories" data-it="Suggerimenti di acquisto basati su AI e categorie intelligenti">AI-powered sugestie zakupów i inteligentne kategorie</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Paragony z historią wydatków i wykresami (Recharts)" data-en="Receipts with spending history &amp; charts (Recharts)" data-it="Scontrini con storico delle spese e grafici (Recharts)">Paragony z historią wydatków i wykresami (Recharts)</span></div>
+            </div>
+            <div class="icp-box">
+              <div class="icp-txt"><strong data-pl="Target: Rodziny &amp; osoby zarządzające domem" data-en="Target: Families &amp; home managers" data-it="Target: Famiglie e gestori della casa">Target: Rodziny &amp; osoby zarządzające domem</strong><span data-pl="Osoby 25–45 lat planujące zakupy i kontrolujące budżet domowy." data-en="People 25–45 planning groceries &amp; managing household budgets." data-it="Persone dai 25 ai 45 anni che pianificano la spesa e gestiscono il budget domestico.">Osoby 25–45 lat planujące zakupy i kontrolujące budżet domowy.</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React 18</span><span class="tc">TypeScript</span><span class="tc">Supabase</span><span class="tc">Recharts</span><span class="tc">Netlify</span></div>
+            <div class="card-actions">
+              <a href="https://sabiszop.netlify.app/" target="_blank" class="btn-p"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Otwórz</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Kadromierz ===== -->
+        <div class="app-card" data-tags="b2b saas content marketing hr kadromierz base44 workforce scheduling cms" data-name="kadromierz content hub">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#0c081c 0%,#191034 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(139,92,246,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#9e6fff,#8b5cf6);border:none;box-shadow:0 8px 28px rgba(139,92,246,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+              <div class="cs-cat-txt">Content · B2B SaaS</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">SaaS</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#8b5cf6">KH</div>
+              <div class="card-header-text">
+                <div class="card-title" data-pl="Kadromierz Hub" data-en="Kadromierz Hub" data-it="Kadromierz Hub">Kadromierz Hub</div>
+                <div class="card-header-cat">Content · B2B SaaS</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Content hub dla Kadromierz - zarządzanie treściami marketingowymi, publikacjami i kampaniami w jednym miejscu." data-en="Content hub for Kadromierz - manage marketing content, publications and campaigns in one place." data-it="Content hub per Kadromierz - gestisci contenuti di marketing, pubblicazioni e campagne in un unico posto.">Content hub for Kadromierz - manage marketing content, publications and campaigns in one place.</div>
+            <div class="card-tags">
+              <span class="tag t-orange">B2B / SaaS</span><span class="tag t-purple">Content Hub</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-muted">Base44</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span data-pl="Centralizacja całego contentu B2B Kadromierz" data-en="Centralized B2B content for Kadromierz brand" data-it="Content B2B centralizzato per il brand Kadromierz">Centralizacja całego contentu B2B Kadromierz</span></div>
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span data-pl="Artykuły, poradniki i case studies dla HR managerów" data-en="Articles, guides &amp; case studies for HR managers" data-it="Articoli, guide e case study per gli HR manager">Artykuły, poradniki i case studies dla HR managerów</span></div>
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span data-pl="Szybkie wdrożenie na Base44 - no-code platform" data-en="Fast deployment on Base44 - no-code platform" data-it="Deploy rapido su Base44 - piattaforma no-code">Szybkie wdrożenie na Base44 - no-code platform</span></div>
+            </div>
+            <div class="icp-box" style="border-color:rgba(167,139,250,0.14);background:rgba(167,139,250,0.04);">
+              <div class="icp-txt"><strong data-pl="ICP: HR Managerowie &amp; właściciele firm 50+ os." data-en="ICP: HR Managers &amp; business owners 50+ employees" data-it="ICP: HR Manager e titolari d'azienda con 50+ dipendenti">ICP: HR Managerowie &amp; właściciele firm 50+ os.</strong><span data-pl="Firmy szukające rozwiązań do zarządzania grafikami pracowników." data-en="Companies seeking workforce scheduling solutions." data-it="Aziende che cercano soluzioni per la pianificazione del personale.">Firmy szukające rozwiązań do zarządzania grafikami pracowników.</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">Base44</span><span class="tc">No-Code</span><span class="tc">Content CMS</span></div>
+            <div class="card-actions">
+              <a href="https://kadromierz-content-hub.base44.app/Generator" target="_blank" class="btn-p" style="background:var(--lime)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Otwórz</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== GrowthHub ===== -->
+        <div class="app-card" data-tags="b2b saas growth marketing hr kadromierz netlify demand-gen lead-gen analytics" data-name="kadromierz growthhub growth hub">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#031011 0%,#05211f 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(16,185,129,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#14d498,#10b981);border:none;box-shadow:0 8px 28px rgba(16,185,129,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+              <div class="cs-cat-txt">Growth · B2B SaaS</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">SaaS</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#10b981">GH</div>
+              <div class="card-header-text">
+                <div class="card-title">GrowthHub</div>
+                <div class="card-header-cat">Growth · B2B SaaS</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Growth dashboard dla Kadromierz - demand gen, lead scoring i revenue tracking w jednym miejscu." data-en="Growth dashboard for Kadromierz - demand gen, lead scoring and revenue tracking in one place." data-it="Growth dashboard per Kadromierz - demand gen, lead scoring e revenue tracking in un unico posto.">Growth dashboard for Kadromierz - demand gen, lead scoring and revenue tracking in one place.</div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Centralny hub dla wszystkich inicjatyw growth" data-en="Central hub for all growth initiatives" data-it="Centro di controllo per tutte le iniziative di growth">Central hub for all growth initiatives</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Lead scoring i segmentacja ICP w jednym widoku" data-en="Lead scoring and ICP segmentation in one view" data-it="Lead scoring e segmentazione ICP in un'unica vista">Lead scoring and ICP segmentation in one view</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Revenue tracking + pipeline visibility dla B2B SaaS" data-en="Revenue tracking + pipeline visibility for B2B SaaS" data-it="Tracciamento revenue + visibilità pipeline per B2B SaaS">Revenue tracking + pipeline visibility for B2B SaaS</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">Netlify</span></div>
+            <div class="card-actions">
+              <a href="https://kadromierz-growth.netlify.app/" target="_blank" class="btn-p" style="background:var(--lime)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Open</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== HireMe ===== -->
+        <div class="app-card" data-tags="pwa mobile react recruitment hr rekrutacja tracker ats jobs netlify personal" data-name="hireme rekrutacja">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030d12 0%,#051a20 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(13,148,136,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#11aba0,#0d9488);border:none;box-shadow:0 8px 28px rgba(13,148,136,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div class="cs-cat-txt">Recruitment · SaaS</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">SaaS</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#0d9488">HM</div>
+              <div class="card-header-text">
+                <div class="card-title">HireMe</div>
+                <div class="card-header-cat">Recruitment · SaaS</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Tracker aplikacji o pracę - centrum dowodzenia poszukiwań pracy. Lejek, priorytety, aktywność." data-en="Personal recruitment tracker - job search command centre. Funnel, priorities, activity." data-it="Tracker personale per le candidature - centro di controllo della ricerca lavoro. Funnel, priorità, attività.">Personal recruitment tracker - job search command centre. Funnel, priorities, activity.</div>
+            <div class="card-tags">
+              <span class="tag t-teal">ATS / Tracker</span><span class="tag t-lime">Personal Tool</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-orange">HR Tech</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span data-pl="Centrum dowodzenia - lejek rekrutacyjny z konwersją" data-en="Command center - recruitment funnel with conversion rates" data-it="Centro di controllo - funnel di recruiting con tassi di conversione">Centrum dowodzenia - lejek rekrutacyjny z konwersją</span></div>
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span data-pl="Priorytety dnia - kanban firm z aktualnym statusem" data-en="Daily priorities - company kanban with current status" data-it="Priorità giornaliere - kanban aziendale con stato aggiornato">Priorytety dnia - kanban firm z aktualnym statusem</span></div>
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span data-pl="AI scoring - dopasowanie ofert do profilu i potencjału" data-en="AI scoring - offer matching to profile &amp; potential" data-it="AI scoring - abbinamento delle offerte al profilo e al potenziale">AI scoring - dopasowanie ofert do profilu i potencjału</span></div>
+            </div>
+            <div class="icp-box" style="border-color:rgba(45,212,191,0.14);background:rgba(45,212,191,0.04);">
+              <div class="icp-txt"><strong data-pl="Target: Osoby aktywnie szukające pracy" data-en="Target: Active job seekers" data-it="Target: Persone attivamente in cerca di lavoro">Target: Osoby aktywnie szukające pracy</strong><span data-pl="Personal tool Wojtka do śledzenia własnego pipeline rekrutacyjnego." data-en="Wojtek's personal tool for tracking his own recruitment pipeline." data-it="Strumento personale di Wojtek per tracciare il proprio pipeline di recruiting.">Personal tool Wojtka do śledzenia własnego pipeline rekrutacyjnego.</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">Vite</span><span class="tc">Netlify</span></div>
+            <div class="card-actions">
+              <a href="https://hireme-amber.vercel.app/login" target="_blank" class="btn-p" style="background:var(--lime)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Otwórz</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== AN Projekt ===== -->
+        <div class="app-card" data-tags="vite react lovable web design interior architecture strona www projekt an design studio website strona-www" data-name="an projekt an-projekt strona internetowa website">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#150613 0%,#2a0c23 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(236,72,153,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#f660a8,#ec4899);border:none;box-shadow:0 8px 28px rgba(236,72,153,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+              <div class="cs-cat-txt">Interior Design</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">Website</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#ec4899">AN</div>
+              <div class="card-header-text">
+                <div class="card-title">AN Projekt</div>
+                <div class="card-header-cat">Website · Interior Design</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Strona internetowa pracowni projektowania wnętrz. Wnetrza dopasowane do Twojego życia." data-en="Interior design studio website. Interiors tailored to your life." data-it="Sito web dello studio di interior design. Interni su misura per la tua vita.">Strona internetowa pracowni projektowania wnętrz. Wnętrza dopasowane do Twojego życia.</div>
+            <div class="card-tags">
+              <span class="tag t-pink" data-pl="Strona WWW" data-en="Website" data-it="Sito web">Strona WWW</span><span class="tag t-lime">Vite+React</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-muted">Studio</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span data-pl="Elegancki showcase realizacji z hero zdjęciami wnętrz" data-en="Elegant portfolio showcase with hero interior photography" data-it="Showcase elegante del portfolio con fotografia d'interni hero">Elegancki showcase realizacji z hero zdjęciami wnętrz</span></div>
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span data-pl="Sekcje: Plan, Realizacja, Oferta, O nas, Blog, Kontakt" data-en="Sections: Plan, Realization, Offer, About, Blog, Contact" data-it="Sezioni: Piano, Realizzazione, Offerta, Chi siamo, Blog, Contatto">Sekcje: Plan, Realizacja, Oferta, O nas, Blog, Kontakt</span></div>
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span data-pl="Szybkie wdrożenie na Lovable - pełna strona w jeden dzień" data-en="Fast deployment on Lovable - full site in one day" data-it="Deploy rapido su Lovable - sito completo in un giorno">Szybkie wdrożenie na Lovable - pełna strona w jeden dzień</span></div>
+            </div>
+            <div class="icp-box" style="border-color:rgba(244,114,182,0.14);background:rgba(244,114,182,0.04);">
+              <div class="icp-txt"><strong data-pl="Target: Klienci szukający projektowania wnętrz" data-en="Target: Clients seeking interior design services" data-it="Target: Clienti che cercano servizi di interior design">Target: Klienci szukający projektowania wnętrz</strong><span data-pl="Osoby i firmy chcące zaaranżować przestrzeń ze stylem i funkcją." data-en="Individuals &amp; businesses wanting to design spaces with style &amp; function." data-it="Privati e aziende che vogliono progettare spazi con stile e funzionalità.">Osoby i firmy chcące zaaranżować przestrzeń ze stylem i funkcją.</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">Vite</span><span class="tc">React</span><span class="tc">Tailwind</span><span class="tc">No-Code</span></div>
+            <div class="card-actions">
+              <a href="https://an-projekt.com.pl/" target="_blank" class="btn-p" style="background:var(--lime)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Otwórz</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Ciryam ===== -->
+        <div class="app-card" data-tags="website music band rock ciryam vite react strona-www" data-name="ciryam band music website strona">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#14030c 0%,#280514 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(225,29,72,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#f52e57,#e11d48);border:none;box-shadow:0 8px 28px rgba(225,29,72,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+              <div class="cs-cat-txt">Music · Band</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">Website</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#e11d48">CI</div>
+              <div class="card-header-text">
+                <div class="card-title">Ciryam</div>
+                <div class="card-header-cat">Website · Music Band</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Oficjalna strona polskiego zespołu rockowego - koncerty, muzyka, bilety i sklep z merch." data-en="Official website of a Polish rock band - concerts, music, tickets and merch store." data-it="Sito ufficiale di una band rock polacca - concerti, musica, biglietti e negozio merch.">Oficjalna strona polskiego zespołu rockowego - koncerty, muzyka, bilety i sklep z merch.</div>
+            <div class="card-tags">
+              <span class="tag t-lime" data-pl="Strona WWW" data-en="Website" data-it="Sito web">Strona WWW</span><span class="tag t-muted">Music / Band</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-muted">React</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span>Kalendarz koncertów z ticketingiem i mapą eventów</span></div>
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span>Oficjalny sklep - koszulki, winyle, merch</span></div>
+              <div class="usp-item"><div class="udot" style="background:var(--text-3)"></div><span>Wideo, muzyka i galeria prasowa</span></div>
+            </div>
+            <div class="icp-box">
+              <div class="icp-txt"><strong>Target: Fani polskiego rocka</strong> · <span style="color:var(--text-3)">Widzowie · Kolekcjonerzy merch</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React</span><span class="tc">Vite</span><span class="tc">Tailwind</span></div>
+            <div class="card-actions">
+              <a href="https://ciryam.eu" target="_blank" class="btn-p" style="background:var(--lime)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Otwórz</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+        <!-- ===== Działkometr ===== -->
+        <div class="app-card" data-tags="pwa react vite supabase real-estate nieruchomosci dzialka kalkulator calculator mapy maps" data-name="dzialkomierz dzialka nieruchomosci kalkulator">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#0b0e08 0%,#161c0c 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(124,158,0,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#92bb00,#7c9e00);border:none;box-shadow:0 8px 28px rgba(124,158,0,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div class="cs-cat-txt">Real Estate · PWA</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">PWA</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#7c9e00;color:#fff">DZ</div>
+              <div class="card-header-text">
+                <div class="card-title">Działkometr</div>
+                <div class="card-header-cat">Real Estate · PWA</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Kalkulator wartości działek - analiza lokalizacji, media, MPZP i wycena nieruchomości w jednym widoku." data-en="Plot value calculator - location analysis, utilities, MPZP and property valuation in one view." data-it="Calcolatore del valore del terreno - analisi della posizione, utenze, MPZP e valutazione immobiliare in un'unica vista.">Kalkulator wartości działek - analiza lokalizacji, media, MPZP i wycena nieruchomości w jednym widoku.</div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Analiza MPZP + dostęp do mediów w jednym widoku" data-en="MPZP analysis + utility access in one view" data-it="Analisi MPZP + accesso alle utenze in un'unica vista">Analiza MPZP + dostęp do mediów w jednym widoku</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Automatyczna wycena na podstawie transakcji z okolicy" data-en="Automatic valuation based on nearby transactions" data-it="Valutazione automatica basata sulle transazioni vicine">Automatyczna wycena na podstawie transakcji z okolicy</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Eksport raportu PDF gotowego do prezentacji" data-en="PDF report export ready for presentation" data-it="Esportazione report PDF pronto per la presentazione">Eksport raportu PDF gotowego do prezentacji</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React</span><span class="tc">Vite</span><span class="tc">Supabase</span><span class="tc">Mapbox</span><span class="tc">Netlify</span></div>
+            <div class="card-actions">
+              <a href="https://dzialkometr.netlify.app/auth/login?next=%2Fapp" target="_blank" class="btn-p"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Otwórz</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+        <!-- ===== AdsAI ===== -->
+        <div class="app-card" data-tags="b2b saas ai google-ads marketing automation roas campaigns analytics icp scoring performance" data-name="ads assistant google ads dashboard marketing icp performance">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#160e08 0%,#2c1c0c 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(245,158,11,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#ffb420,#f59e0b);border:none;box-shadow:0 8px 28px rgba(245,158,11,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+              <div class="cs-cat-txt">Marketing AI · B2B</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">SaaS</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#f59e0b">AA</div>
+              <div class="card-header-text">
+                <div class="card-title">Ads Assistant</div>
+                <div class="card-header-cat">Marketing AI · B2B SaaS</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Dashboard do zarządzania Google Ads - kampanie multi-konto, ICP scoring leadów, ROAS i creative fatigue w jednym miejscu." data-en="Google Ads management dashboard - multi-account campaigns, ICP lead scoring, ROAS tracking and creative fatigue in one place." data-it="Dashboard di gestione Google Ads - campagne multi-account, ICP lead scoring, tracciamento ROAS e creative fatigue in un unico posto.">Google Ads management dashboard - multi-account campaigns, ICP lead scoring, ROAS tracking and creative fatigue in one place.</div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Real-time ROAS tracking z alertami anomalii" data-en="Real-time ROAS tracking with anomaly alerts" data-it="Tracciamento ROAS in tempo reale con avvisi di anomalie">Real-time ROAS tracking z alertami anomalii</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Creative fatigue score - AI wykrywa zmęczenie kreacją" data-en="Creative fatigue score - AI detects ad fatigue" data-it="Creative fatigue score - AI rileva l'affaticamento degli annunci">Creative fatigue score - AI wykrywa zmęczenie kreacją</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="ICP scoring leadów bezpośrednio z kampanii" data-en="ICP scoring of leads directly from campaigns" data-it="ICP scoring dei lead direttamente dalle campagne">ICP scoring leadów bezpośrednio z kampanii</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">OpenAI</span><span class="tc">Google Ads API</span><span class="tc">Netlify</span></div>
+            <div class="card-actions">
+              <a href="https://ads-assistant-three.vercel.app" target="_blank" class="btn-p" style="background:var(--lime)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Open</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+        <!-- Camper Rental -->
+        <div class="app-card" data-tags="booking consumer react typescript supabase vercel" data-name="camper rental booking engine kamper wynajem">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#030a12 0%,#051421 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(14,116,144,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#1290ae,#0e7490);border:none;box-shadow:0 8px 28px rgba(14,116,144,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div class="cs-cat-txt">Booking Engine</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">Consumer</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#0e7490">CR</div>
+              <div class="card-header-text">
+                <div class="card-title">Camper Rental</div>
+                <div class="card-header-cat">Booking Engine · Consumer</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Silnik rezerwacyjny do wynajmu pojazdów - dynamiczne ceny, kalendarz dostępności i rozszerzalny katalog zasobów." data-en="Booking engine for vehicle and asset rental - dynamic pricing, availability calendar and extensible product catalog." data-it="Motore di prenotazione per noleggio veicoli e asset - prezzi dinamici, calendario disponibilità e catalogo prodotti estensibile.">Booking engine for vehicle and asset rental - dynamic pricing, availability calendar and extensible product catalog.</div>
+            <div class="card-tags">
+              <span class="tag t-lime" data-pl="Booking Engine" data-en="Booking Engine" data-it="Motore di prenotazione">Booking Engine</span><span class="tag t-muted">Consumer</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-muted">React</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Dynamiczny silnik cenowy z sezonowymi stawkami i kalendarzem" data-en="Dynamic pricing engine with seasonal rates and availability calendar" data-it="Motore di prezzi dinamici con tariffe stagionali e calendario disponibilità">Dynamic pricing engine with seasonal rates and availability calendar</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Dashboard rezerwacji - podgląd stanu w czasie rzeczywistym" data-en="Reservations dashboard - real-time booking state" data-it="Dashboard prenotazioni - stato in tempo reale">Reservations dashboard - real-time booking state</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Rozszerzalny katalog: pojazdy, nieruchomości, usługi, vouchery" data-en="Extensible catalog: vehicles, properties, services, vouchers" data-it="Catalogo estensibile: veicoli, proprietà, servizi, voucher">Extensible catalog: vehicles, properties, services, vouchers</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">Supabase</span><span class="tc">Vercel</span></div>
+            <div class="card-actions">
+              <a href="https://camper-rental-weld.vercel.app/" target="_blank" class="btn-p"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Open</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Amoree -->
+        <div class="app-card" data-tags="brand consumer react typescript vercel wedding event" data-name="amoree wedding event invitation site wesele">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#11030e 0%,#220518 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(190,24,93,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#d42275,#be185d);border:none;box-shadow:0 8px 28px rgba(190,24,93,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+              <div class="cs-cat-txt">Wedding · Events</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">Consumer</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#be185d">AM</div>
+              <div class="card-header-text">
+                <div class="card-title">Amoree</div>
+                <div class="card-header-cat">Wedding · Events</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Hub zaproszenia ślubnego i eventowego - RSVP, agenda i informacje o miejscu w jednej premium, mobile-first stronie." data-en="Wedding &amp; event hub - personal invitation, RSVP, agenda and venue info in one premium mobile-first site." data-it="Hub matrimonio ed eventi - invito personale, RSVP, agenda e info sul luogo in un unico sito premium mobile-first.">Wedding &amp; event hub - personal invitation, RSVP, agenda and venue info in one premium mobile-first site.</div>
+            <div class="card-tags">
+              <span class="tag t-lime" data-pl="Wedding &amp; Events" data-en="Wedding &amp; Events" data-it="Matrimoni &amp; Eventi">Wedding &amp; Events</span><span class="tag t-muted">Consumer</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-muted">React</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Spersonalizowane zaproszenie + flow RSVP z zarządzaniem gośćmi" data-en="Personal invitation + RSVP flow with guest management" data-it="Invito personale + flow RSVP con gestione degli ospiti">Personal invitation + RSVP flow with guest management</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Harmonogram eventu, mapa miejsca i informacje noclegowe" data-en="Event timeline, venue map and accommodation info" data-it="Timeline dell'evento, mappa del luogo e info sull'alloggio">Event timeline, venue map and accommodation info</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Reużywalny template na premium eventy i brand activations" data-en="Reusable template for premium events and brand activations" data-it="Template riutilizzabile per eventi premium e attivazioni brand">Reusable template for premium events and brand activations</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">Vercel</span></div>
+            <div class="card-actions">
+              <a href="https://zealous-cannon.vercel.app/login" target="_blank" class="btn-p"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Open</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wycinarki Laserowe -->
+        <div class="app-card" data-tags="brand b2b react typescript vercel seo ecommerce" data-name="wycinarki laserowe laser cutting cnc ecommerce seo">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#06070f 0%,#0c0f1a 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,rgba(71,85,105,0.38) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#808b9c,#6b7280);border:none;box-shadow:0 8px 28px rgba(107,114,128,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
+              <div class="cs-cat-txt">SEO · E-commerce</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">B2B</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#6b7280">WL</div>
+              <div class="card-header-text">
+                <div class="card-title">Wycinarki Laserowe</div>
+                <div class="card-header-cat">SEO · B2B E-commerce</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="SEO-first strona produktowa dla dostawcy laserowych maszyn tnących - zbudowana w 2h, ze structured data dla LLM i organic growth." data-en="SEO-first product site for a laser cutting equipment supplier - built in 2h, structured for LLM discoverability and organic growth." data-it="Sito prodotto SEO-first per un fornitore di tagliatrici laser - realizzato in 2h, strutturato per la scopribilità LLM e la crescita organica.">SEO-first product site for a laser cutting equipment supplier - built in 2h, structured for LLM discoverability and organic growth.</div>
+            <div class="card-tags">
+              <span class="tag t-lime" data-pl="SEO / E-commerce" data-en="SEO / E-commerce" data-it="SEO / E-commerce">SEO / E-commerce</span><span class="tag t-muted">B2B</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-muted">React</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Pełny katalog produktów ze structured data dla SEO i LLM" data-en="Full product catalog with structured data for SEO and LLM indexing" data-it="Catalogo prodotti completo con dati strutturati per SEO e indicizzazione LLM">Full product catalog with structured data for SEO and LLM indexing</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Growth layer gotowy na CMS, koszyk i paid media" data-en="Growth layer: ready for CMS, shopping cart and paid media" data-it="Growth layer: pronto per CMS, carrello e paid media">Growth layer: ready for CMS, shopping cart and paid media</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Build time 2h - od zera do live, niszowy B2B vertical" data-en="2h build time - zero to live for niche B2B product verticals" data-it="Build time 2h - da zero a live per verticali B2B di nicchia">2h build time - zero to live for niche B2B product verticals</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">Vercel</span></div>
+            <div class="card-actions">
+              <a href="https://wycinarkilaserowe.vercel.app/" target="_blank" class="btn-p"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Open</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spawarki Laserowe -->
+        <div class="app-card" data-tags="b2b seo ecommerce react typescript vercel spawarki laser welding przemysl manufacturing poland" data-name="spawarki laserowe laser welding fiber laser blink spawanie">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#160a08 0%,#2c140c 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(249,115,22,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#ff8c30,#f97316);border:none;box-shadow:0 8px 28px rgba(249,115,22,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+              <div class="cs-cat-txt">SEO · B2B Industrial</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">B2B</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#f97316">SL</div>
+              <div class="card-header-text">
+                <div class="card-title">Spawarki Laserowe</div>
+                <div class="card-header-cat">SEO · B2B Industrial</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="SEO-first strona produktowa dla autoryzowanego dealera spawarek laserowych - katalog 3 modeli, kalkulator ROI i 16-pytaniowe FAQ dla klientów B2B." data-en="SEO-first product site for an authorised fibre laser welder dealer - 3-model catalog, ROI framing and 16-question FAQ built for B2B manufacturing buyers." data-it="Sito prodotto SEO-first per un dealer autorizzato di saldatrici laser a fibra - catalogo 3 modelli, ROI framing e FAQ di 16 domande per acquirenti B2B manifatturieri.">SEO-first product site for an authorised fibre laser welder dealer - 3-model catalog, ROI framing and 16-question FAQ built for B2B manufacturing buyers.</div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Katalog 3 modeli (1500W–3000W) ze structured data dla SEO i LLM" data-en="3-model catalog (1500W–3000W) with structured data for SEO and LLM" data-it="Catalogo 3 modelli (1500W–3000W) con dati strutturati per SEO e LLM">3-model catalog (1500W–3000W) with structured data for SEO &amp; LLM</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="ROI framing: TIG 8 min vs laser 2,5 min - dane produkcyjne w copy" data-en="ROI framing: TIG 8 min vs laser 2.5 min - real production data in copy" data-it="ROI framing: TIG 8 min vs laser 2,5 min - dati di produzione reali nel copy">ROI framing: TIG 8 min vs laser 2.5 min - real production data in copy</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="16-pytaniowe FAQ pokrywające selekcję, ROI, infrastrukturę i serwis" data-en="16-question FAQ covering selection, ROI, infrastructure and service" data-it="FAQ di 16 domande su selezione, ROI, infrastruttura e servizio">16-question FAQ covering selection, ROI, infrastructure and service</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">Vercel</span></div>
+            <div class="card-actions">
+              <a href="https://spawarkilaserowe.vercel.app/" target="_blank" class="btn-p" style="background:var(--lime)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Open</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Willa w Parku -->
+        <div class="app-card" data-tags="website brand consumer react lovable local venue event coffee club lodz nightlife kawiarnia klub" data-name="willa lodz willa w parku kafé klub kawiarnia park poniatowskiego">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#120f0f 0%,#241e1b 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(200,169,110,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#dfc18a,#c8a96e);border:none;box-shadow:0 8px 28px rgba(200,169,110,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+              <div class="cs-cat-txt">Venue · Hospitality</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">Website</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#c8a96e">WP</div>
+              <div class="card-header-text">
+                <div class="card-title">Willa w Parku</div>
+                <div class="card-header-cat">Website · Venue</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Strona klubokawiarni w parku Poniatowskiego - speciality coffee za dnia, techno i house nocą. Eventy, wynajem przestrzeni, bar." data-en="Website for a club-café in Łódź's Poniatowski Park - specialty coffee by day, techno &amp; house by night. Events, space rental, bar." data-it="Sito web per un club-caffè nel Parco Poniatowski di Łódź - specialty coffee di giorno, techno e house di notte. Eventi, affitto spazi, bar.">Website for a club-café in Łódź's Poniatowski Park - specialty coffee by day, techno &amp; house by night. Events, space rental, bar.</div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Podwójna tożsamość: kawiarnia + klub w jednym serwisie" data-en="Dual identity: café by day, club by night - one seamless site" data-it="Doppia identità: caffè di giorno, club di notte - un unico sito senza soluzione di continuità">Dual identity: café by day, club by night - one seamless site</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Strona eventów z calendar view i rezerwacją przestrzeni" data-en="Events page with calendar view and space rental flow" data-it="Pagina eventi con vista calendario e flow di affitto spazi">Events page with calendar view and space rental flow</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="SEO lokalny - schema markup, OpenGraph, geo tags" data-en="Local SEO - schema markup, OpenGraph, geo tags" data-it="SEO locale - schema markup, OpenGraph, geo tag">Local SEO - schema markup, OpenGraph, geo tags</span></div>
+            </div>
+            <div class="icp-box">
+              <div class="icp-txt"><strong>Target: Łódź locals &amp; night crowd</strong> · <span style="color:var(--text-3)">Event bookers · Coffee regulars</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">Lovable</span><span class="tc">React</span><span class="tc">Vite</span><span class="tc">Vercel</span></div>
+            <div class="card-actions">
+              <a href="https://willa-lodz.pl/" target="_blank" class="btn-p" style="background:var(--lime)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-pl="Otwórz" data-en="Open" data-it="Apri">Open</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Akademia AI -->
+        <div class="app-card" data-tags="b2b saas education audio courses certification stripe react typescript vercel" data-name="akademia ai audio kurs szkolenie certyfikat">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#150708 0%,#2a0f0c 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(234,88,12,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#ff6e20,#ea580c);border:none;box-shadow:0 8px 28px rgba(234,88,12,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+              <div class="cs-cat-txt">Education · SaaS</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">B2B / SaaS</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#ea580c">AK</div>
+              <div class="card-header-text">
+                <div class="card-title">Akademia AI</div>
+                <div class="card-header-cat">Education · B2B SaaS</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-en="Audio course platform with certification - AI tools, growth marketing &amp; automation workflows." data-it="Piattaforma di corsi audio con certificazione - strumenti AI, growth marketing e workflow di automazione." data-pl="Platforma kursów audio z certyfikacją - narzędzia AI, growth marketing i automatyzacja.">Audio course platform with certification - AI tools, growth marketing &amp; automation workflows.</div>
+            <div class="card-tags">
+              <span class="tag t-lime">Education · SaaS</span><span class="tag t-muted">B2B</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-muted">React</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Format audio-first - sluchaj wszedzie, bez wideo" data-en="Audio-first course format - listen anywhere, no video required" data-it="Formato corso audio-first - ascolta ovunque, nessun video richiesto">Audio-first course format - listen anywhere, no video required</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Certyfikat po ukonczeniu - udokumentowane kompetencje" data-en="Certificate issued on completion - shareable proof of skills" data-it="Certificato rilasciato al completamento - prova condivisibile delle competenze">Certificate issued on completion - shareable proof of skills</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Platnosci Stripe + Supabase auth - pelna kontrola dostepu per kurs" data-en="Stripe payments + Supabase auth - full access control per course" data-it="Pagamenti Stripe + Supabase auth - controllo accessi completo per corso">Stripe payments + Supabase auth - full access control per course</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">React</span><span class="tc">TypeScript</span><span class="tc">Supabase</span><span class="tc">Stripe</span><span class="tc">Vercel</span></div>
+            <div class="card-actions">
+              <a href="https://academy.wojciech.io" target="_blank" class="btn-p"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-en="Open" data-pl="Otwórz" data-it="Apri">Open</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Relora -->
+        <div class="app-card" data-tags="b2b saas crm relationship intelligence personal crm outreach nextjs supabase vercel" data-name="relora crm relationship b2b outreach pipeline">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#0b051b 0%,#160a32 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(124,58,237,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#9050ff,#7c3aed);border:none;box-shadow:0 8px 28px rgba(124,58,237,0.4),inset 0 1px 0 rgba(255,255,255,0.20)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+              <div class="cs-cat-txt">Relationship CRM</div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">B2B / SaaS</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#7c3aed">RL</div>
+              <div class="card-header-text">
+                <div class="card-title">Relora</div>
+                <div class="card-header-cat">Relationship CRM · B2B SaaS</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-en="B2B relationship intelligence - contact graph, CRM Kanban, outreach composer and deal alerts in one workspace." data-it="B2B relationship intelligence - grafico contatti, CRM Kanban, composer outreach e avvisi deal in un unico workspace." data-pl="Relationship intelligence B2B - graph kontaktów, CRM Kanban, composer outreachu i alerty dealowe.">B2B relationship intelligence - contact graph, CRM Kanban, outreach composer and deal alerts in one workspace.</div>
+            <div class="card-tags">
+              <span class="tag t-lime">Relationship CRM</span><span class="tag t-muted">B2B / SaaS</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-muted">Next.js</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Graf relacji - wizualizacja polaczen miedzy kontaktami, firmami i dealami" data-en="Relationship graph - visualise connections between contacts, companies and deals" data-it="Grafico relazioni - visualizza connessioni tra contatti, aziende e deal">Relationship graph - visualise connections between contacts, companies and deals</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="CRM Kanban - pipeline drag-and-drop z etapami deala i przypomnieniami" data-en="CRM Kanban - drag-and-drop pipeline with deal stages and follow-up reminders" data-it="CRM Kanban - pipeline drag-and-drop con fasi del deal e promemoria di follow-up">CRM Kanban - drag-and-drop pipeline with deal stages and follow-up reminders</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Outreach Composer + Resend - spersonalizowane maile wysylane z CRM" data-en="Outreach Composer + Resend - personalised emails sent directly from the CRM" data-it="Outreach Composer + Resend - email personalizzate inviate direttamente dal CRM">Outreach Composer + Resend - personalised emails sent directly from the CRM</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">Next.js</span><span class="tc">TypeScript</span><span class="tc">Supabase</span><span class="tc">Resend</span><span class="tc">Vercel</span></div>
+            <div class="card-actions">
+              <a href="https://relora-jet.vercel.app" target="_blank" class="btn-p"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-en="Open" data-pl="Otwórz" data-it="Apri">Open</span></a>
+              <a href="#" class="btn-s"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline></svg>Docs</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== NotchCue ===== -->
+        <div class="app-card" data-tags="macos native swift desktop utility teleprompter privacy local-first appkit avfoundation notchcue apple mac" data-name="notchcue notch cue macos teleprompter prompter">
+          <div class="card-screen" style="overflow:hidden;position:relative;background:linear-gradient(145deg,#08081a 0%,#101031 100%)">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 110%,rgba(94,92,230,0.45) 0%,transparent 68%);pointer-events:none"></div>
+            <div class="cs-grid"></div>
+            <div class="cs-body">
+              <div class="cs-icon-box" style="background:linear-gradient(145deg,#4a4a4c,#1C1C1E);border:none;box-shadow:0 8px 28px rgba(94,92,230,0.35),inset 0 1px 0 rgba(255,255,255,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="13" rx="2"/><path d="M2 19h20"/><path d="M8 23h8"/><rect x="10" y="5" width="4" height="2" rx="1" fill="currentColor" stroke="none" opacity="0.6"/></svg></div>
+            </div>
+            <div class="screen-ov"></div>
+            <div class="screen-meta">
+              <span class="cat-badge">macOS</span>
+              <div class="s-live"><div class="sdot"></div>Live</div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-header-row">
+              <div class="app-icon" style="background:#1C1C1E;">NC</div>
+              <div class="card-header-text">
+                <div class="card-title">NotchCue</div>
+                <div class="card-header-cat">Desktop Utility · macOS</div>
+              </div>
+            </div>
+            <div class="card-tagline" data-pl="Natywny teleprompter macOS umieszczający prywatne notatki pod notchem kamery MacBooka. Pomaga utrzymać kontakt wzrokowy podczas rozmów, demo i nagrań." data-en="Native macOS teleprompter placing private notes under the MacBook camera notch. Keeps eye contact during calls, demos and recordings." data-it="Teleprompter nativo macOS che posiziona note private sotto il notch della fotocamera MacBook. Mantieni il contatto visivo durante chiamate, demo e registrazioni.">Native macOS teleprompter placing private notes under the MacBook camera notch. Keeps eye contact during calls, demos and recordings.</div>
+            <div class="card-tags">
+              <span class="tag t-lime">macOS Native</span><span class="tag t-lime">Local-first</span>
+              <span class="tag t-green">Live ✓</span><span class="tag t-muted">Privacy</span>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-lbl">USP</div>
+            <div class="usp-list">
+              <div class="usp-item"><div class="udot"></div><span data-pl="Notch-shaped overlay - notatki bezpośrednio przy kamerze, zero odchylenia wzroku" data-en="Notch-shaped overlay - notes sit right at the camera, zero visible gaze shift" data-it="Overlay a forma di notch - le note si trovano proprio vicino alla fotocamera, zero spostamento visibile dello sguardo">Notch-shaped overlay - notes sit right at the camera, zero visible gaze shift</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="Voice-aware scrolling przez AVFoundation - pauza gdy milczysz, resume gdy mówisz" data-en="Voice-aware scrolling via AVFoundation - pauses on silence, resumes when you speak" data-it="Scorrimento voice-aware tramite AVFoundation - si mette in pausa nel silenzio, riprende quando parli">Voice-aware scrolling via AVFoundation - pauses on silence, resumes when you speak</span></div>
+              <div class="usp-item"><div class="udot"></div><span data-pl="100% local-first - notatki w JSON, brak konta, brak chmury, brak nagrywania audio" data-en="100% local-first - notes in JSON, no account, no cloud, no audio recording" data-it="100% local-first - note in JSON, nessun account, nessun cloud, nessuna registrazione audio">100% local-first - notes in JSON, no account, no cloud, no audio recording</span></div>
+            </div>
+            <div class="icp-box">
+              <div class="icp-txt"><strong data-pl="Target: Founders, sales, content creators na MacBook" data-en="Target: Founders, sales reps and content creators on MacBook" data-it="Target: Founder, sales rep e content creator su MacBook">Target: Founders, sales reps and content creators on MacBook</strong><span data-pl="Każdy kto mówi do kamery i chce wyglądać naturalnie bez odchylania wzroku." data-en="Anyone who speaks to a camera and wants to look natural without breaking eye contact." data-it="Chiunque parli davanti a una fotocamera e voglia apparire naturale senza distogliere lo sguardo.">Anyone who speaks to a camera and wants to look natural without breaking eye contact.</span></div>
+            </div>
+            <div class="tech-row"><span class="tc">Swift 5.10</span><span class="tc">AppKit</span><span class="tc">AVFoundation</span><span class="tc">Carbon</span><span class="tc">macOS 14+</span></div>
+            <div class="card-actions">
+              <a href="https://notch.wojciech.io" target="_blank" class="btn-p"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg><span data-en="Landing" data-pl="Strona" data-it="Landing">Landing</span></a>
+              <a href="https://notch.wojciech.io/downloads/NotchCue.dmg" target="_blank" class="btn-s" style="display:inline-flex!important"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>DMG</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="no-results" id="noResults" style="display:none;">
+          <div style="font-size:36px;margin-bottom:12px;">🔍</div>
+          <h3 data-pl="Brak wyników" data-en="No results" data-it="Nessun risultato">Brak wyników</h3>
+          <p data-pl="Spróbuj innej frazy lub zmień filtry." data-en="Try different keywords or change filters." data-it="Prova parole chiave diverse o cambia i filtri.">Spróbuj innej frazy lub zmień filtry.</p>
+        </div>
+      </div>
+    </div><!-- /tab-apps -->
+
+    <!-- ===== TAB: DOCS ===== -->
+    <div class="tab-content" id="tab-docs">
+      <div class="docs-page">
+        <div style="margin-bottom:24px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:8px" data-pl="Dokumentacja" data-en="Documentation" data-it="Documentazione">Dokumentacja</div>
+          <h2 style="font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.5px;margin-bottom:8px" data-pl="Wszystkie aplikacje" data-en="All Applications" data-it="Applicazioni">Wszystkie aplikacje</h2>
+          <p style="font-size:14px;color:var(--text-2)" data-pl="Specyfikacja techniczna, funkcjonalności i stack każdej z aplikacji." data-en="Technical specs, features and stack for each application." data-it="Specifiche tecniche, funzionalità e stack per ogni applicazione.">Specyfikacja techniczna, funkcjonalności i stack każdej z aplikacji.</p>
+        </div>
+        <div class="docs-grid">
+
+          <div class="doc-card" style="display:none">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#1C69D4;color:#fff">SS</div>
+              <div><div class="doc-app-name">SabiSzop</div><div class="doc-app-type">B2C Marketplace · PWA</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Aplikacja do zakupów Smart Shopping. Umożliwia sprzedaż, kupno i wymianę części, akcesoriów i gadżetów wśród właścicieli Grocery. Glassmorphism design system inspirowany identyfikacją Grocery." data-en="Household budget and grocery planning app. Combines smart shopping lists with AI-powered suggestions, a receipt scanner with OCR, and spending analytics - all in a swipe-first mobile UI. Built as a PWA, no app store required." data-it="App per il budget domestico e la spesa. Combina liste della spesa intelligenti con suggerimenti AI, scanner scontrini con OCR e analisi delle spese - tutto in una UI mobile swipe-first. PWA, nessun app store richiesto.">Aplikacja do zarządzania budżetem domowym i zakupami. Inteligentne listy z AI, skaner paragonów OCR i wykresy wydatków. PWA - bez App Store.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Ogłoszenia z galeriami zdjęć i filtrowaniem" data-en="Smart shopping lists with categories" data-it="Liste della spesa intelligenti con categorie">Inteligentne listy zakupów z kategoriami</li>
+                <li data-pl="Porównywarka cen produktów" data-en="Product price comparison" data-it="Confronto prezzi prodotti">Porównywarka cen produktów</li>
+                <li data-pl="Profil użytkownika z historią transakcji" data-en="Receipt scanner with OCR" data-it="Scanner scontrini con OCR">Skaner paragonów z OCR</li>
+                <li data-pl="Zarządzanie budżetem domowym" data-en="Household budget management" data-it="Gestione del budget domestico">Zarządzanie budżetem domowym</li>
+                <li data-pl="Price alerts i powiadomienia" data-en="Price alerts and notifications" data-it="Avvisi di prezzo e notifiche">Price alerts i powiadomienia</li>
+                <li data-pl="PWA - instalacja na telefonie bez App Store" data-en="PWA - install on phone without App Store" data-it="PWA - installa sul telefono senza App Store">PWA - instalacja bez App Store</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill key">Supabase</span><span class="doc-stack-pill">Tailwind CSS</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill">PWA</span><span class="doc-stack-pill key">Netlify</span></div>
+            </div>
+            <div class="doc-links"><a href="https://sabiszop.netlify.app/" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
+          </div>
+
+          <div class="doc-card" style="display:none">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#0ea5e9;color:#fff">VL</div>
+              <div><div class="doc-app-name">VeloLodz</div><div class="doc-app-type">Civic Tech · Community / Sport</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Platforma civic tech do mapowania i zgłaszania problemów z infrastrukturą rowerową Łodzi. Użytkownicy zgłaszają niebezpieczne miejsca, głosują na priorytety napraw i śledzą postępy. Dane trafiają do urzędu miasta." data-en="Civic tech platform for mapping and reporting cycling infrastructure issues in Łódź. Users pin hazards on an interactive map, vote on repair priorities, and track fix status from New to Resolved. Built to feed structured data back to city authorities and drive measurable road safety improvements." data-it="Piattaforma civic tech per mappare e segnalare problemi all'infrastruttura ciclabile di Łódź. Gli utenti segnalano i pericoli su una mappa interattiva, votano le priorità di riparazione e tracciano lo stato da Nuovo a Risolto.">Platforma civic tech do mapowania problemów z infrastrukturą rowerową Łodzi. Użytkownicy zgłaszają niebezpieczne miejsca, głosują na priorytety napraw i śledzą postępy.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Interaktywna mapa Łodzi z pinami zgłoszeń" data-en="Interactive map of Łódź with issue pins" data-it="Mappa interattiva di Łódź con pin delle segnalazioni">Interaktywna mapa z pinami zgłoszeń</li>
+                <li data-pl="Formularz zgłoszenia z geolokalizacją i zdjęciem" data-en="Issue reporting with geolocation and photo" data-it="Segnalazione problemi con geolocalizzazione e foto">Zgłoszenie z GPS i zdjęciem</li>
+                <li data-pl="System głosowania na priorytety napraw" data-en="Community voting on repair priorities" data-it="Votazione della community sulle priorità di riparazione">Głosowanie na priorytety napraw</li>
+                <li data-pl="Status tracker: Nowe / W trakcie / Naprawione" data-en="Status tracker: New / In Progress / Fixed" data-it="Tracker stato: Nuovo / In corso / Risolto">Status: Nowe / W trakcie / Naprawione</li>
+                <li data-pl="Skaner infrastruktury - audyt tras rowerowych" data-en="Infrastructure scanner - cycling route audit" data-it="Scanner infrastrutture - audit dei percorsi ciclabili">Skaner infrastruktury - audyt tras</li>
+                <li>PWA · Offline support</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill key">Supabase</span><span class="doc-stack-pill">Leaflet.js</span><span class="doc-stack-pill">Tailwind</span><span class="doc-stack-pill">PWA</span><span class="doc-stack-pill key">Vercel</span></div>
+            </div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#8b5cf6;color:#fff">KH</div>
+              <div><div class="doc-app-name">Kadromierz Content Hub</div><div class="doc-app-type">B2B SaaS · Content Operations</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Wewnętrzny hub contentowy dla zespołu marketingowego Kadromierz. Centralizuje planowanie treści, briefy, statusy publikacji i zasoby marki. Zastępuje rozproszone arkusze Excel i Notion." data-en="Internal content hub for the Kadromierz marketing team. Centralises content planning, briefs, publication statuses and brand assets - replacing scattered Excel sheets and Notion pages. Includes a content calendar with Board / Calendar / List views, status tracking from Idea to Live, and a brand assets library." data-it="Hub content interno per il team marketing di Kadromierz. Centralizza pianificazione contenuti, brief, stati di pubblicazione e asset brand - sostituendo Excel e Notion sparsi.">Wewnętrzny hub contentowy dla Kadromierz. Centralizuje planowanie treści, briefy, statusy i zasoby marki. Zastępuje rozproszone Excele i Notion.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Kalendarz contentowy z widokami Board / Calendar / List" data-en="Content calendar: Board / Calendar / List views" data-it="Calendario contenuti: viste Board / Calendar / List">Kalendarz contentowy (Board / Calendar / List)</li>
+                <li data-pl="System briefów z przypisaniem do autorów" data-en="Brief system with author assignment" data-it="Sistema di brief con assegnazione all'autore">Briefy z przypisaniem do autorów</li>
+                <li data-pl="Tracker statusów: Idea / Pisanie / Review / Live" data-en="Status tracker: Idea / Writing / Review / Live" data-it="Tracker stato: Idea / Scrittura / Review / Live">Status: Idea / Pisanie / Review / Live</li>
+                <li data-pl="Biblioteka zasobów marki (logo, kolory, fonts)" data-en="Brand assets library (logos, colors, fonts)" data-it="Libreria asset brand (logo, colori, font)">Biblioteka zasobów marki</li>
+                <li data-pl="Dashboard KPI contentu i zasięgów" data-en="Content KPI and reach dashboard" data-it="Dashboard KPI e copertura dei contenuti">Dashboard KPI contentu</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill key">Supabase</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill">Tailwind</span><span class="doc-stack-pill key">Base44</span></div>
+            </div>
+            <div class="doc-links"><a href="https://kadromierz-content-hub.base44.app/Generator" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#10b981;color:#fff">GH</div>
+              <div><div class="doc-app-name">GrowthHub</div><div class="doc-app-type">B2B SaaS · Growth / Demand Gen</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Growth dashboard dla Kadromierz - centralizuje inicjatywy demand gen, lead scoring i revenue tracking. Zastępuje rozproszone arkusze i daje pełny widok pipeline'u." data-en="Growth dashboard for Kadromierz - centralises demand gen initiatives, lead scoring and revenue tracking. Replaces scattered spreadsheets and gives full pipeline visibility." data-it="Growth dashboard per Kadromierz - centralizza iniziative demand gen, lead scoring e revenue tracking. Sostituisce i fogli di calcolo sparsi e offre piena visibilità del pipeline.">Growth dashboard for Kadromierz - centralises demand gen initiatives, lead scoring and revenue tracking. Replaces scattered spreadsheets and gives full pipeline visibility.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Centralny hub dla wszystkich inicjatyw growth" data-en="Central hub for all growth initiatives" data-it="Centro di controllo per tutte le iniziative di growth">Central hub for all growth initiatives</li>
+                <li data-pl="Lead scoring i segmentacja ICP w jednym widoku" data-en="Lead scoring and ICP segmentation in one view" data-it="Lead scoring e segmentazione ICP in un'unica vista">Lead scoring and ICP segmentation in one view</li>
+                <li data-pl="Revenue tracking + pipeline visibility dla B2B SaaS" data-en="Revenue tracking + pipeline visibility for B2B SaaS" data-it="Tracciamento revenue + visibilità pipeline per B2B SaaS">Revenue tracking + pipeline visibility for B2B SaaS</li>
+                <li data-pl="Integracja z kampaniami i źródłami leadów" data-en="Integration with campaigns and lead sources" data-it="Integrazione con campagne e fonti di lead">Integration with campaigns and lead sources</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">Netlify</span></div>
+            </div>
+            <div class="doc-links"><a href="https://kadromierz-growth.netlify.app/" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#0d9488;color:#fff">HM</div>
+              <div><div class="doc-app-name">HireMe</div><div class="doc-app-type">B2B SaaS · HR / Recruitment</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Platforma do zarządzania procesami rekrutacyjnymi dla agencji HR i rekruterów. Centralizuje kandydatów, kampanie, statusy i komunikację z klientem w jednym miejscu." data-en="Recruitment process management platform for HR agencies and independent recruiters. Centralises candidates, campaigns, statuses and client communication in a single workspace - replacing fragmented ATS tools and email threads. Includes a Kanban pipeline, time-to-hire analytics and client-facing reports." data-it="Piattaforma di gestione dei processi di recruiting per agenzie HR e recruiter indipendenti. Centralizza candidati, campagne, stati e comunicazione con il cliente in un unico workspace.">Platforma do zarządzania rekrutacją dla agencji HR. Kandydaci, kampanie, statusy i komunikacja z klientem - wszystko w jednym miejscu.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Pipeline kandydatów z drag &amp; drop Kanban" data-en="Candidate pipeline with drag &amp; drop Kanban" data-it="Pipeline candidati con Kanban drag &amp; drop">Pipeline kandydatów - Kanban drag &amp; drop</li>
+                <li data-pl="Zarządzanie kampaniami rekrutacyjnymi" data-en="Recruitment campaign management" data-it="Gestione campagne di recruiting">Zarządzanie kampaniami rekrutacyjnymi</li>
+                <li data-pl="Profil kandydata z historią komunikacji" data-en="Candidate profile with communication history" data-it="Profilo candidato con storico comunicazioni">Profil kandydata + historia komunikacji</li>
+                <li data-pl="Dashboard metryk: time-to-hire, conversion rate" data-en="Metrics dashboard: time-to-hire, conversion" data-it="Dashboard metriche: time-to-hire, conversione">Dashboard: time-to-hire, conversion rate</li>
+                <li data-pl="Integracja z LinkedIn Recruiter API" data-en="LinkedIn Recruiter API integration" data-it="Integrazione LinkedIn Recruiter API">Integracja LinkedIn Recruiter API</li>
+                <li data-pl="Raporty dla klientów agencji" data-en="Client-facing agency reports" data-it="Report per i clienti dell'agenzia">Raporty dla klientów agencji</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill key">Supabase</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill">Tailwind</span><span class="doc-stack-pill key">Netlify</span></div>
+            </div>
+            <div class="doc-links"><a href="https://hireme-amber.vercel.app/login" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
+          </div>
+
+          <div class="doc-card" style="grid-column:span 2">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#ec4899;color:#fff">AN</div>
+              <div><div class="doc-app-name">AN Projekt</div><div class="doc-app-type">Website · Interior Design Studio</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+              <div>
+                <div class="doc-section">
+                  <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+                  <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Strona internetowa pracowni projektowania wnętrz AN Projekt. Nowoczesny design z naciskiem na portfolio zrealizowanych projektów. Budowana w Lovable w jeden dzień produkcyjny." data-en="Website for AN Projekt interior design studio. Modern design emphasising portfolio of completed projects. Built in Lovable in one production day." data-it="Sito web per lo studio di interior design AN Projekt. Design moderno con enfasi sul portfolio di progetti completati. Realizzato in Lovable in un giorno di lavoro.">Strona internetowa pracowni projektowania wnętrz AN Projekt. Nowoczesny design z naciskiem na portfolio. Zbudowana w Lovable w jeden dzień produkcyjny.</p>
+                </div>
+                <div class="doc-section" style="margin-bottom:0">
+                  <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+                  <ul class="doc-feature-list">
+                    <li data-pl="Portfolio z projektami wnętrz i galeriami" data-en="Interior design portfolio with galleries" data-it="Portfolio di interior design con gallerie">Portfolio projektów z galeriami</li>
+                    <li data-pl="O nas - historia i filozofia pracowni" data-en="About us - studio history and philosophy" data-it="Chi siamo - storia e filosofia dello studio">O nas - historia i filozofia pracowni</li>
+                    <li data-pl="Formularz kontaktowy i wycena projektu" data-en="Contact form and project quote" data-it="Modulo di contatto e preventivo progetto">Formularz kontaktowy i wycena</li>
+                    <li data-pl="Responsywny design mobile-first" data-en="Mobile-first responsive design" data-it="Design responsive mobile-first">Mobile-first responsive design</li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div class="doc-section" style="margin-bottom:0">
+                  <div class="doc-section-title">Tech Stack</div>
+                  <div class="doc-stack-pills" style="margin-bottom:10px"><span class="doc-stack-pill key">Lovable</span><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">Vite</span><span class="doc-stack-pill">Tailwind CSS</span><span class="doc-stack-pill key">Netlify</span></div>
+                </div>
+                <div class="doc-section" style="margin-bottom:0">
+                  <div class="doc-section-title" data-pl="Kluczowe wskaźniki" data-en="Key metrics" data-it="Metriche chiave">Kluczowe wskaźniki</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:900;color:var(--lime)">1 dzień</div><div style="font-size:10px;color:var(--text-3)">Build time</div></div>
+                    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:900;color:var(--lime)">100%</div><div style="font-size:10px;color:var(--text-3)">No-code / AI</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-links"><a href="https://an-projekt.com.pl/" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live site</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#e11d48;color:#fff">CI</div>
+              <div><div class="doc-app-name">Ciryam</div><div class="doc-app-type">Website · Music / Band</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Oficjalna strona polskiego zespołu rockowego Ciryam. Prezentacja muzyki, galeria prasowa, kalendarz koncertów z ticketingiem i sklep z merch." data-en="Official website of Polish rock band Ciryam. Music showcase, press gallery, concert calendar with ticketing and merch store." data-it="Sito ufficiale della band rock polacca Ciryam. Showcase musicale, galleria stampa, calendario concerti con biglietteria e negozio merch.">Official website of Polish rock band Ciryam. Music showcase, press gallery, concert calendar with ticketing and merch store.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Kalendarz koncertów z ticketingiem i mapą eventów" data-en="Concert calendar with ticketing and event map" data-it="Calendario concerti con biglietteria e mappa eventi">Concert calendar with ticketing and event map</li>
+                <li data-pl="Sklep - koszulki, winyle, merch" data-en="Merch store - apparel, vinyl, accessories" data-it="Negozio merch - abbigliamento, vinile, accessori">Merch store - apparel, vinyl, accessories</li>
+                <li data-pl="Wideo, muzyka i galeria prasowa" data-en="Video, music player and press gallery" data-it="Video, music player e galleria stampa">Video, music player and press gallery</li>
+                <li data-pl="Responsywny design mobile-first" data-en="Mobile-first responsive design" data-it="Design responsive mobile-first">Mobile-first responsive design</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">Vite</span><span class="doc-stack-pill">Tailwind CSS</span><span class="doc-stack-pill key">Netlify</span></div>
+            </div>
+            <div class="doc-links"><a href="https://ciryam.eu" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live site</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#16a34a;color:#fff">DZ</div>
+              <div><div class="doc-app-name">Działkometr</div><div class="doc-app-type">PWA · Real Estate / Property</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Kalkulator wartości działek - analiza lokalizacji, media, MPZP i wycena AI w jednym widoku. Skierowany do nabywców gruntów i inwestorów nieruchomości." data-en="Plot value calculator - location analysis, utility access, MPZP zoning and AI valuation in one view. Built for land buyers and real estate investors." data-it="Calcolatore del valore del terreno - analisi posizione, utenze, zonizzazione MPZP e valutazione AI in un'unica vista. Per acquirenti di terreni e investitori immobiliari.">Plot value calculator - location analysis, utility access, MPZP zoning and AI valuation in one view. Built for land buyers and real estate investors.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Analiza MPZP + dostęp do mediów w jednym widoku" data-en="MPZP zoning analysis + utility access in one view" data-it="Analisi MPZP + accesso alle utenze in un'unica vista">MPZP zoning analysis + utility access in one view</li>
+                <li data-pl="Automatyczna wycena na podstawie transakcji z okolicy" data-en="Automatic AI valuation based on nearby transactions" data-it="Valutazione AI automatica basata sulle transazioni vicine">Automatic AI valuation based on nearby transactions</li>
+                <li data-pl="Eksport raportu PDF gotowego do prezentacji" data-en="PDF report export ready for presentation" data-it="Esportazione report PDF pronto per la presentazione">PDF report export ready for presentation</li>
+                <li data-pl="Interaktywna mapa działek z warstwami danych" data-en="Interactive plot map with data layers" data-it="Mappa interattiva dei terreni con livelli dati">Interactive plot map with data layers</li>
+                <li>PWA · Offline support</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">Vite</span><span class="doc-stack-pill key">Supabase</span><span class="doc-stack-pill">Mapbox</span><span class="doc-stack-pill">PWA</span><span class="doc-stack-pill key">Netlify</span></div>
+            </div>
+            <div class="doc-links"><a href="https://dzialkometr.netlify.app/auth/login?next=%2Fapp" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
+          </div>
+
+          <div class="doc-card" style="display:none">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#0891b2;color:#fff">P+</div>
+              <div><div class="doc-app-name">Paczka+</div><div class="doc-app-type">PWA · Consumer / Logistics</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Śledzenie paczek z wszystkich kurierów w jednym widoku - InPost, DHL, DPD, GLS, UPS z push notyfikacjami. Koniec z przełączaniem aplikacji kurierskich." data-en="Track parcels from all couriers in one view - InPost, DHL, DPD, GLS, UPS with push notifications. No more switching between courier apps." data-it="Traccia i pacchi di tutti i corrieri in un'unica vista - InPost, DHL, DPD, GLS, UPS con notifiche push. Niente più cambio tra le app dei corrieri.">Track parcels from all couriers in one view - InPost, DHL, DPD, GLS, UPS with push notifications. No more switching between courier apps.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Multi-kurier w jednym UI bez przełączania aplikacji" data-en="Multi-courier unified UI - all carriers in one place" data-it="UI unificata multi-corriere - tutti i corrieri in un posto">Multi-courier unified UI - all carriers in one place</li>
+                <li data-pl="Push notyfikacje o każdej zmianie statusu" data-en="Push notifications for every status change" data-it="Notifiche push per ogni cambio di stato">Push notifications for every status change</li>
+                <li data-pl="Historia paczek + eksport do CSV" data-en="Package history + CSV export" data-it="Storico pacchi + esportazione CSV">Package history + CSV export</li>
+                <li data-pl="PWA - instalacja na telefonie bez App Store" data-en="PWA - install on phone without App Store" data-it="PWA - installa sul telefono senza App Store">PWA - install on phone without App Store</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">Supabase</span><span class="doc-stack-pill">PWA</span><span class="doc-stack-pill key">Netlify</span></div>
+            </div>
+            <div class="doc-links"><span style="font-size:11px;color:var(--text-3);font-weight:600">In Beta - link coming soon</span></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#0e7490;color:#fff">CR</div>
+              <div><div class="doc-app-name">Camper Rental</div><div class="doc-app-type">Consumer · Booking Engine</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Booking engine do wynajmu pojazdów i zasobów - dynamiczne ceny, zarządzanie dostępnością i flow rezerwacji. Rozszerzalny na inne kategorie: nieruchomości, usługi, vouchery." data-en="Booking engine for vehicle and asset rental - dynamic pricing, availability management and reservation flow. Extensible to properties, services and vouchers." data-it="Motore di prenotazione per noleggio veicoli e asset - prezzi dinamici, gestione disponibilità e flow di prenotazione. Estensibile a proprietà, servizi e voucher.">Booking engine for vehicle and asset rental - dynamic pricing, availability management and reservation flow. Extensible to properties, services and vouchers.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Dynamiczny silnik cenowy z sezonowymi stawkami" data-en="Dynamic pricing engine with seasonal rates" data-it="Motore di prezzi dinamici con tariffe stagionali">Dynamic pricing engine with seasonal rates</li>
+                <li data-pl="Kalendarz dostępności i dashboard rezerwacji" data-en="Availability calendar and reservations dashboard" data-it="Calendario disponibilità e dashboard prenotazioni">Availability calendar and reservations dashboard</li>
+                <li data-pl="Rozszerzalny katalog: pojazdy, usługi, vouchery" data-en="Extensible catalog: vehicles, services, vouchers" data-it="Catalogo estensibile: veicoli, servizi, voucher">Extensible catalog: vehicles, services, vouchers</li>
+                <li data-pl="Zarządzanie stanem rezerwacji w czasie rzeczywistym" data-en="Real-time reservation state management" data-it="Gestione stato prenotazioni in tempo reale">Real-time reservation state management</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">Supabase</span><span class="doc-stack-pill key">Vercel</span></div>
+            </div>
+            <div class="doc-links"><a href="https://camper-rental-weld.vercel.app/" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#be185d;color:#fff">AM</div>
+              <div><div class="doc-app-name">Amoree</div><div class="doc-app-type">Consumer · Wedding &amp; Events</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Personalne zaproszenie ślubne i hub eventowy - RSVP, agenda i informacje o miejscu w jednej premium, mobile-first stronie. Reużywalny template na eventy i brand activations." data-en="Personal wedding invitation and event hub - RSVP, agenda and venue info in one premium mobile-first site. Reusable template for premium events and brand activations." data-it="Invito di nozze personale e hub eventi - RSVP, agenda e info sul luogo in un unico sito premium mobile-first. Template riutilizzabile per eventi premium e attivazioni brand.">Personal wedding invitation and event hub - RSVP, agenda and venue info in one premium mobile-first site. Reusable template for premium events and brand activations.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Spersonalizowane zaproszenie + flow RSVP z zarządzaniem gośćmi" data-en="Personalised invitation + RSVP flow with guest management" data-it="Invito personalizzato + flow RSVP con gestione degli ospiti">Personalised invitation + RSVP flow with guest management</li>
+                <li data-pl="Harmonogram eventu, mapa miejsca i informacje noclegowe" data-en="Event timeline, venue map and accommodation info" data-it="Timeline dell'evento, mappa del luogo e info sull'alloggio">Event timeline, venue map and accommodation info</li>
+                <li data-pl="Galeria zdjęć i countdown do daty" data-en="Photo gallery and countdown to event date" data-it="Galleria fotografica e conto alla rovescia per la data dell'evento">Photo gallery and countdown to event date</li>
+                <li data-pl="Reużywalny template na premium eventy i brand activations" data-en="Reusable template for premium events and brand activations" data-it="Template riutilizzabile per eventi premium e attivazioni brand">Reusable template for premium events and brand activations</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">Vercel</span></div>
+            </div>
+            <div class="doc-links"><a href="https://zealous-cannon.vercel.app/login" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live site</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#374151;color:#fff">WL</div>
+              <div><div class="doc-app-name">Wycinarki Laserowe</div><div class="doc-app-type">B2B · SEO / E-commerce</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="SEO-first strona produktowa i fundament e-commerce dla dostawcy laserowych maszyn tnących. Zbudowana w 2h, ze strukturą danych dla LLM i organicznego growth." data-en="SEO-first product site and e-commerce foundation for a laser cutting equipment supplier. Built in 2 hours with structured data for LLM discoverability and organic growth." data-it="Sito prodotto SEO-first e base e-commerce per un fornitore di tagliatrici laser. Realizzato in 2 ore con dati strutturati per scopribilità LLM e crescita organica.">SEO-first product site and e-commerce foundation for a laser cutting equipment supplier. Built in 2 hours with structured data for LLM discoverability and organic growth.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Pełny katalog produktów ze structured data dla SEO i LLM" data-en="Full product catalog with structured data for SEO and LLM indexing" data-it="Catalogo prodotti completo con dati strutturati per SEO e indicizzazione LLM">Full product catalog with structured data for SEO and LLM indexing</li>
+                <li data-pl="Growth layer gotowy na CMS, koszyk i paid media" data-en="Growth layer: ready for CMS, shopping cart and paid media" data-it="Growth layer: pronto per CMS, carrello e paid media">Growth layer: ready for CMS, shopping cart and paid media</li>
+                <li data-pl="Szybki template dla niszowych B2B product verticals" data-en="Fast-launch template for niche B2B product verticals" data-it="Template per lancio rapido in verticali B2B di nicchia">Fast-launch template for niche B2B product verticals</li>
+                <li data-pl="Build time: 2 godziny od zera do live" data-en="Build time: 2 hours from zero to live" data-it="Tempo di build: 2 ore da zero a live">Build time: 2 hours from zero to live</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">Vercel</span></div>
+            </div>
+            <div class="doc-links"><a href="https://wycinarkilaserowe.vercel.app/" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live site</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#f97316;color:#fff">SL</div>
+              <div><div class="doc-app-name">Spawarki Laserowe</div><div class="doc-app-type">B2B · SEO / Industrial</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Strona produktowa dla autoryzowanego dealera światłowodowych spawarek laserowych BLink. Katalog 3 modeli (1500W–3000W), ROI framing oparty na realnych danych produkcyjnych i 16-pytaniowe FAQ dla klientów B2B z sektora produkcyjnego." data-en="Product site for an authorised BLink fibre laser welder dealer. 3-model catalog (1500W–3000W), ROI framing built on real production benchmarks (TIG 8 min vs laser 2.5 min), and a 16-question FAQ targeting B2B manufacturing buyers. Structured data throughout for SEO and LLM indexing." data-it="Sito prodotto per un dealer autorizzato BLink di saldatrici laser a fibra. Catalogo 3 modelli (1500W–3000W), ROI framing su benchmark produttivi reali e FAQ di 16 domande per acquirenti B2B manifatturieri.">Product site for an authorised BLink fibre laser welder dealer. 3-model catalog (1500W–3000W), ROI framing built on real production benchmarks (TIG 8 min vs laser 2.5 min), and a 16-question FAQ targeting B2B manufacturing buyers. Structured data throughout for SEO and LLM indexing.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Katalog 3 modeli z pełnymi specyfikacjami i porównywarką" data-en="3-model catalog with full specs and side-by-side comparison" data-it="Catalogo 3 modelli con specifiche complete e confronto affiancato">3-model catalog with full specs and side-by-side comparison</li>
+                <li data-pl="ROI framing z realnymi danymi produkcyjnymi vs TIG/MIG" data-en="ROI framing with real production data benchmarked against TIG/MIG" data-it="ROI framing con dati di produzione reali confrontati con TIG/MIG">ROI framing with real production data benchmarked against TIG/MIG</li>
+                <li data-pl="16-pytaniowe FAQ: selekcja, koszty, materiały, infrastruktura" data-en="16-question FAQ: model selection, costs, materials, infrastructure" data-it="FAQ di 16 domande: selezione modello, costi, materiali, infrastruttura">16-question FAQ: model selection, costs, materials, infrastructure</li>
+                <li data-pl="6 przypadków użycia z branżami docelowymi" data-en="6 application use cases with target industries" data-it="6 casi d'uso con settori di riferimento">6 application use cases with target industries</li>
+                <li data-pl="Structured data dla SEO i LLM discoverability" data-en="Structured data for SEO and LLM discoverability" data-it="Dati strutturati per SEO e scopribilità LLM">Structured data for SEO and LLM discoverability</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">Vercel</span></div>
+            </div>
+            <div class="doc-links"><a href="https://spawarkilaserowe.vercel.app/" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live site</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#7c5c2e;color:#e8e0d0">WP</div>
+              <div><div class="doc-app-name">Willa w Parku</div><div class="doc-app-type">Website · Venue / Hospitality</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Opis" data-en="Description" data-it="Descrizione">Opis</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65" data-pl="Strona klubokawiarni w parku Poniatowskiego w Łodzi. Speciality coffee za dnia, techno i house nocą. Eventy, wynajem przestrzeni eventowej, bar. Zbudowana w Lovable z lokalnym SEO i schema markup." data-en="Website for a club-café in Łódź's Poniatowski Park. Specialty coffee by day, techno &amp; house by night. Events, space rental, bar. Built in Lovable with local SEO and schema markup." data-it="Sito web per un club-caffè nel Parco Poniatowski di Łódź. Specialty coffee di giorno, techno e house di notte. Eventi, affitto spazi, bar. Realizzato in Lovable con SEO locale e schema markup.">Website for a club-café in Łódź's Poniatowski Park. Specialty coffee by day, techno &amp; house by night. Events, space rental, bar. Built in Lovable with local SEO and schema markup.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-pl="Funkcjonalności" data-en="Features" data-it="Funzionalità">Funkcjonalności</div>
+              <ul class="doc-feature-list">
+                <li data-pl="Podwójna tożsamość: kawiarnia za dnia, klub nocą - jeden serwis" data-en="Dual identity: café by day, club by night - one seamless site" data-it="Doppia identità: caffè di giorno, club di notte - un unico sito senza soluzione di continuità">Dual identity: café by day, club by night - one seamless site</li>
+                <li data-pl="Strona eventów z calendar view i formularzem rezerwacji przestrzeni" data-en="Events page with calendar view and space rental form" data-it="Pagina eventi con vista calendario e modulo di affitto spazi">Events page with calendar view and space rental form</li>
+                <li data-pl="Menu kawy, koktajli i przekąsek" data-en="Coffee, cocktails and food menu" data-it="Menù caffè, cocktail e cibo">Coffee, cocktails and food menu</li>
+                <li data-pl="Lokalny SEO - schema markup (CafeOrCoffeeShop), OpenGraph, geo tags" data-en="Local SEO - schema markup (CafeOrCoffeeShop), OpenGraph, geo tags" data-it="SEO locale - schema markup (CafeOrCoffeeShop), OpenGraph, geo tag">Local SEO - schema markup (CafeOrCoffeeShop), OpenGraph, geo tags</li>
+                <li data-pl="Responsywny design mobile-first" data-en="Mobile-first responsive design" data-it="Design responsive mobile-first">Mobile-first responsive design</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">Lovable</span><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">Vite</span><span class="doc-stack-pill key">Vercel</span></div>
+            </div>
+            <div class="doc-links"><a href="https://willa-lodz.pl/" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live site</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#ea580c;color:#fff">AK</div>
+              <div><div class="doc-app-name">Akademia AI</div><div class="doc-app-type">Education · SaaS</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-en="Description" data-it="Descrizione">Description</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65">Audio course platform with full payment and certification flow. Covers AI tools, growth marketing and automation workflows - built for professionals who prefer audio over video.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-en="Features" data-it="Funzionalità">Features</div>
+              <ul class="doc-feature-list">
+                <li>Audio-first course format - listen anywhere, no video required</li>
+                <li>Certificate issued on completion - shareable proof of skills</li>
+                <li>Stripe payments + Supabase auth - per-course access control</li>
+                <li>Vercel serverless API routes - no separate backend needed</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">Supabase</span><span class="doc-stack-pill key">Stripe</span><span class="doc-stack-pill">Vercel</span></div>
+            </div>
+            <div class="doc-links"><a href="https://academy.wojciech.io" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#7c3aed;color:#fff">RL</div>
+              <div><div class="doc-app-name">Relora</div><div class="doc-app-type">B2B SaaS · Relationship CRM</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-en="Description" data-it="Descrizione">Description</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65">B2B relationship intelligence platform - contact graph, CRM Kanban, outreach composer and deal alerts in one workspace. Built for founders and GTM teams who manage relationships across multiple accounts.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-en="Features" data-it="Funzionalità">Features</div>
+              <ul class="doc-feature-list">
+                <li>Relationship graph - visualise connections between contacts, companies and deals</li>
+                <li>CRM Kanban - drag-and-drop pipeline with deal stages and follow-up reminders</li>
+                <li>Outreach Composer - personalised emails sent via Resend directly from the CRM</li>
+                <li>Deal alerts - automated notifications on inactivity and stage changes</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">Next.js</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill key">Supabase</span><span class="doc-stack-pill">Resend</span><span class="doc-stack-pill">Tailwind</span><span class="doc-stack-pill key">Vercel</span></div>
+            </div>
+            <div class="doc-links"><a href="https://relora-jet.vercel.app" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-app-head">
+              <div class="doc-app-icon" style="background:#22c55e;color:#fff">AS</div>
+              <div><div class="doc-app-name">Ads Assistant</div><div class="doc-app-type">B2B SaaS · Performance Marketing</div></div>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-en="Description" data-it="Descrizione">Description</div>
+              <p style="font-size:12px;color:var(--text-2);line-height:1.65">Google Ads management dashboard for performance marketers running multi-client accounts. Centralises campaigns, reports and ICP lead scoring - replacing fragmented agency tools.</p>
+            </div>
+            <div class="doc-section">
+              <div class="doc-section-title" data-en="Features" data-it="Funzionalità">Features</div>
+              <ul class="doc-feature-list">
+                <li>Multi-account dashboard - all client campaigns in one view</li>
+                <li>ICP lead scoring - qualify traffic quality directly from campaign data</li>
+                <li>Performance reports - ROAS, CPL, CTR across accounts and periods</li>
+                <li>Demo mode with realistic mock data - shareable without live API keys</li>
+              </ul>
+            </div>
+            <div class="doc-section" style="margin-bottom:0">
+              <div class="doc-section-title">Tech Stack</div>
+              <div class="doc-stack-pills"><span class="doc-stack-pill key">React</span><span class="doc-stack-pill">TypeScript</span><span class="doc-stack-pill">Vite</span><span class="doc-stack-pill">Tailwind</span><span class="doc-stack-pill key">Vercel</span></div>
+            </div>
+            <div class="doc-links"><a href="https://ads-assistant-three.vercel.app" target="_blank" class="doc-link"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Live app</a></div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /tab-docs -->
+
+    <!-- ===== TAB: ONE-PAGERS ===== -->
+    <div class="tab-content" id="tab-onepapers" style="display:none">
+      <div class="onepagers-page">
+        <div style="margin-bottom:24px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:8px">One-Pagery</div>
+          <h2 style="font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.5px;margin-bottom:8px" data-pl="Marketing w jednej stronie" data-en="Marketing on one page" data-it="Marketing in una pagina">Marketing w jednej stronie</h2>
+          <p style="font-size:14px;color:var(--text-2)" data-pl="USP, ICP, kluczowe metryki i CTA dla każdej aplikacji - gotowe do pokazania klientom." data-en="USP, ICP, key metrics and CTA for each application - ready to share with clients." data-it="USP, ICP, metriche chiave e CTA per ogni applicazione - pronto da condividere con i clienti.">USP, ICP, kluczowe metryki i CTA dla każdej aplikacji - gotowe do pokazania klientom.</p>
+        </div>
+        <div class="onepager-grid">
+
+          <div class="onepager-card">
+            <div class="onepager-banner" style="background:linear-gradient(90deg,#1C69D4,#0a3d8f)"></div>
+            <div class="onepager-body">
+              <div class="onepager-eyebrow">B2C App · Grocery / Shopping</div>
+              <div class="onepager-title">SabiSzop</div>
+              <div class="onepager-tagline" data-pl="Jedyne miejsce w Polsce dla Grocery-fanów: kupuj, sprzedaj, bądź częścią sceny." data-en="Poland's only place for Grocery fans: buy, sell, be part of the scene." data-it="L'unico posto in Polonia per i fan di Grocery: compra, vendi, fai parte della scena.">Jedyne miejsce w Polsce dla Grocery-fanów: kupuj, sprzedaj, bądź częścią sceny.</div>
+              <div class="onepager-section">
+                <div class="onepager-section-label">USP</div>
+                <p style="font-size:13px;color:var(--text-2);line-height:1.6" data-pl="Dedykowana społeczność Grocery z weryfikacją ogłoszeń i M-ekspertami. Nie Otomoto, nie OLX - tylko M." data-en="Dedicated Grocery community with listing verification and M experts. Not generic classifieds - M only." data-it="Comunità Grocery dedicata con verifica degli annunci ed esperti M. Non un classico marketplace generico - solo M.">Dedykowana społeczność Grocery. Weryfikacja ogłoszeń, M-eksperci. Nie Otomoto - tylko M.</p>
+              </div>
+              <div class="onepager-section">
+                <div class="onepager-section-label">ICP</div>
+                <div class="onepager-icp"><span class="onepager-icp-tag">Grocery właściciele</span><span class="onepager-icp-tag">Car enthusiasts</span><span class="onepager-icp-tag">Dealerzy M</span><span class="onepager-icp-tag">Tunerzy</span></div>
+              </div>
+              <div class="onepager-section">
+                <div class="onepager-section-label" data-pl="Kluczowe metryki" data-en="Key metrics" data-it="Metriche chiave">Kluczowe metryki</div>
+                <div class="onepager-metrics">
+                  <div class="onepager-metric"><div class="onepager-metric-val">PWA</div><div class="onepager-metric-lab" data-pl="Instalacja" data-en="Installable" data-it="Installabile">Instalacja</div></div>
+                  <div class="onepager-metric"><div class="onepager-metric-val">M</div><div class="onepager-metric-lab" data-pl="Niche Community" data-en="Niche Community" data-it="Community di nicchia">Niche</div></div>
+                  <div class="onepager-metric"><div class="onepager-metric-val">0zł</div><div class="onepager-metric-lab" data-pl="Darmowe ogłoszenie" data-en="Free listing" data-it="Annuncio gratuito">Ogłoszenie</div></div>
+                </div>
+              </div>
+              <div class="onepager-cta"><a href="https://sabiszop.netlify.app/" target="_blank" class="onepager-btn primary">Otwórz app →</a><a href="#" class="onepager-btn secondary">Docs</a></div>
+            </div>
+          </div>
+
+          <div class="onepager-card" style="display:none">
+            <div class="onepager-banner" style="background:linear-gradient(90deg,#0ea5e9,#0284c7)"></div>
+            <div class="onepager-body">
+              <div class="onepager-eyebrow">Civic Tech · Community / Sport</div>
+              <div class="onepager-title">VeloLodz</div>
+              <div class="onepager-tagline" data-pl="Razem poprawiamy infrastrukturę rowerową Łodzi. Zgłoś, zagłosuj, zmień miasto." data-en="Together we improve Łódź cycling infrastructure. Report, vote, change the city." data-it="Insieme miglioriamo l'infrastruttura ciclabile di Łódź. Segnala, vota, cambia la città.">Razem poprawiamy infrastrukturę rowerową Łodzi. Zgłoś, zagłosuj, zmień miasto.</div>
+              <div class="onepager-section">
+                <div class="onepager-section-label">USP</div>
+                <p style="font-size:13px;color:var(--text-2);line-height:1.6" data-pl="Jedyna platforma w Łodzi łącząca rowerzystów z urzędem miasta. Głosy społeczności = priorytety napraw." data-en="The only platform connecting Łódź cyclists with the city. Community votes = repair priorities." data-it="L'unica piattaforma che collega i ciclisti di Łódź con la città. Voti della community = priorità di riparazione.">Jedyna platforma łącząca rowerzystów z urzędem. Głosy społeczności = priorytety napraw.</p>
+              </div>
+              <div class="onepager-section">
+                <div class="onepager-section-label">ICP</div>
+                <div class="onepager-icp"><span class="onepager-icp-tag">Rowerzyści Łódź</span><span class="onepager-icp-tag">Urbaniści</span><span class="onepager-icp-tag">Urząd Miasta</span><span class="onepager-icp-tag">NGO mobilności</span></div>
+              </div>
+              <div class="onepager-section">
+                <div class="onepager-section-label" data-pl="Kluczowe metryki" data-en="Key metrics" data-it="Metriche chiave">Kluczowe metryki</div>
+                <div class="onepager-metrics">
+                  <div class="onepager-metric"><div class="onepager-metric-val">Mapa</div><div class="onepager-metric-lab">Live</div></div>
+                  <div class="onepager-metric"><div class="onepager-metric-val">PWA</div><div class="onepager-metric-lab">Mobile</div></div>
+                  <div class="onepager-metric"><div class="onepager-metric-val">Open</div><div class="onepager-metric-lab">Free</div></div>
+                </div>
+              </div>
+              <div class="onepager-cta"><a href="#" class="onepager-btn primary">Otwórz app →</a><a href="#" class="onepager-btn secondary">Docs</a></div>
+            </div>
+          </div>
+
+          <div class="onepager-card">
+            <div class="onepager-banner" style="background:linear-gradient(90deg,#8b5cf6,#6d28d9)"></div>
+            <div class="onepager-body">
+              <div class="onepager-eyebrow">B2B SaaS · Content Operations</div>
+              <div class="onepager-title">Kadromierz Content Hub</div>
+              <div class="onepager-tagline" data-pl="Jeden hub dla całego content marketingu. Koniec z Excelem, Notionem i chaosem." data-en="One hub for all content marketing. End of Excel, Notion and chaos." data-it="Un unico hub per tutto il content marketing. Fine di Excel, Notion e del caos.">Jeden hub dla content marketingu. Koniec z Excelem, Notionem i chaosem.</div>
+              <div class="onepager-section">
+                <div class="onepager-section-label">USP</div>
+                <p style="font-size:13px;color:var(--text-2);line-height:1.6" data-pl="Dedykowany dla zespołów marketingowych 5-30 osób. Łączy planowanie, produkcję i dystrybucję w jednym miejscu z widokiem KPI." data-en="Built for 5-30 person marketing teams. Combines planning, production and distribution with KPI views." data-it="Progettato per team marketing di 5-30 persone. Combina pianificazione, produzione e distribuzione con viste KPI.">Dedykowany dla teamów 5-30 osób. Planowanie, produkcja, dystrybucja + KPI w jednym miejscu.</p>
+              </div>
+              <div class="onepager-section">
+                <div class="onepager-section-label">ICP</div>
+                <div class="onepager-icp"><span class="onepager-icp-tag">Content Marketing Mgr</span><span class="onepager-icp-tag">B2B SaaS teams</span><span class="onepager-icp-tag">Scale-ups</span></div>
+              </div>
+              <div class="onepager-section">
+                <div class="onepager-section-label" data-pl="Kluczowe metryki" data-en="Key metrics" data-it="Metriche chiave">Kluczowe metryki</div>
+                <div class="onepager-metrics">
+                  <div class="onepager-metric"><div class="onepager-metric-val">-40%</div><div class="onepager-metric-lab" data-pl="Czas planowania" data-en="Planning time" data-it="Tempo di pianificazione">Planowanie</div></div>
+                  <div class="onepager-metric"><div class="onepager-metric-val">1 hub</div><div class="onepager-metric-lab" data-pl="vs 5 narzędzi" data-en="vs 5 tools" data-it="vs 5 strumenti">vs 5 tools</div></div>
+                </div>
+              </div>
+              <div class="onepager-cta"><a href="#" class="onepager-btn primary" data-pl="Demo →" data-en="Demo →" data-it="Demo →">Demo →</a><a href="#" class="onepager-btn secondary">Docs</a></div>
+            </div>
+          </div>
+
+          <div class="onepager-card">
+            <div class="onepager-banner" style="background:linear-gradient(90deg,#10b981,#059669)"></div>
+            <div class="onepager-body">
+              <div class="onepager-eyebrow">B2B SaaS · HR / Recruitment</div>
+              <div class="onepager-title">HireMe</div>
+              <div class="onepager-tagline" data-pl="Rekrutacja bez chaosu. Jeden pipeline, zero zgubionych kandydatów." data-en="Recruitment without chaos. One pipeline, zero lost candidates." data-it="Recruiting senza caos. Un pipeline, zero candidati persi.">Rekrutacja bez chaosu. Jeden pipeline, zero zgubionych kandydatów.</div>
+              <div class="onepager-section">
+                <div class="onepager-section-label">USP</div>
+                <p style="font-size:13px;color:var(--text-2);line-height:1.6" data-pl="ATS zbudowany dla agencji HR - nie dla korporacji. Prosta egzekucja, szybki onboarding, raporty dla klientów w jednym kliknięciu." data-en="ATS built for HR agencies - not corporations. Simple execution, fast onboarding, client reports in one click." data-it="ATS costruito per agenzie HR - non per grandi aziende. Esecuzione semplice, onboarding veloce, report clienti in un clic.">ATS dla agencji HR - nie dla korpo. Prosta egzekucja, szybki onboarding, raporty klientów jednym kliknięciem.</p>
+              </div>
+              <div class="onepager-section">
+                <div class="onepager-section-label">ICP</div>
+                <div class="onepager-icp"><span class="onepager-icp-tag">Agencje HR 2-20 osób</span><span class="onepager-icp-tag">Rekruterzy freelance</span><span class="onepager-icp-tag">In-house Talent</span></div>
+              </div>
+              <div class="onepager-section">
+                <div class="onepager-section-label" data-pl="Kluczowe metryki" data-en="Key metrics" data-it="Metriche chiave">Kluczowe metryki</div>
+                <div class="onepager-metrics">
+                  <div class="onepager-metric"><div class="onepager-metric-val">-30%</div><div class="onepager-metric-lab">Time-to-hire</div></div>
+                  <div class="onepager-metric"><div class="onepager-metric-val">1 view</div><div class="onepager-metric-lab" data-pl="Cały pipeline" data-en="Full pipeline" data-it="Pipeline completo">Pipeline</div></div>
+                </div>
+              </div>
+              <div class="onepager-cta"><a href="https://hireme-amber.vercel.app/login" target="_blank" class="onepager-btn primary">Live app →</a><a href="#" class="onepager-btn secondary">Docs</a></div>
+            </div>
+          </div>
+
+          <div class="onepager-card">
+            <div class="onepager-banner" style="background:linear-gradient(90deg,#ec4899,#be185d)"></div>
+            <div class="onepager-body">
+              <div class="onepager-eyebrow">Website · Interior Design</div>
+              <div class="onepager-title">AN Projekt</div>
+              <div class="onepager-tagline" data-pl="Wnętrza dopasowane do Twojego życia. Portfolio pracowni projektowania w nowoczesnej odsłonie." data-en="Interiors tailored to your life. Design studio portfolio with a modern look." data-it="Interni su misura per la tua vita. Portfolio dello studio di design con un look moderno.">Wnętrza dopasowane do Twojego życia. Portfolio pracowni w nowoczesnej odsłonie.</div>
+              <div class="onepager-section">
+                <div class="onepager-section-label">USP</div>
+                <p style="font-size:13px;color:var(--text-2);line-height:1.6" data-pl="Strona zbudowana w 1 dzień przez AI (Lovable). Pełne portfolio, formularz zapytania, responsywna na każdym urządzeniu." data-en="Website built in 1 day with AI (Lovable). Full portfolio, inquiry form, fully responsive." data-it="Sito web realizzato in 1 giorno con AI (Lovable). Portfolio completo, modulo di richiesta, completamente responsive.">Zbudowana w 1 dzień przez AI (Lovable). Pełne portfolio, formularz zapytania, w pełni responsywna.</p>
+              </div>
+              <div class="onepager-section">
+                <div class="onepager-section-label">ICP</div>
+                <div class="onepager-icp"><span class="onepager-icp-tag">Prywatni klienci</span><span class="onepager-icp-tag">Deweloperzy</span><span class="onepager-icp-tag">Firmy</span></div>
+              </div>
+              <div class="onepager-section">
+                <div class="onepager-section-label" data-pl="Kluczowe metryki" data-en="Key metrics" data-it="Metriche chiave">Kluczowe metryki</div>
+                <div class="onepager-metrics">
+                  <div class="onepager-metric"><div class="onepager-metric-val">1 dzień</div><div class="onepager-metric-lab">Build</div></div>
+                  <div class="onepager-metric"><div class="onepager-metric-val">AI</div><div class="onepager-metric-lab">Lovable</div></div>
+                </div>
+              </div>
+              <div class="onepager-cta"><a href="https://an-projekt.com.pl/" target="_blank" class="onepager-btn primary">Live site →</a><a href="#" class="onepager-btn secondary">Docs</a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /tab-onepapers -->

@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&display=swap');
+@import './tokens.css';
+
+@import "tailwindcss";
+
+/* Base resets */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html[data-app-theme] body,
+html[data-app-theme] #gate {
+  font-family: "Geist", sans-serif !important;
+  transition: background-color .06s linear, color .06s linear !important;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Geist', sans-serif;
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+html[data-app-theme="dark"] body {
+  background:
+    radial-gradient(ellipse 820px 420px at 50% -180px, rgba(235,255,0,0.075), transparent 70%),
+    linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px),
+    var(--bg) !important;
+  background-size: auto, 48px 48px, 48px 48px !important;
+  color: var(--text) !important;
+}
+
+html[data-app-theme="light"] body {
+  background:
+    radial-gradient(ellipse 760px 360px at 50% -140px, rgba(235,255,0,0.18), transparent 70%),
+    radial-gradient(circle at 88% 12%, rgba(0,0,0,0.045), transparent 28%),
+    linear-gradient(to right, rgba(0,0,0,0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.047) 1px, transparent 1px),
+    #faf8f4 !important;
+  background-size: auto, auto, 48px 48px, 48px 48px !important;
+  color: var(--text) !important;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.09); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.16); }

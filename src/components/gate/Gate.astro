@@ -1,0 +1,136 @@
+---
+// Gate.astro - password gate overlay
+---
+
+<div id="gate">
+<div class="g-lang">
+<button class="g-lang-btn" onclick="gLang('pl')">PL</button>
+<button class="g-lang-btn active" onclick="gLang('en')">EN</button>
+<button class="g-lang-btn" onclick="gLang('it')">IT</button>
+</div>
+<button class="g-theme-btn" id="gThemeBtn" onclick="toggleTheme()" title="Przełącz tryb jasny/ciemny" aria-label="Toggle theme">
+<svg id="gThemeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+<div class="g-card">
+<div class="g-avatar" id="gAvt">
+<img src="/wojciech-photo.png" id="gPhoto" onerror="this.style.display='none';document.getElementById('gInit').style.display='flex'" alt="Wojciech Luszczynski">
+<span class="g-avatar-init" id="gInit" style="display:none">WL</span>
+</div>
+<div class="g-name">Wojciech Luszczynski</div>
+<div class="g-badge"><span id="gBadge">GTM Architect · AI / Growth / CRM / SaaS</span></div>
+
+<div class="g-hl" id="gHL" style="display:none"></div>
+<div class="g-desc" id="gDesc">I build revenue-generating growth systems for HR Tech companies. AI-first approach to demand generation, product marketing, and revenue operations.</div>
+<div class="g-socials"><a href="https://wojciech.io" target="_blank" class="g-social"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Portfolio</a><a href="https://github.com/wojciechluszczynski" target="_blank" class="g-social"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>GitHub</a><a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank" class="g-social"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>LinkedIn</a></div>
+<div class="g-divider"></div>
+
+<input class="gate-input" type="password" id="pwInput" placeholder="Password" autocomplete="off">
+<button class="gate-btn" onclick="checkPw()" id="gBtn">Enter &rarr;</button>
+<div class="gate-err" id="gateErr">Wrong password</div>
+</div>
+
+<div class="g-trusted">
+<p class="g-trusted-lbl">Trusted by</p>
+<div class="g-trusted-names">
+  <a href="https://www.getresponse.com" rel="nofollow noopener" target="_blank">GetResponse</a><span class="g-dot">&middot;</span><a href="https://sentione.com" rel="nofollow noopener" target="_blank">SentiOne</a><span class="g-dot">&middot;</span><a href="https://www.gigroupholding.com" rel="nofollow noopener" target="_blank">Gi Group</a><span class="g-dot">&middot;</span><a href="https://webwave.me" rel="nofollow noopener" target="_blank">WebWave</a>
+</div>
+</div>
+</div>
+
+<script is:inline>
+// Gate logic
+var _gL = 'en';
+var _gC = {
+  pl: {hl:'Head of Growth · HR Tech & B2B SaaS', desc:'Buduje systemy wzrostu generujace 7-cyfrowe przychody dla firm HR Tech. AI-first podejscie do demand generation, product marketingu i revenue operations.', acc:'Dostep prywatny', btn:'Wejdz →', err:'Nieprawidłowe hasło', ph:'Hasło', bdg:'GTM Architect · AI / Growth / CRM / SaaS'},
+  en: {hl:'Head of Growth · HR Tech & B2B SaaS', desc:'I build revenue-generating growth systems for HR Tech companies. AI-first approach to demand generation, product marketing, and revenue operations.', acc:'Private access', btn:'Enter →', err:'Wrong password', ph:'Password', bdg:'GTM Architect · AI / Growth / CRM / SaaS'},
+  it: {hl:'Head of Growth · HR Tech & B2B SaaS', desc:'Costruisco sistemi di crescita che generano ricavi a sette cifre per aziende HR Tech. Approccio AI-first alla demand generation, product marketing e revenue operations.', acc:'Accesso privato', btn:'Entra →', err:'Password errata', ph:'Password', bdg:'GTM Architect · AI / Growth / CRM / SaaS'}
+};
+
+function gLang(l) {
+  _gL = l;
+  try { localStorage.setItem('gLang', l); } catch(e) {}
+  document.querySelectorAll('.g-lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.textContent === l.toUpperCase());
+  });
+  var c = _gC[l] || _gC.en;
+  function setText(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+  setText('gHL', c.hl);
+  setText('gDesc', c.desc);
+  setText('gBtn', c.btn);
+  setText('gateErr', c.err);
+  setText('gBadge', c.bdg);
+  var pw = document.getElementById('pwInput');
+  if (pw) pw.placeholder = c.ph;
+}
+
+function toggleTheme() {
+  var g = document.getElementById('gate');
+  var icon = document.getElementById('gThemeIcon');
+  var isLight = g.classList.toggle('light-mode');
+  var mode = isLight ? 'light' : 'dark';
+  localStorage.setItem('gTheme', mode);
+  if (typeof setAppTheme === 'function') setAppTheme(mode);
+  icon.innerHTML = isLight
+    ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>'
+    : '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+}
+
+function checkPw() {
+  var val = document.getElementById('pwInput').value.trim().toLowerCase();
+  var err = document.getElementById('gateErr');
+  if (val === 'wojciech') {
+    sessionStorage.setItem('pw_ok', '1');
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    if (typeof initAppTheme === 'function') initAppTheme();
+    if (typeof applyLang === 'function') applyLang();
+  } else {
+    err.classList.add('show');
+    document.getElementById('pwInput').value = '';
+    setTimeout(function() { err.classList.remove('show'); }, 2000);
+  }
+}
+
+document.getElementById('pwInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkPw();
+});
+
+// Init gate theme from saved preference
+(function() {
+  var saved = localStorage.getItem('gTheme') || localStorage.getItem('appTheme');
+  var mode;
+  if (saved) { mode = saved === 'dark' ? 'dark' : 'light'; }
+  else { mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+  var g = document.getElementById('gate');
+  var icon = document.getElementById('gThemeIcon');
+  if (mode === 'light') {
+    if (g) g.classList.add('light-mode');
+    if (icon) icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>';
+  }
+})();
+
+// Init gate language
+(function() {
+  var sl = localStorage.getItem('gLang');
+  var detected;
+  if (sl && ['pl','en','it'].indexOf(sl) > -1) { detected = sl; }
+  else {
+    var bl = (navigator.language || 'en').toLowerCase();
+    if (bl.startsWith('pl')) { detected = 'pl'; }
+    else if (bl.startsWith('it')) { detected = 'it'; }
+    else { detected = 'en'; }
+  }
+  gLang(detected);
+})();
+
+// Auto-unlock if session is active
+if (sessionStorage.getItem('pw_ok') === '1') {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+}
+
+setTimeout(function() {
+  var inp = document.getElementById('pwInput');
+  if (inp) inp.focus();
+}, 80);
+</script>

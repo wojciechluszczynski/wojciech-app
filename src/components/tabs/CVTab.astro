@@ -1,0 +1,368 @@
+---
+// CVTab.astro
+---
+
+<div class="tab-content" id="tab-cv">
+      <div class="cv-page">
+
+        <!-- ── 1. HEADER ── -->
+        <div class="cv-header-strip">
+          <div style="display:flex;align-items:flex-start;gap:20px">
+            <img src="/wojciech-photo.png" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--lime);flex-shrink:0" alt="Wojciech">
+            <div>
+              <div class="cv-h-name">Wojciech Łuszczyński</div>
+              <div class="cv-h-title" data-pl="Architekt GTM · AI / Automatyzacja / CRM / Growth / SaaS" data-en="GTM Architect · AI / Automation / CRM / Growth / SaaS" data-it="Architetto GTM · AI / Automazione / CRM / Crescita / SaaS">GTM Architect · AI / Automation / CRM / Growth / SaaS</div>
+              <div class="cv-h-contacts" style="margin-top:10px">
+                <span class="cv-h-contact"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,12 2,6"></polyline></svg><a href="mailto:hello@wojciech.io">hello@wojciech.io</a></span>
+                <span class="cv-h-contact"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg><a href="https://wojciech.io" target="_blank">wojciech.io</a></span>
+                <span class="cv-h-contact"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg><a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank">LinkedIn</a></span>
+                <span class="cv-h-contact"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg><a href="https://github.com/wojciechluszczynski" target="_blank">GitHub</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 2. SUMMARY + BY THE NUMBERS ── -->
+        <div class="cv-card">
+          <div class="cv-sec-title" data-pl="Summary" data-en="Summary" data-it="Sommario">Summary</div>
+          <p style="font-size:14px;color:var(--text-2);line-height:1.75;margin-bottom:20px" data-pl="Growth spotyka AI. Buduję produkty cyfrowe, systemy przychodowe i stosy automatyzacji - od zera do trakcji. SaaS, B2B i AI-first od zanim to było modne." data-en="Growth meets AI. I build digital products, revenue systems, and automation stacks - from zero to traction. SaaS, B2B, and AI-first since before the hype." data-it="Growth incontra l'AI. Creo prodotti digitali, sistemi di revenue e stack di automazione - da zero alla trazione. SaaS, B2B e AI-first prima che diventasse di moda.">Growth meets AI. I build digital products, revenue systems, and automation stacks - from zero to traction. SaaS, B2B, and AI-first since before the hype.</p>
+          <div id="cv-summary-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-top:1px solid var(--border);padding-top:18px">
+            <div style="text-align:center;padding:8px 0">
+              <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">20+</div>
+              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Lat w GTM / Growth" data-en="Years in GTM / Growth" data-it="Anni in GTM / Growth">Lat w GTM / Growth</div>
+            </div>
+            <div style="text-align:center;padding:8px 0;border-left:1px solid var(--border)">
+              <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">60%</div>
+              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Brand Lift przy SentiOne" data-en="Brand Lift at SentiOne" data-it="Brand Lift a SentiOne">Brand Lift przy SentiOne</div>
+            </div>
+            <div style="text-align:center;padding:8px 0;border-left:1px solid var(--border)">
+              <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">80%</div>
+              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Wzrost pozyskiwania klientów" data-en="Customer Acq. Growth" data-it="Crescita acquisizione clienti">Customer Acq. Growth</div>
+            </div>
+            <div style="text-align:center;padding:8px 0;border-left:1px solid var(--border)">
+              <div style="font-size:clamp(28px,5vw,40px);font-weight:900;color:var(--text);letter-spacing:-1.5px;line-height:1">150%</div>
+              <div style="font-size:11px;color:var(--text-2);margin-top:5px;line-height:1.4" data-pl="Śr. wzrost<br>przychodów" data-en="Avg. Revenue Uplift" data-it="Crescita media ricavi">Avg. Revenue Uplift</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 3. EXPERIENCE + TOOLS (2-col) ── -->
+        <div class="cv-body">
+
+          <!-- LEFT: Experience - ALL bullets visible, no expand -->
+          <div class="cv-card">
+            <div class="cv-sec-title" data-pl="Doświadczenie zawodowe" data-en="Professional Experience" data-it="Esperienza professionale">Doświadczenie zawodowe</div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Fractional GTM &amp; Growth Lead" data-en="Fractional GTM &amp; Growth Lead" data-it="Responsabile GTM &amp; Crescita Fractional">Fractional GTM &amp; Growth Lead</div>
+                <div class="cv-role-date">Oct 2025 – Feb 2026</div>
+              </div>
+              <div class="cv-role-company"><a href="https://codilime.com" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:none">CodiLime</a></div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Kontrakt" data-en="Contract" data-it="Contratto">Contract</span><span class="cv-badge-ind">B2B Tech</span><span class="cv-badge-ind">Fractional GTM</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="Owned end-to-end GTM - full-funnel od awareness do zamkniętego pipeline" data-en="Owned end-to-end GTM execution - built full-funnel from awareness to pipeline" data-it="GTM end-to-end - costruito full-funnel dall'awareness al pipeline">Owned E2E GTM - full-funnel od awareness do pipeline</li>
+                <li data-pl="Wdrożenie AI content loops → redukcja kosztu produkcji o ~60%" data-en="Deployed AI-driven content loops reducing production cost by ~60%" data-it="AI content loops → -60% costo di produzione">AI content loops → -60% kosztu produkcji</li>
+                <li data-pl="4 lead magnety w 6 tygodniach → +35% MoM wzrost inbound leadów" data-en="Shipped 4 lead magnets in 6 weeks; drove 35%+ MoM growth in inbound leads" data-it="4 lead magnet in 6 settimane → +35% MoM inbound">4 lead magnety w 6 tygodniach → +35% MoM inbound</li>
+                <li data-pl="Budowa revenue-linked dashboardów łączących marketing z closed-won" data-en="Built revenue-linked measurement dashboards connecting marketing to closed-won" data-it="Dashboard revenue collegati al marketing → closed-won">Revenue dashboards: marketing → closed-won</li>
+                <li data-pl="Współpraca z Sales &amp; Product → -2 tygodnie avg. deal cycle" data-en="Partnered with Sales &amp; Product to cut avg. deal cycle by 2 weeks" data-it="Partnership con Sales &amp; Product → -2 sett. deal cycle medio">Partnerstwo z Sales &amp; Product → -2 tyg. deal cycle</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Fractional Head of Marketing" data-en="Fractional Head of Marketing" data-it="Responsabile Marketing Fractional">Fractional Head of Marketing</div>
+                <div class="cv-role-date">May – Oct 2025</div>
+              </div>
+              <div class="cv-role-company"><a href="https://webwave.me" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:none">WebWave</a> · Berlin, Germany</div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Kontrakt" data-en="Contract" data-it="Contratto">Contract</span><span class="cv-badge-ind">SaaS B2B</span><span class="cv-badge-ind">Website Builder</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="Redesign GTM: pivot B2C→B2B → 3× pipeline improvement" data-en="Redesigned GTM strategy pivoting from B2C to B2B - 3× pipeline improvement" data-it="Redesign GTM: pivot B2C→B2B → 3× miglioramento pipeline">GTM pivot B2C→B2B → 3× pipeline</li>
+                <li data-pl="Paid + SEO: -40% CPL vs. poprzedni okres" data-en="Led paid + SEO campaigns achieving 40% lower CPL vs. prior period" data-it="Paid + SEO: -40% CPL vs. periodo precedente">Paid + SEO: -40% CPL vs. poprzedni okres</li>
+                <li data-pl="Messaging framework wdrożony na 6 rynkach" data-en="Built messaging framework adopted across 6 markets" data-it="Messaging framework implementato su 6 mercati">Messaging framework → 6 rynków</li>
+                <li data-pl="Cykl tygodniowych growth experiments: 12+ testów w 5 miesiącach" data-en="Introduced weekly growth experiments; shipped 12+ tests in 5 months" data-it="12+ growth experiment in 5 mesi">12+ growth experiments w 5 miesiącach</li>
+                <li data-pl="Budowa działu performance marketing od zera" data-en="Built performance marketing team from scratch" data-it="Costruzione del team performance marketing da zero">Budowa działu performance od zera</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Head of Growth &amp; Web Development" data-en="Head of Growth &amp; Web Development" data-it="Head of Growth &amp; Sviluppo Web">Head of Growth &amp; Web Development</div>
+                <div class="cv-role-date">2024 – Oct 2025</div>
+              </div>
+              <div class="cv-role-company"><a href="https://symfonia.pl" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:none">Symfonia</a></div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Etat" data-en="Full-time" data-it="Tempo pieno">Full-time</span><span class="cv-badge-ind">ERP / Accounting SaaS</span><span class="cv-badge-ind">Polish Market SEO</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="+85% organic traffic YoY (technical SEO + content architecture)" data-en="Increased organic traffic by 85% YoY through technical SEO and content architecture" data-it="+85% traffico organico YoY">+85% organic traffic YoY</li>
+                <li data-pl="Pełen redesign strony → -28% bounce rate" data-en="Led complete website redesign cutting bounce rate by 28%" data-it="Redesign sito → -28% bounce rate">Redesign → -28% bounce rate</li>
+                <li data-pl="3 landing pages z avg. 7.4% conversion rate" data-en="Launched 3 product landing pages with avg. conversion rate of 7.4%" data-it="3 landing page → avg. 7,4% CR">3 landing pages → avg. 7.4% CR</li>
+                <li data-pl="Cross-functional delivery 6 projektów on time &amp; on budget" data-en="Coordinated cross-functional delivery of 6 web projects on time and on budget" data-it="6 progetti web - on time &amp; on budget">6 projektów web - on time &amp; on budget</li>
+                <li data-pl="Wdrożenie Jira + agile workflows dla 19-osobowego działu marketingu" data-en="Jira + agile workflow implementation for 19-person marketing team" data-it="Jira + agile per team marketing di 19 persone">Jira + agile dla 19-os. działu marketingu</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Chief Marketing Officer" data-en="Chief Marketing Officer" data-it="Chief Marketing Officer">Chief Marketing Officer</div>
+                <div class="cv-role-date">Oct 2023 – Dec 2024</div>
+              </div>
+              <div class="cv-role-company"><a href="https://tekhuset.no" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:none">Tekhuset AS</a> · Oslo, Norway</div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Etat" data-en="Full-time" data-it="Tempo pieno">Full-time</span><span class="cv-badge-ind">IT Services</span><span class="cv-badge-ind">Scandinavian Market</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="Pełna odpowiedzialność za strategię marketingową i GTM w Norwegii" data-en="Full ownership of marketing strategy and GTM execution in Norwegian market" data-it="Piena responsabilità GTM - mercato norvegese">Full GTM ownership - rynek norweski</li>
+                <li data-pl="Budowa marki B2B od podstaw: identyfikacja, messaging, kanały" data-en="Built B2B brand from scratch - identity, messaging, channel mix" data-it="Brand B2B da zero: identità, messaging, mix di canali">Brand B2B od zera: identyfikacja, messaging, kanały</li>
+                <li data-pl="Wdrożenie content + SEO → 3× wzrost organic visibility w 8 mies." data-en="Implemented content + SEO strategy; 3× organic visibility growth in 8 months" data-it="Content + SEO → 3× visibilità organica in 8 mesi">Content + SEO → 3× organic visibility w 8 mies.</li>
+                <li data-pl="Zarządzanie budżetem marketingowym i pipeline leadowym" data-en="Managed marketing budget and lead pipeline end-to-end" data-it="Budget marketing + pipeline lead E2E">P&amp;L marketingowy + pipeline leadowy E2E</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Global Head of Growth &amp; Retention" data-en="Global Head of Growth &amp; Retention" data-it="Global Head of Growth &amp; Retention">Global Head of Growth &amp; Retention</div>
+                <div class="cv-role-date">Oct 2020 – Jun 2024</div>
+              </div>
+              <div class="cv-role-company"><a href="https://sentione.com" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:none">SentiOne</a></div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Etat" data-en="Full-time" data-it="Tempo pieno">Full-time</span><span class="cv-badge-ind">AI / NLP SaaS</span><span class="cv-badge-ind">Social Listening</span><span class="cv-badge-ind">Global</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="Ownership over global pipeline: MQL → SQL → closed-won" data-en="Owned global revenue pipeline from MQL through SQL to closed-won" data-it="Pipeline revenue globale: MQL → SQL → closed-won">Global pipeline: MQL → SQL → closed-won</li>
+                <li data-pl="+120% ARR w 3 latach → expansion revenue jako główny driver" data-en="+120% ARR over 3 years - expansion revenue as primary growth driver" data-it="+120% ARR in 3 anni → expansion come principale driver">+120% ARR w 3 latach → expansion jako główny driver</li>
+                <li data-pl="Redukcja churn z 18% do 9% przez lifecycle + CS playbooks" data-en="Reduced churn from 18% to 9% through lifecycle programs and CS playbooks" data-it="Churn: 18% → 9% - lifecycle + CS playbook">Churn: 18% → 9% - lifecycle + CS playbooks</li>
+                <li data-pl="Budowa globalnego zespołu growth (7 osób, 5 rynków)" data-en="Built global growth team of 7 across 5 markets" data-it="Costruzione growth team globale: 7 persone, 5 mercati">Budowa growth team: 7 osób, 5 rynków</li>
+                <li data-pl="ABM + intent data → 2× win rate na enterprise dealach" data-en="Implemented ABM + intent data strategy; 2× win rate on enterprise deals" data-it="ABM + intent data → 2× win rate enterprise">ABM + intent data → 2× win rate enterprise</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Global AI &amp; Innovation Manager" data-en="Global AI &amp; Innovation Manager" data-it="Global AI &amp; Innovation Manager">Global AI &amp; Innovation Manager</div>
+                <div class="cv-role-date">2022</div>
+              </div>
+              <div class="cv-role-company"><a href="https://gigroupholding.com" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:none">Gi Group Holding</a> · Milan, Italy</div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Projekt" data-en="Project" data-it="Progetto">Project</span><span class="cv-badge-ind">HR Tech Enterprise</span><span class="cv-badge-ind">AI Strategy</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="Scope i roadmapa dla 3 inicjatyw AI w 5 jednostkach biznesowych" data-en="Defined scope and delivery roadmap for 3 AI initiatives across 5 business units" data-it="3 iniziative AI in 5 business unit">3 inicjatywy AI w 5 jednostkach biznesowych</li>
+                <li data-pl="Mapowanie wymagań biznesowych → cyfrowe procesy E2E" data-en="Mapped and translated complex business requirements into digital E2E processes" data-it="Requisiti business → processi digitali E2E">Mapowanie wymagań → procesy cyfrowe E2E</li>
+                <li data-pl="C-suite alignment w 4 krajach → pipeline innowacji €2M+" data-en="Built C-suite alignment across 4 countries for innovation pipeline worth €2M+" data-it="C-suite alignment, 4 paesi → €2M+ pipeline innovazione">C-suite alignment, 4 kraje → €2M+ pipeline</li>
+                <li data-pl="8 szans innowacyjnych zakwalifikowanych przez discovery sprinty" data-en="Identified and qualified 8 innovation opportunities through structured discovery sprints" data-it="8 opportunità di innovazione - discovery sprint">8 innovation opportunities - discovery sprinty</li>
+                <li data-pl="Warsztaty cross-country z 40+ stakeholderami" data-en="Facilitated cross-country workshops with 40+ stakeholders" data-it="Workshop cross-country, 40+ stakeholder">Warsztaty cross-country, 40+ stakeholders</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Head of Lifecycle Marketing" data-en="Head of Lifecycle Marketing" data-it="Head of Lifecycle Marketing">Head of Lifecycle Marketing</div>
+                <div class="cv-role-date">Oct 2019 – Oct 2020</div>
+              </div>
+              <div class="cv-role-company"><a href="https://getresponse.com" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:none">GetResponse</a></div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Etat" data-en="Full-time" data-it="Tempo pieno">Full-time</span><span class="cv-badge-ind">Email Marketing SaaS</span><span class="cv-badge-ind">PLG · Global</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="Strategia lifecycle dla 350k+ aktywnych użytkowników w 180 krajach" data-en="Managed lifecycle strategy for 350,000+ active users across 180 countries" data-it="Lifecycle → 350k+ utenti, 180 paesi">Lifecycle → 350k+ użytkowników, 180 krajów</li>
+                <li data-pl="+18% trial-to-paid przez redesign sekwencji onboardingowej" data-en="Increased trial-to-paid conversion by 18% through onboarding sequence redesign" data-it="+18% trial-to-paid → redesign onboarding">+18% trial-to-paid → onboarding redesign</li>
+                <li data-pl="30+ A/B testów (email, in-app, push) → +22% engagement" data-en="Ran 30+ A/B tests across email, in-app, and push - improving engagement by 22%" data-it="30+ A/B test → +22% engagement">30+ A/B testów → +22% engagement</li>
+                <li data-pl="Marketing automation flows → -40% pracy manualnej w kampaniach" data-en="Built marketing automation flows that reduced manual campaign work by 40%" data-it="Automation flow → -40% lavoro manuale campagne">Automation flows → -40% pracy manualnej</li>
+                <li data-pl="Współpraca Product + CS → 3 nowe lifecycle features" data-en="Cross-functional work with Product &amp; CS → 3 lifecycle features" data-it="Collaborazione Product + CS → 3 lifecycle feature">Współpraca Product + CS → 3 lifecycle features</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Head of Digital" data-en="Head of Digital" data-it="Head of Digital">Head of Digital</div>
+                <div class="cv-role-date">2018 – 2019</div>
+              </div>
+              <div class="cv-role-company"><a href="https://marquard.de" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:none">Marquard Group</a> · Hamburg, Germany</div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Etat" data-en="Full-time" data-it="Tempo pieno">Full-time</span><span class="cv-badge-ind">Media / Publishing</span><span class="cv-badge-ind">B2B + B2C Multi-brand</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="5 teamów (21 osób) → 9 portali i nowe inicjatywy" data-en="Led digital department of 5 teams (21 people) across 9 portals and new ventures" data-it="5 team (21 persone), 9 portali">5 teamów (21 osób), 9 portali</li>
+                <li data-pl="Aplikacja mobilna B2C+B2B → 25k pobrań w 3 miesiące" data-en="Launched mobile app (B2C + B2B) - 25,000 downloads in first 3 months" data-it="App: 25k download in 3 mesi">App: 25k downloads w 3 mies.</li>
+                <li data-pl="Multichannel funnels → +35% lead quality score" data-en="Built multichannel funnels improving lead quality score by 35%" data-it="Funnel multicanale → +35% lead quality score">Multichannel funnels → +35% lead quality</li>
+                <li data-pl="GTM strategy dla 2 nowych wejść rynkowych" data-en="Prepared and executed GTM strategy for 2 new market entries" data-it="GTM per 2 nuovi mercati">GTM dla 2 nowych rynków</li>
+                <li data-pl="Zarządzanie digital P&amp;L i ad spend na 9 portalach" data-en="Managed digital P&amp;L and ad spend across 9 portals" data-it="Gestione digital P&amp;L, 9 portali">Zarządzanie digital P&amp;L, 9 portali</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Head of Marketing" data-en="Head of Marketing" data-it="Head of Marketing">Head of Marketing</div>
+                <div class="cv-role-date">Jan – Dec 2018</div>
+              </div>
+              <div class="cv-role-company">Lilla House Digital · Cracow, Poland</div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Etat" data-en="Full-time" data-it="Tempo pieno">Full-time</span><span class="cv-badge-ind">Digital Agency</span><span class="cv-badge-ind">SMB · Performance</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="Zarządzanie SEO, PPC, email i social dla 8 klientów jednocześnie" data-en="Managed SEO, PPC, email, and social for 8 client accounts simultaneously" data-it="SEO, PPC, email, social - 8 clienti in contemporanea">SEO, PPC, email, social - 8 klientów równocześnie</li>
+                <li data-pl="Avg. 3.8× ROAS dla kampanii e-commerce" data-en="Delivered avg. 3.8× ROAS across paid campaigns for e-commerce clients" data-it="Avg. 3,8× ROAS">Avg. 3.8× ROAS</li>
+                <li data-pl="Miesięczne raporty KPI dla każdego klienta" data-en="Built monthly KPI reporting dashboards per client" data-it="Report KPI mensili per cliente">Miesięczne raporty KPI per klient</li>
+                <li data-pl="Koordynacja produkcji treści: copy, design, dev" data-en="Coordinated content production across copy, design, dev" data-it="Coordinamento copy, design, dev in un unico flow">Koordynacja copy, design, dev w jednym flow</li>
+                <li data-pl="Optymalizacja CRO landing pages klientów" data-en="Ran CRO experiments on client landing pages" data-it="CRO sulle landing page dei clienti">CRO na landing pages klientów</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Head of MarComm / Sr PR Manager / PR Manager" data-en="Head of MarComm / Sr PR Manager / PR Manager" data-it="Head of MarComm / Sr PR Manager / PR Manager">Head of MarComm / Sr PR Manager / PR Manager</div>
+                <div class="cv-role-date">2010 – 2018</div>
+              </div>
+              <div class="cv-role-company"><a href="https://uml.lodz.pl" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:none">City of Łódź Office</a> · Łódź, Poland</div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Etat" data-en="Full-time" data-it="Tempo pieno">Full-time</span><span class="cv-badge-ind">Public Administration</span><span class="cv-badge-ind">8 years · 3 promotions</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="8 lat w urzędzie - awans: PR Mgr (2010) → Sr PR Mgr (2012) → Head of MarComm (2015)" data-en="8-year tenure - promoted: PR Mgr (2010) → Sr PR Mgr (2012) → Head of MarComm (2015)" data-it="PR Mgr (2010) → Sr PR Mgr (2012) → Head of MarComm (2015)">PR Mgr (2010) → Sr PR Mgr (2012) → Head of MarComm (2015)</li>
+                <li data-pl="Zarządzanie komunikacją zewnętrzną i medialną miasta" data-en="Managed city-wide external and media communications strategy" data-it="Comunicazione esterna e media della città di Łódź">Komunikacja zewnętrzna i medialna miasta Łódź</li>
+                <li data-pl="Kampanie miejskie: kulturalne, inwestycyjne, turystyczne" data-en="Led city campaigns: cultural, investment, and tourism initiatives" data-it="Campagne: culturali, investimento, turismo">Kampanie: kulturalne, inwestycyjne, turystyczne</li>
+                <li data-pl="Rzecznictwo prasowe i zarządzanie kryzysowe" data-en="Press relations and crisis communications management" data-it="Relazioni con la stampa + gestione della crisi comunicativa">Rzecznictwo prasowe + zarządzanie kryzysowe</li>
+                <li data-pl="Koordynacja komunikacji dla 20+ wydziałów urzędu" data-en="Coordinated communications across 20+ city departments" data-it="Coordinamento comunicazioni, 20+ dipartimenti comunali">Koordynacja komunikacji, 20+ wydziałów</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Retail Marketing Specialist" data-en="Retail Marketing Specialist" data-it="Specialista Marketing Retail">Retail Marketing Specialist</div>
+                <div class="cv-role-date">2009 – 2010</div>
+              </div>
+              <div class="cv-role-company"><a href="https://mbank.pl" target="_blank" rel="nofollow noopener" style="color:inherit;text-decoration:none">mBank S.A.</a></div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Etat" data-en="Full-time" data-it="Tempo pieno">Full-time</span><span class="cv-badge-ind">Banking / FinTech</span><span class="cv-badge-ind">Retail</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="Kampanie marketingowe dla segmentu klientów detalicznych" data-en="Led marketing campaigns for retail banking customer segment" data-it="Campagne per il segmento clienti retail banking">Kampanie dla segmentu klientów detalicznych</li>
+                <li data-pl="Analiza efektywności działań marketingowych i raportowanie" data-en="Performance analysis and marketing effectiveness reporting" data-it="Analisi performance e reportistica sull'efficacia del marketing">Analiza efektywności i raportowanie kampanii</li>
+                <li data-pl="Współpraca z product teams nad ofertą i komunikacją produktową" data-en="Collaborated with product teams on offer positioning and product communications" data-it="Collaborazione con team product - positioning e comunicazione prodotto">Współpraca z product - positioning i komunikacja</li>
+              </ul>
+            </div>
+
+            <div class="cv-role">
+              <div class="cv-role-head" style="cursor:default">
+                <div class="cv-role-title" data-pl="Wykładowca IT" data-en="IT Lecturer" data-it="Docente IT">IT Lecturer</div>
+                <div class="cv-role-date">1997 – 2002</div>
+              </div>
+              <div class="cv-role-company">Center of Modern Information Technologies</div>
+              <div class="cv-role-badges"><span class="cv-badge-type" data-pl="Edukacja" data-en="Education" data-it="Istruzione">Education</span><span class="cv-badge-ind">IT Training</span></div>
+              <ul class="cv-role-bullets">
+                <li data-pl="Szkolenia z zakresu technologii informatycznych dla dorosłych" data-en="IT training and education for adult learners" data-it="Formazione IT per adulti">Szkolenia IT dla dorosłych uczestników</li>
+                <li data-pl="Projektowanie i prowadzenie kursów komputerowych" data-en="Designed and delivered computer skills courses" data-it="Progettazione e conduzione di corsi di informatica">Projektowanie i prowadzenie kursów komputerowych</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- RIGHT: Tools + Setups + Skills -->
+          <div class="cv-right-stack">
+            <div class="cv-card">
+              <div class="cv-sec-title" data-pl="Narzędzia &amp; Stack" data-en="Professional Tools" data-it="Strumenti professionali">Narzędzia &amp; Stack</div>
+              <div class="cv-tool-group"><div class="cv-tool-group-label" data-pl="AI &amp; Automatyzacja" data-en="AI &amp; Automation" data-it="AI &amp; Automazione">AI &amp; Automation</div><div class="cv-tool-list" style="gap:5px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/anthropic/FF6719" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Claude</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/openai/10A37F" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">ChatGPT</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/googlegemini/4285F4" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Gemini</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/perplexity/1FB8CD" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Perplexity</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;background:#4776E6;color:#fff;font-size:7px;font-weight:900;flex-shrink:0;margin-right:5px">DS</span>DeepSeek</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;background:#1a1a1a;color:#fff;font-size:7px;font-weight:900;flex-shrink:0;margin-right:5px">Gk</span>Grok</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/google/4285F4" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">NotebookLM</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/n8n/EA4B71" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">n8n</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/make/6366F1" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Make</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/zapier/FF4A00" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Zapier</span> </div></div><div class="cv-tool-group"><div class="cv-tool-group-label" data-pl="AI Buildery" data-en="AI Builders" data-it="AI Builder">AI Builders</div><div class="cv-tool-list" style="gap:5px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;background:#FF6B6B;color:#fff;font-size:7px;font-weight:900;flex-shrink:0;margin-right:5px">Lv</span>Lovable</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;background:#1A1A2E;color:#fff;font-size:7px;font-weight:900;flex-shrink:0;margin-right:5px">Bt</span>Bolt</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;background:#4F46E5;color:#fff;font-size:7px;font-weight:900;flex-shrink:0;margin-right:5px">B4</span>Base44</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/cursor/888888" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Cursor</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;background:#18181b;color:#fff;font-size:7px;font-weight:900;flex-shrink:0;margin-right:5px">v0</span>v0</span> </div></div><div class="cv-tool-group"><div class="cv-tool-group-label" data-pl="Analityka &amp; Performance" data-en="Analytics &amp; Performance" data-it="Analytics &amp; Performance">Analytics &amp; Performance</div><div class="cv-tool-list" style="gap:5px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/googleanalytics/E37400" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">GA4</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;background:#197EEF;color:#fff;font-size:7px;font-weight:900;flex-shrink:0;margin-right:5px">Am</span>Amplitude</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/kibana/F04E98" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Kibana</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/grafana/F46800" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Grafana</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/posthog/F54E00" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">PostHog</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;background:#7856FF;color:#fff;font-size:7px;font-weight:900;flex-shrink:0;margin-right:5px">Mx</span>Mixpanel</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;background:#FF642E;color:#fff;font-size:7px;font-weight:900;flex-shrink:0;margin-right:5px">Se</span>SEMrush</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><span style="display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;background:#FF7043;color:#fff;font-size:7px;font-weight:900;flex-shrink:0;margin-right:5px">Ah</span>Ahrefs</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/looker/4285F4" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Looker Studio</span> </div></div><div class="cv-tool-group"><div class="cv-tool-group-label" data-pl="Infrastruktura" data-en="Infrastructure" data-it="Infrastruttura">Infrastructure</div><div class="cv-tool-list" style="gap:5px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/vercel/080808" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Vercel</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/netlify/00C7B7" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Netlify</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/github/080808" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">GitHub</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/docker/2496ED" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Docker</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/cloudflare/F48120" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Cloudflare</span> </div></div><div class="cv-tool-group"><div class="cv-tool-group-label" data-pl="Dane &amp; Backend" data-en="Data &amp; Backend" data-it="Dati &amp; Backend">Data &amp; Backend</div><div class="cv-tool-list" style="gap:5px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/supabase/3ECF8E" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Supabase</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/stripe/635BFF" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Stripe</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/airtable/FCB400" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Airtable</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/salesforce/00A1E0" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Salesforce</span> </div></div><div class="cv-tool-group"><div class="cv-tool-group-label" data-pl="Treści &amp; Społeczność" data-en="Content &amp; Community" data-it="Contenuti &amp; Community">Content &amp; Community</div><div class="cv-tool-list" style="gap:5px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/notion/080808" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Notion</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/substack/FF6719" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Substack</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid rgba(235,255,0,0.32);background:rgba(235,255,0,0.22);color:var(--lime);white-space:nowrap"><img src="https://cdn.simpleicons.org/discord/5865F2" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Discord</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/figma/A259FF" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Figma</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/framer/0055FF" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Framer</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/canva/00C4CC" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Canva</span> <span style="display:inline-flex;align-items:center;font-size:11px;font-weight:500;padding:3px 9px 3px 6px;border-radius:5px;border:1px solid var(--border);background:var(--bg2);color:var(--text-2);white-space:nowrap"><img src="https://cdn.simpleicons.org/webflow/4353FF" width="14" height="14" style="vertical-align:middle;margin-right:5px;flex-shrink:0" onerror="this.style.display='none'" loading="lazy">Webflow</span> </div></div>
+            </div>
+
+            <div class="cv-card">
+              <div class="cv-sec-title" data-pl="Setups per Usecase" data-en="Tool Setups" data-it="Configurazioni per caso d'uso">Setups per Usecase</div>
+              <div class="cv-setup-list">
+                <div class="cv-setup-entry"><div class="cv-setup-name" data-pl="Performance Marketing" data-en="Performance Marketing" data-it="Performance Marketing">Performance Marketing</div><div class="cv-setup-tools"><span class="cv-setup-tool">Claude</span><span class="cv-setup-tool">ChatGPT</span><span class="cv-setup-tool">GA4</span><span class="cv-setup-tool">SEMrush</span><span class="cv-setup-tool">Google Ads</span><span class="cv-setup-tool">Grafana</span><span class="cv-setup-tool">Airtable</span></div></div>
+                <div class="cv-setup-entry"><div class="cv-setup-name" data-pl="Demand Gen" data-en="Demand Gen" data-it="Demand Gen">Demand Gen</div><div class="cv-setup-tools"><span class="cv-setup-tool">Claude</span><span class="cv-setup-tool">Substack</span><span class="cv-setup-tool">LinkedIn</span><span class="cv-setup-tool">n8n</span><span class="cv-setup-tool">Notion</span><span class="cv-setup-tool">Perplexity</span></div></div>
+                <div class="cv-setup-entry"><div class="cv-setup-name" data-pl="Lead Gen" data-en="Lead Gen" data-it="Lead Gen">Lead Gen</div><div class="cv-setup-tools"><span class="cv-setup-tool">Claude</span><span class="cv-setup-tool">Clay</span><span class="cv-setup-tool">n8n</span><span class="cv-setup-tool">Airtable</span><span class="cv-setup-tool">Kibana</span><span class="cv-setup-tool">GitHub</span></div></div>
+                <div class="cv-setup-entry"><div class="cv-setup-name" data-pl="e-commerce" data-en="e-commerce" data-it="e-commerce">e-commerce</div><div class="cv-setup-tools"><span class="cv-setup-tool">Stripe</span><span class="cv-setup-tool">Supabase</span><span class="cv-setup-tool">Vercel</span><span class="cv-setup-tool">Lovable</span><span class="cv-setup-tool">Cloudflare</span></div></div>
+                <div class="cv-setup-entry"><div class="cv-setup-name" data-pl="Marketing Automation" data-en="Marketing Automation" data-it="Marketing Automation">Marketing Automation</div><div class="cv-setup-tools"><span class="cv-setup-tool">n8n</span><span class="cv-setup-tool">Make</span><span class="cv-setup-tool">Airtable</span><span class="cv-setup-tool">GetResponse</span><span class="cv-setup-tool">HubSpot</span></div></div>
+                <div class="cv-setup-entry"><div class="cv-setup-name" data-pl="Growth Strategiczny" data-en="Strategic Growth" data-it="Crescita Strategica">Growth Strategiczny</div><div class="cv-setup-tools"><span class="cv-setup-tool">Reforge</span><span class="cv-setup-tool">Claude</span><span class="cv-setup-tool">Perplexity</span><span class="cv-setup-tool">NotebookLM</span><span class="cv-setup-tool">Notion</span></div></div>
+                <div class="cv-setup-entry"><div class="cv-setup-name" data-pl="Sales Enablement" data-en="Sales Enablement" data-it="Sales Enablement">Sales Enablement</div><div class="cv-setup-tools"><span class="cv-setup-tool">Clay</span><span class="cv-setup-tool">n8n</span><span class="cv-setup-tool">HubSpot</span><span class="cv-setup-tool">Notion</span><span class="cv-setup-tool">Discord</span></div></div>
+              </div>
+            </div>
+
+            <div class="cv-card">
+              <div class="cv-sec-title" data-pl="Kluczowe kompetencje" data-en="Key Technical Skills" data-it="Competenze chiave">Kluczowe kompetencje</div>
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--lime);margin-bottom:7px" data-pl="Growth &amp; Marketing" data-en="Growth &amp; Marketing" data-it="Growth &amp; Marketing">Growth &amp; Marketing</div><div style="font-size:12px;color:var(--text-2);line-height:1.7">Brand Management · Communications · Digital Advertising · Email Marketing · Go-To-Market Strategy · Partner Marketing · PR · SEO · UX/UI</div></div>
+                <div style="border-top:1px solid var(--border);padding-top:12px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--lime);margin-bottom:7px" data-pl="Data &amp; Tools" data-en="Data &amp; Tools" data-it="Dati &amp; Strumenti">Data &amp; Tools</div><div style="font-size:12px;color:var(--text-2);line-height:1.7">CRM · Data Analytics · Experimentation · Marketing Automation · A/B Testing · LLM Automation</div></div>
+                <div style="border-top:1px solid var(--border);padding-top:12px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--lime);margin-bottom:7px" data-pl="Product &amp; Technology" data-en="Product &amp; Technology" data-it="Prodotto &amp; Tecnologia">Product &amp; Technology</div><div style="font-size:12px;color:var(--text-2);line-height:1.7">API · Customer Journey Mapping · Tech Awareness · PLG · SaaS · Product &amp; Marketing Collaboration</div></div>
+                <div style="border-top:1px solid var(--border);padding-top:12px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--lime);margin-bottom:7px" data-pl="Leadership &amp; Strategy" data-en="Leadership &amp; Strategy" data-it="Leadership &amp; Strategia">Leadership &amp; Strategy</div><div style="font-size:12px;color:var(--text-2);line-height:1.7">Agile · B2B &amp; B2C Marketing · Crisis Management · Leadership · Project Management · Stakeholder Management</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 5. CERTIFICATIONS ── -->
+        <div class="cv-card">
+          <div class="cv-sec-title" data-pl="Licencje &amp; Certyfikaty" data-en="Licenses &amp; Certifications" data-it="Licenze &amp; Certificazioni">Licencje &amp; Certyfikaty</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#4285F4;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">G</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Google Analytics Advanced</div><div style="font-size:10px;color:var(--lime)">Google · 2021</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#EA4335;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">G</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Generative AI Skills</div><div style="font-size:10px;color:var(--lime)">Google · 2023</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#FBBC04;color:#000;font-size:11px;font-weight:800;flex-shrink:0">G</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Google Ads Search &amp; Display</div><div style="font-size:10px;color:var(--lime)">Google Ads · 2021</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#FF6B35;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">R</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Advanced Growth Series</div><div style="font-size:10px;color:var(--lime)">Reforge · 2021</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#FF6B35;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">R</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Retention + Engagement Deep Dive</div><div style="font-size:10px;color:var(--lime)">Reforge · 2021</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#FF7A59;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">H</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Growth-Driven Design</div><div style="font-size:10px;color:var(--lime)">HubSpot Academy · 2021</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#FF7A59;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">H</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Inbound Marketing</div><div style="font-size:10px;color:var(--lime)">HubSpot Academy · 2020</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#FF642E;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">S</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">PPC Automation Exam</div><div style="font-size:10px;color:var(--lime)">SEMrush Academy · 2021</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#003580;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">U</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Elements of AI</div><div style="font-size:10px;color:var(--lime)">Univ. of Helsinki · 2021</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#009FDA;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">Sc</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Professional Scrum</div><div style="font-size:10px;color:var(--lime)">Scrum.org · 2020</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#F48120;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">GR</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Google Data Studio</div><div style="font-size:10px;color:var(--lime)">Google · 2019</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:8px">
+              <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#1e3a5f;color:#fff;font-size:11px;font-weight:800;flex-shrink:0">PM</span>
+              <div><div style="font-size:12px;font-weight:600;color:var(--text)">Project Management</div><div style="font-size:10px;color:var(--lime)">Leadership Center · 2019</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 6. EDUCATION (OSOBNA) ── -->
+        <div class="cv-card">
+          <div class="cv-sec-title" data-pl="Edukacja" data-en="Education" data-it="Istruzione">Edukacja</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+              <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px" data-pl="Executive MBA" data-en="Executive MBA" data-it="Executive MBA">Executive MBA</div>
+              <div style="font-size:12px;color:var(--lime);margin-bottom:2px">UBINS Varsovia</div>
+              <div style="font-size:11px;color:var(--text-3)" data-pl="Amministrazione Aziendale · 2021" data-en="Business Administration · 2021" data-it="Amministrazione Aziendale · 2021">Business Administration · 2021</div>
+            </div>
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+              <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px" data-pl="Magister" data-en="Master of Science" data-it="Laurea Magistrale">Master of Science</div>
+              <div style="font-size:12px;color:var(--lime);margin-bottom:2px">University of Lodz</div>
+              <div style="font-size:11px;color:var(--text-3)" data-pl="Dziennikarstwo i Komunikacja Społeczna · 2020–2022" data-en="Journalism &amp; Social Comm. · 2020–2022" data-it="Giornalismo &amp; Comunicazione Sociale · 2020–2022">Journalism &amp; Social Comm. · 2020–2022</div>
+            </div>
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+              <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px" data-pl="Studia Podyplomowe" data-en="Post-graduate" data-it="Specializzazione Post-laurea">Post-graduate</div>
+              <div style="font-size:12px;color:var(--lime);margin-bottom:2px">Warsaw School of Economics (SGH)</div>
+              <div style="font-size:11px;color:var(--text-3)" data-pl="Public Relations · 2016–2017" data-en="Public Relations · 2016–2017" data-it="Relazioni Pubbliche · 2016–2017">Public Relations · 2016–2017</div>
+            </div>
+            <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+              <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px" data-pl="Licencjat stosunki międzynarodowe" data-en="BA in International Relations" data-it="Laurea Triennale in Relazioni Internazionali">BA in International Relations</div>
+              <div style="font-size:12px;color:var(--lime);margin-bottom:2px">University of Lodz</div>
+              <div style="font-size:11px;color:var(--text-3)" data-pl="Stosunki Międzynarodowe · 2007–2010" data-en="International Relations · 2007–2010" data-it="Relazioni Internazionali · 2007–2010">International Relations · 2007–2010</div>
+            </div>
+          </div>
+          <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-3);margin-bottom:10px" data-pl="Języki" data-en="Languages" data-it="Lingue">Języki</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span style="font-size:12px;padding:4px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text)">🇬🇧 <span data-pl="English" data-en="English" data-it="Inglese">English</span> - <span style="color:var(--lime)" data-pl="Madrelingua / Bilingue" data-en="Native / Bilingual" data-it="Madrelingua / Bilingue">Native / Bilingual</span></span>
+              <span style="font-size:12px;padding:4px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text)">🇵🇱 <span data-pl="Polacco" data-en="Polish" data-it="Polacco">Polish</span> - <span style="color:var(--lime)" data-pl="Madrelingua / Bilingue" data-en="Native / Bilingual" data-it="Madrelingua / Bilingue">Native / Bilingual</span></span>
+              <span style="font-size:12px;padding:4px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text)">🇩🇪 <span data-pl="Tedesco" data-en="German" data-it="Tedesco">German</span> - <span style="color:var(--text-2)" data-pl="Conversazionale" data-en="Conversational" data-it="Conversazionale">Conversational</span></span>
+              <span style="font-size:12px;padding:4px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text)">🇳🇴 <span data-pl="Norvegese" data-en="Norwegian" data-it="Norvegese">Norwegian</span> - <span style="color:var(--text-3)" data-pl="Base" data-en="Basic" data-it="Base">Basic</span></span>
+              <span style="font-size:12px;padding:4px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text)">🇪🇸 <span data-pl="Spagnolo" data-en="Spanish" data-it="Spagnolo">Spanish</span> - <span style="color:var(--text-3)" data-pl="Base" data-en="Basic" data-it="Base">Basic</span></span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cv-page -->
+    </div><!-- /tab-cv -->
