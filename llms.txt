@@ -1,0 +1,15 @@
+# Wojciech Łuszczyński — Apps & Builds
+
+> Private workspace and portfolio of apps, agents, and revenue systems built by Wojciech Łuszczyński — growth operator, AI architect, builder.
+
+## About
+
+app.wojciech.io is Wojciech's personal app portfolio and workspace. It lists shipped products, tools, and experiments across GTM, AI systems, and consumer apps.
+
+This site requires authentication for full access. The landing page and OG data are publicly visible.
+
+## Links
+
+- [wojciech.io](https://wojciech.io) — main site with case studies and positioning
+- [subscribe.wojciech.io](https://subscribe.wojciech.io) — AI Espresso newsletter
+- [academy.wojciech.io](https://academy.wojciech.io) — AI course

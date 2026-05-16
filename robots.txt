@@ -9,3 +9,6 @@ Allow: /
 
 User-agent: LinkedInBot
 Allow: /
+
+User-agent: Slackbot
+Allow: /
