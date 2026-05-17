@@ -1,12 +1,16 @@
 /* TEAM */
-Creator, Author & Developer: Wojciech Łuszczyński
+Creator & Author: Wojciech Łuszczyński
+Role: Growth operator, GTM architect, AI-native builder
 Site: https://wojciech.io
-App workspace: https://app.wojciech.io
 LinkedIn: https://www.linkedin.com/in/wojciech-luszczynski/
 GitHub: https://github.com/wojciechluszczynski
 Twitter / X: https://twitter.com/w_luszczynski
+Newsletter: https://subscribe.wojciech.io
 From: Poland, Europe
-Skills: GTM architecture, AI-native workflows, native macOS development (Swift/AppKit), RevOps, growth systems, product delivery
+
+Core expertise: growth marketing, performance marketing, GTM architecture,
+marketing automation, AI-native workflows, CRM / RevOps, B2B SaaS,
+paid acquisition, analytics, brand communication
 
 /* SITE */
 Last update: 2026-05
