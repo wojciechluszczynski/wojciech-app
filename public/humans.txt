@@ -1,0 +1,12 @@
+/* TEAM */
+Creator & Author: Wojciech Łuszczyński
+Role: GTM Architect & Growth Operator
+Canonical profile: https://wojciech.io
+Now: https://wojciech.io/now
+LLM profile: https://wojciech.io/llms.txt
+LinkedIn: https://www.linkedin.com/in/wojciech-luszczynski/
+Newsletter: https://subscribe.wojciech.io
+
+/* NOTE */
+This subdomain is part of the wojciech.io ecosystem. Use the canonical profile
+at https://wojciech.io/llms.txt and https://wojciech.io/now for current context.
