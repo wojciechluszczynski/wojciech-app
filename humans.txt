@@ -1,0 +1,13 @@
+/* TEAM */
+Creator, Author & Developer: Wojciech Łuszczyński
+Site: https://wojciech.io
+App workspace: https://app.wojciech.io
+LinkedIn: https://www.linkedin.com/in/wojciech-luszczynski/
+GitHub: https://github.com/wojciechluszczynski
+Twitter / X: https://twitter.com/w_luszczynski
+From: Poland, Europe
+Skills: GTM architecture, AI-native workflows, native macOS development (Swift/AppKit), RevOps, growth systems, product delivery
+
+/* SITE */
+Last update: 2026-05
+Hosting: Cloudflare Pages
