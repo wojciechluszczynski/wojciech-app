@@ -2,10 +2,19 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "portfolio",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "3457"],
-      "port": 3457
+      "name": "astro-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview", "--", "--port", "$PORT"],
+      "port": 4399,
+      "autoPort": true
+    },
+    {
+      "name": "wojciech-io",
+      "cwd": "/Users/wojciech/wojciech.io",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview", "--", "--port", "$PORT"],
+      "port": 4400,
+      "autoPort": true
     }
   ]
 }

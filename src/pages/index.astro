@@ -738,24 +738,20 @@
     }
 
     /* ===================== FOOTER ===================== */
-    footer {
-      max-width:1440px; margin:0 auto;
-      padding:18px clamp(14px,4vw,48px);
-      border-top:1px solid var(--border);
-      display:flex; align-items:center; justify-content:space-between;
-      flex-wrap:wrap; gap:10px;
-    }
-    footer p { font-size:11px; color:var(--text-3); font-weight:500; }
-    footer p span { color:var(--text-2); font-weight:600; }
-    .footer-socials { display:flex; gap:6px; }
-    .fsoc {
-      width:28px; height:28px; border-radius:7px;
-      display:flex; align-items:center; justify-content:center;
-      color:var(--text-3); text-decoration:none;
-      transition:color .15s, background .15s;
-    }
-    .fsoc:hover { color:var(--lime); background:var(--bg1); }
-    @media(max-width:600px) { footer { flex-direction:column; align-items:center; text-align:center; } }
+    footer { background:var(--bg); border-top:1px solid var(--border); display:block; }
+    .ft-inner { max-width:1440px; margin:0 auto; padding:0 clamp(14px,4vw,48px); }
+    .ft-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:32px; padding:28px 0 20px; }
+    .ft-logo { display:inline-flex; align-items:baseline; text-decoration:none; margin-bottom:10px; font-size:14px; font-weight:700; color:var(--text); }
+    .ft-badge { background:var(--lime); color:#080808; border-radius:5px; padding:1px 5px; font-size:10px; font-weight:700; margin-left:2px; }
+    .ft-tagline { font-size:12px; color:var(--text-3); line-height:1.5; max-width:220px; margin-top:6px; }
+    .ft-head { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-3); margin-bottom:10px; }
+    .ft-list { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+    .ft-list a { font-size:12px; color:var(--text-2); text-decoration:none; transition:color .15s; }
+    .ft-list a:hover { color:var(--lime); }
+    .ft-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; border-top:1px solid var(--border); padding:14px 0; }
+    .ft-bottom p { font-size:11px; color:var(--text-3); flex:none; }
+    @media(max-width:700px) { .ft-grid { grid-template-columns:1fr 1fr; } .ft-grid .ft-brand { grid-column:1/-1; } }
+    @media(max-width:440px) { .ft-grid { grid-template-columns:1fr; } .ft-bottom { flex-direction:column; align-items:center; text-align:center; gap:4px; } }
 
     ::-webkit-scrollbar { width:5px; height:5px; }
     ::-webkit-scrollbar-track { background:transparent; }
@@ -5500,31 +5496,16 @@ body[data-app-theme="light"] .lang-btn.active {
 
 footer {
   width: 100% !important;
-  max-width: none !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  justify-content: space-between !important;
-  text-align: left !important;
+  padding: 0 !important;
+  display: block !important;
 }
 
-footer p {
-  flex: 1 1 320px !important;
+.ft-grid {
+  display: grid !important;
 }
 
-.footer-socials {
-  margin-left: auto !important;
-  justify-content: flex-end !important;
-  flex: 0 0 auto !important;
-}
-
-.fsoc {
-  background: rgba(255,255,255,0.035) !important;
-  border: 1px solid var(--border) !important;
-}
-
-.fsoc:hover {
-  background: rgba(235,255,0,0.10) !important;
-  border-color: rgba(235,255,0,0.34) !important;
+.ft-bottom p {
+  flex: none !important;
 }
 
 .card-actions {
@@ -10676,14 +10657,35 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
 
   
   <footer>
-    <p>© 2026 <span>Wojciech Łuszczyński</span> · <a href="https://wojciech.io/now" target="_blank" rel="noopener" style="color:var(--text-2);text-decoration:none;">Now</a></p>
-    <div class="footer-socials">
-      <a href="https://wojciech.io" target="_blank" class="fsoc" title="Website"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></a>
-      <a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank" class="fsoc" title="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
-      <a href="https://github.com/wojciechluszczynski" target="_blank" class="fsoc" title="GitHub"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-      <a href="https://twitter.com/w_luszczynski" target="_blank" class="fsoc" title="Twitter"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg></a>
-      <a href="https://substack.com/@luscinetti" target="_blank" class="fsoc" title="Substack"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"></path></svg></a>
-      <a href="https://medium.com/@wluszczynski" target="_blank" class="fsoc" title="Medium"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"></path></svg></a>
+    <div class="ft-inner">
+      <div class="ft-grid">
+        <div class="ft-brand">
+          <a href="https://wojciech.io" target="_blank" rel="noopener" class="ft-logo">wojciech<span class="ft-badge">.io</span></a>
+          <p class="ft-tagline" data-en="GTM architect and AI-native builder. Revenue systems for B2B SaaS and technology companies." data-pl="GTM architect i AI-native builder. Systemy revenue dla B2B SaaS i firm technologicznych." data-it="GTM architect e AI-native builder. Sistemi revenue per B2B SaaS e aziende tecnologiche.">GTM architect and AI-native builder. Revenue systems for B2B SaaS and technology companies.</p>
+        </div>
+        <div class="ft-col">
+          <p class="ft-head" data-en="Network" data-pl="Sieć" data-it="Rete">Network</p>
+          <ul class="ft-list">
+            <li><a href="https://wojciech.io" target="_blank" rel="noopener">wojciech.io</a></li>
+            <li><a href="https://subscribe.wojciech.io" target="_blank" rel="noopener">subscribe.wojciech.io</a></li>
+            <li><a href="https://academy.wojciech.io" target="_blank" rel="noopener">academy.wojciech.io</a></li>
+            <li><a href="https://notch.wojciech.io" target="_blank" rel="noopener">notch.wojciech.io</a></li>
+          </ul>
+        </div>
+        <div class="ft-col">
+          <p class="ft-head" data-en="Connect" data-pl="Kontakt" data-it="Contatti">Connect</p>
+          <ul class="ft-list">
+            <li><a href="https://www.linkedin.com/in/wojciech-luszczynski/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/wojciechluszczynski" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://twitter.com/w_luszczynski" target="_blank" rel="noopener noreferrer">X / Twitter</a></li>
+            <li><a href="https://substack.com/@luscinetti" target="_blank" rel="noopener noreferrer">Substack</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ft-bottom">
+        <p>© 2026 Wojciech Łuszczyński · <a href="https://wojciech.io/now" target="_blank" rel="noopener" style="color:var(--text-2);text-decoration:none;" data-en="What I'm doing now" data-pl="Co teraz robię" data-it="Cosa faccio ora">What I'm doing now</a></p>
+        <p>GTM architect · AI-native builder</p>
+      </div>
     </div>
   </footer>
 

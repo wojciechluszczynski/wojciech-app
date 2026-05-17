@@ -1,0 +1,571 @@
+---
+// Private status page — no navigation, password-gated same as main app
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Status — wojciech.io ecosystem</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #F3F2EF;
+      --bg1:       #FFFFFF;
+      --bg2:       #F0EFEC;
+      --bg3:       #E8E7E4;
+      --lime:      #EBFF00;
+      --lime-dim:  rgba(235,255,0,0.14);
+      --lime-glow: rgba(235,255,0,0.25);
+      --green:     #10b36c;
+      --green-dim: rgba(16,179,108,0.10);
+      --border:    rgba(0,0,0,0.08);
+      --border-hi: rgba(0,0,0,0.15);
+      --text:      #080808;
+      --text-2:    #555555;
+      --text-3:    #888888;
+      --r-card:    18px;
+      --r-btn:     99px;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      background:var(--bg); color:var(--text);
+      font-family:'Inter',sans-serif; min-height:100vh;
+    }
+
+    /* Gate */
+    #gate {
+      position:fixed; inset:0; z-index:9999;
+      background:var(--bg);
+      display:flex; align-items:center; justify-content:center; flex-direction:column; padding:24px;
+    }
+    .gate-logo { display:inline-flex; align-items:center; gap:8px; margin-bottom:40px; }
+    .gate-dot { width:9px; height:9px; border-radius:50%; background:var(--lime); box-shadow:0 0 12px var(--lime-glow); }
+    .gate-name { font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; }
+    .gate-inner { width:100%; max-width:360px; text-align:center; }
+    .gate-title { font-size:26px; font-weight:900; letter-spacing:-0.5px; margin-bottom:6px; }
+    .gate-sub { font-size:14px; color:var(--text-2); margin-bottom:28px; }
+    .gate-input {
+      width:100%; padding:15px 18px; background:var(--bg1);
+      border:1px solid var(--border); border-radius:14px;
+      color:var(--text); font-size:15px; font-family:'Inter',sans-serif;
+      font-weight:500; outline:none; letter-spacing:2px; margin-bottom:12px;
+      transition:border-color .2s;
+    }
+    .gate-input:focus { border-color:var(--lime); }
+    .gate-input::placeholder { color:var(--text-3); letter-spacing:0; }
+    .gate-btn {
+      width:100%; padding:15px; background:var(--lime); color:#0f0f0f;
+      font-size:14px; font-weight:900; font-family:'Inter',sans-serif;
+      letter-spacing:0.5px; border:none; border-radius:var(--r-btn);
+      cursor:pointer; transition:all .15s;
+    }
+    .gate-btn:hover { background:#D4E600; transform:translateY(-1px); }
+    .gate-err { margin-top:10px; font-size:13px; color:#ff5f5f; font-weight:600; opacity:0; transition:opacity .2s; }
+    .gate-err.show { opacity:1; }
+
+    /* App shell */
+    #app { display:none; }
+
+    /* Header */
+    .st-header {
+      position:sticky; top:0; z-index:100;
+      background:rgba(243,242,239,0.95);
+      backdrop-filter:blur(20px) saturate(180%);
+      border-bottom:1px solid var(--border);
+      height:60px;
+    }
+    .st-header-inner {
+      max-width:1200px; margin:0 auto;
+      padding:0 clamp(16px,4vw,48px);
+      height:100%; display:flex; align-items:center; justify-content:space-between;
+    }
+    .st-logo { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .st-logo-dot { width:8px; height:8px; border-radius:50%; background:var(--lime); }
+    .st-logo-name { font-size:13px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--text); }
+    .st-badge {
+      font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+      background:var(--bg3); color:var(--text-3); border-radius:6px; padding:3px 8px;
+    }
+
+    /* Page */
+    .st-page { max-width:1200px; margin:0 auto; padding:clamp(24px,4vw,48px) clamp(16px,4vw,48px); }
+    .st-section-title {
+      font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--text-3); margin-bottom:20px;
+    }
+    .st-page-title {
+      font-size:clamp(24px,4vw,36px); font-weight:900; letter-spacing:-0.5px;
+      margin-bottom:6px;
+    }
+    .st-page-sub { font-size:15px; color:var(--text-2); margin-bottom:40px; }
+
+    /* Cards grid */
+    .st-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+      gap:20px;
+      margin-bottom:48px;
+    }
+
+    /* Site card */
+    .st-card {
+      background:var(--bg1); border:1px solid var(--border);
+      border-radius:var(--r-card); padding:24px; overflow:hidden;
+      transition:box-shadow .2s;
+    }
+    .st-card:hover { box-shadow:0 4px 24px rgba(0,0,0,0.07); }
+    .st-card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:16px; }
+    .st-card-meta {}
+    .st-card-domain {
+      font-size:13px; font-weight:700; color:var(--text);
+      text-decoration:none; display:inline-block; margin-bottom:4px;
+    }
+    .st-card-domain:hover { color:var(--text-2); }
+    .st-card-stack { font-size:11px; color:var(--text-3); font-weight:500; }
+    .st-card-status {
+      display:flex; align-items:center; gap:5px;
+      font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;
+      padding:4px 10px; border-radius:99px; white-space:nowrap; flex-shrink:0;
+    }
+    .st-card-status.live {
+      background:var(--green-dim); color:var(--green);
+    }
+    .st-card-status-dot { width:6px; height:6px; border-radius:50%; background:currentColor; }
+
+    .st-card-divider { border:none; border-top:1px solid var(--border); margin:16px 0; }
+
+    /* Changelog */
+    .st-changelog { list-style:none; display:flex; flex-direction:column; gap:10px; }
+    .st-cl-item { display:flex; gap:12px; }
+    .st-cl-date {
+      font-size:10px; font-weight:600; color:var(--text-3);
+      white-space:nowrap; padding-top:2px; min-width:52px;
+    }
+    .st-cl-body {}
+    .st-cl-tag {
+      display:inline-block; font-size:9px; font-weight:700; text-transform:uppercase;
+      letter-spacing:0.1em; padding:2px 6px; border-radius:4px; margin-bottom:3px;
+    }
+    .st-cl-tag.feat { background:var(--lime-dim); color:#5a6200; }
+    .st-cl-tag.fix { background:rgba(16,179,108,0.12); color:#0a7a4a; }
+    .st-cl-tag.copy { background:rgba(0,0,0,0.06); color:var(--text-3); }
+    .st-cl-tag.sync { background:rgba(99,102,241,0.10); color:#4f46e5; }
+    .st-cl-text { font-size:12px; color:var(--text-2); line-height:1.5; }
+
+    /* Sprint summary table */
+    .st-table-wrap { overflow-x:auto; margin-bottom:48px; }
+    table.st-table {
+      width:100%; border-collapse:collapse;
+      font-size:12px;
+    }
+    .st-table th {
+      text-align:left; padding:10px 14px;
+      font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+      color:var(--text-3); border-bottom:1px solid var(--border);
+      background:var(--bg2);
+    }
+    .st-table td {
+      padding:12px 14px; border-bottom:1px solid var(--border);
+      color:var(--text-2); vertical-align:top; line-height:1.5;
+    }
+    .st-table tr:last-child td { border-bottom:none; }
+    .st-table tr:hover td { background:var(--bg2); }
+    .st-table .site-col { font-weight:700; color:var(--text); white-space:nowrap; }
+    .st-table .check { color:var(--green); font-weight:700; }
+
+    @media(max-width:600px) {
+      .st-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Gate -->
+<div id="gate">
+  <div class="gate-logo">
+    <div class="gate-dot"></div>
+    <span class="gate-name">Status</span>
+  </div>
+  <div class="gate-inner">
+    <h1 class="gate-title">Private access</h1>
+    <p class="gate-sub">ecosystem status · changelog · sprints</p>
+    <input id="pw" type="password" class="gate-input" placeholder="Password" autocomplete="current-password" />
+    <button class="gate-btn" onclick="gateCheck()">Enter</button>
+    <p class="gate-err" id="gate-err">Wrong password</p>
+  </div>
+</div>
+
+<!-- App -->
+<div id="app">
+
+  <header class="st-header">
+    <div class="st-header-inner">
+      <a href="/" class="st-logo">
+        <div class="st-logo-dot"></div>
+        <span class="st-logo-name">wojciech.io</span>
+      </a>
+      <span class="st-badge">Status · Private</span>
+    </div>
+  </header>
+
+  <main class="st-page">
+    <p class="st-section-title">Ecosystem · 2026-05</p>
+    <h1 class="st-page-title">Site status &amp; changelog</h1>
+    <p class="st-page-sub">All changes shipped across the wojciech.io ecosystem — one place to track what was built, when, and why.</p>
+
+    <!-- Cards -->
+    <div class="st-grid">
+
+      <!-- app.wojciech.io -->
+      <div class="st-card">
+        <div class="st-card-head">
+          <div class="st-card-meta">
+            <a href="https://app.wojciech.io" target="_blank" rel="noopener" class="st-card-domain">app.wojciech.io</a>
+            <div class="st-card-stack">Astro · TypeScript · Tailwind CSS · Vercel</div>
+          </div>
+          <span class="st-card-status live"><span class="st-card-status-dot"></span>Live</span>
+        </div>
+        <hr class="st-card-divider" />
+        <ul class="st-changelog">
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag feat">feat</span>
+              <p class="st-cl-text">Unified 3-column footer: Network + Connect columns with full ecosystem crosslinks and i18n (EN/PL/IT)</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">New <code>public/llms.txt</code> with full ecosystem and AI attribution. Updated <code>humans.txt</code> with all 5 domains.</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag feat">feat</span>
+              <p class="st-cl-text">Unified "WL" favicon across all sites (dark SVG wordmark)</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag feat">feat</span>
+              <p class="st-cl-text">This <code>/status</code> page — private, gate-protected, no navigation</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag copy">copy</span>
+              <p class="st-cl-text">CodiLime date updated to Mar 2026; Lilla House repositioned as Contract in CV</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag copy">copy</span>
+              <p class="st-cl-text">Contact section and profile narrative aligned with wojciech.io positioning</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">Canonical profile redirects: <code>/llms</code>, <code>/humans</code>, <code>/now</code> added</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- subscribe.wojciech.io -->
+      <div class="st-card">
+        <div class="st-card-head">
+          <div class="st-card-meta">
+            <a href="https://subscribe.wojciech.io" target="_blank" rel="noopener" class="st-card-domain">subscribe.wojciech.io</a>
+            <div class="st-card-stack">Astro · TypeScript · Tailwind CSS · Vercel</div>
+          </div>
+          <span class="st-card-status live"><span class="st-card-status-dot"></span>Live</span>
+        </div>
+        <hr class="st-card-divider" />
+        <ul class="st-changelog">
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag feat">feat</span>
+              <p class="st-cl-text">Added EN/PL/IT language toggle (fixed top-right, auto-detect from browser, persisted to localStorage)</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag feat">feat</span>
+              <p class="st-cl-text">Unified 3-column footer replacing old minimal footer — Network + Connect columns, full i18n</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">New <code>llms.txt</code> and updated <code>humans.txt</code> with ecosystem crosslinks</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">Unified favicon (WL dark SVG) replacing previous icon</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- notch.wojciech.io -->
+      <div class="st-card">
+        <div class="st-card-head">
+          <div class="st-card-meta">
+            <a href="https://notch.wojciech.io" target="_blank" rel="noopener" class="st-card-domain">notch.wojciech.io</a>
+            <div class="st-card-stack">Astro · TypeScript · Tailwind CSS · Vercel</div>
+          </div>
+          <span class="st-card-status live"><span class="st-card-status-dot"></span>Live</span>
+        </div>
+        <hr class="st-card-divider" />
+        <ul class="st-changelog">
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag feat">feat</span>
+              <p class="st-cl-text">Added EN/PL/IT language toggle to header nav (integrated, not floating) — auto-detect + localStorage persistence</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag feat">feat</span>
+              <p class="st-cl-text">Replaced 2-line footer with full 3-column grid: brand, Network, Connect — consistent with ecosystem</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">New <code>llms.txt</code> (full product + ecosystem context) and updated <code>humans.txt</code></p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">Unified favicon (WL dark SVG) replacing previous icon</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- academy.wojciech.io -->
+      <div class="st-card">
+        <div class="st-card-head">
+          <div class="st-card-meta">
+            <a href="https://academy.wojciech.io" target="_blank" rel="noopener" class="st-card-domain">academy.wojciech.io</a>
+            <div class="st-card-stack">Static HTML · CSS · Vanilla JS · Vercel</div>
+          </div>
+          <span class="st-card-status live"><span class="st-card-status-dot"></span>Live</span>
+        </div>
+        <hr class="st-card-divider" />
+        <ul class="st-changelog">
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag feat">feat</span>
+              <p class="st-cl-text">Added Italian (IT) language to existing PL/EN toggle — full TX object translations + desktop and mobile nav buttons</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag feat">feat</span>
+              <p class="st-cl-text">Replaced old single-line footer with 3-column grid footer matching ecosystem style — inline CSS for compatibility</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">Added <code>data-en/pl/it</code> attribute pattern support to <code>setLang()</code> for footer i18n</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">Unified favicon (WL dark SVG) in <code>/assets/</code> and root — both paths used in HTML</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- wojciech.io -->
+      <div class="st-card">
+        <div class="st-card-head">
+          <div class="st-card-meta">
+            <a href="https://wojciech.io" target="_blank" rel="noopener" class="st-card-domain">wojciech.io</a>
+            <div class="st-card-stack">Astro · TypeScript · Tailwind CSS · Cloudflare Pages</div>
+          </div>
+          <span class="st-card-status live"><span class="st-card-status-dot"></span>Live</span>
+        </div>
+        <hr class="st-card-divider" />
+        <ul class="st-changelog">
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag feat">feat</span>
+              <p class="st-cl-text">Footer expanded to 5 columns — added Network column (app, subscribe, academy, notch) next to Connect social links</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">Updated <code>llms.txt</code>: added academy.wojciech.io, notch.wojciech.io, Substack to "Where to find Wojciech"</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">Updated <code>humans.txt</code> with all 5 ecosystem domains</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag sync">sync</span>
+              <p class="st-cl-text">Unified favicon (WL dark SVG) replacing previous icon</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag copy">copy</span>
+              <p class="st-cl-text">Synced CV data: CodiLime end date Mar 2026, Lilla House relabelled as Contract</p>
+            </div>
+          </li>
+          <li class="st-cl-item">
+            <span class="st-cl-date">2026-05</span>
+            <div class="st-cl-body">
+              <span class="st-cl-tag copy">copy</span>
+              <p class="st-cl-text">Rewrote <code>llms.txt</code> and <code>humans.txt</code> with full author attribution and GTM/AI/growth identity</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Sprint summary table -->
+    <p class="st-section-title">Sprint summary — 2026-05</p>
+    <div class="st-table-wrap">
+      <table class="st-table">
+        <thead>
+          <tr>
+            <th>Site</th>
+            <th>Footer</th>
+            <th>Lang EN/PL/IT</th>
+            <th>Favicon</th>
+            <th>llms.txt</th>
+            <th>humans.txt</th>
+            <th>Other</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="site-col">app.wojciech.io</td>
+            <td class="check">✓ 3-col grid</td>
+            <td class="check">✓ existing</td>
+            <td class="check">✓ WL SVG</td>
+            <td class="check">✓ new public/</td>
+            <td class="check">✓ updated</td>
+            <td>/status page, canonical redirects, CV copy sync</td>
+          </tr>
+          <tr>
+            <td class="site-col">subscribe.wojciech.io</td>
+            <td class="check">✓ 3-col grid</td>
+            <td class="check">✓ added</td>
+            <td class="check">✓ WL SVG</td>
+            <td class="check">✓ new</td>
+            <td class="check">✓ updated</td>
+            <td>Lang toggle fixed top-right</td>
+          </tr>
+          <tr>
+            <td class="site-col">notch.wojciech.io</td>
+            <td class="check">✓ 3-col grid</td>
+            <td class="check">✓ added</td>
+            <td class="check">✓ WL SVG</td>
+            <td class="check">✓ new</td>
+            <td class="check">✓ updated</td>
+            <td>Lang toggle in header nav</td>
+          </tr>
+          <tr>
+            <td class="site-col">academy.wojciech.io</td>
+            <td class="check">✓ 3-col grid</td>
+            <td class="check">✓ IT added</td>
+            <td class="check">✓ WL SVG</td>
+            <td>— static</td>
+            <td>— static</td>
+            <td>TX object IT translations, setLang() extended</td>
+          </tr>
+          <tr>
+            <td class="site-col">wojciech.io</td>
+            <td class="check">✓ +Network col</td>
+            <td class="check">✓ existing</td>
+            <td class="check">✓ WL SVG</td>
+            <td class="check">✓ updated</td>
+            <td class="check">✓ updated</td>
+            <td>Footer.astro 5-col, CV data sync</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>
+
+<script is:inline>
+  (function() {
+    function unlock() {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+    }
+
+    if (sessionStorage.getItem('pw_ok') === '1') { unlock(); }
+
+    window.gateCheck = function() {
+      var val = document.getElementById('pw').value.trim().toLowerCase();
+      var err = document.getElementById('gate-err');
+      if (val === 'wojciech') {
+        sessionStorage.setItem('pw_ok', '1');
+        unlock();
+      } else {
+        err.classList.add('show');
+        document.getElementById('pw').value = '';
+        setTimeout(function() { err.classList.remove('show'); }, 2000);
+      }
+    };
+
+    document.getElementById('pw').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') window.gateCheck();
+    });
+
+    setTimeout(function() { document.getElementById('pw').focus(); }, 80);
+  })();
+</script>
+
+</body>
+</html>

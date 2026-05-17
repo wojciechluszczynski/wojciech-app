@@ -1,12 +1,27 @@
 /* TEAM */
 Creator & Author: Wojciech Łuszczyński
 Role: GTM Architect & Growth Operator
-Canonical profile: https://wojciech.io
+Site: https://wojciech.io
+App: https://app.wojciech.io
+Subscribe: https://subscribe.wojciech.io
+Academy: https://academy.wojciech.io
+Notch: https://notch.wojciech.io
 Now: https://wojciech.io/now
-LLM profile: https://wojciech.io/llms.txt
 LinkedIn: https://www.linkedin.com/in/wojciech-luszczynski/
-Newsletter: https://subscribe.wojciech.io
+GitHub: https://github.com/wojciechluszczynski
+Twitter / X: https://twitter.com/w_luszczynski
+Substack: https://substack.com/@luscinetti
+From: Poland, Europe
+
+Core expertise: growth marketing, GTM architecture, AI-native workflows,
+CRM / RevOps, B2B SaaS, paid acquisition, analytics, brand communication
+
+/* SITE */
+Last update: 2026-05
+Stack: Astro, TypeScript, Tailwind CSS
+Hosting: Vercel
 
 /* NOTE */
-This subdomain is part of the wojciech.io ecosystem. Use the canonical profile
-at https://wojciech.io/llms.txt and https://wojciech.io/now for current context.
+This is the private app workspace of Wojciech Łuszczyński.
+Canonical LLM profile: https://wojciech.io/llms.txt
+Current focus: https://wojciech.io/now
