@@ -15,8 +15,10 @@ export function timingSafeEqual(a: Uint8Array, b: Uint8Array): boolean {
 
 // Decode base64url (no padding) → Uint8Array.
 export function b64uDecode(s: string): Uint8Array {
-  const pad = s.length % 4 === 2 ? '==' : s.length % 4 === 3 ? '=' : '';
-  const b64 = s.replace(/-/g, '+').replace(/_/g, '/') + pad;
+  // Strip whitespace — a pasted env var may carry stray line breaks/spaces.
+  const clean = s.replace(/\s+/g, '');
+  const pad = clean.length % 4 === 2 ? '==' : clean.length % 4 === 3 ? '=' : '';
+  const b64 = clean.replace(/-/g, '+').replace(/_/g, '/') + pad;
   const bin = atob(b64);
   const out = new Uint8Array(bin.length);
   for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
