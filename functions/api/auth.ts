@@ -1,14 +1,13 @@
 // POST /api/auth — validate password, issue signed cookie.
 // Env:
-//   PASSWORD_HASHES — comma-separated list of `salt_b64u:hash_b64u` entries.
-//                     Multiple entries = multiple valid passwords (one per person).
-//   COOKIE_SECRET   — secret used to sign auth tokens (32+ random bytes recommended).
+//   APP_PASSWORD  — the password that unlocks the app (plain text).
+//   COOKIE_SECRET — secret used to sign auth tokens (32+ random bytes recommended).
 //   COOKIE_MAX_AGE_DAYS — optional, defaults to 30.
 
-import { verifyPassword, signToken } from '../_utils/crypto';
+import { signToken, timingSafeEqualStr } from '../_utils/crypto';
 
 interface Env {
-  PASSWORD_HASHES: string;
+  APP_PASSWORD: string;
   COOKIE_SECRET: string;
   COOKIE_MAX_AGE_DAYS?: string;
 }
@@ -25,26 +24,11 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   if (!password) {
     return jsonResponse({ ok: false, error: 'missing-password' }, 400);
   }
-  if (!env.PASSWORD_HASHES || !env.COOKIE_SECRET) {
+  if (!env.APP_PASSWORD || !env.COOKIE_SECRET) {
     return jsonResponse({ ok: false, error: 'auth-not-configured' }, 500);
   }
 
-  // Throttle by simple delay so brute-force costs ~100ms per attempt.
-  // (CF Workers don't support persistent rate limiting without Durable Objects/KV;
-  // the constant-time delay is a baseline. Add a KV-backed rate limiter later if needed.)
-  const entries = env.PASSWORD_HASHES.split(',').map(s => s.trim()).filter(Boolean);
-  let matched = false;
-  try {
-    for (const entry of entries) {
-      // eslint-disable-next-line no-await-in-loop
-      if (await verifyPassword(password, entry)) { matched = true; break; }
-    }
-  } catch {
-    // verifyPassword throws only when a PASSWORD_HASHES entry is not a valid
-    // `salt_b64u:hash_b64u` pair — i.e. the env var is malformed.
-    return jsonResponse({ ok: false, error: 'bad-hash-config' }, 500);
-  }
-  if (!matched) {
+  if (!timingSafeEqualStr(password, env.APP_PASSWORD.trim())) {
     return jsonResponse({ ok: false, error: 'invalid-password' }, 401);
   }
 
@@ -61,7 +45,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   });
 };
 
-// Also handle DELETE /api/auth as logout — clear the cookie.
+// DELETE /api/auth — logout, clear the cookie.
 export const onRequestDelete: PagesFunction<Env> = async () => {
   return new Response(JSON.stringify({ ok: true }), {
     status: 200,

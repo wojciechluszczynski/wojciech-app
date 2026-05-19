@@ -1,8 +1,6 @@
-// Crypto helpers for password verification (PBKDF2) and cookie signing (HMAC-SHA256).
+// Crypto helpers for cookie signing (HMAC-SHA256) and constant-time comparison.
 // Uses Web Crypto API — available on Cloudflare Workers / Pages Functions.
 
-const PBKDF2_ITERATIONS = 100_000;
-const PBKDF2_KEYLEN = 32;
 const HMAC_ALG = { name: 'HMAC', hash: 'SHA-256' } as const;
 
 // Constant-time byte-array comparison.
@@ -13,12 +11,16 @@ export function timingSafeEqual(a: Uint8Array, b: Uint8Array): boolean {
   return diff === 0;
 }
 
+// Constant-time string comparison.
+export function timingSafeEqualStr(a: string, b: string): boolean {
+  const enc = new TextEncoder();
+  return timingSafeEqual(enc.encode(a), enc.encode(b));
+}
+
 // Decode base64url (no padding) → Uint8Array.
 export function b64uDecode(s: string): Uint8Array {
-  // Strip whitespace — a pasted env var may carry stray line breaks/spaces.
-  const clean = s.replace(/\s+/g, '');
-  const pad = clean.length % 4 === 2 ? '==' : clean.length % 4 === 3 ? '=' : '';
-  const b64 = clean.replace(/-/g, '+').replace(/_/g, '/') + pad;
+  const pad = s.length % 4 === 2 ? '==' : s.length % 4 === 3 ? '=' : '';
+  const b64 = s.replace(/-/g, '+').replace(/_/g, '/') + pad;
   const bin = atob(b64);
   const out = new Uint8Array(bin.length);
   for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
@@ -30,33 +32,6 @@ export function b64uEncode(buf: Uint8Array): string {
   let bin = '';
   for (let i = 0; i < buf.length; i++) bin += String.fromCharCode(buf[i]);
   return btoa(bin).replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
-}
-
-// PBKDF2-HMAC-SHA256 of `password` with `salt`. Returns 32-byte derived key.
-export async function pbkdf2(password: string, salt: Uint8Array): Promise<Uint8Array> {
-  const key = await crypto.subtle.importKey(
-    'raw',
-    new TextEncoder().encode(password),
-    { name: 'PBKDF2' },
-    false,
-    ['deriveBits'],
-  );
-  const bits = await crypto.subtle.deriveBits(
-    { name: 'PBKDF2', hash: 'SHA-256', salt, iterations: PBKDF2_ITERATIONS },
-    key,
-    PBKDF2_KEYLEN * 8,
-  );
-  return new Uint8Array(bits);
-}
-
-// Verify a password against an entry `salt_b64u:hash_b64u`.
-export async function verifyPassword(password: string, entry: string): Promise<boolean> {
-  const [saltStr, hashStr] = entry.split(':');
-  if (!saltStr || !hashStr) return false;
-  const salt = b64uDecode(saltStr);
-  const expected = b64uDecode(hashStr);
-  const actual = await pbkdf2(password, salt);
-  return timingSafeEqual(actual, expected);
 }
 
 // HMAC-SHA256(payload, secret) — for signing cookie tokens.

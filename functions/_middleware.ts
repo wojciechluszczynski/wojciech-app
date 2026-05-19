@@ -4,7 +4,7 @@
 import { verifyToken } from './_utils/crypto';
 
 interface Env {
-  PASSWORD_HASHES: string;
+  APP_PASSWORD: string;
   COOKIE_SECRET: string;
   COOKIE_MAX_AGE_DAYS?: string;
   ASSETS: Fetcher;
