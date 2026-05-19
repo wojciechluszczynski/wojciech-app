@@ -34,9 +34,15 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   // the constant-time delay is a baseline. Add a KV-backed rate limiter later if needed.)
   const entries = env.PASSWORD_HASHES.split(',').map(s => s.trim()).filter(Boolean);
   let matched = false;
-  for (const entry of entries) {
-    // eslint-disable-next-line no-await-in-loop
-    if (await verifyPassword(password, entry)) { matched = true; break; }
+  try {
+    for (const entry of entries) {
+      // eslint-disable-next-line no-await-in-loop
+      if (await verifyPassword(password, entry)) { matched = true; break; }
+    }
+  } catch {
+    // verifyPassword throws only when a PASSWORD_HASHES entry is not a valid
+    // `salt_b64u:hash_b64u` pair — i.e. the env var is malformed.
+    return jsonResponse({ ok: false, error: 'bad-hash-config' }, 500);
   }
   if (!matched) {
     return jsonResponse({ ok: false, error: 'invalid-password' }, 401);
