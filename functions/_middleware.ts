@@ -50,16 +50,33 @@ export const onRequest: PagesFunction<Env> = async (ctx) => {
   const loginResponse = await env.ASSETS.fetch(new Request(loginUrl.toString(), { method: 'GET' }));
 
   // Return with 401 so it's clear to clients that this is a gate, not the real content.
-  // But keep content-type/body from the asset fetch.
+  // Emit security headers explicitly — login.html is served via env.ASSETS and
+  // does NOT pass through any Astro Layout, so its headers must be set here.
+  // Discovery context: wojciech.io PR #8 (Issue #12) added a CI headers-check
+  // that flagged app.wojciech.io/login as missing all 6 required headers.
   const body = await loginResponse.arrayBuffer();
   return new Response(body, {
     status: 401,
     headers: {
       'content-type': loginResponse.headers.get('content-type') || 'text/html; charset=utf-8',
       'cache-control': 'no-store',
+      ...SECURITY_HEADERS,
     },
   });
 };
+
+// Security headers applied to the 401 gate response. Policy mirrors what
+// other gated subdomains (academy, notch, subscribe, gh) emit via their
+// Astro Layout. CSP is permissive enough for the inline-styled login page.
+const SECURITY_HEADERS = {
+  'content-security-policy':
+    "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+  'strict-transport-security': 'max-age=63072000; includeSubDomains; preload',
+  'x-frame-options': 'DENY',
+  'x-content-type-options': 'nosniff',
+  'referrer-policy': 'strict-origin-when-cross-origin',
+  'permissions-policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+} as const;
 
 async function isAuthenticated(request: Request, env: Env): Promise<boolean> {
   if (!env.COOKIE_SECRET) return false;
