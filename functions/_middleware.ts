@@ -12,14 +12,11 @@ interface Env {
 
 const COOKIE_NAME = 'wapp_auth';
 
-// Paths that bypass auth check.
-// /api/auth — login endpoint itself
-// /login.html — the login page (served by middleware too, but kept allowed for direct access)
-// /favicon*, /apple-touch-icon*, /robots.txt, /bimi.svg — browser/crawler default fetches
-// /og-default.png, /manifest.json — discoverable metadata, no sensitive content
+// Paths that bypass auth check (exact match).
 const ALLOWED = [
   '/api/auth',
   '/login.html',
+  '/wojciech-photo.png', // profile photo used on login page
   '/favicon.ico',
   '/favicon.svg',
   '/favicon-32x32.png',
@@ -32,11 +29,16 @@ const ALLOWED = [
   '/manifest.json',
 ];
 
+// Path prefixes that bypass auth (for directories of static assets needed by login page).
+const ALLOWED_PREFIXES = [
+  '/fonts/', // Geist font files loaded by login.html
+];
+
 export const onRequest: PagesFunction<Env> = async (ctx) => {
   const { request, env, next } = ctx;
   const url = new URL(request.url);
 
-  if (ALLOWED.includes(url.pathname)) {
+  if (ALLOWED.includes(url.pathname) || ALLOWED_PREFIXES.some((p) => url.pathname.startsWith(p))) {
     return next();
   }
 
