@@ -2024,6 +2024,220 @@ body.dark-app .tl-tc { background: var(--bg2) !important; border-color: var(--bo
   .tl-year-num { font-size: 11px !important; letter-spacing: 2px !important; }
 }
 </style>
+<style id="dark-app-theme">
+body.dark-app {
+  --bg:        #131510;
+  --bg1:       #1c1f18;
+  --bg2:       #22251d;
+  --bg3:       #292d22;
+  --border:    rgba(255,255,255,0.07);
+  --border-hi: rgba(255,255,255,0.14);
+  --text:      #e8e8da;
+  --text-2:    #88897e;
+  --text-3:    #3e4038;
+  --lime:      #EBFF00;
+}
+
+/* Header & navbar */
+body.dark-app header {
+  background: rgba(19,21,16,0.92) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+/* Cards and containers */
+body.dark-app .app-card,
+body.dark-app .proj-card {
+  background: var(--bg1) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+
+body.dark-app .proj-card:hover {
+  background: var(--bg2) !important;
+  border-color: var(--border-hi) !important;
+}
+
+/* Text elements */
+body.dark-app h1, body.dark-app h2, body.dark-app h3,
+body.dark-app h4, body.dark-app h5, body.dark-app h6 {
+  color: var(--text) !important;
+}
+
+body.dark-app p, body.dark-app span, body.dark-app label,
+body.dark-app .proj-name, body.dark-app .proj-desc {
+  color: var(--text) !important;
+}
+
+/* Links */
+body.dark-app a {
+  color: var(--lime) !important;
+}
+
+body.dark-app a:hover {
+  opacity: 0.9;
+}
+
+/* Tabs */
+body.dark-app .tab-head {
+  background: var(--bg1) !important;
+  color: var(--text-2) !important;
+  border-bottom: 2px solid transparent !important;
+}
+
+body.dark-app .tab-head.active {
+  color: var(--lime) !important;
+  border-bottom-color: var(--lime) !important;
+}
+
+/* Stack section */
+body.dark-app .stack-grid {
+  background: transparent !important;
+}
+
+body.dark-app .stack-item {
+  background: var(--bg2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-2) !important;
+}
+
+body.dark-app .tech-icon {
+  filter: brightness(1.1);
+}
+
+/* Timeline */
+body.dark-app .tl-entry {
+  background: var(--bg1) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+
+body.dark-app .tl-date {
+  color: var(--text-2) !important;
+}
+
+body.dark-app .tl-title {
+  color: var(--lime) !important;
+}
+
+/* CV section */
+body.dark-app .cv-h-title {
+  color: var(--lime) !important;
+}
+
+body.dark-app .cv-content {
+  background: var(--bg1) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+
+/* Contact form */
+body.dark-app .cf-input,
+body.dark-app .cf-textarea {
+  background: var(--bg2) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+
+body.dark-app .cf-input::placeholder,
+body.dark-app .cf-textarea::placeholder {
+  color: var(--text-2) !important;
+}
+
+body.dark-app .cf-submit-btn {
+  background: var(--lime) !important;
+  color: #000 !important;
+  font-weight: 600 !important;
+}
+
+body.dark-app .cf-submit-btn:hover {
+  background: #f5ff66 !important;
+}
+
+/* Typeform steps */
+body.dark-app .tf-step {
+  color: var(--text) !important;
+}
+
+body.dark-app .tf-q {
+  color: var(--text) !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  margin-bottom: 20px !important;
+}
+
+body.dark-app .tf-progress {
+  gap: 8px !important;
+  margin-top: 30px !important;
+}
+
+body.dark-app .tf-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: var(--border-hi) !important;
+  transition: all 0.3s ease !important;
+}
+
+body.dark-app .tf-dot.active {
+  background: var(--lime) !important;
+  transform: scale(1.2) !important;
+}
+
+/* Footer */
+body.dark-app footer {
+  background: var(--bg1) !important;
+  border-top: 1px solid var(--border) !important;
+  color: var(--text) !important;
+}
+
+body.dark-app footer p span {
+  color: var(--lime) !important;
+  font-weight: 500 !important;
+}
+
+/* Button styles */
+body.dark-app button {
+  background: var(--bg2) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
+
+body.dark-app button:hover {
+  background: var(--bg3) !important;
+  border-color: var(--border-hi) !important;
+}
+
+/* Select/dropdown */
+body.dark-app select {
+  background: var(--bg2) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
+
+body.dark-app option {
+  background: var(--bg1) !important;
+  color: var(--text) !important;
+}
+
+/* Scrollbar */
+body.dark-app ::-webkit-scrollbar {
+  width: 8px;
+}
+
+body.dark-app ::-webkit-scrollbar-track {
+  background: var(--bg1);
+}
+
+body.dark-app ::-webkit-scrollbar-thumb {
+  background: var(--border-hi);
+  border-radius: 4px;
+}
+
+body.dark-app ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.2);
+}
+</style>
+
 </head>
 <body data-app-theme="light">
 <script>
@@ -10454,6 +10668,7 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
     if (val === 'wojciech') {
       sessionStorage.setItem('pw_ok', '1');
       document.getElementById('gate').style.display = 'none';
+      document.body.classList.add('dark-app');
       document.getElementById('app').style.display = 'block';
       initAppTheme();
       applyLang();
@@ -10469,7 +10684,8 @@ function toggleTheme(){var g=document.getElementById('gate');var icon=document.g
   // Auto-unlock
   if (sessionStorage.getItem('pw_ok') === '1') {
     document.getElementById('gate').style.display = 'none';
-    document.getElementById('app').style.display = 'block';
+    document.body.classList.add('dark-app');
+      document.getElementById('app').style.display = 'block';
     initAppTheme();
     applyLang();
   }
