@@ -23,7 +23,8 @@ const ALLOWED = [
   '/favicon-512x512.png',
   '/apple-touch-icon.png',
   '/robots.txt',
-  '/llms.txt',
+  // /llms.txt is not listed: REDIRECTS above sends it to the root site before
+  // this check runs, so an entry here would never be reached.
   '/bimi.svg',
   '/og-default.png',
   '/manifest.json',
@@ -34,9 +35,32 @@ const ALLOWED_PREFIXES = [
   '/fonts/', // Geist font files loaded by login.html
 ];
 
+// Paths that belong to the root site, redirected here rather than in
+// _redirects.
+//
+// _redirects is inert on this project. This middleware matches every route, so
+// it runs before the asset pipeline that would apply those rules, and nothing
+// in _redirects has ever fired: /now is declared there as a 301 to
+// wojciech.io/now/ and answers 401 from the auth gate instead. Redirecting
+// here is the only layer that actually executes.
+//
+// These run before the auth check on purpose. They are public pointers at
+// public pages, and gating them behind a login would be pointless.
+const REDIRECTS: Record<string, string> = {
+  '/llms.txt': 'https://wojciech.io/llms.txt',
+  '/humans.txt': 'https://wojciech.io/humans.txt',
+  '/now': 'https://wojciech.io/now/',
+  '/now/': 'https://wojciech.io/now/',
+};
+
 export const onRequest: PagesFunction<Env> = async (ctx) => {
   const { request, env, next } = ctx;
   const url = new URL(request.url);
+
+  const redirectTo = REDIRECTS[url.pathname];
+  if (redirectTo) {
+    return Response.redirect(redirectTo, 301);
+  }
 
   if (ALLOWED.includes(url.pathname) || ALLOWED_PREFIXES.some((p) => url.pathname.startsWith(p))) {
     return next();
